@@ -5,5 +5,14 @@
   <%= @assembly.name %>
 </p>
 
+<p>
+  <strong>Items:</strong>
+    <ul>
+        <% @assembly.items.each do |item| %>
+            <li><%= item.name %></li>
+        <% end %>
+    </ul>
+</p>
+
 <%= link_to 'Edit', edit_assembly_path(@assembly) %> |
 <%= link_to 'Back', assemblies_path %>
