@@ -8,3 +8,7 @@ end
   a = Assembly.create(name: meal_name)
   a.item_ids = [1, 2]
 end
+
+Order.create(status: 'Pending')
+Order.create(status: 'Active')
+Order.create(status: 'Complete')
