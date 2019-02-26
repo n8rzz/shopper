@@ -6,9 +6,16 @@ end
 
 ['Beef Stew'].each do |meal_name|
   a = Assembly.create(name: meal_name)
-  a.item_ids = [1, 2]
+  a.item_ids = Item.first.id
 end
 
-Order.create(status: 'Pending')
-Order.create(status: 'Active')
-Order.create(status: 'Complete')
+order_statuses = ['Pending', 'Active', 'Complete']
+order_statuses.each do |status|
+  o = Order.create(status: status)
+
+  unless rand(0..1) == 1
+    OrderItem.create(order_id: o.id, assembly_id: Item.first.id)
+  end
+
+  OrderItem.create(order_id: o.id, item_id: Item.first.id)
+end

@@ -69,6 +69,6 @@ class AssembliesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assembly_params
-      params.require(:assembly).permit(:name)
+      params.require(:assembly).permit(:name, item_ids:[], order_item_ids:[])
     end
 end
