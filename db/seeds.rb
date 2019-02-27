@@ -14,3 +14,8 @@ o = Order.create(status: order_statuses[0])
 o.order_item_ids << OrderItem.create(order_id: Order.first.id, item_id: Item.first.id)
 o.order_item_ids << OrderItem.create(order_id: Order.first.id, assembly_id: Assembly.first.id)
 
+department_names = ['Produce', 'Meat', 'Bakery', 'Deli', 'Dairy', 'Fozen', 'Pasta', 'Bread']
+
+department_names.each do |department_name|
+  Department.create(name: department_name)
+end
