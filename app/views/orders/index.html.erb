@@ -5,14 +5,17 @@
 <table>
   <thead>
     <tr>
+      <th>Created At</th>
+      <th>Qty</th>
       <th>Status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @orders.each do |order| %>
       <tr>
+        <td><%= order.created_at %></td>
+        <td><%= order.items.size %></td>
         <td><%= order.status %></td>
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>

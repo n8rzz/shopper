@@ -1,8 +1,27 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Status:</strong>
-  <%= @order.status %>
+    <strong>Created At:</strong>
+    <%= @order.created_at %>
+</p>
+<p>
+    <strong>Status:</strong>
+    <%= @order.status %>
+</p>
+<p>
+    <strong>Assemblies:</strong>
+    <ul>
+        <% @order.assemblies.each do |assembly| %>
+            <li>
+                <div><%= assembly.name %></div>
+                <ul>
+                    <% assembly.items.each do |item| %>
+                    <li><%= item.name %></li>
+                    <% end %>
+                </ul>
+            </li>
+        <% end %>
+    </ul>
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |

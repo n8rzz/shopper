@@ -5,6 +5,9 @@
   <div class="form-inputs">
     <%= f.input :status, collection: ['pending', 'active', 'cancelled', 'complete'] %>
   </div>
+  <div class="form-inputs">
+    <%= f.association :order_items, as: :check_boxes, collection: Item.all %>
+  </div>
 
   <div class="form-actions">
     <%= f.button :submit %>
