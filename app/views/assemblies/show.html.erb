@@ -9,7 +9,7 @@
   <strong>Items:</strong>
     <ul>
         <% @assembly.items.each do |item| %>
-            <li><%= item.name %></li>
+            <li><%= item.name %> - <%= item.department.name %></li>
         <% end %>
     </ul>
 </p>
