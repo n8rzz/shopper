@@ -3,6 +3,3 @@
 valid_item:
   name: Carrot
   department: valid_department
-
-two:
-  name: MyString

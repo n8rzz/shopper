@@ -1,9 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  assembly: 
-  item: one
-
-two:
-  assembly: 
-  item: two
+valid_assembly_item:
+  assembly:
+    name: Beef Stew
+    item: valid_item

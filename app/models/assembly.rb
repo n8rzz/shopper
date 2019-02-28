@@ -8,4 +8,6 @@ class Assembly < ApplicationRecord
   scope :items, -> { AssemblyItem.where(assembly_id: self.ids).map { |assembly_item|
     assembly_item.item
   }}
+
+  validates :name, presence: true, uniqueness: true
 end
