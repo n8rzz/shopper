@@ -15,10 +15,7 @@ gem 'simple_form', '>=4.1.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'guard', '>= 2.15.0'
-  gem 'guard-livereload'
-  gem 'guard-bundler', require: false
-  gem 'guard-rails', require: false
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -26,12 +23,19 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'guard', '>= 2.15.0', require: false
+  gem 'guard-livereload', require: false
+  gem 'guard-bundler', require: false
+  gem 'guard-minitest', require: false
+  gem 'guard-rails', require: false
 end
 
 group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+  gem 'simplecov', '>= 0.16.1'
+  gem 'database_cleaner'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

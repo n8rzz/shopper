@@ -34,6 +34,13 @@ end
 # CLI: 'rails server'                  # customizes runner command. Omits all options except `pid_file`!
 
 guard 'rails' do
-    watch('Gemfile.lock')
-watch(%r{^(config|lib)/.*})
+  watch('Gemfile.lock')
+  watch(%r{^(config|lib)/.*})
+end
+
+guard :minitest, sprint: true, all_on_start: false, all_after_pass: true do
+  # with Minitest::Unit
+  watch(%r{^test/(.*)\/?test_(.*)\.rb$})
+  watch(%r{^lib/(.*/)?([^/]+)\.rb$})     { |m| "test/#{m[1]}test_#{m[2]}.rb" }
+  watch(%r{^test/test_helper\.rb$})      { 'test' }
 end
