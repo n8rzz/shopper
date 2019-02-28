@@ -1,7 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  status: MyString
+pending_order:
+  status: pending
 
-two:
-  status: MyString
+active_order:
+  status: active
+
+canceled_order:
+  status: canceled
+
+complete_order:
+  status: complete

@@ -16,6 +16,7 @@ gem 'simple_form', '>=4.1.0'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails'
+  gem 'minitest-reporters'
 end
 
 group :development do
@@ -36,6 +37,7 @@ group :test do
   gem 'chromedriver-helper'
   gem 'simplecov', '>= 0.16.1'
   gem 'database_cleaner'
+  gem 'minitest-around'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
