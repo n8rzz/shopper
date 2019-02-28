@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-pending_order:
+valid_pending_order:
   status: pending
 
-active_order:
+valid_active_order:
   status: active
 
-canceled_order:
+valid_canceled_order:
   status: canceled
 
-complete_order:
+valid_complete_order:
   status: complete
