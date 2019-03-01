@@ -2,12 +2,14 @@ require "application_system_test_case"
 
 class AssembliesTest < ApplicationSystemTestCase
   setup do
-    @assembly = assemblies(:one)
+    @assembly = assemblies(:valid_assembly)
+  end
+
+  teardown do
+    @assembly = nil
   end
 
   test "visiting the index" do
-    skip "Name is undefined in template"
-
     visit assemblies_url
     assert_selector "h1", text: "Assemblies"
   end
@@ -16,7 +18,7 @@ class AssembliesTest < ApplicationSystemTestCase
     visit assemblies_url
     click_on "New Assembly"
 
-    fill_in "Name", with: @assembly.name
+    fill_in "Name", with: "$Texas"
     click_on "Create Assembly"
 
     assert_text "Assembly was successfully created"

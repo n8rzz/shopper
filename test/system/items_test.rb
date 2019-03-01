@@ -5,20 +5,21 @@ class ItemsTest < ApplicationSystemTestCase
     @item = items(:valid_item)
   end
 
-  test "visiting the index" do
-    skip "Name is undefined in template"
+  teardown do
+    @item = nil
+  end
 
+  test "visiting the index" do
     visit items_url
     assert_selector "h1", text: "Items"
   end
 
   test "creating a Item" do
-    skip "name is undefined in template(s) under test"
-
     visit items_url
     click_on "New Item"
 
-    fill_in "Name", with: @item.name
+    fill_in "Name", with: "$Texas"
+    select("Produce", from: "Department")
     click_on "Create Item"
 
     assert_text "Item was successfully created"
@@ -26,8 +27,6 @@ class ItemsTest < ApplicationSystemTestCase
   end
 
   test "updating a Item" do
-    skip "name is undefined in template(s) under test"
-
     visit items_url
     click_on "Edit", match: :first
 
@@ -39,8 +38,6 @@ class ItemsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Item" do
-    skip "Name is undefined in template"
-
     visit items_url
     page.accept_confirm do
       click_on "Destroy", match: :first

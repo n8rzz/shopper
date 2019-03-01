@@ -2,7 +2,11 @@ require "application_system_test_case"
 
 class OrdersTest < ApplicationSystemTestCase
   setup do
-    @order = orders(:pending_order)
+    @order = orders(:valid_pending_order)
+  end
+
+  teardown do
+    @order = nil
   end
 
   test "visiting the index" do
@@ -11,12 +15,10 @@ class OrdersTest < ApplicationSystemTestCase
   end
 
   test "creating a Order" do
-    skip "`Status` element cannot be found"
-
     visit orders_url
     click_on "New Order"
 
-    fill_in "Status", with: @order.status
+    select("pending", from: "Status")
     click_on "Create Order"
 
     assert_text "Order was successfully created"
@@ -24,12 +26,10 @@ class OrdersTest < ApplicationSystemTestCase
   end
 
   test "updating a Order" do
-    skip "`Status` element cannot be found"
-
     visit orders_url
     click_on "Edit", match: :first
 
-    fill_in "Status", with: @order.status
+    select("active", from: "Status")
     click_on "Update Order"
 
     assert_text "Order was successfully updated"

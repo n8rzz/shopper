@@ -38,7 +38,7 @@ guard 'rails' do
   watch(%r{^(config|lib)/.*})
 end
 
-guard :minitest, :spring => true do
+guard :minitest, :spring => true, env: { 'NO_COVERAGE' => 'true' } do
   watch(%r{^app/(.+)\.rb$})                               { |m| "test/#{m[1]}_test.rb" }
   watch(%r{^app/controllers/application_controller\.rb$}) { "test/controllers" }
   watch(%r{^app/controllers/(.+)_controller\.rb$})        { |m| "test/integration/#{m[1]}_test.rb" }

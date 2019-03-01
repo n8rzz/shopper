@@ -6,19 +6,15 @@ class DepartmentsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    skip "Name is undefined in template"
-
     visit departments_url
     assert_selector "h1", text: "Departments"
   end
 
   test "creating a Department" do
-    skip "department name exists already"
-
     visit departments_url
     click_on "New Department"
 
-    fill_in "Name", with: @department.name
+    fill_in "Name", with: "$Texas"
     click_on "Create Department"
 
     assert_text "Department was successfully created"
