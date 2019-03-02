@@ -6,7 +6,7 @@ class OrderItemsController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to items_path, notice: "#{@order_item.item.name} successfully added to pending order" }
+        format.html { redirect_to items_path, notice: "#{@order_item.item.name} added to pending order" }
         format.json { render :show, status: :created, location: @items_path }
       else
         format.html { redirect_to items_path }

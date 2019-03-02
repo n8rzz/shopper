@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class OrdersTest < ApplicationSystemTestCase
   setup do
-    @order = orders(:valid_pending_order)
+    @order = orders(:valid_pending_item_order)
   end
 
   teardown do
@@ -12,6 +12,14 @@ class OrdersTest < ApplicationSystemTestCase
   test "visiting the index" do
     visit orders_url
     assert_selector "h1", text: "Orders"
+  end
+
+  test "clicking an order at the index" do
+    skip "undefined method `name` in #show template"
+    visit orders_url
+    click_on @order.id
+
+    assert_current_path order_path(@order.id)
   end
 
   test "creating a Order" do

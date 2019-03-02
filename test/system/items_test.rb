@@ -57,6 +57,6 @@ class ItemsTest < ApplicationSystemTestCase
     visit items_url
     click_on "Add to order"
 
-    # item added to order
+    assert_text "Carrot added to pending order"
   end
 end

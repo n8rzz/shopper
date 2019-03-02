@@ -3,6 +3,16 @@
 valid_pending_order:
   status: pending
 
+# referenced in order_items.yml
+# used to attach only items to this order fixture
+valid_pending_item_order:
+  status: pending
+
+# referenced in order_items.yml
+# used to attach only assemblies to this order fixture
+valid_pending_assembly_order:
+  status: pending
+
 valid_active_order:
   status: active
 

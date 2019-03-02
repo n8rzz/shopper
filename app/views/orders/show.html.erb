@@ -8,21 +8,21 @@
     <strong>Status:</strong>
     <%= @order.status %>
 </p>
+<!-- temporary -->
 <p>
-    <strong>Assemblies:</strong>
-    <ul>
-        <% @order.assemblies.each do |assembly| %>
-            <li>
-                <div><%= assembly.name %></div>
-                <ul>
-                    <% assembly.items.each do |item| %>
-                    <li><%= item.name %></li>
-                    <% end %>
-                </ul>
-            </li>
-        <% end %>
-    </ul>
+    <strong>Order Items:</strong>
+    <% if @order.order_items != nil %>
+        <ul>
+            <% @order.order_items.each do |order_item| %>
+                <li>
+                    <div><%= order_item.item.name %></div>
+                    <%= order_item.item.department.name %>
+                </li>
+            <% end %>
+        </ul>
+    <% else %>
+        <div>No Items to display</div>
+    <% end %>
 </p>
-
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
