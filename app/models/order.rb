@@ -4,7 +4,7 @@ class Order < ApplicationRecord
   has_many :items, through: :assemblies
 
   validates :status, inclusion: {
-    in: %w(pending active canceled complete),
+    in: %w(pending active cancelled complete),
     message: "%{value} is not a valid status"
   }, presence: true
 end

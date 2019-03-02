@@ -14,11 +14,16 @@
   <tbody>
     <% @assemblies.each do |assembly| %>
       <tr>
-        <td><%= assembly.name %></td>
+        <td><%= link_to assembly.name, assembly %></td>
         <td><%= assembly.items.count %></td>
-        <td><%= link_to 'Show', assembly %></td>
         <td><%= link_to 'Edit', edit_assembly_path(assembly) %></td>
         <td><%= link_to 'Destroy', assembly, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+            <%= simple_form_for @order_item, url: order_items_create_path, method: :post do |form| %>
+                <%= form.hidden_field :assembly_id, value: assembly.id %>
+                <%= form.submit "Add to order" %>
+            <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

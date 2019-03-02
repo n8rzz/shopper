@@ -14,6 +14,13 @@ class AssembliesTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Assemblies"
   end
 
+  test "adding an assebmly to an order" do
+    visit assemblies_url
+    click_on "Add to order", match: :first
+
+    assert_text "added to pending order"
+  end
+
   test "creating a Assembly" do
     visit assemblies_url
     click_on "New Assembly"
