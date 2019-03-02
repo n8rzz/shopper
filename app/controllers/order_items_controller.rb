@@ -15,6 +15,10 @@ class OrderItemsController < ApplicationController
     end
   end
 
+  def delete
+    puts "delete"
+  end
+
   private
 
   def order_item_params

@@ -11,18 +11,33 @@
 <!-- temporary -->
 <p>
     <strong>Order Items:</strong>
-    <% if @order.order_items != nil %>
-        <ul>
-            <% @order.order_items.each do |order_item| %>
-                <li>
+    <ul>
+        <% @order.order_items.each do |order_item| %>
+            <li>
+                <% if order_item.assembly_id != nil %>
+                    <h2>assembly</h2>
+                    <ul>
+                        <% order_item.assembly.items.each do |assembly_item| %>
+                            <li>
+                                <div><%= assembly_item.id %></div>
+                                <div><%= assembly_item.name %></div>
+                                <div><%= assembly_item.department.name %></div>
+                                <div><button type="submit">Remove</button></div>
+                            </li>
+                        <% end %>
+                    </ul>
+                <% end %>
+
+                <% if order_item.item_id != nil %>
+                    <h2>item</h2>
+                    <div><%= order_item.item.id %></div>
                     <div><%= order_item.item.name %></div>
-                    <%= order_item.item.department.name %>
-                </li>
-            <% end %>
-        </ul>
-    <% else %>
-        <div>No Items to display</div>
-    <% end %>
+                    <div><%= order_item.item.department.name %></div>
+                    <div><button type="submit">Remove</button></div>
+                <% end %>
+            </li>
+        <% end %>
+    </ul>
 </p>
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

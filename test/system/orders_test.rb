@@ -15,7 +15,7 @@ class OrdersTest < ApplicationSystemTestCase
   end
 
   test "clicking an order at the index" do
-    skip "undefined method `name` in #show template"
+    # skip "undefined method `name` in #show template"
     visit orders_url
     click_on @order.id
 
