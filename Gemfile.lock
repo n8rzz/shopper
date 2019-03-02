@@ -304,7 +304,7 @@ DEPENDENCIES
   guard-minitest
   guard-rails
   guard-rubocop
-  jbuilder (~> 2.5)
+  jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
   minitest-around
   minitest-reporters

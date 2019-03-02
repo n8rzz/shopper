@@ -14,6 +14,13 @@ class ItemsTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Items"
   end
 
+  test "clicking an item at the index" do
+    visit items_url
+    click_on @item.name
+
+    assert_current_path item_path(@item.id)
+  end
+
   test "creating a Item" do
     visit items_url
     click_on "New Item"
@@ -26,7 +33,7 @@ class ItemsTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  test "updating a Item" do
+  test "updating an Item" do
     visit items_url
     click_on "Edit", match: :first
 
@@ -44,5 +51,12 @@ class ItemsTest < ApplicationSystemTestCase
     end
 
     assert_text "Item was successfully destroyed"
+  end
+
+  test "add item to order" do
+    visit items_url
+    click_on "Add to order", match: :first
+
+    assert_text "Carrot added to pending order"
   end
 end

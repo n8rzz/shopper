@@ -5,6 +5,10 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
     @order = orders(:valid_pending_order)
   end
 
+  teardown do
+    @order = nil
+  end
+
   test "should get index" do
     get orders_url
     assert_response :success

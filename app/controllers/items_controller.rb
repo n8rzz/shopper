@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @items = Item.all
+    @order_item = OrderItem.new
   end
 
   # GET /items/1
@@ -24,6 +25,7 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
+    # byebug
     @item = Item.new(item_params)
 
     respond_to do |format|

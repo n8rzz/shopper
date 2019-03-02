@@ -14,11 +14,16 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= item.name %></td>
+        <td><%= link_to item.name, item %></td>
         <td><%= item.department.name %></td>
-        <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+            <%= simple_form_for @order_item, url: order_items_create_path, method: :post do |form| %>
+                <%= form.hidden_field :item_id, value: item.id %>
+                <%= form.submit "Add to order" %>
+            <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

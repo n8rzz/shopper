@@ -15,14 +15,13 @@ class DepartmentsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # FIXME: this is broken
-  # test "should create department" do
-  #   assert_difference('Department.count') do
-  #     post departments_url, params: { department: { name: @department.name } }
-  #   end
+  test "should create department" do
+    assert_difference('Department.count') do
+      post departments_url, params: { department: { name: 'Pharmacy' } }
+    end
 
-  #   assert_redirected_to department_url(Department.last)
-  # end
+    assert_redirected_to department_url(Department.last)
+  end
 
   test "should show department" do
     get department_url(@department)
