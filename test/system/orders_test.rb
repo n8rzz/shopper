@@ -15,17 +15,26 @@ class OrdersTest < ApplicationSystemTestCase
   end
 
   test "clicking an order at the index" do
-    # skip "undefined method `name` in #show template"
     visit orders_url
     click_on @order.id
-
     assert_current_path order_path(@order.id)
+  end
+
+  test "edit link present at the index" do
+    visit orders_url
+    assert_selector "a", text: "Edit"
   end
 
   test "remove button present on #show" do
     visit orders_url
     click_on @order.id
     assert_selector "button", text: "Remove"
+  end
+
+  test "edit link present on #show" do
+    visit orders_url
+    click_on @order.id
+    assert_selector "a", text: "Edit"
   end
 
   test "creating a Order" do

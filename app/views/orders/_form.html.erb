@@ -9,6 +9,9 @@
     <%= f.association :location %>
   </div>
   <div class="form-inputs">
+    <%= f.association :order_items, as: :check_boxes, collection: Assembly.all %>
+  </div>
+  <div class="form-inputs">
     <%= f.association :order_items, as: :check_boxes, collection: Item.all %>
   </div>
 
