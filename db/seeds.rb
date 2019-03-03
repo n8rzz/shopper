@@ -3,14 +3,25 @@ department_names.each do |department_name|
   Department.create(name: department_name)
 end
 
-item_names = ['Carrots', 'Milk', 'Cheese', 'Pop Tarts', 'Root Beer', 'Sweet Potato Sun Chips']
-
-item_names.each do |item_name|
-  Item.create(name: item_name, department_id: Department.order('random()').first.id)
+10.times do
+  Location.create(
+    name: Faker::Company.name,
+    city: Faker::TvShows::GameOfThrones.city,
+    state: Faker::Movies::StarWars.planet
+  )
 end
 
-['Beef Stew'].each do |meal_name|
-  a = Assembly.create(name: meal_name)
+# item_names = ['Carrots', 'Milk', 'Cheese', 'Pop Tarts', 'Root Beer', 'Sweet Potato Sun Chips']
+
+15.times do
+  Item.create(
+    name: Faker::Food.ingredient,
+    department_id: Department.order('random()').first.id
+  )
+end
+
+3.times.each do
+  a = Assembly.create(name: Faker::Food.dish)
   a.item_ids = Item.order('random()').first.id
 end
 

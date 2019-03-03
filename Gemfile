@@ -15,7 +15,7 @@ gem 'webpacker', '>= 4.0.0.rc.3'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'factory_bot_rails'
+  gem 'faker', '>= 1.9.3'
   gem 'minitest-reporters'
   gem 'rubocop', '>= 0.65.0'
 end
