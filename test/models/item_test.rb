@@ -1,16 +1,22 @@
 require 'test_helper'
 
 class ItemTest < ActiveSupport::TestCase
-  def setup
+  setup do
     @valid_item = items(:valid_item)
   end
 
-  def teardown
+  teardown do
     @valid_item = nil
   end
 
   test 'valid item' do
     assert @valid_item.valid?
+  end
+
+  test 'item name' do
+    nameless_item = Item.create()
+
+    refute nameless_item.valid?
   end
 
   test 'item without department' do

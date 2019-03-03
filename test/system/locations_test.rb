@@ -22,7 +22,7 @@ class LocationsTest < ApplicationSystemTestCase
     click_on "New Location"
 
     fill_in "City", with: @valid_location.city
-    fill_in "Name", with: @valid_location.name
+    fill_in "Name", with: Faker::Company.name
     fill_in "State", with: @valid_location.state
     click_on "Create Location"
 

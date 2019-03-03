@@ -6,5 +6,5 @@ class Item < ApplicationRecord
   has_many :assembly_items, dependent: :destroy
   has_many :assemblies, through: :assembly_items
 
-  validates :name, uniqueness: true
+  validates :name, presence: true, uniqueness: true
 end
