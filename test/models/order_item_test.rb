@@ -19,6 +19,12 @@ class OrderItemTest < ActiveSupport::TestCase
     assert @valid_order_item_using_item.valid?
   end
 
+  test 'validates status' do
+    invalid_order_item = OrderItem.create(name: Faker::Food.ingredient)
+
+    refute invalid_order_item.valid?
+  end
+
   test 'has_assembly? returns true when #assembly_id is present' do
     assert @valid_order_item_using_assembly.has_assembly?
   end
