@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
+  belongs_to :location
+
   has_many :order_items, dependent: :destroy
   has_many :assemblies, through: :order_items
   has_many :items, through: :assemblies
