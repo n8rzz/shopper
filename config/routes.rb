@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   delete 'order_items/:id',   to: 'order_items#delete'
 
   resources :departments
-  resources :orders
+  resources :orders, only: [:index, :show, :new, :create, :destroy]
   resources :assemblies
   resources :items
 end

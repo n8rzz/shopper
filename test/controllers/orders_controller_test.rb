@@ -32,16 +32,6 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get edit" do
-    get edit_order_url(@order)
-    assert_response :success
-  end
-
-  test "should update order" do
-    patch order_url(@order), params: { order: { status: @order.status } }
-    assert_redirected_to order_url(@order)
-  end
-
   test "should destroy order" do
     assert_difference('Order.count', -1) do
       delete order_url(@order)

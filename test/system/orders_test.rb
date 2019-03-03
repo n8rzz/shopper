@@ -39,17 +39,6 @@ class OrdersTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  test "updating a Order" do
-    visit orders_url
-    click_on "Edit", match: :first
-
-    select("active", from: "Status")
-    click_on "Update Order"
-
-    assert_text "Order was successfully updated"
-    click_on "Back"
-  end
-
   test "destroying a Order" do
     visit orders_url
     page.accept_confirm do
