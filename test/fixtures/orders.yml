@@ -18,9 +18,12 @@ valid_pending_assembly_order:
 
 valid_active_order:
   status: active
+  location: valid_location
 
 valid_canceled_order:
   status: canceled
+  location: valid_location
 
 valid_complete_order:
   status: complete
+  location: valid_location
