@@ -6,4 +6,4 @@ valid_order_item_using_assembly:
 
 valid_order_item_using_item:
   order: valid_pending_item_order
-  assembly: valid_assembly
+  item: valid_item

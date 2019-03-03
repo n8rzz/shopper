@@ -7,16 +7,19 @@ class OrderItemsController < ApplicationController
     session[:order_id] = @order.id
 
     respond_to do |format|
-      # FIXME: make this less gross
-      if @order.save && order_item_params[:item_id] != nil
-        format.html { redirect_to items_path, notice: "#{@order_item.item.name} added to pending order" }
-        format.json { render :show, status: :created, location: @items_path }
-      elsif @order.save && order_item_params[:assembly_id] != nil
-        format.html { redirect_to assemblies_path, notice: "#{@order_item.assembly.name} added to pending order" }
-        format.json { render :show, status: :created, location: @assemblies_path }
-      else
+      unless @order.save
         format.html { redirect_to items_path }
         format.json { render json: @order_item.errors, status: :unprocessable_entity }
+
+        return
+      end
+
+      if @order_item.has_item?
+        format.html { redirect_to items_path, notice: "#{@order_item.item.name} added to pending order" }
+        format.json { render :show, status: :created, location: @items_path }
+      elsif @order_item.has_assembly?
+        format.html { redirect_to assemblies_path, notice: "#{@order_item.assembly.name} added to pending order" }
+        format.json { render :show, status: :created, location: @assemblies_path }
       end
     end
   end

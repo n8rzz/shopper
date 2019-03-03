@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :locations, only: [:index, :new, :edit, :create, :update, :destroy]
   resources :departments
-  resources :orders, only: [:index, :show, :new, :create, :destroy]
+  resources :orders
   resources :assemblies
   resources :items
 end

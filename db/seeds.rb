@@ -27,6 +27,6 @@ end
 
 order_statuses = ['pending', 'active', 'canceled', 'complete']
 o = Order.create(status: order_statuses[0])
-o.order_item_ids << OrderItem.create(order_id: Order.first.id, item_id: Item.order('random()').first.id)
-o.order_item_ids << OrderItem.create(order_id: Order.first.id, assembly_id: Assembly.order('random()').first.id)
+# o.order_item_ids << OrderItem.create(order_id: Order.first.id, item_id: Item.order('random()').first.id)
+# o.order_item_ids << OrderItem.create(order_id: Order.first.id, assembly_id: Assembly.order('random()').first.id)
 
