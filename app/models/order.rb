@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  belongs_to :location
+  belongs_to :location, optional: true
 
   has_many :order_items, dependent: :destroy
   has_many :assemblies, through: :order_items

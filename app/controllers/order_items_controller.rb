@@ -4,11 +4,10 @@ class OrderItemsController < ApplicationController
   def create
     @order = Order.first_or_create(status: 'pending')
     @order_item = @order.order_items.new(order_item_params)
-    session[:order_id] = @order.id
 
     respond_to do |format|
       unless @order.save
-        format.html { redirect_to items_path }
+        format.html { redirect_to items_path, notice: "Something went wrong" }
         format.json { render json: @order_item.errors, status: :unprocessable_entity }
 
         return

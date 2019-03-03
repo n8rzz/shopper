@@ -1,11 +1,11 @@
 require 'test_helper'
 
 class OrderTest < ActiveSupport::TestCase
-  def setup
+  setup do
     @valid_pending_order = orders(:valid_pending_order)
   end
 
-  def teardown
+  teardown do
     @valid_pending_order = nil
   end
 

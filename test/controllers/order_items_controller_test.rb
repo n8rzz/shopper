@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class OrderItemsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @valid_order_item = order_items(:valid_order_item_using_item)
+  end
+
   test "should create order_item with item" do
     valid_item = items(:valid_item)
 
@@ -23,10 +27,9 @@ class OrderItemsControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy order_item" do
     skip "no fixture found"
-    valid_order_item_using_item = order_items(:valid_order_item_using_item)
 
     assert_difference('OrderItem.count', -1) do
-      delete order_items(valid_order_item_using_item)
+      delete order_items(@valid_order_item)
     end
 
     assert_redirected_to orders_url
