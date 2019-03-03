@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   post 'order_items/create',  to: 'order_items#create'
   delete 'order_items/:id',   to: 'order_items#delete'
 
-  resources :locations
+  resources :locations, only: [:index, :new, :edit, :create, :update, :destroy]
   resources :departments
   resources :orders, only: [:index, :show, :new, :create, :destroy]
   resources :assemblies

@@ -17,15 +17,16 @@ class LocationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create location" do
     assert_difference('Location.count') do
-      post locations_url, params: { location: { city: @location.city, name: @location.name, state: @location.state } }
+      post locations_url, params: {
+        location: {
+          name: Faker::Company.name,
+          city: Faker::TvShows::GameOfThrones.city,
+          state: Faker::Movies::StarWars.planet
+        }
+      }
     end
 
-    assert_redirected_to location_url(Location.last)
-  end
-
-  test "should show location" do
-    get location_url(@location)
-    assert_response :success
+    assert_redirected_to locations_url
   end
 
   test "should get edit" do
@@ -35,7 +36,7 @@ class LocationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update location" do
     patch location_url(@location), params: { location: { city: @location.city, name: @location.name, state: @location.state } }
-    assert_redirected_to location_url(@location)
+    assert_redirected_to locations_url
   end
 
   test "should destroy location" do

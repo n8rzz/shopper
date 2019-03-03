@@ -1,15 +1,10 @@
 class LocationsController < ApplicationController
-  before_action :set_location, only: [:show, :edit, :update, :destroy]
+  before_action :set_location, only: [:edit, :update, :destroy]
 
   # GET /locations
   # GET /locations.json
   def index
     @locations = Location.all
-  end
-
-  # GET /locations/1
-  # GET /locations/1.json
-  def show
   end
 
   # GET /locations/new
@@ -28,8 +23,8 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.save
-        format.html { redirect_to @location, notice: 'Location was successfully created.' }
-        format.json { render :show, status: :created, location: @location }
+        format.html { redirect_to locations_url, notice: 'Location was successfully created.' }
+        format.json { render :show, status: :created, location: locations_url }
       else
         format.html { render :new }
         format.json { render json: @location.errors, status: :unprocessable_entity }
@@ -42,8 +37,8 @@ class LocationsController < ApplicationController
   def update
     respond_to do |format|
       if @location.update(location_params)
-        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
-        format.json { render :show, status: :ok, location: @location }
+        format.html { redirect_to locations_url, notice: 'Location was successfully updated.' }
+        format.json { render :show, status: :ok, location: locations_url }
       else
         format.html { render :edit }
         format.json { render json: @location.errors, status: :unprocessable_entity }
