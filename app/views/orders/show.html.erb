@@ -16,13 +16,13 @@
             <li>
                 <% if order_item.assembly_id != nil %>
                     <h2><%= order_item.assembly.name %></h2>
+                    <span><button type="submit">Remove</button></span>
                     <ul>
                         <% order_item.assembly.items.each do |assembly_item| %>
                             <li>
-                                <div><%= assembly_item.id %></div>
-                                <div><%= assembly_item.name %></div>
+                                <h3><%= assembly_item.name %></h3>
                                 <div><%= assembly_item.department.name %></div>
-                                <div><button type="submit">Remove</button></div>
+                                <div><button type="submit">Remove Item</button></div>
                             </li>
                         <% end %>
                     </ul>
@@ -30,7 +30,6 @@
 
                 <% if order_item.item_id != nil %>
                     <h2><%= order_item.item.name %></h2>
-                    <div><%= order_item.item.id %></div>
                     <div><%= order_item.item.department.name %></div>
                     <div><button type="submit">Remove</button></div>
                 <% end %>

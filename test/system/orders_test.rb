@@ -22,6 +22,12 @@ class OrdersTest < ApplicationSystemTestCase
     assert_current_path order_path(@order.id)
   end
 
+  test "remove button present on #show" do
+    visit orders_url
+    click_on @order.id
+    assert_selector "button", text: "Remove"
+  end
+
   test "creating a Order" do
     visit orders_url
     click_on "New Order"
