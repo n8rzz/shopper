@@ -1,0 +1,10 @@
+@import "../base//vars";
+
+.header-nav {
+    background-color: $COLOR_BG_SECONDARY;
+    border-bottom: 1px solid #DEE8EA
+}
+
+.header-nav li {
+    padding: 10px 0;
+}

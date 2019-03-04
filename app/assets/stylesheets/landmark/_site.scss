@@ -1,0 +1,7 @@
+@import "../base//vars";
+
+.site {
+    background-color: $COLOR_BG_PRIMARY;
+    height: calc(100vh - 50px);
+    padding: $SPACING_1X $SPACING_2X;
+}
