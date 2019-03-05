@@ -16,6 +16,13 @@ a:hover {
     transition: all ease-in-out 300ms;
 }
 
+abbr[title="required"] {
+    text-decoration: none;
+    color: #e00e00;
+    padding: 0 5px;
+}
+
 button:hover {
     cursor: pointer;
 }
+
