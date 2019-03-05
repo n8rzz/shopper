@@ -34,9 +34,9 @@ class AssembliesTest < ApplicationSystemTestCase
 
   test "updating a Assembly" do
     visit assemblies_url
-    click_on "Edit", match: :first
+    click_on @assembly.name
 
-    fill_in "Name", with: @assembly.name
+    fill_in "Name", with: "$Texas"
     click_on "Update Assembly"
 
     assert_text "Assembly was successfully updated"

@@ -1,0 +1,24 @@
+@import "../base//mixins";
+@import "../base/vars";
+
+.header-nav {
+    @include navContainer;
+
+    border-bottom: 1px solid #DEE8EA;
+}
+
+.header-nav-item {
+    @include navItem;
+}
+
+.header-nav-item > * {
+    display: block;
+    padding: $SPACING_3X $SPACING_2X;
+}
+
+.header-nav-item:active,
+.header-nav-item:hover {
+    background-color: $COLOR_BG_PRIMARY;
+    text-decoration: none;
+    transition: all ease-in-out 200ms;
+}

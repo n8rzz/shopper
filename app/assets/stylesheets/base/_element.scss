@@ -1,0 +1,28 @@
+@import "../base/font";
+@import "../base/vars";
+
+a,
+a:visited {
+    @include sansSerifFont;
+
+    color: $COLOR_PRIMARY_ACCENT;
+    text-decoration: none;
+}
+
+a:active,
+a:hover {
+    color: $COLOR_DARK;
+    text-decoration: underline;
+    transition: all ease-in-out 300ms;
+}
+
+abbr[title="required"] {
+    text-decoration: none;
+    color: #e00e00;
+    padding: 0 5px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+

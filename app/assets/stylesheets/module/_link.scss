@@ -1,0 +1,8 @@
+@import '../base/_font';
+@import '../base/vars';
+
+.link,
+.link:visited {
+    font-size: $FONT_SIZE_M;
+    font-weight: 500;
+}

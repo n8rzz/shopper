@@ -1,0 +1,7 @@
+.hlist {
+    display: flex;
+}
+
+.hlist > * + * {
+    margin-left: 5px;
+}

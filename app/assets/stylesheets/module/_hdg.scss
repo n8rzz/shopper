@@ -1,0 +1,18 @@
+@import "../base/font";
+@import "../base/vars";
+
+.hdg {
+    @include sansSerifFont;
+}
+
+.hdg_1 {
+    font-size: $FONT_SIZE_XXL;
+    font-weight: 600;
+    padding: $SPACING_1X 0;
+    margin-bottom: $SPACING_1X;
+}
+
+.hdg_2 {
+    font-size: $FONT_SIZE_M;
+    font-weight: 500;
+}

@@ -1,34 +1,36 @@
-<p id="notice"><%= notice %></p>
+<ul class="stereo">
+    <li>
+        <h1 class="hdg hdg_1">Assemblies</h1>
+    </li>
+    <li>
+        <%= link_to 'New Assembly', new_assembly_path %>
+    </li>
+</ul>
 
-<h1>Assemblies</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Item Qty</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<ul class="vlist">
     <% @assemblies.each do |assembly| %>
-      <tr>
-        <td><%= link_to assembly.name, assembly %></td>
-        <td><%= assembly.items.count %></td>
-        <td><%= link_to 'Edit', edit_assembly_path(assembly) %></td>
-        <td><%= link_to 'Destroy', assembly, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td>
-            <%= simple_form_for @order_item, url: order_items_create_path, method: :post do |form| %>
-                <%= form.hidden_field :assembly_id, value: assembly.id %>
-                <%= form.submit "Add to order" %>
-            <% end %>
-        </td>
-      </tr>
+        <li>
+            <div class="listItem">
+                <div class="listItem-hd">
+                    <h2 class="hdg hdg_2">
+                        <%= link_to assembly.name, edit_assembly_path(assembly) %>
+                    </h2>
+                    <ul class="hlist">
+                        <li>
+                            <%= link_to 'Destroy', assembly, method: :delete, data: { confirm: 'Are you sure?' } %>
+                        </li>
+                        <li>
+                            <%= simple_form_for @order_item, url: order_items_create_path, method: :post do |form| %>
+                                <%= form.hidden_field :assembly_id, value: assembly.id %>
+                                <%= form.submit "Add to order" %>
+                            <% end %>
+                        </li>
+                    </ul>
+                </div>
+                <div class="listItem-ft">
+                    Items: <%= assembly.items.count %>
+                </div>
+            </div>
+        </li>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Assembly', new_assembly_path %>
+</ul>
