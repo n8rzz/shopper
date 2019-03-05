@@ -3,18 +3,16 @@
 <ul class="card">
     <% @orders.each do |order| %>
         <li>
-            <div>Location: <%= link_to order.location.name, order %></div>
-            <div>Qty: <%= order.order_items.size %></div>
+            <div>
+                <%= order.zero_padded_day %>
+            </div>
+            <div>
+                <%= order.month_name %>
+            </div>
+            <div><%= link_to order.location.name, order %></div>
+            <!--
             <div>Status: <%= order.status %></div>
-
-            <ul class="hlist">
-                <li>
-                    <%= link_to 'Edit', edit_order_path(order.id) %>
-                </li>
-                <li>
-                    <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %>
-                </li>
-            </ul>
+            -->
         </li>
     <% end %>
 

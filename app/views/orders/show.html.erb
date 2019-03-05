@@ -42,4 +42,5 @@
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Back', orders_path %> |
+<%= link_to 'Destroy', @order, method: :delete, data: { confirm: 'Are you sure?' } %>
