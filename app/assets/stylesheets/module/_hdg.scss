@@ -3,11 +3,16 @@
 
 .hdg {
     @include sansSerifFont;
-    font-weight: 600;
 }
 
 .hdg_1 {
     font-size: $FONT_SIZE_XXL;
+    font-weight: 600;
     padding: $SPACING_1X 0;
     margin-bottom: $SPACING_1X;
+}
+
+.hdg_2 {
+    font-size: $FONT_SIZE_M;
+    font-weight: 500;
 }

@@ -1,11 +1,26 @@
+@import "../base/font";
 @import "../base/mixins";
 @import "../base/vars";
 
 .listItem {
     @include boxShadow-subtle;
+    @include sansSerifFont;
 
     background-color: $COLOR_BG_SECONDARY;
     border: 1px solid #efecef;
     border-radius: $BORDER_RADIUS;
     padding: $SPACING_1X;
+}
+
+.listItem-hd {
+    @include flexBetween;
+
+    padding-bottom: calc(#{$SPACING_1X} / 2);
+}
+
+.listItem-ft {
+    @include monospaceFont;
+
+    color: $COLOR_SECONDARY_ACCENT;
+    font-size: $FONT_SIZE_XS;
 }

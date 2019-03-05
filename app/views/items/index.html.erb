@@ -12,14 +12,24 @@
     <% @items.each do |item| %>
         <li>
             <div class="listItem">
-                <div><%= link_to item.name, edit_item_path(item) %></div>
-                <div><%= item.department.name %></div>
-                <div><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-                <div>
-                    <%= simple_form_for @order_item, url: order_items_create_path, method: :post do |form| %>
-                        <%= form.hidden_field :item_id, value: item.id %>
-                        <%= form.submit "Add to order" %>
-                    <% end %>
+                <div class="listItem-hd">
+                    <h2 class="hdg hdg_2">
+                        <%= link_to item.name, edit_item_path(item) %>
+                    </h2>
+                    <ul class="hlist">
+                        <li>
+                            <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
+                        </li>
+                        <li>
+                            <%= simple_form_for @order_item, url: order_items_create_path, method: :post do |form| %>
+                                <%= form.hidden_field :item_id, value: item.id %>
+                                <%= form.submit "Add to order" %>
+                            <% end %>
+                        </li>
+                    </ul>
+                </div>
+                <div class="listItem-ft">
+                    <%= item.department.name %>
                 </div>
             </div>
         </li>

@@ -2,7 +2,7 @@
 @import "../base/vars";
 
 #notice {
-    @include monospace;
+    @include monospaceFont;
 
     background-color: $COLOR_SUCCESS_BG;
     border: 1px solid;

@@ -15,4 +15,10 @@
     justify-content: space-evenly;
 }
 
+@mixin flexBetween {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
 @mixin u-isVisuallyHidden {}
