@@ -23,5 +23,8 @@
  *= require "module/_card"
  *= require "module/_hlist"
  *= require "module/_link"
+ *= require "module/_listItem"
  *= require "module/_notice"
+ *= require "module/_stereo"
+ *= require "module/_vlist"
  */

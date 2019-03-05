@@ -1,7 +1,14 @@
 @import "../base/font";
+@import "../base/vars";
 
 #notice {
     @include monospace;
 
-    color: green;
+    background-color: $COLOR_SUCCESS_BG;
+    border: 1px solid;
+    border-radius: $BORDER_RADIUS;
+    color: $COLOR_SUCCESS_FG;
+    letter-spacing: 0.005em;
+    padding: 15px $SPACING_1X;
+    margin-bottom: $SPACING_2X;
 }

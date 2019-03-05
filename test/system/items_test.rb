@@ -18,7 +18,7 @@ class ItemsTest < ApplicationSystemTestCase
     visit items_url
     click_on @item.name
 
-    assert_current_path item_path(@item.id)
+    assert_current_path edit_item_path(@item.id)
   end
 
   test "creating a Item" do
@@ -35,9 +35,9 @@ class ItemsTest < ApplicationSystemTestCase
 
   test "updating an Item" do
     visit items_url
-    click_on "Edit", match: :first
+    click_on @item.name
 
-    fill_in "Name", with: @item.name
+    fill_in "Name", with: "$Texas"
     click_on "Update Item"
 
     assert_text "Item was successfully updated"

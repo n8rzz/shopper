@@ -1,0 +1,9 @@
+@import "../base//vars";
+
+.vlist {
+    margin-bottom: $SPACING_1X;
+}
+
+.vlist > * + * {
+    margin-top: $SPACING_1X;
+}

@@ -1,34 +1,31 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+    <div id="notice"><%= notice %></div>
+<% end %>
 
-<h1 class="hdg hdg_1">Items</h1>
+<ul class="stereo">
+    <li>
+        <h1 class="hdg hdg_1">Items</h1>
+    </li>
+    <li>
+        <%= link_to 'New Item', new_item_path %>
+    </li>
+</ul>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Department</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
+<ul class="vlist">
     <% @items.each do |item| %>
-      <tr>
-        <td><%= link_to item.name, item %></td>
-        <td><%= item.department.name %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td>
-            <%= simple_form_for @order_item, url: order_items_create_path, method: :post do |form| %>
-                <%= form.hidden_field :item_id, value: item.id %>
-                <%= form.submit "Add to order" %>
-            <% end %>
-        </td>
-      </tr>
+        <li>
+            <div class="listItem">
+                <div><%= link_to item.name, edit_item_path(item) %></div>
+                <div><%= item.department.name %></div>
+                <div><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+                <div>
+                    <%= simple_form_for @order_item, url: order_items_create_path, method: :post do |form| %>
+                        <%= form.hidden_field :item_id, value: item.id %>
+                        <%= form.submit "Add to order" %>
+                    <% end %>
+                </div>
+            </div>
+        </li>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Item', new_item_path %>
+</ul>

@@ -1,0 +1,11 @@
+@import "../base/mixins";
+@import "../base/vars";
+
+.listItem {
+    @include boxShadow-subtle;
+
+    background-color: $COLOR_BG_SECONDARY;
+    border: 1px solid #efecef;
+    border-radius: $BORDER_RADIUS;
+    padding: $SPACING_1X;
+}
