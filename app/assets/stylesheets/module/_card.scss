@@ -1,0 +1,23 @@
+@import "../base//mixins";
+@import "../base/vars";
+
+.card {
+    display: flex;
+    margin-bottom: $SPACING_1X;
+    flex-wrap: wrap;
+    margin-left: -$SPACING_2X;
+    padding: $SPACING_1X;
+}
+
+.card > li {
+    @include boxShadow-subtle;
+
+    background-color: $COLOR_BG_SECONDARY;
+    border: 1px solid #DEE8EA;
+    border-radius: $BORDER_RADIUS;
+    box-sizing: border-box;
+    height: 150px;
+    padding: $SPACING_1X;
+    margin: $SPACING_1X;
+    width: calc(50% - #{$SPACING_2X});
+}

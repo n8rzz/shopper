@@ -2,7 +2,14 @@
     display: flex;
 }
 
-.mix-hlist_centerEven {
+.hlist > * + * {
+    margin-left: 5px;
+}
+
+.hlist-center {
     align-items: center;
-    justify-content: space-evenly;
+}
+
+.mix-hlist_spaceBetween {
+    flex-flow: space-between;
 }

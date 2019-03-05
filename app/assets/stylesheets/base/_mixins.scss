@@ -1,0 +1,17 @@
+@mixin boxShadow-subtle {
+    box-shadow: 0px 1px 23px 0px rgba(34, 34, 34, 0.07);
+}
+
+@mixin navContainer {
+    background-color: $COLOR_BG_SECONDARY;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 $SPACING_2X;
+}
+
+@mixin navItem {
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+@mixin u-isVisuallyHidden {}

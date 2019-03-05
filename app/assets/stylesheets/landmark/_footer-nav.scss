@@ -1,0 +1,23 @@
+@import "../base/mixins";
+@import "../base/vars";
+
+.footer-nav {
+    @include navContainer;
+
+    border-top: 1px solid #DEE8EA;
+}
+
+.footer-nav-item {
+    @include navItem;
+}
+
+.footer-nav-item > * {
+    display: block;
+    padding: $SPACING_1X $SPACING_2X $SPACING_3X $SPACING_2X;
+}
+
+.footer-nav-item:active,
+.footer-nav-item:hover {
+    text-decoration: none;
+    transition: all ease-in-out 200ms;
+}
