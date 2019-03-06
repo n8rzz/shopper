@@ -14,7 +14,7 @@ end
 20.times do
   Item.create(
     name: Faker::Food.ingredient,
-    department_id: Department.order('random()').first.id
+    department_id: Department.all.sample.id
   )
 end
 
@@ -22,21 +22,21 @@ end
   a = Assembly.create(name: Faker::Food.dish)
 
   rand(1..5).times do
-    a.item_ids = Item.order('random()').first.id
+    a.item_ids = Item.all.sample.id
   end
 end
 
 order_statuses = ['pending', 'active', 'canceled', 'complete']
 order_statuses.each do |order_status|
-  o = Order.create(status: order_status, location: Location.order('random()').first.id)
+  o = Order.create(status: order_status, location_id: Location.all.sample.id)
   o.order_item_ids << OrderItem.create(
     order_id: Order.last.id,
-    item_id: Item.order('random()').first.id,
+    item_id: Item.all.sample.id,
     status: ['open', 'closed'].sample
   )
   o.order_item_ids << OrderItem.create(
     order_id: Order.last.id,
-    assembly_id: Assembly.order('random()').first.id,
+    assembly_id: Assembly.all.sample.id,
     status: ['open', 'closed'].sample
   )
   o.save
