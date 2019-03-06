@@ -1,6 +1,17 @@
-<h1 class="hdg hdg_1">Editing Item</h1>
+<ul class="stereo">
+    <li>
+        <h1 class="hdg hdg_1">Editing Item</h1>
+    </li>
+    <li>
+        <ul class="hlist hlist-divided">
+            <li>
+                <%= link_to 'Show', @item %>
+            </li>
+            <li>
+                <%= link_to 'Back', items_path %>
+            </li>
+        </ul>
+    </li>
+</ul>
 
 <%= render 'form', item: @item %>
-
-<%= link_to 'Show', @item %> |
-<%= link_to 'Back', items_path %>

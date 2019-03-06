@@ -23,13 +23,12 @@ class DepartmentsTest < ApplicationSystemTestCase
 
   test "updating a Department" do
     visit departments_url
-    click_on "Edit", match: :first
+    click_on @department.name
 
-    fill_in "Name", with: @department.name
+    fill_in "Name", with: "$Texas"
     click_on "Update Department"
 
     assert_text "Department was successfully updated"
-    click_on "Back"
   end
 
   test "destroying a Department" do

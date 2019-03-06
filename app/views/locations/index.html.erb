@@ -1,27 +1,29 @@
-<h1 class="hdg hdg_1">Locations</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>City</th>
-      <th>State</th>
-      <th>actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
+<ul class="stereo">
+    <li>
+        <h1 class="hdg hdg_1">Locations</h1>
+    </li>
+    <li>
+        <%= link_to 'New Location', new_location_path %>
+    </li>
+</ul>
+<ul class="vlist">
     <% @locations.each do |location| %>
-      <tr>
-        <td><%= link_to location.name, edit_location_path(location) %></td>
-        <td><%= location.city %></td>
-        <td><%= location.state %></td>
-        <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <li class="listItem">
+            <div class="listItem-hd">
+                <ul class="stereo">
+                    <li>
+                        <%= link_to location.name, edit_location_path(location) %>
+                    </li>
+                    <li>
+                        <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    </li>
+                </ul>
+            </div>
+            <div class="listItem-ft">
+                <!-- FIXME: move to model -->
+                <%= location.city %>, <%= location.state %>
+            </div>
+        </li>
     <% end %>
-  </tbody>
-</table>
+</ul>
 
-<br>
-
-<%= link_to 'New Location', new_location_path %>

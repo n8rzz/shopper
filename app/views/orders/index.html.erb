@@ -1,4 +1,11 @@
-<h1 class="hdg hdg_1">Orders</h1>
+<ul class="stereo">
+    <li>
+        <h1 class="hdg hdg_1">Orders</h1>
+    </li>
+    <li>
+        <%= link_to 'New Order', new_order_path, class: "link" %>
+    </li>
+</ul>
 
 <ul class="card">
     <% @orders.each do |order| %>
@@ -15,8 +22,4 @@
             -->
         </li>
     <% end %>
-
-    <li>
-        <%= link_to 'New Order', new_order_path, class: "link" %>
-    </li>
 </ul>

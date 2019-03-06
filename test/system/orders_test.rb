@@ -41,12 +41,11 @@ class OrdersTest < ApplicationSystemTestCase
     visit orders_url
     click_on "New Order"
 
-    select("pending", from: "Status")
+    select("pending", from: " Status")
     select(locations(:valid_location).name, from: "Location")
     click_on "Create Order"
 
     assert_text "Order was successfully created"
-    click_on "Back"
   end
 
   test "destroying a Order" do

@@ -24,3 +24,13 @@
     color: $COLOR_SECONDARY_ACCENT;
     font-size: $FONT_SIZE_XS;
 }
+
+.listItem-parent {
+    box-shadow: none;
+    padding: 10px 0 10px 10px;
+}
+
+.listItem-child {
+    margin-left: 30px;
+    margin-top: 10px;
+}

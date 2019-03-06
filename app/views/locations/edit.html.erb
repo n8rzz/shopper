@@ -1,5 +1,10 @@
-<h1 class="hdg hdg_1">Editing Location</h1>
+<ul class="stereo">
+    <li>
+        <h1 class="hdg hdg_1">Editing Location</h1>
+    </li>
+    <li>
+        <%= link_to 'Back', locations_path %>
+    </li>
+</ul>
 
 <%= render 'form', location: @location %>
-
-<%= link_to 'Back', locations_path %>

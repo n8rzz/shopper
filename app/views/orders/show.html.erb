@@ -1,46 +1,96 @@
-<p>
-    <strong>Created At:</strong>
-    <%= @order.created_at %>
-</p>
-<p>
-    <strong>Status:</strong>
-    <%= @order.status %>
-</p>
-<p>
-    <strong>Location:</strong>
-    <%= @order.location.name %>
-</p>
-<!-- temporary -->
-<p>
-    <strong>Order Items:</strong>
-    <ul>
-        <% @order.order_items.each do |order_item| %>
+<ul class="stereo">
+    <li>
+        <h1 class="hdg hdg_1">Single Order</h1>
+    </li>
+    <li>
+        <ul class="hlist">
             <li>
+                <%= link_to 'Edit', edit_order_path(@order) %> |
+            </li>
+            <li>
+                <%= link_to 'Destroy', @order, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<div>
+    <div>
+        Created At: <%= @order.created_at %>
+    </div>
+    <div>
+        Status: <%= @order.status %>
+    </div>
+    <div>
+        Location: <%= @order.location.name %>
+    </div>
+</div>
+<div>
+    <h2 class="hdg hdg_2">Order Items:</h2>
+    <ul class="vlist">
+        <% @order.order_items.each do |order_item| %>
+            <li class="">
                 <% if order_item.assembly_id != nil %>
-                    <h2><%= order_item.assembly.name %></h2>
-                    <span><button type="submit">Remove</button></span>
-                    <ul>
-                        <% order_item.assembly.items.each do |assembly_item| %>
+                    <div class="">
+                        <ul class="stereo">
                             <li>
-                                <h3><%= assembly_item.name %></h3>
-                                <div><%= assembly_item.department.name %></div>
-                                <div><button type="submit">Remove Item</button></div>
+                                <h3 class="hdg hdg_3">
+                                    <%= order_item.assembly.name %>
+                                </h3>
                             </li>
-                        <% end %>
-                    </ul>
+                            <li>
+                                <button type="submit">Remove Assembly</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="">
+                        <ul class="vlist">
+                            <% order_item.assembly.items.each do |assembly_item| %>
+                                <li class="">
+                                    <div class="">
+                                        <h3 class="hdg hdg_3"><%= assembly_item.name %></h3>
+                                    </div>
+                                    <div class="">
+                                        <ul class="stereo">
+                                            <li>
+                                                <%= assembly_item.department.name %>
+                                            </li>
+                                            <li>
+                                                <button type="submit">Remove Item</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            <% end %>
+                        </ul>
+                    </div>
                 <% end %>
 
                 <% if order_item.item_id != nil %>
-                    <h2><%= order_item.item.name %></h2>
-                    <div><%= order_item.status %></div>
-                    <div><%= order_item.item.department.name %></div>
-                    <div><button type="submit">Remove</button></div>
+                    <div class="">
+                        <ul class="stereo">
+                            <li>
+                                <h2 class="hdg hdg_2">
+                                    <%= order_item.item.name %>
+                                </h2>
+                            </li>
+                            <li>
+                                <%= order_item.status %>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="">
+                        <ul class="stereo">
+                            <li>
+                                <%= order_item.item.department.name %>
+                            </li>
+                            <li>
+                                <button type="submit">Remove</button>
+                            </li>
+                        </ul>
+                    </div>
                 <% end %>
             </li>
         <% end %>
     </ul>
-</p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %> |
-<%= link_to 'Destroy', @order, method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>

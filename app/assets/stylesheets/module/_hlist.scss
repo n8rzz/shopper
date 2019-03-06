@@ -5,3 +5,9 @@
 .hlist > * + * {
     margin-left: 5px;
 }
+
+.hlist-divided > * + * {
+    border-left: 1px solid;
+    margin-left: 5px;
+    padding-left: 5px;
+}
