@@ -57,6 +57,6 @@ class ItemsTest < ApplicationSystemTestCase
     visit items_url
     click_on "Add to order", match: :first
 
-    assert_text "Carrot added to pending order"
+    assert_text "added to pending order"
   end
 end

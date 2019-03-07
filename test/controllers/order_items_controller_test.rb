@@ -9,7 +9,7 @@ class OrderItemsControllerTest < ActionDispatch::IntegrationTest
     valid_item = items(:valid_item)
 
     assert_difference('OrderItem.count') do
-      post "/order_items/create", params: { order_item: { item_id: valid_item.id, status: 'open' } }
+      post order_items_create_item_path, params: { order_item: { item_id: valid_item.id, status: 'open' } }
     end
 
     assert_redirected_to items_url
@@ -18,8 +18,8 @@ class OrderItemsControllerTest < ActionDispatch::IntegrationTest
   test "should create order_item with assembly" do
     valid_assembly = assemblies(:valid_assembly)
 
-    assert_difference('OrderItem.count') do
-      post "/order_items/create", params: { order_item: { assembly_id: valid_assembly.id, status: 'open' } }
+    assert_difference('OrderItem.count', 2) do
+      post order_items_create_assembly_path, params: { order_item: { assembly_id: valid_assembly.id, status: 'open' } }
     end
 
     assert_redirected_to assemblies_url

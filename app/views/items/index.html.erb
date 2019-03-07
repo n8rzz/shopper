@@ -20,7 +20,7 @@
                             <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
                         </li>
                         <li>
-                            <%= simple_form_for @order_item, url: order_items_create_path, method: :post do |form| %>
+                            <%= simple_form_for @order_item, url: order_items_create_item_path, method: :post do |form| %>
                                 <%= form.hidden_field :item_id, value: item.id %>
                                 <%= form.submit "Add to order" %>
                             <% end %>

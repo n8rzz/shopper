@@ -51,4 +51,11 @@ class AssembliesTest < ApplicationSystemTestCase
 
     assert_text "Assembly was successfully destroyed"
   end
+
+  test "adding an assembly to an order" do
+    visit assemblies_url
+    click_on "Add to order", match: :first
+
+    assert_text "added to pending order"
+  end
 end
