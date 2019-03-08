@@ -19,4 +19,16 @@ class Order < ApplicationRecord
     # move to future shopping_date column
     self.created_at.strftime("%d")
   end
+
+  def items_not_in_assemblies
+    self.order_items.map { |order_item|
+      return if order_item.assembly_id == nil
+    }
+  end
+
+  def items_in_assemblies
+    self.order_items.map { |order_item|
+      return if order_item.assembly_id != nil && order_item.item_id != nil
+    }
+  end
 end

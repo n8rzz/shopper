@@ -34,11 +34,6 @@ order_statuses.each do |order_status|
     item_id: Item.all.sample.id,
     status: ['open', 'closed'].sample
   )
-  o.order_item_ids << OrderItem.create(
-    order_id: Order.last.id,
-    assembly_id: Assembly.all.sample.id,
-    status: ['open', 'closed'].sample
-  )
   o.save
 end
 

@@ -1,20 +1,24 @@
-<ul class="stereo">
-    <li>
-        <h1 class="hdg hdg_1">Single Order</h1>
-    </li>
-    <li>
-        <ul class="hlist">
-            <li>
-                <%= link_to 'Edit', edit_order_path(@order) %> |
-            </li>
-            <li>
-                <%= link_to 'Destroy', @order, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </li>
-        </ul>
-    </li>
-</ul>
-
-<div>
+<div class="vr_1">
+    <ul class="stereo">
+        <li>
+            <h1 class="hdg hdg_1">Single Order</h1>
+        </li>
+        <li>
+            <ul class="hlist">
+                <li>
+                    <%= link_to 'Back', orders_path %> |
+                </li>
+                <li>
+                    <%= link_to 'Edit', edit_order_path(@order) %> |
+                </li>
+                <li>
+                    <%= link_to 'Destroy', @order, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div class="vr_2">
     <div>
         Created At: <%= @order.created_at %>
     </div>
@@ -25,61 +29,35 @@
         Location: <%= @order.location.name %>
     </div>
 </div>
+<div class="vr_3">
+    <h3 class="hdg">Sort</h3>
+    <ul class="hlist">
+        <li><a>Abc</a></li>
+        <li><a>Department</a></li>
+        <li><a>Meal</a></li>
+    </ul>
+</div>
 <div>
-    <h2 class="hdg hdg_2">Order Items:</h2>
     <ul class="vlist">
         <% @order.order_items.each do |order_item| %>
-            <li class="">
-                <% if order_item.assembly_id != nil %>
-                    <div class="">
-                        <ul class="stereo">
-                            <li>
-                                <h3 class="hdg hdg_3">
-                                    <%= order_item.assembly.name %>
-                                </h3>
-                            </li>
-                            <li>
-                                <button type="submit">Remove Assembly</button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="">
-                        <ul class="vlist">
-                            <% order_item.assembly.items.each do |assembly_item| %>
-                                <li class="">
-                                    <div class="">
-                                        <h3 class="hdg hdg_3"><%= assembly_item.name %></h3>
-                                    </div>
-                                    <div class="">
-                                        <ul class="stereo">
-                                            <li>
-                                                <%= assembly_item.department.name %>
-                                            </li>
-                                            <li>
-                                                <button type="submit">Remove Item</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            <% end %>
-                        </ul>
-                    </div>
-                <% end %>
-
-                <% if order_item.item_id != nil %>
-                    <div class="">
+            <% if order_item.item_id != nil %>
+                <li class="listItem">
+                    <div class="listItem-hd">
                         <ul class="stereo">
                             <li>
                                 <h2 class="hdg hdg_2">
                                     <%= order_item.item.name %>
                                 </h2>
+                                <% if order_item.assembly_id != nil %>
+                                    <div><%= order_item.assembly.name %></div>
+                                <% end %>
                             </li>
                             <li>
                                 <%= order_item.status %>
                             </li>
                         </ul>
                     </div>
-                    <div class="">
+                    <div class="listItem-ft">
                         <ul class="stereo">
                             <li>
                                 <%= order_item.item.department.name %>
@@ -89,8 +67,8 @@
                             </li>
                         </ul>
                     </div>
-                <% end %>
-            </li>
+                </li>
+            <% end %>
         <% end %>
     </ul>
 </div>

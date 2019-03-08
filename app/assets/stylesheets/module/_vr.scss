@@ -1,0 +1,10 @@
+@import "../base/vars";
+
+$vr-MAX_INCREMENTOR: 5;
+$vr-SPACING_INCREMENTOR: $SPACING_2X - $SPACING_1X;
+
+@for $i from 1 through $vr-MAX_INCREMENTOR {
+    .vr_#{$i} {
+        margin-bottom: $vr-SPACING_INCREMENTOR * $i;
+    }
+}
