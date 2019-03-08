@@ -19,48 +19,64 @@
     </ul>
 </div>
 <div class="vr_2">
-    <div>
-        Created At: <%= @order.created_at %>
-    </div>
-    <div>
-        Status: <%= @order.status %>
-    </div>
-    <div>
-        Location: <%= @order.location.name %>
-    </div>
-</div>
-<div class="vr_3">
-    <h3 class="hdg">Sort</h3>
-    <ul class="hlist">
-        <li><a>Abc</a></li>
-        <li><a>Department</a></li>
-        <li><a>Meal</a></li>
+    <ul class="stereo">
+        <li>
+            <div class="orderMeta">
+                <div>
+                    Created At: <%= @order.created_at %>
+                </div>
+                <div>
+                    Status: <%= @order.status %>
+                </div>
+                <div>
+                    Location: <%= @order.location.name %>
+                </div>
+            </div>
+        </li>
+        <li>
+            <ul class="stereo">
+                <!-- FIXME: this is hacky and icky -->
+                <li></li>
+                <li>
+                    <select name="sortOrder" id="sortOrder">
+                        <option value="">Sort Order</option>
+                        <option value="">---</option>
+                        <option value="Abc">Abc</option>
+                        <option value="Department">Department</option>
+                        <option value="Meal">Meal</option>
+                    </select>
+
+                </li>
+            </ul>
+        </li>
     </ul>
 </div>
 <div>
     <ul class="vlist">
         <% @order.order_items.each do |order_item| %>
             <% if order_item.item_id != nil %>
-                <li class="listItem">
-                    <div class="listItem-hd">
+                <li class="orderItem">
+                    <div class="orderItem-hd">
                         <ul class="stereo">
                             <li>
                                 <h2 class="hdg hdg_2">
                                     <%= order_item.item.name %>
                                 </h2>
-                                <% if order_item.assembly_id != nil %>
-                                    <div><%= order_item.assembly.name %></div>
-                                <% end %>
                             </li>
                             <li>
                                 <%= order_item.status %>
                             </li>
                         </ul>
                     </div>
-                    <div class="listItem-ft">
+                    <div class="orderItem-ft">
                         <ul class="stereo">
                             <li>
                                 <%= order_item.item.department.name %>
+                                <% if order_item.assembly_id != nil %>
+                                    <span class="orderItem-ft_aside">
+                                        <%= order_item.assembly.name %>
+                                    </span>
+                                <% end %>
                             </li>
                             <li>
                                 <button type="submit">Remove</button>

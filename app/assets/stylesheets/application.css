@@ -24,6 +24,8 @@
  *= require "module/_hlist"
  *= require "module/_link"
  *= require "module/_listItem"
+ *= require "module/_orderItem"
+ *= require "module/_orderMeta"
  *= require "module/_notice"
  *= require "module/_stereo"
  *= require "module/_vlist"

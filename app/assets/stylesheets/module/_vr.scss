@@ -1,10 +1,21 @@
-@import "../base/vars";
+@import "../base/mixins";
 
-$vr-MAX_INCREMENTOR: 5;
-$vr-SPACING_INCREMENTOR: $SPACING_2X - $SPACING_1X;
+.vr_1 {
+    @include vr_1;
+}
 
-@for $i from 1 through $vr-MAX_INCREMENTOR {
-    .vr_#{$i} {
-        margin-bottom: $vr-SPACING_INCREMENTOR * $i;
-    }
+.vr_2 {
+    @include vr_2;
+}
+
+.vr_3 {
+    @include vr_3;
+}
+
+.vr_4 {
+    @include vr_4;
+}
+
+.vr_5 {
+    @include vr_5;
 }

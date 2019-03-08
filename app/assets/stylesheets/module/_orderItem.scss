@@ -2,19 +2,32 @@
 @import "../base/mixins";
 @import "../base/vars";
 
-.listItem {
+.orderItem {
     @include boxShadow-subtle;
     @include sansSerifFont;
     @include basePanel;
 }
 
-.listItem-hd {
+.orderItem-hd {
     @include flexBetween;
 
     padding-bottom: calc(#{$SPACING_1X} / 2);
 }
 
-.listItem-ft {
+.orderItem-hd_subHeading::before {
+    color: $COLOR_DARK;
+    content: "";
+    padding: 0 $SPACING_1X;
+}
+
+.orderItem-ft_aside {
+    @include monospaceFont;
+
+    color: $COLOR_PRIMARY;
+    font-size: $FONT_SIZE_XS;
+}
+
+.orderItem-ft {
     @include monospaceFont;
 
     color: $COLOR_SECONDARY_ACCENT;

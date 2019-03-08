@@ -1,0 +1,8 @@
+@import "../base/font";
+@import "../base/_mixins";
+
+.orderMeta {
+    @include sansSerifFont;
+
+    font-size: $FONT_SIZE_S;
+}
