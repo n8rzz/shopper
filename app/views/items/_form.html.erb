@@ -10,7 +10,13 @@
     <%= f.association :department %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <ul class="hlist">
+      <li>
+            <%= link_to 'Destroy', @item, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+      <li>
+            <%= f.button :submit %>
+      </li>
+  </ul>
 <% end %>
+
