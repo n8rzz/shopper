@@ -5,9 +5,11 @@ valid_order_item_using_assembly:
   assembly: valid_assembly
   department: valid_department
   status: open
+  picked: false
 
 valid_order_item_using_item:
   order: valid_pending_item_order
   item: valid_item
   department: valid_department
   status: open
+  picked: false
