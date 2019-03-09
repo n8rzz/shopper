@@ -7,7 +7,13 @@ def create_assembly
   assembly = Assembly.find(order_item_params[:assembly_id])
 
   assembly.items.each do |item|
-    @order.order_items << OrderItem.new(order_id: @order.id, assembly_id: assembly.id, item_id: item.id)
+    @order.order_items << OrderItem.new(
+      # TODO: this can probably be removed
+      order_id: @order.id,
+      assembly_id: assembly.id,
+      item_id: item.id,
+      department_id: item.department.id
+    )
   end
 
   respond_to do |format|
@@ -47,7 +53,7 @@ end
   private
 
   def order_item_params
-    params.require(:order_item).permit(:item_id, :assembly_id, :status)
+    params.require(:order_item).permit(:item_id, :assembly_id, :department_id, :status)
   end
 
   def set_pending_order

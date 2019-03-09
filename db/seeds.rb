@@ -29,11 +29,17 @@ end
 order_statuses = ['pending', 'active', 'canceled', 'complete']
 order_statuses.each do |order_status|
   o = Order.create(status: order_status, location_id: Location.all.sample.id)
-  o.order_item_ids << OrderItem.create(
-    order_id: Order.last.id,
-    item_id: Item.all.sample.id,
-    status: ['open', 'closed'].sample
-  )
+
+  rand(1..3).times do
+    item = Item.all.sample
+    o.order_item_ids << OrderItem.create(
+      order_id: Order.last.id,
+      item_id: item.id,
+      department_id: item.department.id,
+      status: ['open', 'closed'].sample
+    )
+  end
+
   o.save
 end
 

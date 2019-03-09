@@ -9,7 +9,7 @@ class OrderItemsControllerTest < ActionDispatch::IntegrationTest
     valid_item = items(:valid_item)
 
     assert_difference('OrderItem.count') do
-      post order_items_create_item_path, params: { order_item: { item_id: valid_item.id, status: 'open' } }
+      post order_items_create_item_path, params: { order_item: { item_id: valid_item.id, department_id: valid_item.department.id, status: 'open' } }
     end
 
     assert_redirected_to items_url

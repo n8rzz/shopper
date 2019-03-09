@@ -2,10 +2,12 @@
 
 valid_order_item_using_assembly:
   order: valid_pending_assembly_order
-  status: open
   assembly: valid_assembly
+  department: valid_department
+  status: open
 
 valid_order_item_using_item:
   order: valid_pending_item_order
-  status: open
   item: valid_item
+  department: valid_department
+  status: open

@@ -20,7 +20,12 @@ class OrderItemTest < ActiveSupport::TestCase
   end
 
   test 'validates status is set automatically' do
-    valid_order_item = OrderItem.create(order_id: orders(:valid_pending_order).id, item_id: items(:valid_item).id)
+    valid_item = items(:valid_item)
+    valid_order_item = OrderItem.create(
+      order_id: orders(:valid_pending_order).id,
+      item_id: valid_item.id,
+      department_id: valid_item.department.id
+    )
 
     assert valid_order_item.valid?
   end
