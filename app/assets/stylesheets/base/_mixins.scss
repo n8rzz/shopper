@@ -25,9 +25,8 @@
 
 @mixin basePanel {
     background-color: $COLOR_BG_SECONDARY;
-    border: 1px solid #efecef;
+    border: 1px solid $COLOR_LIGHT;
     border-radius: $BORDER_RADIUS;
-    padding: $SPACING_1X;
 }
 
 @mixin vr_1 {

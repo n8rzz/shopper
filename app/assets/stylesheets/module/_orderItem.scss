@@ -6,6 +6,24 @@
     @include boxShadow-subtle;
     @include sansSerifFont;
     @include basePanel;
+
+    align-items: center;
+    display: flex;
+}
+
+.orderItem-action {
+    border-right: 1px solid $COLOR_LIGHT;
+    margin-right: $SPACING_1X;
+    padding: $SPACING_1X;
+}
+
+.orderItem-action_input {
+
+}
+
+.orderItem-content {
+    flex-grow: 1;
+    padding: $SPACING_1X;
 }
 
 .orderItem-hd {

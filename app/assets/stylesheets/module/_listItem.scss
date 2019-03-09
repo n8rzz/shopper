@@ -6,6 +6,8 @@
     @include boxShadow-subtle;
     @include sansSerifFont;
     @include basePanel;
+
+    padding: $SPACING_1X;
 }
 
 .listItem-hd {

@@ -1,0 +1,32 @@
+<% if order_item.item_id != nil %>
+    <li class="orderItem">
+        <div class="orderItem-action">
+            <form>
+                <label></label>
+                <input type="checkbox" class="orderItem-action_input" />
+            </form>
+        </div>
+        <div class="orderItem-content">
+            <div class="orderItem-hd">
+                <h2 class="hdg hdg_2">
+                    <%= order_item.item.name %>
+                </h2>
+            </div>
+            <div class="orderItem-ft">
+                <ul class="stereo">
+                    <li>
+                        <%= order_item.department.name %>
+                        <% if order_item.assembly_id != nil %>
+                            <span class="orderItem-ft_aside">
+                                <%= order_item.assembly.name %>
+                            </span>
+                        <% end %>
+                    </li>
+                    <li>
+                        <button type="submit">Remove</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </li>
+<% end %>

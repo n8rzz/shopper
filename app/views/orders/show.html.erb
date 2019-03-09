@@ -53,38 +53,6 @@
 </div>
 <div>
     <ul class="vlist">
-        <% @order.order_items.each do |order_item| %>
-            <% if order_item.item_id != nil %>
-                <li class="orderItem">
-                    <div class="orderItem-hd">
-                        <ul class="stereo">
-                            <li>
-                                <h2 class="hdg hdg_2">
-                                    <%= order_item.item.name %>
-                                </h2>
-                            </li>
-                            <li>
-                                <%= order_item.picked %>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="orderItem-ft">
-                        <ul class="stereo">
-                            <li>
-                                <%= order_item.department.name %>
-                                <% if order_item.assembly_id != nil %>
-                                    <span class="orderItem-ft_aside">
-                                        <%= order_item.assembly.name %>
-                                    </span>
-                                <% end %>
-                            </li>
-                            <li>
-                                <button type="submit">Remove</button>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            <% end %>
-        <% end %>
+        <%= render @order.order_items %>
     </ul>
 </div>
