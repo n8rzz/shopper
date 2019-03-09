@@ -1,0 +1,48 @@
+@import "../base//vars";
+
+.input-checkbox + .input-label_checkbox {
+    cursor: pointer;
+    display: block;
+}
+
+.input-checkbox {
+    opacity: 0;
+    position: absolute;
+}
+
+.input-checkbox + .input-label_checkbox:before {
+    border: 2px solid $COLOR_LIGHT;
+    border-radius: 0.2em;
+    color: transparent;
+    content: "\2714";
+    display: inline-block;
+    height: 1em;
+    font-size: 22px;
+    padding: 5px;
+    text-align: center;
+    transition: 200ms;
+    width: 1em;
+}
+
+.input-checkbox + .input-label_checkbox:active:before {
+    transform: scale(0);
+}
+
+.input-checkbox:checked + .input-label_checkbox:before {
+    background-color: #ffffff;
+    border-color: $COLOR_PRIMARY;
+    color: $COLOR_PRIMARY;
+}
+
+.input-checkbox:disabled + .input-label_checkbox:before {
+    background-color: #dddddd;
+    border-color: #aaaaaa;
+    transform: scale(1);
+}
+
+.input-checkbox:checked:disabled + .input-label_checkbox:before {
+    background-color: #dddddd;
+    border-color: #cccccc;
+    color: #aaaaaa;
+    transform: scale(1);
+}

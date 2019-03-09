@@ -1,9 +1,11 @@
 <% if order_item.item_id != nil %>
-    <li class="orderItem">
+    <li class="orderItem <%= 'mix-orderItem_isPicked' if order_item.picked %>">
         <div class="orderItem-action">
             <form>
-                <label></label>
-                <input type="checkbox" class="orderItem-action_input" />
+                <input type="checkbox" class="input-checkbox u-isVisuallyHidden" id="<%= order_item.item.id%>" />
+                <label class="input-label_checkbox" for="<%= order_item.item.id%>">
+                    <% order_item.picked %>
+                </label>
             </form>
         </div>
         <div class="orderItem-content">
@@ -12,15 +14,15 @@
                     <%= order_item.item.name %>
                 </h2>
             </div>
+            <% if order_item.assembly_id != nil %>
+                <div class="orderItem-bd">
+                    <%= order_item.assembly.name %>
+                </div>
+            <% end %>
             <div class="orderItem-ft">
                 <ul class="stereo">
                     <li>
                         <%= order_item.department.name %>
-                        <% if order_item.assembly_id != nil %>
-                            <span class="orderItem-ft_aside">
-                                <%= order_item.assembly.name %>
-                            </span>
-                        <% end %>
                     </li>
                     <li>
                         <button type="submit">Remove</button>

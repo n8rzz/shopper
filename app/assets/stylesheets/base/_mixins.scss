@@ -29,6 +29,12 @@
     border-radius: $BORDER_RADIUS;
 }
 
+@mixin isVisuallyHidden {
+    left: -9999px;
+    opacity: 0;
+    position: absolute;
+}
+
 @mixin vr_1 {
     margin-bottom: $SPACING_1X
 }
@@ -48,3 +54,4 @@
 @mixin vr_5 {
     margin-bottom: $SPACING_5X
 }
+
