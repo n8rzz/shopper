@@ -4,11 +4,6 @@ class OrderItem < ApplicationRecord
   belongs_to :item, optional: true
   belongs_to :assembly, optional: true
 
-  validates :status, inclusion: {
-    in: %w(open closed),
-    message: "%{value} is not a valid status"
-  }, presence: true
-
   def has_assembly?
     self.assembly_id != nil
   end

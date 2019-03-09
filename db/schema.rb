@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_09_182247) do
+ActiveRecord::Schema.define(version: 2019_03_09_195319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 2019_03_09_182247) do
     t.bigint "assembly_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status", default: "open"
     t.bigint "department_id"
     t.boolean "picked", default: false
     t.index ["assembly_id"], name: "index_order_items_on_assembly_id"

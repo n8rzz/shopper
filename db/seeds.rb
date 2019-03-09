@@ -36,7 +36,6 @@ order_statuses.each do |order_status|
       order_id: Order.last.id,
       item_id: item.id,
       department_id: item.department.id,
-      status: ['open', 'closed'].sample,
       picked: [true, false].sample
     )
   end

@@ -19,17 +19,6 @@ class OrderItemTest < ActiveSupport::TestCase
     assert @valid_order_item_using_item.valid?
   end
 
-  test 'validates status is set automatically' do
-    valid_item = items(:valid_item)
-    valid_order_item = OrderItem.create(
-      order_id: orders(:valid_pending_order).id,
-      item_id: valid_item.id,
-      department_id: valid_item.department.id
-    )
-
-    assert valid_order_item.valid?
-  end
-
   test 'has_assembly? returns true when #assembly_id is present' do
     assert @valid_order_item_using_assembly.has_assembly?
   end
