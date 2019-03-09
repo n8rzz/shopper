@@ -14,6 +14,8 @@ gem 'turbolinks', '~> 5'
 gem 'webpacker', '>= 4.0.0.rc.3'
 
 group :development, :test do
+  gem "better_errors"
+  gem "binding_of_caller"
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'faker', '>= 1.9.3'
   gem 'minitest-reporters'
