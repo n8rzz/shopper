@@ -10,16 +10,20 @@
 <ul class="card">
     <% @orders.each do |order| %>
         <li>
-            <div>
-                <%= order.zero_padded_day %>
-            </div>
-            <div>
-                <%= order.month_name %>
-            </div>
-            <div><%= link_to order.location.name, order %></div>
-            <!--
-            <div>Status: <%= order.status %></div>
-            -->
+            <%= link_to order, class: 'card-link' do %>
+                <div>
+                    <%= order.zero_padded_day %>
+                </div>
+                <div>
+                    <%= order.month_name %>
+                </div>
+                <div>
+                    <%= order.location.name %>
+                </div>
+                <!--
+                <div>Status: <%= order.status %></div>
+                -->
+            <% end %>
         </li>
     <% end %>
 </ul>

@@ -15,8 +15,17 @@
     border: 1px solid #DEE8EA;
     border-radius: $BORDER_RADIUS;
     box-sizing: border-box;
-    height: 150px;
-    padding: $SPACING_1X;
     margin: $SPACING_1X;
     width: calc(50% - #{$SPACING_2X});
+}
+
+.card-link {
+    display: block;
+    height: $SPACING_1X * 15;
+    padding: $SPACING_1X;
+}
+
+.card-link:hover {
+    color: $COLOR_PRIMARY;
+    text-decoration: none;
 }
