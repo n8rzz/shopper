@@ -13,7 +13,7 @@
 .listItem-hd {
     @include flexBetween;
 
-    padding-bottom: calc(#{$SPACING_1X} / 2);
+    padding-bottom: $SPACING_HALFX;
 }
 
 .listItem-ft {
