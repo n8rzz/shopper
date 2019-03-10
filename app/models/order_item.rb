@@ -4,11 +4,7 @@ class OrderItem < ApplicationRecord
   belongs_to :item, optional: true
   belongs_to :assembly, optional: true
 
-  def has_assembly?
-    self.assembly_id != nil
-  end
-
-  def has_item?
-    self.item_id != nil
-  end
+  scope :has_department, -> { where.not(department_id: nil) }
+  scope :has_assembly, -> { where.not(assembly_id: nil) }
+  scope :has_item, -> { where.not(item_id: nil) }
 end

@@ -36,25 +36,49 @@
             </div>
         </li>
         <li>
-            <ul class="stereo">
-                <!-- FIXME: this is hacky and icky -->
-                <li></li>
+            <ul class="hlist hlist-divided">
                 <li>
-                    <select name="sortOrder" id="sortOrder">
-                        <option value="">Sort Order</option>
-                        <option value="">---</option>
-                        <option value="Abc">Abc</option>
-                        <option value="Department">Department</option>
-                        <option value="Meal">Meal</option>
-                    </select>
-
+                    <%= link_to "Items", order_path %>
+                </li>
+                <li>
+                    <%= link_to "Department", order_path(order: 'department') %>
+                </li>
+                <li>
+                    <%= link_to "Meal", order_path(order: 'assembly') %>
                 </li>
             </ul>
         </li>
     </ul>
 </div>
-<div>
-    <ul class="vlist">
-        <%= render @order.order_items %>
-    </ul>
-</div>
+
+<% if @order_items_by_concern == nil %>
+    <div>
+        <ul class="vlist">
+            <% @order.order_items.each do |order_item| %>
+                <%= render partial: "shared/action_list_item", locals: { order_item: order_item } %>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+
+<% if @order_items_by_concern != nil %>
+    <% @order_items_by_concern.each do |key, order_items| %>
+        <div class="orderConcernGroup">
+            <% if key == nil && @should_show_non_grouped %>
+                <div class="orderConcernGroup-hd">
+                    <h2>Not Grouped</h2>
+                </div>
+            <% elsif key != nil %>
+                <div class="orderConcernGroup-hd">
+                    <h2><%= key.name%></h2>
+                </div>
+            <% end %>
+
+            <ul class="vlist">
+                <% order_items.each do |order_item| %>
+                    <%= render partial: "shared/action_list_item", locals: { order_item: order_item } %>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+<% end %>

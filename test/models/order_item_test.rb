@@ -18,12 +18,4 @@ class OrderItemTest < ActiveSupport::TestCase
   test 'valid OrderItem with only item' do
     assert @valid_order_item_using_item.valid?
   end
-
-  test 'has_assembly? returns true when #assembly_id is present' do
-    assert @valid_order_item_using_assembly.has_assembly?
-  end
-
-  test 'has_item? returns true when #item_id is present' do
-    assert @valid_order_item_using_item.has_item?
-  end
 end

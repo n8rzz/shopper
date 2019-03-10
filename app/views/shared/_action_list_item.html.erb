@@ -1,0 +1,34 @@
+<% if order_item.item_id != nil %>
+    <li class="orderItem <%= 'mix-orderItem_isPicked' if order_item.picked %>">
+        <div class="orderItem-action">
+            <form>
+                <input type="checkbox" class="input-checkbox u-isVisuallyHidden" id="<%= order_item.item.id%>" />
+                <label class="input-label_checkbox" for="<%= order_item.item.id%>">
+                    <% order_item.picked %>
+                </label>
+            </form>
+        </div>
+        <div class="orderItem-content">
+            <div class="orderItem-hd">
+                <h2 class="hdg hdg_2">
+                    <%= order_item.item.name %>
+                </h2>
+            </div>
+            <% if order_item.assembly_id != nil %>
+                <div class="orderItem-bd">
+                    <%= order_item.assembly.name %>
+                </div>
+            <% end %>
+            <div class="orderItem-ft">
+                <ul class="stereo">
+                    <li>
+                        <%= order_item.department.name %>
+                    </li>
+                    <li>
+                        <button type="submit">Remove</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </li>
+<% end %>

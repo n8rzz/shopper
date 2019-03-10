@@ -21,6 +21,15 @@ class Order < ApplicationRecord
     self.created_at.strftime("%d")
   end
 
+  def group_by_assembly
+    self.order_items.group_by(&:assembly)
+  end
+
+  def group_by_department
+    # self.order_items.has_department.group_by(&:department)
+    self.order_items.group_by(&:department)
+  end
+
   def items_not_in_assemblies
     self.order_items.map { |order_item|
       return if order_item.assembly_id == nil
