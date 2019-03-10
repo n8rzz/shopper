@@ -28,9 +28,11 @@
                 <div>
                     Status: <%= @order.status %>
                 </div>
-                <div>
-                    Location: <%= @order.location.name %>
-                </div>
+                <% if @order.location %>
+                    <div>
+                        Location: <%= @order.location.name %>
+                    </div>
+                <% end %>
             </div>
         </li>
         <li>

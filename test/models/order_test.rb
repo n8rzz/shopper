@@ -34,10 +34,8 @@ class OrderTest < ActiveSupport::TestCase
   #   assembly.items.each do |assembly_item|
   #     order.order_items.new(item_id: item.id, assembly_id: assembly_item)
   #   end
+
   #   order.save
-
-  #   byebug
-
   # end
 
   # test 'items_in_assemblies' do

@@ -17,9 +17,11 @@
                 <div>
                     <%= order.month_name %>
                 </div>
-                <div>
-                    <%= order.location.name %>
-                </div>
+                <% if order.location != nil %>
+                    <div>
+                        <%= order.location.name %>
+                    </div>
+                <% end %>
                 <!--
                 <div>Status: <%= order.status %></div>
                 -->
