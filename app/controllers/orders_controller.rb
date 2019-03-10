@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     @orders = Order.all
+    @orders_by_status = Order.all.group_by(&:status)
   end
 
   # GET /orders/1

@@ -1,0 +1,41 @@
+@import "../base/font";
+@import "../base/vars";
+
+.orderListItem {
+    background: image-url('calendar.svg') 5% 5% no-repeat $COLOR_BG_SECONDARY;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: $SPACING_1X;
+    text-align: right;
+}
+
+.orderListItem:active,
+.orderListItem:hover {
+    box-shadow: 2px 4px 20px 0px rgba(34, 34, 34, 0.16);
+    cursor: pointer;
+    transition: 200ms all ease-in-out;
+}
+
+.orderListItem-hd {
+    @include serifFont;
+
+    color: $COLOR_PRIMARY;
+    font-size: 90px;
+    font-weight: 700;
+    margin-bottom: -$SPACING_1X * 1.5;
+}
+
+.orderListItem-bd {
+    @include serifFont;
+
+    color: $COLOR_SECONDARY_ACCENT;
+    font-size: $FONT_SIZE_XL;
+    font-weight: 600;
+}
+
+.orderListItem-ft {
+    @include serifFont;
+
+    color: $COLOR_SECONDARY_ACCENT;
+    font-size: $FONT_SIZE_M;
+}
