@@ -46,6 +46,7 @@ end
     end
   end
 
+  # DELETE /order_items/1
   def delete
     puts "delete"
   end

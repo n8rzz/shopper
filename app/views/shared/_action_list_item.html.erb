@@ -2,8 +2,16 @@
     <li class="orderItem <%= 'mix-orderItem_isPicked' if order_item.picked %>">
         <div class="orderItem-action">
             <form>
-                <input type="checkbox" class="input-checkbox u-isVisuallyHidden" id="<%= order_item.item.id%>" />
-                <label class="input-label_checkbox" for="<%= order_item.item.id%>">
+                <input
+                    type="checkbox"
+                    id="<%= order_item.id%>"
+                    class="input-checkbox u-isVisuallyHidden"
+                />
+                <label
+                    class="input-label_checkbox js-orderItem-action"
+                    for="<%= order_item.id%>"
+                    data-order-item-id="<%= order_item.id %>"
+                >
                     <% order_item.picked %>
                 </label>
             </form>
@@ -25,7 +33,13 @@
                         <%= order_item.department.name %>
                     </li>
                     <li>
-                        <button type="submit">Remove</button>
+                        <button
+                            type="submit"
+                            class="js-orderItem-remove"
+                            data-order-item-id="<%= order_item.id %>"
+                        >
+                            Remove
+                        </button>
                     </li>
                 </ul>
             </div>
