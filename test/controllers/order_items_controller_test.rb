@@ -34,4 +34,12 @@ class OrderItemsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to orders_url
   end
+
+  test "should create a new Order, with pending status, when creating OrderItem" do
+    valid_item = items(:valid_item)
+
+    post order_items_create_item_path, params: { order_item: { item_id: valid_item.id, department_id: valid_item.department.id } }
+
+    refute_nil Order.find_by_status('pending')
+  end
 end

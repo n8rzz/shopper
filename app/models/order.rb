@@ -26,7 +26,6 @@ class Order < ApplicationRecord
   end
 
   def group_by_department
-    # self.order_items.has_department.group_by(&:department)
     self.order_items.group_by(&:department)
   end
 

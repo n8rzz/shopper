@@ -1,5 +1,5 @@
 class OrderItemsController < ApplicationController
-  before_action :set_pending_order, only: [:create_item, :create_assembly]
+  before_action :set_pending_order, only: [:create_assembly, :create_item]
 
 #  POST /order_items/create/assembly
 def create_assembly
@@ -57,6 +57,6 @@ end
   end
 
   def set_pending_order
-    @order = Order.first_or_create(status: 'pending')
+    @order = Order.find_or_initialize_by(status: 'pending')
   end
 end
