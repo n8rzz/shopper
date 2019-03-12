@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 class OrderService {
     get(url) {
        console.log('OrderService.get', url);
@@ -11,8 +13,12 @@ class OrderService {
        console.log('OrderService.put', url);
     }
 
-    delete(url) {
-        console.log('OrderService.delete', url);
+    delete(url, csrf) {
+        return axios.delete(url, {
+            headers: {
+                'X-CSRF-Token': csrf
+            }
+         });
     }
 }
 

@@ -3,7 +3,8 @@ import OrderService from './order.service';
 const CLASSNAMES = {
     ROOT_ELEMENT: 'js-orderItem',
     ACTION_ITEM: 'js-orderItem-action',
-    REMOVE_ITEM: 'js-orderItem-remove'
+    REMOVE_ITEM: 'js-orderItem-remove',
+    ORDER_ITEM_BASE: 'js-orderItem'
 };
 
 export class SingleOrderController {
@@ -40,6 +41,7 @@ export class SingleOrderController {
     _setuphandlers() {
         this._onClickPickedCheckboxHandler = this._onClickPickedCheckbox.bind(this);
         this._onClickRemoveItemHandler = this._onClickRemoveItem.bind(this);
+        this._onRemoveSuccessHandler = this._onRemoveSuccess.bind(this);
 
         return this;
     }
@@ -92,13 +94,27 @@ export class SingleOrderController {
 
     _onClickRemoveItem(event) {
         const orderItemId = event.currentTarget.dataset.orderItemId;
-        const itemUrl = `/order_items/${orderItemId}`;
+        const csrf = event.currentTarget.dataset.csrf;
+        const itemUrl = `/order_items/${orderItemId}.json`;
 
-        try {
-            OrderService.delete(itemUrl);
-        } catch (error) {
-            console.error(error);
-        }
+        OrderService.delete(itemUrl, csrf)
+            .then((response) => {
+                if (response.status !== 204) {
+                    console.error(`Received an unexpected status code from ${url}. See response: ${response}`);
+
+                    return;
+                }
+
+                this._onRemoveSuccess(orderItemId);
+            })
+            .catch((error) => { throw error; });
+    }
+
+    _onRemoveSuccess(orderItemId) {
+        const elementToRemoveSelector = `${CLASSNAMES.ORDER_ITEM_BASE}-${orderItemId}`;
+        const elementToRemove = document.getElementsByClassName(elementToRemoveSelector)[0];
+
+        elementToRemove.parentNode.removeChild(elementToRemove);
     }
 }
 

@@ -48,7 +48,15 @@ end
 
   # DELETE /order_items/1
   def delete
-    puts "delete"
+    @order_item = OrderItem.find(params[:id])
+
+    respond_to do |format|
+      if @order_item.destroy
+        format.json { head :no_content }
+      else
+        format.json { render json: @order_item.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private

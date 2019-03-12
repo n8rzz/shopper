@@ -1,5 +1,7 @@
 <% if order_item.item_id != nil %>
-    <li class="orderItem <%= 'mix-orderItem_isPicked' if order_item.picked %>">
+    <li
+        class="<%= order_item.list_item_classnames %>"
+    >
         <div class="orderItem-action">
             <form>
                 <input
@@ -11,6 +13,7 @@
                     class="input-label_checkbox js-orderItem-action"
                     for="<%= order_item.id%>"
                     data-order-item-id="<%= order_item.id %>"
+                    data-csrf="<%= form_authenticity_token %>"
                 >
                     <% order_item.picked %>
                 </label>
@@ -37,6 +40,7 @@
                             type="submit"
                             class="js-orderItem-remove"
                             data-order-item-id="<%= order_item.id %>"
+                            data-csrf="<%= form_authenticity_token %>"
                         >
                             Remove
                         </button>
