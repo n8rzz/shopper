@@ -10,8 +10,9 @@ class OrderItem < ApplicationRecord
 
   def list_item_classnames
     base_classnames = "orderItem js-orderItem-#{self.id}"
+
     if self.picked
-      base_classnames += "mix-orderItem_isPicked"
+      base_classnames += " mix-orderItem_isPicked"
     end
 
     base_classnames

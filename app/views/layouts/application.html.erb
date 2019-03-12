@@ -32,5 +32,8 @@
         <%= render 'layouts/footer' %>
 
         <%= debug(params) if Rails.env.development? %>
+        <script>
+            window.AUTHN_TOKEN = "<%= form_authenticity_token %>";
+        </script>
     </body>
 </html>

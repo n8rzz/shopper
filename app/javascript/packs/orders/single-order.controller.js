@@ -3,8 +3,10 @@ import OrderService from './order.service';
 const CLASSNAMES = {
     ROOT_ELEMENT: 'js-orderItem',
     ACTION_ITEM: 'js-orderItem-action',
+    ACTION_ITEM_VALUE: 'js-orderItem-action-value',
+    IS_PICKED_ORDER_ITEM: 'mix-orderItem_isPicked',
+    ORDER_ITEM: 'orderItem',
     REMOVE_ITEM: 'js-orderItem-remove',
-    ORDER_ITEM_BASE: 'js-orderItem'
 };
 
 export class SingleOrderController {
@@ -41,6 +43,7 @@ export class SingleOrderController {
     _setuphandlers() {
         this._onClickPickedCheckboxHandler = this._onClickPickedCheckbox.bind(this);
         this._onClickRemoveItemHandler = this._onClickRemoveItem.bind(this);
+        this._onUpdatePickedSuccessHandler = this._onUpdatePickedSuccess.bind(this);
         this._onRemoveSuccessHandler = this._onRemoveSuccess.bind(this);
 
         return this;
@@ -82,25 +85,44 @@ export class SingleOrderController {
     }
 
     _onClickPickedCheckbox(event) {
-        const orderItemId = event.currentTarget.dataset.orderItemId;
-        const itemUrl = `/order_items/${orderItemId}`;
+        event.preventDefault();
 
-        try {
-            OrderService.put(itemUrl);
-        } catch (error) {
-            console.error(error);
-        }
+        const csrf = event.currentTarget.dataset.csrf;
+        const targetElement = event.currentTarget;
+        const orderItemId = event.currentTarget.dataset.orderItemId;
+        const isPickedCheckboxElement = document.getElementById(orderItemId);
+        const currentValue = isPickedCheckboxElement.checked;
+        const orderItemUrl = `/order_items/${orderItemId}.json`;
+        const itemUpdateToSend = {
+            picked: !currentValue
+        };
+
+        OrderService.patch(orderItemUrl, itemUpdateToSend, csrf)
+            .then((response) => {
+                if (response.status !== 200) {
+                    console.error(`Received an unexpected status code from ${orderItemUrl}. See response: ${response}`);
+
+                    return;
+                }
+
+                this._onUpdatePickedSuccessHandler(
+                    response.data,
+                    isPickedCheckboxElement,
+                    targetElement
+                );
+            })
+            .catch((error) => { throw error; });
     }
 
     _onClickRemoveItem(event) {
         const orderItemId = event.currentTarget.dataset.orderItemId;
         const csrf = event.currentTarget.dataset.csrf;
-        const itemUrl = `/order_items/${orderItemId}.json`;
+        const orderItemUrl = `/order_items/${orderItemId}.json`;
 
-        OrderService.delete(itemUrl, csrf)
+        OrderService.delete(orderItemUrl, csrf)
             .then((response) => {
                 if (response.status !== 204) {
-                    console.error(`Received an unexpected status code from ${url}. See response: ${response}`);
+                    console.error(`Received an unexpected status code from ${orderItemUrl}. See response: ${response}`);
 
                     return;
                 }
@@ -110,8 +132,22 @@ export class SingleOrderController {
             .catch((error) => { throw error; });
     }
 
+    _onUpdatePickedSuccess(orderItem, isPickedCheckboxElement, curentTarget) {
+        const orderItemSelector = `${CLASSNAMES.ROOT_ELEMENT}-${orderItem.id}`;
+        const orderItemElement = document.getElementsByClassName(orderItemSelector)[0];
+        isPickedCheckboxElement.checked = orderItem.picked;
+
+        if (orderItem.picked) {
+            orderItemElement.classList.add(CLASSNAMES.IS_PICKED_ORDER_ITEM);
+
+            return;
+        }
+
+        orderItemElement.classList.remove(CLASSNAMES.IS_PICKED_ORDER_ITEM);
+    }
+
     _onRemoveSuccess(orderItemId) {
-        const elementToRemoveSelector = `${CLASSNAMES.ORDER_ITEM_BASE}-${orderItemId}`;
+        const elementToRemoveSelector = `${CLASSNAMES.ROOT_ELEMENT}-${orderItemId}`;
         const elementToRemove = document.getElementsByClassName(elementToRemoveSelector)[0];
 
         elementToRemove.parentNode.removeChild(elementToRemove);

@@ -1,16 +1,20 @@
 import axios from 'axios';
 
 class OrderService {
-    get(url) {
-       console.log('OrderService.get', url);
+    patch(url, updatesToSend, csrf) {
+       return axios.patch(url, updatesToSend, {
+            headers: {
+                'X-CSRF-Token': csrf
+            }
+       });
     }
 
-    post(url) {
-        console.log('OrderService.post', url);
-    }
-
-    put(url) {
-       console.log('OrderService.put', url);
+    put(url, updatesToSend, csrf) {
+       return axios.put(url, updatesToSend, {
+            headers: {
+                'X-CSRF-Token': csrf
+            }
+        });
     }
 
     delete(url, csrf) {
@@ -18,7 +22,7 @@ class OrderService {
             headers: {
                 'X-CSRF-Token': csrf
             }
-         });
+       });
     }
 }
 

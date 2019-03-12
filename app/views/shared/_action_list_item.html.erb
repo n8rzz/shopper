@@ -4,11 +4,7 @@
     >
         <div class="orderItem-action">
             <form>
-                <input
-                    type="checkbox"
-                    id="<%= order_item.id%>"
-                    class="input-checkbox u-isVisuallyHidden"
-                />
+                <%= check_box_tag order_item.item.name, true, order_item.picked, class: "input-checkbox u-isVisuallyHidden js-orderItem-action-value"%>
                 <label
                     class="input-label_checkbox js-orderItem-action"
                     for="<%= order_item.id%>"

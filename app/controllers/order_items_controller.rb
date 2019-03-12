@@ -46,6 +46,22 @@ end
     end
   end
 
+  # PATCH/PUT /items/1
+  # PATCH/PUT /items/1.json
+  def update
+    @order_item = OrderItem.find(params[:id])
+
+    respond_to do |format|
+      if @order_item.update(order_item_params)
+        # format.html { redirect_to @order_item, notice: 'Order was successfully updated.' }
+        format.json { render json: @order_item, status: :ok }
+      else
+        # format.html { render :edit }
+        format.json { render json: @order_item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # DELETE /order_items/1
   def delete
     @order_item = OrderItem.find(params[:id])
