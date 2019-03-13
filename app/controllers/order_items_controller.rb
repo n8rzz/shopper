@@ -3,7 +3,6 @@ class OrderItemsController < ApplicationController
 
 #  POST /order_items/create/assembly
 def create_assembly
-  @order.order_items.new(order_item_params)
   assembly = Assembly.find(order_item_params[:assembly_id])
 
   assembly.items.each do |item|

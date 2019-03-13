@@ -25,8 +25,17 @@ class Order < ApplicationRecord
     self.order_items.group_by(&:assembly)
   end
 
+  def group_by_assembly_and_sort
+    # FIXME: currently fails due to `nil` value keys from `group_by`c
+    self.order_items.group_by(&:assembly).sort_by { |k, v| k.name.to_s }
+  end
+
   def group_by_department
     self.order_items.group_by(&:department)
+  end
+
+  def group_by_department_and_sort
+    self.group_by_department.sort_by { |k, v| k.name.to_s }
   end
 
   def items_not_in_assemblies

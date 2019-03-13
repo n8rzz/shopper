@@ -18,7 +18,7 @@ class OrderItemsControllerTest < ActionDispatch::IntegrationTest
   test "should create order_item with assembly" do
     valid_assembly = assemblies(:valid_assembly)
 
-    assert_difference('OrderItem.count', 2) do
+    assert_difference('OrderItem.count', 1) do
       post order_items_create_assembly_path, params: { order_item: { assembly_id: valid_assembly.id } }
     end
 

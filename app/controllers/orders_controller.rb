@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
       @order_items_by_concern = @order.group_by_assembly
       @should_show_non_grouped = true
     elsif params[:order] == 'department'
-      @order_items_by_concern = @order.group_by_department
+      @order_items_by_concern = @order.group_by_department_and_sort
     end
   end
 
