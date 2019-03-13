@@ -4,8 +4,8 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
-    @orders_by_status = Order.all.group_by(&:status)
+    @orders = Order.all.order('status DESC')
+    @orders_by_status = Hash[Order.all.group_by(&:status).to_a.reverse].to_hash
   end
 
   # GET /orders/1
