@@ -1,0 +1,19 @@
+@import "../base/vars";
+
+.form-group abbr[title="required"] {
+    display: none;
+}
+
+.form-group .checkbox {
+    display: block;
+    margin-top: $SPACING_HALFX;
+}
+
+.form-group .check_boxes {
+    margin-right: 10px;
+}
+
+.form-group + .form-group {
+    margin-top: $SPACING_1X;
+}
+

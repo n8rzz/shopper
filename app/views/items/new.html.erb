@@ -1,5 +1,10 @@
-<h1 class="hdg hdg_1">New Item</h1>
+<div class="stereo">
+    <div>
+        <h1 class="hdg hdg_1">New Item</h1>
+    </div>
+    <div>
+        <%= link_to 'Back', items_path %>
+    </div>
+</div>
 
 <%= render 'form', item: @item %>
-
-<%= link_to 'Back', items_path %>

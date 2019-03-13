@@ -1,5 +1,11 @@
-<h1 class="hdg hdg_1">New Order</h1>
+<div class="stereo">
+    <div>
+        <h1 class="hdg hdg_1">New Order</h1>
+    </div>
+    <div>
+        <%= link_to 'Back', orders_path %>
+    </div>
+</div>
 
 <%= render 'form', order: @order %>
 
-<%= link_to 'Back', orders_path %>

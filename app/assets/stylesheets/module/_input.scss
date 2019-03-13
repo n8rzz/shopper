@@ -1,4 +1,6 @@
-@import "../base//vars";
+@import "../base/font";
+@import "../base/mixins";
+@import "../base/vars";
 
 .input-checkbox + .input-label_checkbox {
     cursor: pointer;
@@ -45,4 +47,30 @@
     border-color: #cccccc;
     color: #aaaaaa;
     transform: scale(1);
+}
+
+label {
+    @include sansSerifFont;
+
+    display: inline-block;
+    font-size: $FONT_SIZE_L;
+    margin-right: 10px;
+    min-width: 80px;
+}
+
+input[type=text] {
+    @include boxShadow-subtle;
+
+    border-radius: 4px;
+    border: 1px solid #dedede;
+    font-size: $FONT_SIZE_M;
+    padding: $SPACING_HALFX;
+    width: 200px;
+}
+
+input[type=text]:active,
+input[type=text]:focus {
+    border: 3px solid #60a7d1;
+    outline: none;
+    padding: 3px;
 }
