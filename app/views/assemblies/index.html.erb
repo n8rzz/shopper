@@ -15,17 +15,12 @@
                     <h2 class="hdg hdg_2">
                         <%= link_to assembly.name, edit_assembly_path(assembly) %>
                     </h2>
-                    <ul class="hlist">
-                        <li>
-                            <%= link_to 'Destroy', assembly, method: :delete, data: { confirm: 'Are you sure?' } %>
-                        </li>
-                        <li>
-                            <%= simple_form_for @order_item, url: order_items_create_assembly_path, method: :post do |form| %>
-                                <%= form.hidden_field :assembly_id, value: assembly.id %>
-                                <%= form.submit "Add to order" %>
-                            <% end %>
-                        </li>
-                    </ul>
+                    <div>
+                        <%= simple_form_for @order_item, url: order_items_create_assembly_path, method: :post do |form| %>
+                            <%= form.hidden_field :assembly_id, value: assembly.id %>
+                            <%= form.submit "Add to order" %>
+                        <% end %>
+                    </div>
                 </div>
                 <div class="listItem-ft">
                     Items: <%= assembly.items.count %>

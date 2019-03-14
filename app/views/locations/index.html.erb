@@ -15,13 +15,12 @@
                         <%= link_to location.name, edit_location_path(location) %>
                     </li>
                     <li>
-                        <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %>
+                        <%= button_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %>
                     </li>
                 </ul>
             </div>
             <div class="listItem-ft">
-                <!-- FIXME: move to model -->
-                <%= location.city %>, <%= location.state %>
+                <%= location.city_and_state %>
             </div>
         </li>
     <% end %>

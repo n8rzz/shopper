@@ -1,18 +1,27 @@
 <%= simple_form_for(@assembly) do |f| %>
-    <div class="vr_2">
+    <div class="vr_3">
         <%= f.error_notification %>
         <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
         <div class="form-group">
             <%= f.input :name %>
         </div>
+    </div>
 
+    <div class="vr_2">
         <div class="form-group">
             <%= f.association :items, as: :check_boxes %>
         </div>
     </div>
 
     <div class="form-actions">
-        <%= f.button :submit, class: "btn" %>
+        <ul class="hlist">
+            <li>
+                <%= link_to 'Destroy', assembly, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </li>
+            <li>
+                <%= f.button :submit, class: "btn" %>
+            </li>
+        </ul>
     </div>
 <% end %>

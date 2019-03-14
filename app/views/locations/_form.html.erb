@@ -15,5 +15,12 @@
         </div>
     </div>
 
-    <%= f.button :submit, class: "btn" %>
+    <ul class="hlist">
+        <li>
+            <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </li>
+        <li>
+            <%= f.button :submit, class: "btn" %>
+        </li>
+    </ul>
 <% end %>
