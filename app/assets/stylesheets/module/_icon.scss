@@ -1,0 +1,32 @@
+@import "../base/mixins";
+@import "../base/vars";
+
+.icon {
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+}
+
+.icon-btn {
+    @include boxShadow-subtle;
+
+    background: transparent;
+    border-radius: $BORDER_RADIUS_M;
+}
+
+.icon-btn:active,
+.icon-btn:focus,
+.icon-btn:hover {
+    @include animationCubicBezier;
+
+    background-color: $COLOR_BG_PRIMARY;
+    border: 1px solid $COLOR_PRIMARY;
+}
+
+.icon-trashcan {
+    background: image-url('basic_trashcan.svg') 50% 50% no-repeat transparent;
+}
+
+.mix-icon-btn_verticalOffset {
+    margin-top: ($SPACING_1X + $SPACING_HALFX) * -1;
+}

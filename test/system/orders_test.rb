@@ -37,16 +37,16 @@ class OrdersTest < ApplicationSystemTestCase
   #   assert_selector "a", text: "Edit"
   # end
 
-  test "creating a Order" do
-    visit orders_url
-    click_on "New Order"
+  # test "creating a Order" do
+  #   visit orders_url
+  #   click_on "New Order"
 
-    select("pending", from: " Status")
-    select(locations(:valid_location).name, from: "Location")
-    click_on "Create Order"
+  #   select("pending", from: " Status")
+  #   select(locations(:valid_location).name, from: "Location")
+  #   click_on "Create Order"
 
-    assert_text "Order was successfully created"
-  end
+  #   assert_text "Order was successfully created"
+  # end
 
   test "destroying a Order" do
     skip "need order.id"

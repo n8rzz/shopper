@@ -23,6 +23,7 @@
  *= require "module/_card"
  *= require "module/_formGroup"
  *= require "module/_hlist"
+ *= require "module/_icon"
  *= require "module/_input"
  *= require "module/_link"
  *= require "module/_listItem"
