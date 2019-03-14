@@ -7,10 +7,10 @@
     </li>
 </ul>
 
-<ul class="vlist js-assemblyList">
+<ul class="vlist js-accordionList mix-vlist_isClickable">
     <% @assemblies.each_with_index do |assembly, assembly_index| %>
         <li>
-            <div class="listItem js-assemblyList-trigger" data-assembly-item-id="<%= assembly_index %>">
+            <div class="listItem js-accordionList-trigger" data-assembly-item-id="<%= assembly_index %>">
                 <div class="listItem-hd">
                     <h2 class="hdg hdg_2">
                         <%= link_to assembly.name, edit_assembly_path(assembly) %>
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <% if assembly.items.length > 0 %>
-                <ul class="js-asemblyItemList-<%= assembly_index %> u-isVisuallyHidden">
+                <ul class="vlist js-accordionItemList-<%= assembly_index %> u-isVisuallyHidden">
                     <% assembly.items.each_with_index do |item, item_index| %>
                         <li>
                             <div>

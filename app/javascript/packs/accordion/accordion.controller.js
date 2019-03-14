@@ -1,15 +1,14 @@
-// import ApiService from '../service/api.service';
-import AssemblyCollection from './assembly.collection';
+import AccordionCollection from './accordion.collection';
 
 const CLASSNAMES = {
-    ROOT_ELEMENT: 'js-assemblyList',
-    TRIGGER_ELEMENT: 'js-assemblyList-trigger',
+    ROOT_ELEMENT: 'js-accordionList',
+    TRIGGER_ELEMENT: 'js-accordionList-trigger',
 };
 
-export default class AssemblyController {
+export default class AccordionController {
     constructor() {
         const $element = document.getElementsByClassName(CLASSNAMES.TRIGGER_ELEMENT);
-        this._collection = new AssemblyCollection($element);
+        this._collection = new AccordionCollection($element);
         this._isEnabled = false;
 
         if ($element.length === 0) {
@@ -56,5 +55,5 @@ export default class AssemblyController {
 }
 
 document.addEventListener('turbolinks:load', () => {
-    const assemblyController = new AssemblyController();
+    const accordionController = new AccordionController();
 });

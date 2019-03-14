@@ -7,3 +7,7 @@
 .vlist > * + * {
     margin-top: $SPACING_1X;
 }
+
+.mix-vlist_isClickable:hover > * {
+    cursor: pointer;
+}

@@ -1,13 +1,13 @@
 const CLASSNAME = {
-    ASSEMBLY_ITEM_LIST: 'js-asemblyItemList',
+    ACCORDION_ITEM_LIST: 'js-accordionItemList',
     IS_VISUALLY_HIDDEN: 'u-isVisuallyHidden'
 };
 
-export default class AssemblyView {
+export default class AccordionView {
     constructor($element) {
         const elementId = $element.dataset.assemblyItemId;
         this._$element = $element;
-        this._$assemblyItemList = document.getElementsByClassName(`${CLASSNAME.ASSEMBLY_ITEM_LIST}-${elementId}`)[0];
+        this._$accordionItemList = document.getElementsByClassName(`${CLASSNAME.ACCORDION_ITEM_LIST}-${elementId}`)[0];
 
         return this._init()
             ._createChildren()
@@ -54,24 +54,24 @@ export default class AssemblyView {
     }
 
     _onClick(event) {
-        if (!this._hasAssemblyItemList()) {
+        if (!this._hasAccordionItemList()) {
             return;
         }
 
         if (!this._isHidden()) {
-            this._$assemblyItemList.classList.add(CLASSNAME.IS_VISUALLY_HIDDEN);
+            this._$accordionItemList.classList.add(CLASSNAME.IS_VISUALLY_HIDDEN);
 
             return;
         }
 
-        this._$assemblyItemList.classList.remove(CLASSNAME.IS_VISUALLY_HIDDEN);
+        this._$accordionItemList.classList.remove(CLASSNAME.IS_VISUALLY_HIDDEN);
     }
 
-    _hasAssemblyItemList() {
-        return this._$assemblyItemList != null;
+    _hasAccordionItemList() {
+        return this._$accordionItemList != null;
     }
 
     _isHidden() {
-        return this._$assemblyItemList.classList.contains(CLASSNAME.IS_VISUALLY_HIDDEN);
+        return this._$accordionItemList.classList.contains(CLASSNAME.IS_VISUALLY_HIDDEN);
     }
 }

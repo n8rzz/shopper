@@ -1,6 +1,6 @@
-import AssemblyView from "./assembly.view";
+import AccordionView from "./accordion.view";
 
-export default class AssemblyCollection {
+export default class AccordionCollection {
     get length() {
         return this._items.length;
     }
@@ -14,7 +14,7 @@ export default class AssemblyCollection {
     _init(elementList) {
         for (let i = 0; i < elementList.length; i++) {
             const element = elementList[i];
-            const viewModel = new AssemblyView(element);
+            const viewModel = new AccordionView(element);
 
             this._add(viewModel);
         }
