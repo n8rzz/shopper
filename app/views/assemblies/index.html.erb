@@ -7,10 +7,10 @@
     </li>
 </ul>
 
-<ul class="vlist">
-    <% @assemblies.each do |assembly| %>
+<ul class="vlist js-assemblyList">
+    <% @assemblies.each_with_index do |assembly, assembly_index| %>
         <li>
-            <div class="listItem">
+            <div class="listItem js-assemblyList-trigger" data-assembly-item-id="<%= assembly_index %>">
                 <div class="listItem-hd">
                     <h2 class="hdg hdg_2">
                         <%= link_to assembly.name, edit_assembly_path(assembly) %>
@@ -26,6 +26,23 @@
                     Items: <%= assembly.items.count %>
                 </div>
             </div>
+            <% if assembly.items.length > 0 %>
+                <ul class="js-asemblyItemList-<%= assembly_index %> u-isVisuallyHidden">
+                    <% assembly.items.each_with_index do |item, item_index| %>
+                        <li>
+                            <div>
+                                item_index: <%= item_index %>
+                            </div>
+                            <div>
+                                <%= item.id %>
+                            </div>
+                            <div>
+                                <%= item.name %>
+                            </div>
+                        </li>
+                    <% end %>
+                </ul>
+            <% end %>
         </li>
     <% end %>
 </ul>

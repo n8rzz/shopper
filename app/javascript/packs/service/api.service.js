@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-class OrderService {
+class ApiService {
     patch(url, updatesToSend, csrf) {
        return axios.patch(url, updatesToSend, {
             headers: {
@@ -26,4 +26,4 @@ class OrderService {
     }
 }
 
-export default new OrderService();
+export default new ApiService();

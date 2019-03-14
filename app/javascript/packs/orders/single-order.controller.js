@@ -1,4 +1,4 @@
-import OrderService from './order.service';
+import ApiService from '../service/api.service';
 
 const CLASSNAMES = {
     ROOT_ELEMENT: 'js-orderItem',
@@ -25,7 +25,7 @@ export class SingleOrderController {
 
         return this._init()
             ._createChildren()
-            ._setuphandlers()
+            ._setupHandlers()
             .enable();
     }
 
@@ -40,7 +40,7 @@ export class SingleOrderController {
         return this;
     }
 
-    _setuphandlers() {
+    _setupHandlers() {
         this._onClickPickedCheckboxHandler = this._onClickPickedCheckbox.bind(this);
         this._onClickRemoveItemHandler = this._onClickRemoveItem.bind(this);
         this._onUpdatePickedSuccessHandler = this._onUpdatePickedSuccess.bind(this);
@@ -97,7 +97,7 @@ export class SingleOrderController {
             picked: !currentValue
         };
 
-        OrderService.patch(orderItemUrl, itemUpdateToSend, csrf)
+        ApiService.patch(orderItemUrl, itemUpdateToSend, csrf)
             .then((response) => {
                 if (response.status !== 200) {
                     console.error(`Received an unexpected status code from ${orderItemUrl}. See response: ${response}`);
@@ -119,7 +119,7 @@ export class SingleOrderController {
         const csrf = event.currentTarget.dataset.csrf;
         const orderItemUrl = `/order_items/${orderItemId}.json`;
 
-        OrderService.delete(orderItemUrl, csrf)
+        ApiService.delete(orderItemUrl, csrf)
             .then((response) => {
                 if (response.status !== 204) {
                     console.error(`Received an unexpected status code from ${orderItemUrl}. See response: ${response}`);
