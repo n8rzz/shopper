@@ -9,6 +9,14 @@ class ApiService {
        });
     }
 
+    post(url, dataToSend, csrf) {
+        return axios.post(url, dataToSend, {
+            headers: {
+                'X-CSRF-Token': csrf
+            }
+        });
+    }
+
     put(url, updatesToSend, csrf) {
        return axios.put(url, updatesToSend, {
             headers: {

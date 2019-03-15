@@ -66,25 +66,32 @@ export default class AssemblyItemController {
     _onClick(event) {
         event.preventDefault();
 
-        // const csrf = event.currentTarget.dataset.csrf;
+        const csrf = event.currentTarget.dataset.csrf;
         const assemblyId = event.currentTarget.dataset.assemblyId;
         const assemblyItemId = event.currentTarget.dataset.assemblyItemId;
-        const assemblyItemUrl = `/assembly_items/${assemblyItemId}/item/${assemblyId}.json`;
+        const departmentId = event.currentTarget.dataset.departmentId
+        const assemblyItemUrl = `/order_items/create/item.json`;
+        const requestPayload = {
+            assembly_id: assemblyId,
+            department_id: departmentId,
+            item_id: assemblyItemId
+        };
 
-        console.log(assemblyItemUrl);
+        ApiService.post(assemblyItemUrl, requestPayload, csrf)
+            .then((response) => {
+                if (response.status >= 300) {
+                    console.error(`Received an unexpected status code from ${assemblyItemUrl}. See response: `, response);
 
-        // TODO: rails controller method does not yet exist
-        // ApiService.post(assemblyItemUrl, csrf)
-        //     .then((response) => {
-        //         if (response.status !== 204) {
-        //             console.error(`Received an unexpected status code from ${assemblyItemUrl}. See response: ${response}`);
+                    return;
+                }
 
-        //             return;
-        //         }
+                this._onAddItemSuccess(requestPayload, response);
+            })
+            .catch((error) => { throw error; });
+    }
 
-        //         this._onRemoveSuccess(orderItemId);
-        //     })
-        //     .catch((error) => { throw error; });
+    _onAddItemSuccess(requestPayload, response) {
+        console.log(requestPayload, response);
     }
 }
 

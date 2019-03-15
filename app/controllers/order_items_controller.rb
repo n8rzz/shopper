@@ -41,12 +41,12 @@ end
       end
 
       format.html { redirect_to items_path, notice: "#{@order_item.item.name} added to pending order" }
-      format.json { render :show, status: :created, location: @items_path }
+      format.json { render json: @order_item, status: :created }
     end
   end
 
-  # PATCH/PUT /items/1
-  # PATCH/PUT /items/1.json
+  # PATCH/PUT /order_items/1
+  # PATCH/PUT /order_items/1.json
   def update
     @order_item = OrderItem.find(params[:id])
 
