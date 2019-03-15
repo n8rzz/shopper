@@ -6,8 +6,7 @@
         <%= link_to 'New Assembly', new_assembly_path %>
     </li>
 </ul>
-
-<ul class="vlist js-accordionList mix-vlist_isClickable">
+<ul class="vlist mix-vlist_isClickable js-accordionList">
     <% @assemblies.each_with_index do |assembly, assembly_index| %>
         <li>
             <div class="listItem js-accordionList-trigger" data-accordion-item-id="<%= assembly_index %>">
@@ -27,17 +26,14 @@
                 </div>
             </div>
             <% if assembly.items.length > 0 %>
-                <ul class="vlist js-accordionItemList-<%= assembly_index %> u-isVisuallyHidden">
+                <ul class="vlist vlist-narrow js-accordionItemList-<%= assembly_index %> u-isVisuallyHidden">
                     <% assembly.items.each_with_index do |item, item_index| %>
-                        <li>
-                            <div>
-                                item_index: <%= item_index %>
-                            </div>
-                            <div>
-                                <%= item.id %>
-                            </div>
-                            <div>
+                        <li class="listItem listItem-child">
+                            <div class="listItem-hd">
                                 <%= item.name %>
+                            </div>
+                            <div class="listItem-ft">
+                                <%= item.department.name %>
                             </div>
                         </li>
                     <% end %>

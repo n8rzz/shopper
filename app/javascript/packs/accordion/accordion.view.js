@@ -9,9 +9,14 @@ export default class AccordionView {
     }
 
     constructor($element, onClickHandler) {
-        this._id = $element.dataset.accordionItemId;
         this._$element = $element;
+        this._id = $element.dataset.accordionItemId;
         this._$accordionItemList = document.getElementsByClassName(`${CLASSNAME.ACCORDION_ITEM_LIST}-${this._id}`)[0];
+        this._isEnabled = false;
+
+        if (this._$accordionItemList == null) {
+            return this.disable();
+        }
 
         return this._init()
             ._createChildren()
@@ -58,6 +63,10 @@ export default class AccordionView {
     }
 
     toggleIsVisible() {
+        if (!this._isEnabled) {
+            return;
+        }
+
         if (!this._isHidden()) {
             this._$accordionItemList.classList.add(CLASSNAME.IS_VISUALLY_HIDDEN);
 
