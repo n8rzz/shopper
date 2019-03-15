@@ -63,7 +63,6 @@ export default class AccordionController {
     }
 
     _onClick(event) {
-        event.preventDefault();
         const itemId = event.currentTarget.dataset.accordionItemId;
         const foundElement = this._collection.findById(itemId);
 

@@ -44,14 +44,14 @@ class ItemsTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  test "destroying a Item" do
-    visit items_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
+  # test "destroying a Item" do
+  #   visit items_url
+  #   page.accept_confirm do
+  #     click_on "Destroy", match: :first
+  #   end
 
-    assert_text "Item was successfully destroyed"
-  end
+  #   assert_text "Item was successfully destroyed"
+  # end
 
   test "add item to order" do
     visit items_url

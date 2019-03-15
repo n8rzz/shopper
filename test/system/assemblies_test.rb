@@ -43,14 +43,14 @@ class AssembliesTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  test "destroying a Assembly" do
-    visit assemblies_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
+  # test "destroying a Assembly" do
+  #   visit assemblies_url
+  #   page.accept_confirm do
+  #     click_on "Destroy", match: :first
+  #   end
 
-    assert_text "Assembly was successfully destroyed"
-  end
+  #   assert_text "Assembly was successfully destroyed"
+  # end
 
   test "adding an assembly to an order" do
     visit assemblies_url
