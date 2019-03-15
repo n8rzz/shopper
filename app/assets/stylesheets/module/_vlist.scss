@@ -5,7 +5,7 @@
     @include vlist;
 }
 
-.vlist-narrow > * + * {
+.vlist-short > * + * {
     margin-top: $SPACING_HALFX;
 }
 

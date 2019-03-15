@@ -1,4 +1,4 @@
-export default class AccordionCollection {
+export default class AssemblyItemCollection {
     get length() {
         return this._items.length;
     }
@@ -18,6 +18,6 @@ export default class AccordionCollection {
     }
 
     findById(itemId) {
-        return this._items.filter((item) => item.id === itemId)[0];
+        return this._items.filter((item) => item.itemId === itemId)[0];
     }
 }

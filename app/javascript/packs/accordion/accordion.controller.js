@@ -2,7 +2,6 @@ import AccordionCollection from './accordion.collection';
 import AccordionView from './accordion.view';
 
 const CLASSNAMES = {
-    ROOT_ELEMENT: 'js-accordionList',
     TRIGGER_ELEMENT: 'js-accordionList-trigger',
 };
 
