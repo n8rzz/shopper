@@ -4,14 +4,18 @@ const CLASSNAME = {
 };
 
 export default class AccordionView {
-    constructor($element) {
-        const elementId = $element.dataset.assemblyItemId;
+    get id() {
+        return this._id;
+    }
+
+    constructor($element, onClickHandler) {
+        this._id = $element.dataset.accordionItemId;
         this._$element = $element;
-        this._$accordionItemList = document.getElementsByClassName(`${CLASSNAME.ACCORDION_ITEM_LIST}-${elementId}`)[0];
+        this._$accordionItemList = document.getElementsByClassName(`${CLASSNAME.ACCORDION_ITEM_LIST}-${this._id}`)[0];
 
         return this._init()
             ._createChildren()
-            ._setupHandlers()
+            ._setupHandlers(onClickHandler)
             .enable();
     }
 
@@ -23,8 +27,8 @@ export default class AccordionView {
         return this;
     }
 
-    _setupHandlers() {
-        this._onClickHandler = this._onClick.bind(this);
+    _setupHandlers(onClickHandler) {
+        this._onClickHandler = onClickHandler;
 
         return this;
     }
@@ -53,11 +57,7 @@ export default class AccordionView {
         return this;
     }
 
-    _onClick(event) {
-        if (!this._hasAccordionItemList()) {
-            return;
-        }
-
+    toggleIsVisible() {
         if (!this._isHidden()) {
             this._$accordionItemList.classList.add(CLASSNAME.IS_VISUALLY_HIDDEN);
 

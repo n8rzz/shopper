@@ -5,24 +5,21 @@ export default class AccordionCollection {
         return this._items.length;
     }
 
-    constructor(elementList) {
+    constructor() {
         this._items = [];
 
-        return this._init(elementList);
+        return this._init();
     }
 
-    _init(elementList) {
-        for (let i = 0; i < elementList.length; i++) {
-            const element = elementList[i];
-            const viewModel = new AccordionView(element);
-
-            this._add(viewModel);
-        }
-
+    _init() {
         return this;
     }
 
-    _add(viewModel) {
+    add(viewModel) {
         this._items.push(viewModel);
+    }
+
+    findById(itemId) {
+        return this._items.filter((item) => item.id === itemId)[0];
     }
 }

@@ -1,4 +1,5 @@
 import AccordionCollection from './accordion.collection';
+import AccordionView from './accordion.view';
 
 const CLASSNAMES = {
     ROOT_ELEMENT: 'js-accordionList',
@@ -7,17 +8,17 @@ const CLASSNAMES = {
 
 export default class AccordionController {
     constructor() {
-        const $element = document.getElementsByClassName(CLASSNAMES.TRIGGER_ELEMENT);
-        this._collection = new AccordionCollection($element);
+        const $elementList = document.getElementsByClassName(CLASSNAMES.TRIGGER_ELEMENT);
+        this._collection = new AccordionCollection();
         this._isEnabled = false;
 
-        if ($element.length === 0) {
+        if ($elementList.length === 0) {
             return this.disable();
         }
 
         return this._init()
-            ._createChildren()
             ._setupHandlers()
+            ._createChildren($elementList)
             .enable();
     }
 
@@ -25,11 +26,20 @@ export default class AccordionController {
         return this;
     }
 
-    _createChildren() {
+    _setupHandlers() {
+        this._onClickHandler = this._onClick.bind(this);
+
         return this;
     }
 
-    _setupHandlers() {
+    _createChildren($elementList) {
+        for (let i = 0; i < $elementList.length; i++) {
+            const element = $elementList[i];
+            const viewModel = new AccordionView(element, this._onClickHandler);
+
+            this._collection.add(viewModel);
+        }
+
         return this;
     }
 
@@ -51,6 +61,14 @@ export default class AccordionController {
         this._isEnabled = false;
 
         return this;
+    }
+
+    _onClick(event) {
+        event.preventDefault();
+        const itemId = event.currentTarget.dataset.accordionItemId;
+        const foundElement = this._collection.findById(itemId);
+
+        foundElement.toggleIsVisible();
     }
 }
 
