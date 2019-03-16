@@ -17,7 +17,6 @@ group :development, :test do
   gem "better_errors"
   gem "binding_of_caller"
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'cucumber-rails', require: false
   gem 'factory_bot_rails'
   gem 'faker', '>= 1.9.3'
   gem 'minitest-reporters'
