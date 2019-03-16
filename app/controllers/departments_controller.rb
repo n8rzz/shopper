@@ -42,7 +42,7 @@ class DepartmentsController < ApplicationController
   def update
     respond_to do |format|
       if @department.update(department_params)
-        format.html { redirect_to @department, notice: 'Department was successfully updated.' }
+        format.html { redirect_to @department, notice: 'Department was updated successfully' }
         format.json { render :show, status: :ok, location: @department }
       else
         format.html { render :edit }
