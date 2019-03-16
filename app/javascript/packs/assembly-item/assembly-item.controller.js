@@ -1,4 +1,5 @@
 import ApiService from '../service/api.service';
+import FlashController from '../flash/flash.controller';
 import AssemblyItemCollection from './assembly-item.collection';
 import AssemblyItemView from './assembly-item.view';
 
@@ -9,6 +10,7 @@ const CLASSNAMES = {
 export default class AssemblyItemController {
     constructor() {
         const $elementList = document.getElementsByClassName(CLASSNAMES.TRIGGER_ELEMENT);
+        this._flashController = new FlashController();
         this._collection = new AssemblyItemCollection();
         this._isEnabled = false;
 
@@ -90,8 +92,16 @@ export default class AssemblyItemController {
             .catch((error) => { throw error; });
     }
 
-    _onAddItemSuccess(requestPayload, response) {
-        console.log(requestPayload, response);
+    _onAddItemSuccess() {
+        const message = 'Item added to order successfully';
+
+        this._flashController.showNoticeMessage(message);
+    }
+
+    _onAddItemError() {
+        const message = 'Something went wrong, terribly wrong';
+
+        this._flashController.showNoticeMessage(message);
     }
 }
 

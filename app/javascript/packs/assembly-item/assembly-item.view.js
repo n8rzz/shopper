@@ -1,5 +1,5 @@
 export default class AssemblyItemView {
-    get assemblyIt() {
+    get assemblyId() {
         return this._assemblyId;
     }
 
