@@ -18,35 +18,31 @@
         </li>
     </ul>
 </div>
-<div class="vr_4">
-    <ul class="stereo">
-        <li>
-            <div class="orderMeta">
-                <div>
-                    Created At: <%= @order.created_at %>
-                </div>
-                <div>
-                    Status: <%= @order.status %>
-                </div>
-                <% if @order.location %>
-                    <div>
-                        Location: <%= @order.location.name %>
-                    </div>
-                <% end %>
+<div class="vr_3">
+    <div class="orderMeta">
+        <div>
+            Created At: <%= @order.created_at %>
+        </div>
+        <div>
+            Status: <%= @order.status %>
+        </div>
+        <% if @order.location %>
+            <div>
+                Location: <%= @order.location.name %>
             </div>
+        <% end %>
+    </div>
+</div>
+<div class="vr_3">
+    <ul class="hlist hlist-divided mix-hlist_spacious mix-hlist_centered">
+        <li>
+            <%= link_to "Items", order_path %>
         </li>
         <li>
-            <ul class="hlist hlist-divided">
-                <li>
-                    <%= link_to "Items", order_path %>
-                </li>
-                <li>
-                    <%= link_to "Department", order_path(order: 'department') %>
-                </li>
-                <li>
-                    <%= link_to "Meal", order_path(order: 'assembly') %>
-                </li>
-            </ul>
+            <%= link_to "Department", order_path(order: 'department') %>
+        </li>
+        <li>
+            <%= link_to "Meal", order_path(order: 'assembly') %>
         </li>
     </ul>
 </div>

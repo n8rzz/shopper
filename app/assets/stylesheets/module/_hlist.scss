@@ -1,13 +1,24 @@
+@import "../base/vars";
+
 .hlist {
     display: flex;
 }
 
 .hlist > * + * {
-    margin-left: 5px;
+    margin-left: $SPACING_HALFX;
 }
 
 .hlist-divided > * + * {
     border-left: 1px solid;
-    margin-left: 5px;
-    padding-left: 5px;
+    margin-left: $SPACING_HALFX;
+    padding-left: $SPACING_HALFX;
+}
+
+.mix-hlist_spacious > * + * {
+    margin-left: $SPACING_1X;
+    padding-left: $SPACING_1X;
+}
+
+.mix-hlist_centered {
+    justify-content: center;
 }
