@@ -9,6 +9,6 @@ RSpec.feature 'User creates a Location' do
     fill_in 'State', with: 'TX'
     click_button 'Create Location'
 
-    assert_text 'Location was successfully created'
+    assert_text 'Location was created successfully'
   end
 end

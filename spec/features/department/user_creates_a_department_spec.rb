@@ -7,6 +7,7 @@ RSpec.feature 'User creates a Department' do
     fill_in 'Name', with: 'Icebox'
     click_button 'Create Department'
 
-    assert_text 'Department was successfully created'
+    expect(page).to have_text 'Department was successfully created'
+    expect(page).to have_current_path(departments_path)
   end
 end

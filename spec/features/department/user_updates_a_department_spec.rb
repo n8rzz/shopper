@@ -20,5 +20,6 @@ RSpec.feature 'User updates a Department' do
     click_button 'Update Department'
 
     expect(page).to have_text 'Department was updated successfully'
+    expect(page).to have_current_path(departments_path)
   end
 end
