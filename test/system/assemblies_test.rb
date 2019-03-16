@@ -5,10 +5,6 @@ class AssembliesTest < ApplicationSystemTestCase
     @assembly = assemblies(:valid_assembly)
   end
 
-  teardown do
-    @assembly = nil
-  end
-
   test "visiting the index" do
     visit assemblies_url
     assert_selector "h1", text: "Assemblies"
