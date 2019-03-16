@@ -1,0 +1,4 @@
+example_id                            | status | run_time        |
+------------------------------------- | ------ | --------------- |
+./spec/models/department_spec.rb[1:1] | passed | 0.00661 seconds |
+./spec/models/location_spec.rb[1:1]   | passed | 0.01169 seconds |
