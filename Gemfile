@@ -17,8 +17,11 @@ group :development, :test do
   gem "better_errors"
   gem "binding_of_caller"
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'cucumber-rails', require: false
+  gem 'factory_bot_rails'
   gem 'faker', '>= 1.9.3'
   gem 'minitest-reporters'
+  gem 'rspec-rails', '~>3.5'
   gem 'rubocop', '>= 0.65.0'
 end
 
@@ -28,6 +31,7 @@ group :development do
   gem 'guard-livereload', require: false
   gem 'guard-minitest', require: false
   gem 'guard-rails', require: false
+  gem 'guard-rspec', require: false
   gem 'guard-rubocop', require: false
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
@@ -40,7 +44,9 @@ group :test do
   gem 'chromedriver-helper'
   gem 'database_cleaner'
   gem 'minitest-around'
+  gem 'rails-controller-testing'
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
   gem 'simplecov', '>= 0.16.1'
 end
 
