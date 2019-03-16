@@ -1,22 +1,23 @@
 require 'rails_helper'
 
-RSpec.describe Department, type: :model do
+RSpec.describe Item, type: :model do
   it 'has a valid factory' do
-    expect(build(:department)).to be_instance_of(Department)
+    expect(build(:item)).to be_instance_of(Item)
   end
 
   describe 'data and associations' do
     it { should have_db_column(:name) }
-    it { should have_many(:items) }
+    it { should belong_to(:department) }
     it { should have_many(:order_items) }
-    it { should have_many(:orders) }
+    it { should have_many(:assembly_items) }
+    it { should have_many(:assemblies) }
   end
 
   before do
-    @department = build(:department)
+    @item = build(:item)
   end
 
-  subject { @department }
+  subject { @item }
 
   describe 'validations' do
     it { should respond_to(:name) }
