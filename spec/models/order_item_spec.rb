@@ -7,6 +7,7 @@ RSpec.describe OrderItem, type: :model do
 
   describe 'data and associations' do
     it { should have_db_column(:picked) }
+    it { should have_db_column(:qty) }
     it { should belong_to(:order) }
     # it { should belong_to(:department) }
     # it { should belong_to(:items) }

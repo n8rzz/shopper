@@ -27,6 +27,18 @@
     @include flexBetween;
 }
 
+.orderItem-hd-supplement {
+    @include monospaceFont;
+
+    color: $COLOR_PRIMARY;
+
+    h3 {
+        font-size: $FONT_SIZE_XS;
+        font-weight: 700;
+    }
+
+}
+
 .orderItem-bd {
     @include monospaceFont;
 

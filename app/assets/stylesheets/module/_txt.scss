@@ -1,0 +1,10 @@
+@import "../base/mixins";
+@import "../base/vars";
+
+.txt-dark {
+    color: $COLOR_DARK;
+}
+
+.txt-light {
+    color: $COLOR_SECONDARY_ACCENT;
+}

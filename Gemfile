@@ -45,5 +45,3 @@ group :test do
   gem 'shoulda-matchers'
   gem 'simplecov', '>= 0.16.1'
 end
-
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

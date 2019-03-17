@@ -22,8 +22,10 @@ end
   a = Assembly.create(name: Faker::Food.dish)
 
   rand(1..5).times do
-    a.item_ids << Item.all.sample.id
+    a.assembly_items.new(item_id: Item.all.sample.id)
   end
+
+  a.save
 end
 
 order_statuses = ['active', 'canceled', 'complete']
@@ -32,11 +34,13 @@ order_statuses.each do |order_status|
 
   rand(1..3).times do
     item = Item.all.sample
-    o.order_item_ids << OrderItem.create(
+
+    o.order_items.new(
       order_id: Order.last.id,
       item_id: item.id,
       department_id: item.department.id,
-      picked: [true, false].sample
+      picked: [true, false].sample,
+      qty: rand(1..5)
     )
   end
 

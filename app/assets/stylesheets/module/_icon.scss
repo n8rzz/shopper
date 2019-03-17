@@ -10,7 +10,8 @@
 .icon-btn {
     @include boxShadow-subtle;
 
-    background: transparent;
+    background-color: $COLOR_BG_PRIMARY;
+    border: 1px solid $COLOR_SECONDARY_ACCENT;
     border-radius: $BORDER_RADIUS_M;
     cursor: pointer;
 }

@@ -77,7 +77,7 @@ end
   private
 
   def order_item_params
-    params.require(:order_item).permit(:item_id, :assembly_id, :department_id, :picked, :status)
+    params.require(:order_item).permit(:item_id, :assembly_id, :department_id, :picked, :status, :qty)
   end
 
   def set_pending_order
