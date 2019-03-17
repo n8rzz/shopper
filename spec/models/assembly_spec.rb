@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Assembly, type: :model do
   it 'has a valid factory' do
     expect(build(:assembly)).to be_instance_of(Assembly)
+    expect(build(:assembly, :with_item)).to be_instance_of(Assembly)
   end
 
   describe 'data and associations' do
