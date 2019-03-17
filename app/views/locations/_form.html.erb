@@ -16,9 +16,11 @@
     </div>
 
     <ul class="hlist">
-        <li>
-            <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </li>
+        <% if !current_page?(new_location_path) %>
+            <li>
+                <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </li>
+        <% end %>
         <li>
             <%= f.button :submit, class: "btn" %>
         </li>

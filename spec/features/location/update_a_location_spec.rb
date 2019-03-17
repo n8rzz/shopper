@@ -4,7 +4,7 @@ RSpec.feature 'Update a Location' do
   let!(:location) { create(:location) }
 
   scenario 'visit location#edit' do
-    visit '/locations'
+    visit locations_path
     click_link location.name
 
     expect(page).to have_text 'Editing Location'

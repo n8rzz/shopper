@@ -12,9 +12,11 @@
         </div>
     </div>
     <ul class="hlist">
-        <li>
-            <%= link_to 'Destroy', @item, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </li>
+        <% if !current_page?(new_item_path) %>
+            <li>
+                <%= link_to 'Destroy', @item, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </li>
+        <% end %>
         <li>
             <%= f.button :submit, class: "btn" %>
         </li>
