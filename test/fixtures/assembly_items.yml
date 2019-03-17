@@ -1,5 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-valid_assembly_item:
-  assembly: valid_assembly
-  item: valid_item
