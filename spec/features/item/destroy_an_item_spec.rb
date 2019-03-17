@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'User destroys an item' do
+RSpec.feature 'Destroy an item' do
   let!(:item) { create(:item) }
 
   scenario 'visit item#index' do

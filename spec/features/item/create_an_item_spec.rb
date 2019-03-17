@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'User creates an Item' do
+RSpec.feature 'Creates an Item' do
   let!(:item) { create(:item) }
 
   scenario 'visit item#new' do

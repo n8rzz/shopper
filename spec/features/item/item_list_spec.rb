@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'User visits Item#index' do
+RSpec.feature 'Item#index' do
   let!(:item) { create(:item) }
 
   scenario 'visit item#index' do

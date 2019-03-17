@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'User visits Item#index' do
+RSpec.feature 'Add item to order' do
   let!(:item) { create(:item) }
 
   scenario 'visit item#index' do

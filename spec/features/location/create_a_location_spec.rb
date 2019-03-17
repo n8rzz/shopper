@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'User creates a Location' do
+RSpec.feature 'Creates a Location' do
   scenario 'they see the Location on the page' do
     visit new_location_path
 

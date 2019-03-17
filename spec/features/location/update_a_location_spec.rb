@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'User updates a Location' do
+RSpec.feature 'Update a Location' do
   let!(:location) { create(:location) }
 
   scenario 'visit location#edit' do

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'User visits Assembly#index', js: true do
+RSpec.feature 'Assembly#index', js: true do
   let!(:assembly) { create(:assembly, :with_item) }
 
   scenario 'visit assembly#index' do

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'User creates a Department' do
+RSpec.feature 'Create Department' do
   scenario 'they see the Department on the page' do
     visit new_department_path
 

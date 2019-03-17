@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'User destroys a Department' do
+RSpec.feature 'Destroy Department' do
   let!(:department) { create(:department) }
 
   scenario 'visit department#index' do

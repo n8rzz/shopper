@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'User updates a Department' do
+RSpec.feature 'Update Department' do
   let!(:department) { create(:department) }
 
   scenario 'visit department#edit' do
