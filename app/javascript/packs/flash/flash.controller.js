@@ -4,7 +4,7 @@ const CLASSNAME = {
     NOTICE: 'js-notice'
 }
 
-const DEAFULT_REMOVAL_DELAY = 3000;
+const DEAFULT_REMOVAL_DELAY = 7000;
 
 export default class FlashController {
     constructor() {
