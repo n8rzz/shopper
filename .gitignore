@@ -30,3 +30,4 @@ examples.txt
 yarn-debug.log*
 .yarn-integrity
 coverage
+spec/example.txt

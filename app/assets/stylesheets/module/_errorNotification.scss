@@ -1,0 +1,15 @@
+@import "../base/font";
+@import "../base/vars";
+
+// comes from simple_form gem
+.error_notification {
+    @include monospaceFont;
+
+    background-color: $COLOR_SUCCESS_BG;
+    border: 1px solid;
+    border-radius: $BORDER_RADIUS_L;
+    color: $COLOR_ERROR_BG;
+    font-size: $FONT_SIZE_S;
+    padding: 15px $SPACING_1X;
+    margin-bottom: $SPACING_2X;
+}

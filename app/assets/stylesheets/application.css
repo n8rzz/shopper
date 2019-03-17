@@ -21,6 +21,7 @@
  *= require "landmark/_footer-nav"
  *= require "landmark/_site"
  *= require "module/_card"
+ *= require "module/_errorNotification"
  *= require "module/_formGroup"
  *= require "module/_hlist"
  *= require "module/_icon"

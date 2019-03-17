@@ -74,3 +74,8 @@ input[type=text]:focus {
     outline: none;
     padding: 3px;
 }
+
+.error {
+    color: $COLOR_ERROR_FG;
+    display: block;
+}
