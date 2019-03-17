@@ -67,3 +67,10 @@
     -webkit-transition: all 600ms cubic-bezier(0.075, 0.82, 0.165, 1);
     transition: all 600ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+
+@mixin notificationPanel {
+    border: 1px solid;
+    border-radius: $BORDER_RADIUS_L;
+    padding: 15px $SPACING_1X;
+    margin-bottom: $SPACING_2X;
+}

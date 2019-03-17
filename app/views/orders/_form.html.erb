@@ -4,7 +4,7 @@
 
     <div class="vr_1">
         <div class="form-group">
-            <%= f.input :status, collection: ['pending', 'active', 'cancelled', 'complete'] %>
+            <%= f.input :status, collection: ['pending', 'active'], include_blank: false %>
         </div>
         <div class="form-group">
             <%= f.association :location, include_blank: false %>

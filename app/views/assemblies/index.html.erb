@@ -32,24 +32,28 @@
                             <div class="listItem-hd">
                                 <h3 class="hdg">
                                     <%= item.name %>
-                                <h3>
-                                <div>
-                                    <form>
-                                        <button
-                                            type="submit"
-                                            class="js-addAssemblyItemToOrder"
-                                            data-assembly-id="<%= assembly.id %>"
-                                            data-assembly-item-id="<%= item.id %>"
-                                            data-department-id="<%= item.department.id %>"
-                                            data-csrf="<%= form_authenticity_token %>"
-                                        >
-                                            Add Item to order
-                                        </button>
-                                    </form>
-                                </div>
+                                </h3>
                             </div>
                             <div class="listItem-ft">
-                                <%= item.department.name %>
+                                <ul class="stereo">
+                                    <li>
+                                        <%= item.department.name %>
+                                    </li>
+                                    <li>
+                                        <form>
+                                            <button
+                                                type="submit"
+                                                class="js-addAssemblyItemToOrder"
+                                                data-assembly-id="<%= assembly.id %>"
+                                                data-assembly-item-id="<%= item.id %>"
+                                                data-department-id="<%= item.department.id %>"
+                                                data-csrf="<%= form_authenticity_token %>"
+                                            >
+                                                Add Item to order
+                                            </button>
+                                        </form>
+                                    </li>
+                                </ul>
                             </div>
                         </li>
                     <% end %>
