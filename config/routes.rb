@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   resources :orders
   resources :assemblies
   resources :items
+
+  root to: 'orders#index'
 end
