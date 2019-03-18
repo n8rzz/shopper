@@ -3,18 +3,14 @@ require 'rails_helper'
 RSpec.feature 'Add assembly to Order' do
   let!(:assembly) { create(:assembly, :with_item) }
 
-  scenario 'add assembly to order' do
+  scenario 'adds all items from assembly to an order' do
     visit assemblies_path
 
-    click_button 'Add to order'
+    within first('.listItem') do
+      puts current_scope["innerHTML"]
+      click_button 'Add to order'
+    end
 
     expect(page).to have_text "#{assembly.name} added to pending order"
   end
-
-  # xscenario 'add assembly_item to order', js: true do
-  #   visit assemblies_path
-
-  #   first('.js-accordionList-trigger').click
-  #   first('.listItem-child', visible: false).click_button('Add item to order')
-  # end
 end

@@ -4,7 +4,7 @@ FactoryBot.define do
 
     trait :with_item do
       after(:create) do |assembly|
-        assembly.items << create(:item)
+        assembly.assembly_items << create(:assembly_item)
       end
     end
   end

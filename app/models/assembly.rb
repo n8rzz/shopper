@@ -10,5 +10,5 @@ class Assembly < ApplicationRecord
   }}
 
   validates :name, presence: true, uniqueness: true
-  validates :assembly_items, :length => { :minimum => 1 }
+  # validates :assembly_items, :length => { :minimum => 1 }
 end
