@@ -22,7 +22,10 @@ end
   a = Assembly.create(name: Faker::Food.dish)
 
   rand(1..5).times do
-    a.assembly_items.new(item_id: Item.all.sample.id)
+    a.assembly_items.new(
+      qty: rand(1..42),
+      item_id: Item.all.sample.id
+    )
   end
 
   a.save

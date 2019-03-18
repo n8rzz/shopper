@@ -6,6 +6,7 @@ RSpec.describe AssemblyItem, type: :model do
   end
 
   describe 'data and associations' do
+    it { should have_db_column(:qty) }
     it { should belong_to(:assembly) }
     it { should belong_to(:item) }
   end
@@ -17,6 +18,7 @@ RSpec.describe AssemblyItem, type: :model do
   subject { @assembly_item }
 
   describe 'validations' do
+    it { should respond_to(:qty) }
     it { should be_valid }
   end
 end
