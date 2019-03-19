@@ -25,4 +25,14 @@ RSpec.describe Item, type: :model do
     it { should validate_uniqueness_of(:name) }
     it { should be_valid }
   end
+
+  # FIXME: this test fails with an `AcitveRecord::RecordValidation error`
+  describe 'by_name returns Items in ASC order' do
+    let(:orange) { create(:item, name: 'Orange') }
+    let(:apple) { create(:item, name: 'Apple') }
+
+    it 'returns Items sorted ASC' do
+      expect(Item.by_name).to eq [apple, orange]
+    end
+  end
 end

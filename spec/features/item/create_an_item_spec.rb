@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'Creates an Item' do
-  let!(:item) { create(:item) }
+  let(:department) { create(:department, name: 'Produce') }
+  let!(:item) { create(:item, department: department) }
 
   before do
     visit new_item_path
@@ -14,7 +15,7 @@ RSpec.feature 'Creates an Item' do
     expect(page).to have_button('Create Item')
   end
 
-  it 'creates a new item' do
+  it 'displays the correct message' do
     fill_in 'Name', with: '$texas'
     select 'Produce', from: 'Department'
 

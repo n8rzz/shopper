@@ -24,4 +24,13 @@ RSpec.describe Department, type: :model do
     it { should validate_uniqueness_of(:name) }
     it { should be_valid }
   end
+
+  describe 'by_name sorts in ASC' do
+    let(:deli) { create(:department, name: 'deli') }
+    let(:produce) { create(:department, name: 'produce') }
+
+    it 'returns records in correct order' do
+      expect(Department.by_name).to eq [deli, produce]
+    end
+  end
 end

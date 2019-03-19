@@ -3,6 +3,8 @@ class Location < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
+  scope :by_name, -> { order('name ASC') }
+
   def city_and_state
     "#{self.city}, #{self.state}"
   end

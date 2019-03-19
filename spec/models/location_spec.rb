@@ -33,4 +33,13 @@ RSpec.describe Location, type: :model do
       expect(valid_location.city_and_state).to eq("#{valid_location.city}, #{valid_location.state}")
     end
   end
+
+  describe 'by_name sorts in ASC' do
+    let(:cub) { create(:location, name: 'cub') }
+    let(:target) { create(:location, name: 'target') }
+
+    it 'returns records in correct order' do
+      expect(Location.by_name).to eq [cub, target]
+    end
+  end
 end
