@@ -7,8 +7,9 @@ class ItemsController < ApplicationController
     @items = Item.by_name
     @items_by_concern = nil
     @order_item = OrderItem.new
+
     if params[:order] == 'department'
-      @items_by_concern = @items.group_by(&:department)
+      @items_by_concern = @items.group_by_department_and_sort
     end
   end
 

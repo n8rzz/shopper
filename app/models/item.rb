@@ -10,11 +10,11 @@ class Item < ApplicationRecord
 
   scope :by_name, -> { order('name ASC') }
 
-  def group_by_department
-    self.group_by(&:department)
+  def self.group_by_department
+    all.group_by(&:department)
   end
 
-  def group_by_department_and_sort
-    self.group_by_department.sort_by { |k, v| k.name.to_s }
+  def self.group_by_department_and_sort
+    group_by_department.sort_by { |k, v| k.name.to_s }
   end
 end
