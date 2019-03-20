@@ -30,6 +30,7 @@ class Order < ApplicationRecord
     self.order_items.group_by(&:assembly).sort_by { |k, v| k.name.to_s }
   end
 
+  # TODO: shared method used in Item, should be abstracted
   def group_by_department
     self.order_items.group_by(&:department)
   end

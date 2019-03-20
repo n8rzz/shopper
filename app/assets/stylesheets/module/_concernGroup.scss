@@ -1,11 +1,11 @@
 @import "../base/font";
 @import "../base/vars";
 
-.orderConcernGroup + .orderConcernGroup {
+.concernGroup + .concernGroup {
     margin-top: $SPACING_3X;
 }
 
-.orderConcernGroup-hd {
+.concernGroup-hd {
     @include sansSerifFont;
 
     color: $COLOR_DARK;

@@ -1,32 +1,45 @@
-<ul class="stereo">
-    <li>
-        <h1 class="hdg hdg_1">Items</h1>
-    </li>
-    <li>
-        <%= link_to 'New Item', new_item_path %>
-    </li>
-</ul>
-
-<ul class="vlist">
-    <% @items.each do |item| %>
+<div class="vr_2">
+    <ul class="stereo">
         <li>
-            <div class="listItem">
-                <div class="listItem-hd">
-                    <h2 class="hdg hdg_2">
-                        <%= link_to item.name, edit_item_path(item) %>
-                    </h2>
-                    <div>
-                        <%= simple_form_for @order_item, url: order_items_create_item_path, method: :post do |form| %>
-                            <%= form.hidden_field :item_id, value: item.id %>
-                            <%= form.hidden_field :department_id, value: item.department.id %>
-                            <%= form.submit "Add to order" %>
-                        <% end %>
-                    </div>
-                </div>
-                <div class="listItem-ft">
-                    <%= item.department.name %>
-                </div>
-            </div>
+            <h1 class="hdg hdg_1">Items</h1>
         </li>
+        <li>
+            <li>
+                <%= link_to 'New Item', new_item_path %>
+            </li>
+        </li>
+    </ul>
+</div>
+<div class="vr_2">
+    <!-- TODO: abstract this to a css module (shared with order#show) -->
+    <ul class="hlist hlist-divided mix-hlist_spacious mix-hlist_centered">
+        <li>
+            <%= link_to "Alpha", items_path %>
+        </li>
+        <li>
+            <%= link_to "Department", items_path(order: 'department') %>
+        </li>
+    </ul>
+</div>
+
+<% if @items_by_concern == nil %>
+    <ul class="vlist">
+        <% @items.each do |item| %>
+            <%= render partial: "list_item", locals: { item: item } %>
+        <% end %>
+    </ul>
+<% else %>
+    <% @items_by_concern.each do |department, department_items| %>
+        <div class="concernGroup">
+            <div class="concernGroup-hd">
+                <h2><%= department.name %></h2>
+            </div>
+
+            <ul class="vlist">
+                <% department_items.each do |item| %>
+                    <%= render partial: "list_item", locals: { item: item } %>
+                <% end %>
+            </ul>
+        </div>
     <% end %>
-</ul>
+<% end %>

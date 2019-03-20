@@ -9,4 +9,12 @@ class Item < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   scope :by_name, -> { order('name ASC') }
+
+  def self.group_by_department
+    all.group_by(&:department)
+  end
+
+  def self.group_by_department_and_sort
+    group_by_department.sort_by { |k, v| k.name.to_s }
+  end
 end

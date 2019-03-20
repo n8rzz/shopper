@@ -26,7 +26,6 @@ RSpec.describe Item, type: :model do
     it { should be_valid }
   end
 
-  # FIXME: this test fails with an `AcitveRecord::RecordValidation error`
   describe 'by_name returns Items in ASC order' do
     let(:orange) { create(:item, name: 'Orange') }
     let(:apple) { create(:item, name: 'Apple') }
@@ -35,4 +34,12 @@ RSpec.describe Item, type: :model do
       expect(Item.by_name).to eq [apple, orange]
     end
   end
+
+  # FIXME: fill this test in
+  # describe '.group_by_department' do
+  #   let(:orange) { create(:item, name: 'Orange') }
+  #   let(:apple) { create(:item, name: 'Apple') }
+
+  #   it { expect(Item.group_by_department).to_not eq nil }
+  # end
 end
