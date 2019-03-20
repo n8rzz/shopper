@@ -3,12 +3,13 @@ require 'rails_helper'
 RSpec.feature 'Update Department' do
   let!(:department) { create(:department) }
 
-  scenario 'visit department#edit' do
+  scenario 'has the correct links' do
     visit '/departments'
     click_link department.name
 
     expect(page).to have_text 'Editing Department'
     expect(page).to have_link 'Back', href: departments_path
+    expect(page).to have_link 'New Department', href: new_department_path
     expect(page).to have_button 'Update Department'
   end
 
