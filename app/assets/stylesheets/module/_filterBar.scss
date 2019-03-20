@@ -1,0 +1,15 @@
+@import "../base/mixins";
+@import "../base/vars";
+
+// hlist hlist-divided mix-hlist_spacious mix-hlist_centered
+.filterBar {
+    @include hlist;
+
+    justify-content: center;
+
+    > * + * {
+        border-left: 1px solid;
+        margin-left: $SPACING_1X;
+        padding-left: $SPACING_1X;
+    }
+}

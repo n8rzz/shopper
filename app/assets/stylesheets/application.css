@@ -23,6 +23,7 @@
  *= require "module/_card"
  *= require "module/_concernGroup"
  *= require "module/_errorNotification"
+ *= require "module/_filterBar"
  *= require "module/_formGroup"
  *= require "module/_hlist"
  *= require "module/_icon"
