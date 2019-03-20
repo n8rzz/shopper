@@ -4,12 +4,23 @@
 // hlist hlist-divided mix-hlist_spacious mix-hlist_centered
 .filterBar {
     @include hlist;
+    @include basePanel;
 
     justify-content: center;
+    margin-bottom: $SPACING_2X;
+    margin-top: $SPACING_2X;
+    padding-bottom: $SPACING_1X;
+    padding-top: $SPACING_1X;
 
     > * + * {
         border-left: 1px solid;
         margin-left: $SPACING_1X;
         padding-left: $SPACING_1X;
     }
+}
+
+.filterBar-link {
+    // FIXME: remove important
+    color: $COLOR_PRIMARY !important;
+    font-weight: 600;
 }

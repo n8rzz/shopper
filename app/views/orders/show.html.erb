@@ -18,35 +18,30 @@
         </li>
     </ul>
 </div>
-<div class="vr_3">
-    <div class="orderMeta">
-        <div>
-            Created At: <%= @order.created_at %>
-        </div>
-        <div>
-            Status: <%= @order.status %>
-        </div>
-        <% if @order.location %>
-            <div>
-                Location: <%= @order.location.name %>
-            </div>
-        <% end %>
+<div class="orderMeta">
+    <div>
+        Created At: <%= @order.created_at %>
     </div>
+    <div>
+        Status: <%= @order.status %>
+    </div>
+    <% if @order.location %>
+        <div>
+            Location: <%= @order.location.name %>
+        </div>
+    <% end %>
 </div>
-<div class="vr_3">
-    <!-- TODO: abstract this too a css module -->
-    <ul class="filterBar">
-        <li>
-            <%= link_to "Item", order_path %>
-        </li>
-        <li>
-            <%= link_to "Department", order_path(order: 'department') %>
-        </li>
-        <li>
-            <%= link_to "Meal", order_path(order: 'assembly') %>
-        </li>
-    </ul>
-</div>
+<ul class="filterBar">
+    <li>
+        <%= link_to "Item", order_path, class: 'filterBar-link' %>
+    </li>
+    <li>
+        <%= link_to "Department", order_path(order: 'department'), class: 'filterBar-link' %>
+    </li>
+    <li>
+        <%= link_to "Meal", order_path(order: 'assembly'), class: 'filterBar-link' %>
+    </li>
+</ul>
 <div class="js-orderItem ">
     <% if @order_items_by_concern == nil %>
         <ul class="vlist">
