@@ -1,11 +1,8 @@
+@import "../base/mixins";
 @import "../base/vars";
 
 .hlist {
-    display: flex;
-}
-
-.hlist > * + * {
-    margin-left: $SPACING_HALFX;
+    @include hlist;
 }
 
 .hlist-divided > * + * {

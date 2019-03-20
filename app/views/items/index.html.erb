@@ -1,27 +1,21 @@
-<div class="vr_2">
-    <ul class="stereo">
+<ul class="stereo">
+    <li>
+        <h1 class="hdg hdg_1">Items</h1>
+    </li>
+    <li>
         <li>
-            <h1 class="hdg hdg_1">Items</h1>
+            <%= link_to 'New Item', new_item_path %>
         </li>
-        <li>
-            <li>
-                <%= link_to 'New Item', new_item_path %>
-            </li>
-        </li>
-    </ul>
-</div>
-<div class="vr_2">
-    <!-- TODO: abstract this to a css module (shared with order#show) -->
-    <ul class="hlist hlist-divided mix-hlist_spacious mix-hlist_centered">
-        <li>
-            <%= link_to "Alpha", items_path %>
-        </li>
-        <li>
-            <%= link_to "Department", items_path(order: 'department') %>
-        </li>
-    </ul>
-</div>
-
+    </li>
+</ul>
+<ul class="filterBar">
+    <li>
+        <%= link_to "Alpha", items_path, class: 'filterBar-link' %>
+    </li>
+    <li>
+        <%= link_to "Department", items_path(order: 'department'), class: 'filterBar-link' %>
+    </li>
+</ul>
 <% if @items_by_concern == nil %>
     <ul class="vlist">
         <% @items.each do |item| %>

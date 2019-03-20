@@ -74,3 +74,11 @@
     padding: 15px $SPACING_1X;
     margin-bottom: $SPACING_2X;
 }
+
+@mixin hlist {
+    display: flex;
+
+    > * + * {
+        margin-left: $SPACING_HALFX;
+    }
+}
