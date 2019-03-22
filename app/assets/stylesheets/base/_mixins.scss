@@ -1,8 +1,11 @@
 @import "../base/vars";
 
 @mixin boxShadow-subtle {
-    // box-shadow: 0px 1px 23px 0px rgba(34, 34, 34, 0.07);
-    box-shadow: 1px 2px 10px 0px rgba(34, 34, 34, 0.04);
+    box-shadow: 1px 2px 10px 0 rgba(34, 34, 34, 0.04);
+}
+
+@mixin boxShadow-strong {
+    box-shadow: 0 11px 33px 7px rgba(34, 34, 34, 0.23)
 }
 
 @mixin navContainer {

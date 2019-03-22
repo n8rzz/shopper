@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
+    @item = Item.new
     @items = Item.by_name
     @items_by_concern = nil
     @order_item = OrderItem.new

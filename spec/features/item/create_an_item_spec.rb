@@ -1,27 +1,30 @@
 require 'rails_helper'
 
-RSpec.feature 'Creates an Item' do
+RSpec.feature 'Create an Item', js: true do
   let(:department) { create(:department, name: 'Produce') }
   let!(:item) { create(:item, department: department) }
 
-  before do
-    visit new_item_path
+  before :each do
+    visit items_path
+    click_button 'New Item'
   end
 
-  it 'displays the correct links' do
-    expect(page).to have_text('New Item')
-    expect(page).to have_link('Back', href: items_path)
-    expect(page).to have_no_button('Destroy')
-    expect(page).to have_button('Create Item')
+  context 'when user clicks `New Item`' do
+    it { expect(page).to have_no_css('mix-flyout_isHidden') }
+    it { expect(page).to have_no_link('Destroy') }
+    it { expect(page).to have_button('Create Item') }
   end
 
-  it 'displays the correct message' do
-    fill_in 'Name', with: '$texas'
-    select 'Produce', from: 'Department'
+  context 'when a user fills in Item form' do
+    before :each do
+      fill_in 'Name', with: '$texas'
+      select 'Produce', from: 'Department'
 
-    click_button 'Create Item'
+      click_button 'Create Item'
+    end
 
-    expect(page).to have_text('Item was created successfully')
-    expect(page).to have_current_path(items_path)
+    it { expect(page).to have_text('Item was created successfully') }
+    it { expect(page).to have_current_path(items_path) }
+    it { expect(page).to have_css('.mix-flyout_isHidden') }
   end
 end

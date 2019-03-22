@@ -1,9 +1,20 @@
+<!-- TODO: split out to shared partial -->
+<div class="flyout mix-flyout_isHidden js-flyout">
+    <div class="flyout-bd">
+        <%= render 'form', location: @location %>
+    </div>
+    <div class="flyout-ft">
+        <div class="btn btn-toggle js-flyout-trigger">
+            <%= image_tag 'arrows_up_double', size: '32x32' %>
+        </div>
+    </div>
+</div>
 <ul class="stereo">
     <li>
         <h1 class="hdg hdg_1">Locations</h1>
     </li>
     <li>
-        <%= link_to 'New Location', new_location_path %>
+        <button class="js-flyout-trigger">New Location</button>
     </li>
 </ul>
 <ul class="vlist">

@@ -1,7 +1,5 @@
 <% if order_item.item_id != nil %>
-    <li
-        class="<%= order_item.list_item_classnames %>"
-    >
+    <li class="<%= order_item.list_item_classnames %>">
         <div class="orderItem-action">
             <form>
                 <%= check_box_tag order_item.id, true, order_item.picked, class: "input-checkbox u-isVisuallyHidden js-orderItem-action-value"%>

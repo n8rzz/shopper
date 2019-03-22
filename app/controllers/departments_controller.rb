@@ -4,6 +4,7 @@ class DepartmentsController < ApplicationController
   # GET /departments
   # GET /departments.json
   def index
+    @department = Department.new
     @departments = Department.by_name
   end
 
@@ -28,7 +29,7 @@ class DepartmentsController < ApplicationController
 
     respond_to do |format|
       if @department.save
-        format.html { redirect_to departments_path, notice: 'Department was successfully created.' }
+        format.html { redirect_to departments_path, notice: 'Department was created successfully' }
         format.json { render :show, status: :created, location: departments_path }
       else
         format.html { render :new }

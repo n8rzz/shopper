@@ -1,0 +1,20 @@
+@import "../base/mixins";
+@import "../base/vars";
+
+.btn {
+    @include animationCubicBezier;
+
+    cursor: pointer;
+}
+
+.btn-toggle {
+    background-color: $COLOR_BG_SECONDARY;
+    border-radius: $BORDER_RADIUS_M;
+    padding: 5px 10px;
+
+    &:hover {
+        background-color: $COLOR_PRIMARY;
+    }
+}
+
+
