@@ -16,7 +16,7 @@
     </div>
 
     <ul class="hlist">
-        <% if !current_page?(new_location_path) %>
+        <% if !current_page?(locations_path) %>
             <li>
                 <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %>
             </li>
