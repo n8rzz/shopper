@@ -24,13 +24,19 @@
 }
 
 .orderItem-hd {
-    @include flexBetween;
+    align-items: flex-start;
+    display: flex;
+}
+
+.orderItem-hd-content {
+    flex-grow: 1;
 }
 
 .orderItem-hd-supplement {
     @include monospaceFont;
 
     color: $COLOR_PRIMARY;
+    margin-right: $SPACING_2X;
 
     h3 {
         font-size: $FONT_SIZE_XS;

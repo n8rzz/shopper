@@ -10,6 +10,12 @@
     padding: $SPACING_1X;
 }
 
+.listItem-content {
+    flex-grow: 1;
+}
+
+// .listItem-action {}
+
 .listItem-hd {
     @include flexBetween;
 
@@ -58,4 +64,9 @@
     height: 16px;
     top: 32px;
     width: 16px;
+}
+
+.mix-listItem_flex {
+    align-items: center;
+    display: flex;
 }

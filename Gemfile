@@ -19,6 +19,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails'
   gem 'faker', '>= 1.9.3'
+  gem 'launchy'
   gem 'minitest-reporters'
   gem 'rspec-rails', '~>3.5'
   gem 'rubocop', '>= 0.65.0'

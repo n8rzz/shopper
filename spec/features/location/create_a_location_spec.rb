@@ -24,6 +24,6 @@ RSpec.feature 'Create an Location', js: true do
 
     it { expect(page).to have_text('Location was created successfully') }
     it { expect(page).to have_current_path(locations_path) }
-    it { expect(page).to have_css('.mix-flyout_isHidden') }
+    it { expect(page).to have_no_css('.mix-flyout_isHidden') }
   end
 end

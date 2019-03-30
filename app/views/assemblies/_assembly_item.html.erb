@@ -1,0 +1,52 @@
+<li>
+    <div class="listItem js-accordionList-trigger" data-accordion-item-id="<%= assembly_index %>">
+        <div class="listItem-hd">
+            <h2 class="hdg hdg_2">
+                <%= link_to assembly.name, edit_assembly_path(assembly) %>
+            </h2>
+            <div>
+                <%= simple_form_for @order_item, url: order_items_create_assembly_path, method: :post do |form| %>
+                    <%= form.hidden_field :assembly_id, value: assembly.id %>
+                    <%= form.submit "Add to order" %>
+                <% end %>
+            </div>
+        </div>
+        <div class="listItem-ft">
+            Items: <%= assembly.items.count %>
+        </div>
+    </div>
+    <% if assembly.items.length > 0 %>
+        <ul class="vlist vlist-short js-accordionItemList-<%= assembly_index %> u-isVisuallyHidden">
+            <% assembly.items.each_with_index do |item, item_index| %>
+                <li class="listItem listItem-child">
+                    <div class="listItem-hd">
+                        <h3 class="hdg">
+                            <%= item.name %>
+                        </h3>
+                    </div>
+                    <div class="listItem-ft">
+                        <ul class="stereo">
+                            <li>
+                                <%= item.department.name %>
+                            </li>
+                            <li>
+                                <form>
+                                    <button
+                                        type="submit"
+                                        class="js-addAssemblyItemToOrder"
+                                        data-assembly-id="<%= assembly.id %>"
+                                        data-assembly-item-id="<%= item.id %>"
+                                        data-department-id="<%= item.department.id %>"
+                                        data-csrf="<%= form_authenticity_token %>"
+                                    >
+                                        Add Item to order
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            <% end %>
+        </ul>
+    <% end %>
+</li>

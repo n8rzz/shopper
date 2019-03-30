@@ -2,6 +2,55 @@
 @import "../base/mixins";
 @import "../base/vars";
 
+label {
+    @include sansSerifFont;
+
+    display: inline-block;
+    font-size: $FONT_SIZE_L;
+    margin-right: 10px;
+    min-width: 80px;
+}
+
+.mix-label_subdued {
+    @include monospaceFont;
+
+    color: $COLOR_SECONDARY_ACCENT;
+    font-size: $FONT_SIZE_XS;
+    min-width: auto;
+    vertical-align: text-top;
+}
+
+input {
+    border-radius: $BORDER_RADIUS_M;
+    font-size: $FONT_SIZE_M;
+}
+
+input:active,
+input:focus {
+    border: 3px solid $COLOR_PRIMARY;
+    outline: none;
+    padding: 3px;
+}
+
+input[type=text] {
+    @include boxShadow-subtle;
+
+    border: 1px solid #dedede;
+    padding: $SPACING_HALFX;
+    width: 200px;
+}
+
+input[type=number] {
+    border: 1px solid #dedede;
+    border-radius: $BORDER_RADIUS_M;
+    padding: 3px 0 3px $SPACING_1X;
+    width: 25px;
+}
+
+input[type=submit] {
+    font-size: $FONT_SIZE_XS;
+}
+
 .input-checkbox + .input-label_checkbox {
     cursor: pointer;
     display: block;
@@ -47,32 +96,6 @@
     border-color: #cccccc;
     color: #aaaaaa;
     transform: scale(1);
-}
-
-label {
-    @include sansSerifFont;
-
-    display: inline-block;
-    font-size: $FONT_SIZE_L;
-    margin-right: 10px;
-    min-width: 80px;
-}
-
-input[type=text] {
-    @include boxShadow-subtle;
-
-    border-radius: 4px;
-    border: 1px solid #dedede;
-    font-size: $FONT_SIZE_M;
-    padding: $SPACING_HALFX;
-    width: 200px;
-}
-
-input[type=text]:active,
-input[type=text]:focus {
-    border: 3px solid #60a7d1;
-    outline: none;
-    padding: 3px;
 }
 
 .error {

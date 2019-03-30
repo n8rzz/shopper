@@ -1,19 +1,30 @@
 <li>
-    <div class="listItem">
-        <div class="listItem-hd">
-            <h2 class="hdg hdg_2">
-                <%= link_to item.name, edit_item_path(item) %>
-            </h2>
-            <div>
-                <%= simple_form_for @order_item, url: order_items_create_item_path, method: :post do |form| %>
-                    <%= form.hidden_field :item_id, value: item.id %>
-                    <%= form.hidden_field :department_id, value: item.department.id %>
-                    <%= form.submit "Add to order" %>
-                <% end %>
+    <div class="listItem mix-listItem_flex">
+        <div class="listItem-content">
+            <div class="listItem-hd">
+                <h2 class="hdg hdg_2">
+                    <%= link_to item.name, edit_item_path(item) %>
+                </h2>
+            </div>
+            <div class="listItem-ft">
+                <%= item.department.name %>
             </div>
         </div>
-        <div class="listItem-ft">
-            <%= item.department.name %>
+        <div class="listItem-action">
+            <%= simple_form_for @order_item, url: order_items_create_item_path, method: :post do |form| %>
+                <ul class="hlist mix-hlist_spacious">
+                    <li>
+                        <%= form.input :qty, label_html: { class: 'mix-label_subdued' } %>
+                    </li>
+                    <li>
+                        <div>
+                            <%= form.hidden_field :item_id, value: item.id %>
+                            <%= form.hidden_field :department_id, value: item.department.id %>
+                            <%= form.submit "Add to order" %>
+                        </div>
+                    </li>
+                </ul>
+            <% end %>
         </div>
     </div>
 </li>

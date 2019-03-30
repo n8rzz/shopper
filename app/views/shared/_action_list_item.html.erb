@@ -15,20 +15,28 @@
         </div>
         <div class="orderItem-content">
             <div class="orderItem-hd">
-                <ul class="stereo">
-                    <li>
-                        <h2 class="hdg hdg_2">
-                            <%= order_item.item.name %>
-                        </h2>
-                    </li>
-                    <% if order_item.qty > 1 %>
-                        <li class="orderItem-hd-supplement">
-                            <h3>
-                                <span class="txt-light">Qty:</span> <%= order_item.qty %>
-                            </h3>
-                        </li>
-                    <% end %>
-                </ul>
+                <div class="orderItem-hd-content">
+                    <h2 class="hdg hdg_2">
+                        <%= order_item.item.name %>
+                    </h2>
+                </div>
+                <% if order_item.qty > 1 %>
+                    <div class="orderItem-hd-supplement">
+                        <h3>
+                            <span class="txt-light">Qty:</span> <%= order_item.qty %>
+                        </h3>
+                    </div>
+                <% end %>
+                <div>
+                    <button
+                        type="submit"
+                        class="icon-btn js-orderItem-remove"
+                        data-order-item-id="<%= order_item.id %>"
+                        data-csrf="<%= form_authenticity_token %>"
+                    >
+                        <span class="icon icon-trashcan"></span>
+                    </button>
+                </div>
             </div>
             <% if order_item.assembly_id != nil %>
                 <div class="orderItem-bd">
@@ -36,21 +44,7 @@
                 </div>
             <% end %>
             <div class="orderItem-ft">
-                <ul class="stereo">
-                    <li>
-                        <%= order_item.department.name %>
-                    </li>
-                    <li>
-                        <button
-                            type="submit"
-                            class="icon-btn mix-icon-btn_verticalOffset js-orderItem-remove"
-                            data-order-item-id="<%= order_item.id %>"
-                            data-csrf="<%= form_authenticity_token %>"
-                        >
-                            <span class="icon icon-trashcan"></span>
-                        </button>
-                    </li>
-                </ul>
+                <%= order_item.department.name %>
             </div>
         </div>
     </li>
