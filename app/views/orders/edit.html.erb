@@ -5,10 +5,13 @@
     <div>
         <ul class="hlist hlist-divided">
             <li>
-                <%= link_to 'Back', locations_path %>
+                <%= link_to 'Back', orders_path %>
             </li>
             <li>
                 <%= link_to 'Show', @order %>
+            </li>
+            <li>
+                <%= link_to 'Destroy', @order, method: :delete, data: { confirm: 'Are you sure?' } %>
             </li>
         </ul>
     </div>

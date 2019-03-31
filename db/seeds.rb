@@ -31,7 +31,7 @@ end
   a.save
 end
 
-order_statuses = ['active', 'canceled', 'complete']
+order_statuses = ['active', 'cancelled', 'complete']
 order_statuses.each do |order_status|
   o = Order.create(status: order_status, location_id: Location.all.sample.id)
 

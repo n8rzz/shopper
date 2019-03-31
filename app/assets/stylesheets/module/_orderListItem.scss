@@ -2,7 +2,7 @@
 @import "../base/vars";
 
 .orderListItem {
-    background: image-url('calendar.svg') 5% 5% no-repeat $COLOR_BG_SECONDARY;
+    background: image-url('calendar.svg') 5% 10% no-repeat $COLOR_BG_SECONDARY;
     display: flex;
     justify-content: flex-end;
     padding-right: $SPACING_1X;
@@ -39,3 +39,4 @@
     color: $COLOR_SECONDARY_ACCENT;
     font-size: $FONT_SIZE_M;
 }
+
