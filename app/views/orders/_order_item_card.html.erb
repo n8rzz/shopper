@@ -1,0 +1,24 @@
+<% if orders.count > 0 %>
+    <h2 class="hdg mix-hdg_large">
+        <%= title %>
+    </h2>
+    <ul class="card">
+        <% orders.each do |order| %>
+            <li class="orderListItem">
+                <%= link_to order, class: 'card-link' do %>
+                    <div class="orderListItem-hd">
+                        <%= order.zero_padded_day %>
+                    </div>
+                    <div class="orderListItem-bd">
+                        <%= order.month_name %>
+                    </div>
+                    <% if order.location != nil %>
+                        <div class="orderListItem-ft">
+                            <%= order.location.name %>
+                        </div>
+                    <% end %>
+                <% end %>
+            </li>
+        <% end %>
+    </ul>
+<% end %>

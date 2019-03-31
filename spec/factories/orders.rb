@@ -8,6 +8,14 @@ FactoryBot.define do
       status { 'pending' }
     end
 
+    trait :cancelled do
+      status { 'cancelled' }
+    end
+
+    trait :complete do
+      status { 'complete' }
+    end
+
     trait :with_order_items do
       after(:create) do |order|
         order.order_items << create(:order_item)

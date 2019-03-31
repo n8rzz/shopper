@@ -1,0 +1,21 @@
+<div class="vr_1">
+    <h2 class="hdg mix-hdg_large">
+        <%= title %>
+    </h2>
+</div>
+<ul class="vlist">
+    <% orders.finished.each do |finished_order| %>
+        <li>
+            <%= link_to finished_order do %>
+                <% if finished_order.location != nil %>
+                    <div>
+                        <%= finished_order.location.name %>
+                    </div>
+                <% end %>
+            <% end %>
+            <div>
+                <%= finished_order.status %> - <%= finished_order.order_date %>
+            </div>
+        </li>
+    <% end %>
+</ul>

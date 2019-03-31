@@ -6,31 +6,12 @@
         <%= link_to 'New Order', new_order_path, class: "link" %>
     </li>
 </ul>
-
-<% @orders_by_status.each do |status, orders| %>
-    <div class="vr_3">
-        <h2 class="hdg mix-hdg_large">
-            <%= status.titleize %>
-        </h2>
-
-        <ul class="card">
-            <% orders.each do |order| %>
-                <li class="orderListItem">
-                    <%= link_to order, class: 'card-link' do %>
-                        <div class="orderListItem-hd">
-                            <%= order.zero_padded_day %>
-                        </div>
-                        <div class="orderListItem-bd">
-                            <%= order.month_name %>
-                        </div>
-                        <% if order.location != nil %>
-                            <div class="orderListItem-ft">
-                                <%= order.location.name %>
-                            </div>
-                        <% end %>
-                    <% end %>
-                </li>
-            <% end %>
-        </ul>
-    </div>
-<% end %>
+<div class="vr_3">
+    <%= render partial: "order_item_card", locals: { orders: @orders.pending, title: 'Pending' } %>
+</div>
+<div class="vr_3">
+    <%= render partial: "order_item_card", locals: { orders: @orders.active, title: 'Active' } %>
+</div>
+<div class="vr_3">
+    <%= render partial: "finished_order", locals: { orders: @orders.finished, title: 'Finished' } %>
+</div>

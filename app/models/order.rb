@@ -11,6 +11,10 @@ class Order < ApplicationRecord
     message: "%{value} is not a valid status"
   }, presence: true
 
+  scope :active, -> { where(status: 'active') }
+  scope :pending, -> { where(status: 'pending') }
+  scope :finished, -> { where.not(status: ['active', 'pending']) }
+
   def month_name
     # move to future shopping_date column
     self.created_at.strftime("%B")
@@ -19,6 +23,10 @@ class Order < ApplicationRecord
   def zero_padded_day
     # move to future shopping_date column
     self.created_at.strftime("%d")
+  end
+
+  def order_date
+    self.created_at.strftime("%b %m, %Y")
   end
 
   def group_by_assembly

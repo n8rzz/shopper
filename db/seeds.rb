@@ -32,8 +32,8 @@ end
 end
 
 order_statuses = ['active', 'cancelled', 'complete']
-order_statuses.each do |order_status|
-  o = Order.create(status: order_status, location_id: Location.all.sample.id)
+10.times.each do |order_status|
+  o = Order.create(status: order_statuses.sample, location_id: Location.all.sample.id)
 
   rand(1..3).times do
     item = Item.all.sample
