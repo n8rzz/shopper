@@ -48,7 +48,17 @@ input[type=number] {
 }
 
 input[type=submit] {
-    font-size: $FONT_SIZE_XS;
+    cursor: pointer;
+    font-size: $FONT_SIZE_M;
+    padding: $SPACING_HALFX;
+
+    &:active {
+        padding: 3px !important;
+    }
+
+    &:hover {
+        background-color: $COLOR_BG_PRIMARY;
+    }
 }
 
 .input-checkbox + .input-label_checkbox {
