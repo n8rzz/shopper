@@ -26,7 +26,7 @@ class Order < ApplicationRecord
   end
 
   def group_by_assembly_and_sort
-    # FIXME: currently fails due to `nil` value keys from `group_by`c
+    # FIXME: currently fails due to `nil` value keys from `group_by`
     self.order_items.group_by(&:assembly).sort_by { |k, v| k.name.to_s }
   end
 
@@ -37,17 +37,5 @@ class Order < ApplicationRecord
 
   def group_by_department_and_sort
     self.group_by_department.sort_by { |k, v| k.name.to_s }
-  end
-
-  def items_not_in_assemblies
-    self.order_items.map { |order_item|
-      return if order_item.assembly_id == nil
-    }
-  end
-
-  def items_in_assemblies
-    self.order_items.map { |order_item|
-      return if order_item.assembly_id != nil && order_item.item_id != nil
-    }
   end
 end
