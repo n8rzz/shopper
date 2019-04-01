@@ -10,23 +10,22 @@ class Order < ApplicationRecord
     in: %w(pending active cancelled complete),
     message: "%{value} is not a valid status"
   }, presence: true
+  validates :shopping_date, presence: true
 
   scope :active, -> { where(status: 'active') }
   scope :pending, -> { where(status: 'pending') }
   scope :finished, -> { where.not(status: ['active', 'pending']) }
 
   def month_name
-    # move to future shopping_date column
-    self.created_at.strftime("%B")
+    self.shopping_date.strftime("%B")
   end
 
   def zero_padded_day
-    # move to future shopping_date column
-    self.created_at.strftime("%d")
+    self.shopping_date.strftime("%d")
   end
 
   def order_date
-    self.created_at.strftime("%b %m, %Y")
+    self.shopping_date.strftime("%b %m, %Y")
   end
 
   def group_by_assembly

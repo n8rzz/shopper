@@ -15,6 +15,7 @@ RSpec.describe Order, type: :model do
     it { should have_many(:order_items) }
     it { should have_many(:assemblies) }
     it { should have_many(:departments) }
+    it { should have_db_column(:shopping_date) }
   end
 
   before do
@@ -25,5 +26,6 @@ RSpec.describe Order, type: :model do
 
   describe 'validations' do
     it { should be_valid }
+    it { should validate_presence_of(:shopping_date) }
   end
 end

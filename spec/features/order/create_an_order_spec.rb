@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Create an order' do
   let!(:order) { create(:order, :pending) }
 
+  # TODO: this should live somewhere else
   scenario 'visits new_order_path' do
     visit new_order_path
 
@@ -15,6 +16,7 @@ RSpec.feature 'Create an order' do
     visit new_order_path
 
     select 'active', from: 'Status'
+    fill_in 'date', with: Time.now
     click_button 'Create Order'
 
     expect(page).to have_text 'Order was created successfully'

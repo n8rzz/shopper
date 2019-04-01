@@ -40,6 +40,18 @@ input[type=text] {
     width: 200px;
 }
 
+input[type=date] {
+    @include boxShadow-subtle;
+
+    border: 1px solid #dedede;
+    padding: $SPACING_HALFX;
+
+    &::-webkit-clear-button,
+    &::-webkit-inner-spin-button {
+        display: none;
+    }
+}
+
 input[type=number] {
     border: 1px solid #dedede;
     border-radius: $BORDER_RADIUS_M;
