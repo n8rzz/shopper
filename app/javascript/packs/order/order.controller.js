@@ -9,7 +9,7 @@ const CLASSNAMES = {
     REMOVE_ITEM: 'js-orderItem-remove',
 };
 
-export class SingleOrderController {
+export class OrderController {
     constructor() {
         const $element = document.getElementsByClassName(CLASSNAMES.ROOT_ELEMENT);
 
@@ -155,5 +155,5 @@ export class SingleOrderController {
 }
 
 document.addEventListener('turbolinks:load', () => {
-    const singleOrderController = new SingleOrderController();
+    const singleOrderController = new OrderController();
 });

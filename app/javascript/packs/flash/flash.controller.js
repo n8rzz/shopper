@@ -17,6 +17,15 @@ export default class FlashController {
             ._enable();
     }
 
+    showNoticeMessage(msg) {
+        this.showNoticeMessageWithTimeout(msg);
+    }
+
+    showNoticeMessageWithTimeout(msg, delay = DEAFULT_REMOVAL_DELAY) {
+        this._view.showWithMessage(msg);
+        this._createRemovalTimer(delay);
+    }
+
     _init() {
         return this;
     }
@@ -39,16 +48,6 @@ export default class FlashController {
         }
 
         return this;
-    }
-
-    showNoticeMessage(msg) {
-        this._view.showWithMessage(msg);
-        this._createRemovalTimer(DEAFULT_REMOVAL_DELAY);
-    }
-
-    showNoticeMessageWithTimeout(msg, delay = DEAFULT_REMOVAL_DELAY) {
-        this._view.showWithMessage(msg);
-        this._createRemovalTimer(DEAFULT_REMOVAL_DELAY);
     }
 
     _createRemovalTimer(delay = DEAFULT_REMOVAL_DELAY) {

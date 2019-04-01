@@ -1,4 +1,4 @@
-<li>
+<li class="js-item">
     <div class="listItem mix-listItem_flex">
         <div class="listItem-content">
             <div class="listItem-hd">
@@ -11,20 +11,25 @@
             </div>
         </div>
         <div class="listItem-action">
-            <%= simple_form_for @order_item, url: order_items_create_item_path, method: :post do |form| %>
+            <form class="js-item-createOrderItemForm">
                 <ul class="hlist mix-hlist_spacious">
                     <li>
-                        <%= form.input :qty, label_html: { class: 'mix-label_subdued' } %>
+                        <label class="mix-label_subdued" for="item-<%= item.id %>-qty">Qty</label>
+                        <input type="number" id="item-<%= item.id %>-qty" name="item-<%= item.id %>-qty" min="0" value="1" />
                     </li>
                     <li>
-                        <div>
-                            <%= form.hidden_field :item_id, value: item.id %>
-                            <%= form.hidden_field :department_id, value: item.department.id %>
-                            <%= form.submit "Add to order" %>
-                        </div>
+                        <input
+                            type="submit"
+                            value="Add to order"
+                            class="js-item-action"
+                            data-item-id="<%= item.id %>"
+                            data-item-name="<%= item.name %>"
+                            data-department-id="<%= item.department.id %>"
+                            data-csrf="<%= form_authenticity_token %>"
+                        />
                     </li>
                 </ul>
-            <% end %>
+            </form>
         </div>
     </div>
 </li>

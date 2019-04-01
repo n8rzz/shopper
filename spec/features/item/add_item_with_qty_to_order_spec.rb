@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Add item with qty to an order' do
+RSpec.feature 'Add item with qty to an order', js: true do
   let!(:order) { create(:order, :pending) }
   let!(:item) { create(:item) }
 
