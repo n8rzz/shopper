@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.1'
 
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'faker', '>= 1.9.3'
 gem 'jbuilder', git: 'https://github.com/rails/jbuilder', branch: 'master'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
@@ -18,7 +19,6 @@ group :development, :test do
   gem "binding_of_caller"
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails'
-  gem 'faker', '>= 1.9.3'
   gem 'launchy'
   gem 'minitest-reporters'
   gem 'rspec-rails', '~>3.5'
