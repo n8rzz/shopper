@@ -1,20 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe 'AssemblyItem', :type => :request do
-  let(:item) { create(:item) }
-
   context 'creating an assembly without item_ids' do
     before do
       post '/assemblies', :params => { :assembly => {:name => 'Threeve'} }
     end
 
-    it 're-renders the edit template' do
-      expect(response).to redirect_to(assigns(:assembly))
-    end
+    it { expect(response).to redirect_to(assemblies_path) }
 
-    it 'renders the :show template' do
+    it 'renders the :index template' do
       follow_redirect!
-      expect(response).to render_template(:show)
+      expect(response).to render_template(:index)
     end
 
     it 'includes a successful creation message' do

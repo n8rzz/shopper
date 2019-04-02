@@ -8,11 +8,6 @@ class AssembliesController < ApplicationController
     @order_item = OrderItem.new
   end
 
-  # GET /assemblies/1
-  # GET /assemblies/1.json
-  def show
-  end
-
   # GET /assemblies/new
   def new
     @assembly = Assembly.new
@@ -29,8 +24,8 @@ class AssembliesController < ApplicationController
 
     respond_to do |format|
       if @assembly.save
-        format.html { redirect_to @assembly, notice: 'Assembly was created successfully' }
-        format.json { render :show, status: :created, location: @assembly }
+        format.html { redirect_to assemblies_path, notice: 'Assembly was created successfully' }
+        format.json { render :show, status: :created, location: assemblies_path }
       else
         format.html { render :new }
         format.json { render json: @assembly.errors, status: :unprocessable_entity }
@@ -43,8 +38,8 @@ class AssembliesController < ApplicationController
   def update
     respond_to do |format|
       if @assembly.update(assembly_params)
-        format.html { redirect_to @assembly, notice: 'Assembly was updated successfully' }
-        format.json { render :show, status: :ok, location: @assembly }
+        format.html { redirect_to assemblies_path, notice: 'Assembly was updated successfully' }
+        format.json { render :show, status: :ok, location: assemblies_path }
       else
         format.html { render :edit }
         format.json { render json: @assembly.errors, status: :unprocessable_entity }
@@ -57,7 +52,7 @@ class AssembliesController < ApplicationController
   def destroy
     @assembly.destroy
     respond_to do |format|
-      format.html { redirect_to assemblies_url, notice: 'Assembly was successfully destroyed.' }
+      format.html { redirect_to assemblies_url, notice: 'Assembly was deleted successfully' }
       format.json { head :no_content }
     end
   end

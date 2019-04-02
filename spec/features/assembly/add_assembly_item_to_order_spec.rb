@@ -6,10 +6,12 @@ RSpec.feature 'Add assembly item to Order', js: true do
   scenario 'adds a single item from an assembly to an order' do
     visit assemblies_path
 
-    first('.js-accordionList-trigger').click
+    first('.listItem').click
 
-    within first('.listItem-child') do
-      click_button('Add Item to order')
+    using_wait_time 10 do
+      within first('.listItem.listItem-child') do
+        click_button('Add Item to order')
+      end
     end
 
     expect(page).to have_text('Item added to order successfully')

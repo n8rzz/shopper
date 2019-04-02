@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   post 'order_items/create/assembly',  to: 'order_items#create_assembly'
   delete 'order_items/:id',   to: 'order_items#delete'
 
-  resources :locations, only: [:index, :new, :edit, :create, :update, :destroy]
+  resources :locations, except: [:show]
   resources :departments
   resources :orders
-  resources :assemblies
-  resources :items
+  resources :assemblies, except: [:show]
+  resources :items, except: [:show]
 
   root to: 'orders#index'
 end

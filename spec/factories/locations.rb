@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :location do
-    name { "Festival Foods" }
-    city { "Coon Rapids" }
-    state { "MN" }
+    name { Faker::Company.name }
+    city { Faker::TvShows::GameOfThrones.city }
+    state { Faker::Movies::StarWars.planet }
   end
 end

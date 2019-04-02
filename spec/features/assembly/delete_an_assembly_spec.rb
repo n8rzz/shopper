@@ -1,22 +1,20 @@
 require 'rails_helper'
 
-RSpec.feature 'Edit an Assembly' do
+RSpec.feature 'Delete an Assembly' do
   let!(:assembly) { create(:assembly, :with_item) }
 
-  scenario 'and clicks an assembly at assembly#index' do
+  scenario 'clicks an assembly at assembly#index' do
     visit assemblies_path
-
     click_link assembly.name
 
     expect(page).to have_current_path(edit_assembly_path(assembly.id))
   end
 
-  scenario 'updates assembly' do
+  scenario 'clicks delete link' do
     visit edit_assembly_path(assembly.id)
 
-    fill_in 'Name', with: '$Texas'
-    click_button 'Update Assembly'
+    click_link 'Destroy'
 
-    expect(page).to have_text('Assembly was updated successfully')
+    expect(page).to have_text 'Assembly was deleted successfully'
   end
 end
