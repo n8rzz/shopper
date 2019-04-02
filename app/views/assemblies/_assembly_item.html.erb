@@ -1,8 +1,8 @@
 <li>
-    <div class="listItem js-accordionList-trigger" data-accordion-item-id="<%= assembly_index %>">
+    <div class="listItem">
         <div class="listItem-hd">
-            <h2 class="hdg hdg_2">
-                <%= link_to assembly.name, edit_assembly_path(assembly) %>
+            <h2 class="hdg hdg_2 js-accordionList-trigger" data-accordion-item-id="<%= assembly_index %>">
+                <%= assembly.name %>
             </h2>
             <div>
                 <%= simple_form_for @order_item, url: order_items_create_assembly_path, method: :post do |form| %>
@@ -12,7 +12,14 @@
             </div>
         </div>
         <div class="listItem-ft">
-            Items: <%= assembly.items.count %>
+            <div class="stereo">
+                <div>
+                    Items: <%= assembly.items.count %>
+                </div>
+                <div>
+                    <%= link_to 'Edit Assembly', edit_assembly_path(assembly) %>
+                </div>
+            </div>
         </div>
     </div>
     <% if assembly.items.length > 0 %>

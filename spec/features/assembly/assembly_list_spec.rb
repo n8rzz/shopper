@@ -6,9 +6,9 @@ RSpec.feature 'Assembly#index', js: true do
   scenario 'visit assembly#index' do
     visit assemblies_path
 
-    expect(page).to have_text assembly.name
-    expect(page).to have_text "Items: #{assembly.items.count}"
-    expect(page).to have_link assembly.name, href: edit_assembly_path(assembly.id)
-    expect(page).to have_button 'Add to order'
+    expect(page).to have_text(assembly.name)
+    expect(page).to have_text("Items: #{assembly.items.count}")
+    expect(page).to have_button('Add to order')
+    expect(page).to have_link('Edit Assembly')
   end
 end
