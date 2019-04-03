@@ -15,15 +15,6 @@
     </div>
 
     <div class="form-actions">
-        <ul class="hlist">
-            <% if !current_page?(new_assembly_path) %>
-                <li>
-                    <%= link_to 'Destroy', assembly, method: :delete, data: { confirm: 'Are you sure?' } %>
-                </li>
-            <% end %>
-            <li>
-                <%= f.button :submit, class: "btn" %>
-            </li>
-        </ul>
+        <%= f.button :submit, class: "btn" %>
     </div>
 <% end %>

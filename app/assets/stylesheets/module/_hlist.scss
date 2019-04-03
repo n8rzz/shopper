@@ -3,6 +3,8 @@
 
 .hlist {
     @include hlist;
+
+    align-items: center;
 }
 
 .hlist-divided > * + * {
