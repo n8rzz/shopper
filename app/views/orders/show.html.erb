@@ -1,15 +1,20 @@
 <div class="vr_1">
     <ul class="stereo">
         <li>
-            <h1 class="hdg hdg_1">Single Order</h1>
+            <h1 class="hdg hdg_1">Order</h1>
         </li>
         <li>
-            <ul class="hlist">
+            <ul class="hlist hlist-divided">
                 <li>
-                    <%= link_to 'Back', orders_path %> |
+                    <%= link_to 'Back', orders_path %>
                 </li>
+                    <% if @order.status != 'pending' %>
+                        <li>
+                            <%= link_to 'Duplicate', order_duplicate_path(@order), method: :post %>
+                        </li>
+                    <% end %>
                 <li>
-                    <%= link_to 'Edit', edit_order_path(@order) %> |
+                    <%= link_to 'Edit', edit_order_path(@order) %>
                 </li>
                 <li>
                     <%= link_to 'Destroy', @order, method: :delete, data: { confirm: 'Are you sure?' } %>

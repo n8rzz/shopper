@@ -17,4 +17,15 @@ class OrderItem < ApplicationRecord
 
     base_classnames
   end
+
+  def duplicate(order_id)
+    OrderItem.new(
+      order_id: order_id,
+      assembly_id: self.assembly_id,
+      item_id: self.item_id,
+      picked: false,
+      department_id: self.department_id,
+      qty: self.qty
+    )
+  end
 end

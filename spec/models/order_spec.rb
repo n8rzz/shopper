@@ -28,4 +28,25 @@ RSpec.describe Order, type: :model do
     it { should be_valid }
     it { should validate_presence_of(:shopping_date) }
   end
+
+  describe '.duplicate' do
+    context 'when no pending order exists' do
+      let(:complete_order) { create(:order, :complete, :with_order_items) }
+
+      subject { complete_order.duplicate }
+
+      it { expect(subject).to be_instance_of Order }
+      it { expect(subject.location_id).to eq complete_order.location_id }
+      it { expect(subject.order_items.size).to eq complete_order.order_items.size }
+    end
+
+    context 'when a pending order exists' do
+      let!(:pending_order) { create(:order, :pending, :with_order_items) }
+      let!(:complete_order) { create(:order, :complete, :with_order_items) }
+
+      subject { complete_order.duplicate }
+
+      it { expect(subject).to eq nil }
+    end
+  end
 end

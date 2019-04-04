@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   resources :locations, except: [:show]
   resources :departments
-  resources :orders
+  resources :orders do
+    post '/duplicate', to: 'orders#duplicate'
+  end
   resources :assemblies, except: [:show]
   resources :items, except: [:show]
 

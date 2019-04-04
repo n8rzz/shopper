@@ -45,4 +45,13 @@ class Order < ApplicationRecord
   def group_by_department_and_sort
     self.group_by_department.sort_by { |k, v| k.name.to_s }
   end
+
+  def duplicate
+    return nil if Order.pending.count > 0
+
+    duplicate_order = Order.new(status: 'pending', location_id: self.location_id)
+    duplicate_order.order_items << self.order_items.map { |order_item| order_item.duplicate(duplicate_order.id) }
+
+    duplicate_order
+  end
 end

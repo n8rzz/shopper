@@ -1,20 +1,30 @@
 require 'rails_helper'
 
 RSpec.feature 'View an order' do
-  let!(:order) { create(:order, :pending) }
+  let!(:pending_order) { create(:order, :pending) }
+  let!(:complete_order) { create(:order, :complete) }
 
-  describe 'order#show' do
+  context 'when an order has pending status' do
     before :each do
-      visit order_path(order.id)
+      visit order_path(pending_order.id)
     end
 
     it { expect(page).to have_link('Back') }
     it { expect(page).to have_link('Edit') }
+    it { expect(page).to have_no_link('Duplicate')}
     it { expect(page).to have_link('Destroy') }
     it { expect(page).to have_link('Item') }
     it { expect(page).to have_link('Department') }
     it { expect(page).to have_link('Meal') }
-    it { expect(page).to have_text("Shopping Date: #{order.order_date}") }
-    it { expect(page).to have_text("Status: #{order.status}") }
+    it { expect(page).to have_text("Shopping Date: #{pending_order.order_date}") }
+    it { expect(page).to have_text("Status: #{pending_order.status}") }
+  end
+
+  context 'when an order is not pending status' do
+    before :each do
+      visit order_path(complete_order.id)
+    end
+
+    it { expect(page).to have_link('Duplicate')}
   end
 end

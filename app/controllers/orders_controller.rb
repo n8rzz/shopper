@@ -60,9 +60,25 @@ class OrdersController < ApplicationController
   # DELETE /orders/1.json
   def destroy
     @order.destroy
+
     respond_to do |format|
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def duplicate
+    order = Order.find(params[:order_id])
+    duplicate_order = order.duplicate
+
+    respond_to do |format|
+      if duplicate_order != nil && duplicate_order.save
+        format.html { redirect_to edit_order_url(duplicate_order.id), notice: 'Order duplicated successfully' }
+        format.json { render :show, status: :created, location: orders_path }
+      else
+        format.html { redirect_to edit_order_url(order.id) }
+        format.json { render :show, status: :created, location: orders_path }
+      end
     end
   end
 
