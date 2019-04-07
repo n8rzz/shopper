@@ -1,11 +1,13 @@
 import FlashController from '../flash/flash.controller';
 import OrderItemModel from './order-item.model';
 import ApiService from '../service/api.service';
+import StepperView from '../stepper/stepper.view';
 
 const CLASSNAMES = {
     ROOT_ELEMENT: 'js-item',
     ACTION_ITEM: 'js-item-action',
-    ADD_ITEM_TO_ORDER_FORM: 'js-item-createOrderItemForm'
+    ADD_ITEM_TO_ORDER_FORM: 'js-item-createOrderItemForm',
+    STEPPER_ROOT: 'js-stepper',
 };
 
 export class OrderController {
@@ -18,9 +20,10 @@ export class OrderController {
             return;
         }
 
-        this._$actionItemElementList = null;
+        this._$stepperElementList = [];
         this._flashController = new FlashController();
         this._isEnabled = false;
+        this._items = [];
 
         return this._init()
             ._createChildren()
@@ -33,7 +36,7 @@ export class OrderController {
     }
 
     _createChildren() {
-        this._$actionItemElementList = document.getElementsByClassName(CLASSNAMES.ACTION_ITEM);
+        this._$stepperElementList = new Array(...document.getElementsByClassName(CLASSNAMES.STEPPER_ROOT));
 
         return this;
     }
@@ -49,7 +52,7 @@ export class OrderController {
             return this;
         }
 
-        this._addHandlerToElementList(this._$actionItemElementList, this._onClickAddItemToOrderHandler);
+        this._addHandlerToElementList(this._$stepperElementList, this._onClickAddItemToOrderHandler);
 
         this._isEnabled = true;
 
@@ -71,11 +74,7 @@ export class OrderController {
             return;
         }
 
-        for (let i =0; i < elementList.length; i++) {
-            const element = elementList[i];
-
-            element.addEventListener('click', handler);
-        }
+        this._items = this._$stepperElementList.map((element) => new StepperView(element, handler));
     }
 
     _onClickAddItemToOrder(event) {

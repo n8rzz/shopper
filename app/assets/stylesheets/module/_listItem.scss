@@ -14,8 +14,6 @@
     flex-grow: 1;
 }
 
-// .listItem-action {}
-
 .listItem-hd {
     @include flexBetween;
 
@@ -26,7 +24,7 @@
     @include monospaceFont;
 
     color: $COLOR_SECONDARY_ACCENT;
-    font-size: $FONT_SIZE_XS;
+    font-size: $FONT_SIZE_S;
 }
 
 .listItem-child {

@@ -1,0 +1,72 @@
+@import "../base/mixins";
+@import "../base/vars";
+
+.stepper {
+    font-size: $FONT_SIZE_XS;
+    width: 100px;
+}
+
+.stepper-bd {
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+.stepper-bd-btn {
+    @include animationCubicBezier;
+    @include boxShadow-subtle;
+
+    background-color: $COLOR_BG_PRIMARY;
+    border: 1px solid $COLOR_LIGHT;
+    border-radius: $BORDER_RADIUS_M;
+    cursor: pointer;
+    padding: 8px 12px;
+
+    &:hover {
+        background-color: $COLOR_PRIMARY;
+        color: black;
+        cursor: pointer;
+    }
+}
+
+.stepper-bd-input {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    color: $COLOR_DARK;
+    font-size: $FONT_SIZE_S;
+    padding: 8px $SPACING_HALFX;
+    text-align: center;
+    width: 25px;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+}
+
+
+.stepper-ft {
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+.stepper-ft-submit {
+    @include animationCubicBezier;
+
+    border: none;
+    color: $COLOR_DARK;
+    font-size: $FONT_SIZE_S;
+    flex-grow: 1;
+    padding: $SPACING_1X $SPACING_HALFX;
+    -webkit-appearance: none;
+
+    &:hover {
+        // overriding input[type=submit] styles, should be fixed with input classes
+        background-color: $COLOR_PRIMARY !important;
+        color: $COLOR_DARK;
+        cursor: pointer;
+    }
+}

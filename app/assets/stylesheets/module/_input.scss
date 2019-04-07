@@ -52,12 +52,12 @@ input[type=date] {
     }
 }
 
-input[type=number] {
-    border: 1px solid #dedede;
-    border-radius: $BORDER_RADIUS_M;
-    padding: 3px 0 3px $SPACING_1X;
-    width: 25px;
-}
+// input[type=number] {
+//     border: 1px solid #dedede;
+//     border-radius: $BORDER_RADIUS_M;
+//     padding: 3px 0 3px $SPACING_1X;
+//     width: 25px;
+// }
 
 input[type=submit] {
     cursor: pointer;
