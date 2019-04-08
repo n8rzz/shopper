@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item do
-    name { Faker::Food.ingredient }
+    sequence(:name) { |n| "#{Faker::Food.ingredient}-n" }
 
     department
   end

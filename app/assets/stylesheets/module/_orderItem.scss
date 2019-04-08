@@ -32,6 +32,13 @@
     flex-grow: 1;
 }
 
+.orderItem-hd-link {
+    @include sansSerifFont;
+
+    font-size: $FONT_SIZE_M;
+    font-weight: 500;
+}
+
 .orderItem-hd-supplement {
     @include monospaceFont;
 
@@ -65,10 +72,11 @@
     background-color: rgba(255, 255, 255, 0.1);
 
     .orderItem-hd,
+    .orderItem-hd-link,
     .orderItem-bd,
     .orderItem-ft {
-        // color: $COLOR_SECONDARY_ACCENT;
         color: $COLOR_GREY !important;
     }
+
 }
 

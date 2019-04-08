@@ -14,6 +14,10 @@ RSpec.feature 'Increase qty and add Item to an order', js: true do
 
   it { expect(page).to have_text "#{item.name} added to pending order" }
 
+  scenario 'resets #qty to 1' do
+    expect(find("#item-#{item.id}-qty").value).to eq('1')
+  end
+
   scenario 'Displays correct qty on order#show' do
     visit order_path(order.id)
 
