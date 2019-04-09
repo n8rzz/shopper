@@ -66,7 +66,7 @@
     &:hover {
         // overriding input[type=submit] styles, should be fixed with input classes
         background-color: $COLOR_PRIMARY !important;
-        color: $COLOR_DARK;
+        color: #ffffff;
         cursor: pointer;
     }
 }
