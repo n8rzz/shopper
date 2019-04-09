@@ -6,18 +6,17 @@ RSpec.feature 'Create an Department', js: true do
   context 'when user clicks `New Department`' do
     before :each do
       visit departments_path
-      click_button 'New Department'
+      click_link 'New Department'
     end
 
     it { expect(page).to have_no_css('mix-flyout_isHidden') }
     it { expect(page).to have_no_link('Destroy') }
-    it { expect(page).to have_button('Create Department') }
   end
 
   context 'when a user fills in Department form' do
     before :each do
       visit departments_path
-      click_button 'New Department'
+      find('a.js-flyout-trigger').click
 
       fill_in 'Name', with: 'Icebox'
       click_button 'Create Department'

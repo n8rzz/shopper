@@ -6,13 +6,12 @@ RSpec.feature 'Create an Item', js: true do
 
   before :each do
     visit items_path
-    click_button 'New Item'
+    click_link 'New Item'
   end
 
   context 'when user clicks `New Item`' do
     it { expect(page).to have_no_css('mix-flyout_isHidden') }
     it { expect(page).to have_no_link('Destroy') }
-    it { expect(page).to have_button('Create Item') }
   end
 
   context 'when a user fills in Item form' do

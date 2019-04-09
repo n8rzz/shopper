@@ -7,7 +7,7 @@ RSpec.feature 'Destroy Department' do
     visit departments_path
 
     expect(page).to have_text 'Departments'
-    expect(page).to have_button 'New Department'
+    expect(page).to have_link 'New Department'
     expect(page).to have_button 'Destroy'
   end
 end

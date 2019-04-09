@@ -5,13 +5,12 @@ RSpec.feature 'Create an Location', js: true do
 
   before :each do
     visit locations_path
-    click_button 'New Location'
+    click_link 'New Location'
   end
 
   context 'when user clicks `New Location`' do
     it { expect(page).to have_no_css('mix-flyout_isHidden') }
     it { expect(page).to have_no_link('Destroy') }
-    it { expect(page).to have_button('Create Location') }
   end
 
   context 'when a user fills in Location form' do
