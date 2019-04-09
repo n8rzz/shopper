@@ -4,7 +4,7 @@
         <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
         <div class="form-group">
-            <%= f.input :name %>
+            <%= f.input :name, :input_html => { :class => 'input-text' } %>
         </div>
     </div>
 
@@ -15,6 +15,6 @@
     </div>
 
     <div class="form-actions">
-        <%= f.button :submit, class: "btn" %>
+        <%= f.button :submit, :class => 'btn btn-submit'  %>
     </div>
 <% end %>

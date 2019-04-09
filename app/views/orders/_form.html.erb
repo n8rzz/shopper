@@ -10,11 +10,11 @@
             <%= f.association :location, include_blank: false %>
         </div>
         <div class="form-group">
-            <%= f.input :shopping_date, as: :date, html5: true %>
+            <%= f.input :shopping_date, as: :date, html5: true, :input_html => { :class => 'input-date' } %>
         </div>
     </div>
 
     <div class="form-actions">
-        <%= f.button :submit, class: "btn" %>
+        <%= f.button :submit, :class => 'btn btn-submit'  %>
     </div>
 <% end %>

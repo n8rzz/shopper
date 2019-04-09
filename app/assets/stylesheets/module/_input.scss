@@ -2,77 +2,6 @@
 @import "../base/mixins";
 @import "../base/vars";
 
-label {
-    @include sansSerifFont;
-
-    display: inline-block;
-    font-size: $FONT_SIZE_L;
-    margin-right: 10px;
-    min-width: 80px;
-}
-
-.mix-label_subdued {
-    @include monospaceFont;
-
-    color: $COLOR_SECONDARY_ACCENT;
-    font-size: $FONT_SIZE_XS;
-    min-width: auto;
-    vertical-align: text-top;
-}
-
-input {
-    border-radius: $BORDER_RADIUS_M;
-    font-size: $FONT_SIZE_M;
-}
-
-input:active,
-input:focus {
-    border: 3px solid $COLOR_PRIMARY;
-    outline: none;
-    padding: 3px;
-}
-
-input[type=text] {
-    @include boxShadow-subtle;
-
-    border: 1px solid #dedede;
-    padding: $SPACING_HALFX;
-    width: 200px;
-}
-
-input[type=date] {
-    @include boxShadow-subtle;
-
-    border: 1px solid #dedede;
-    padding: $SPACING_HALFX;
-
-    &::-webkit-clear-button,
-    &::-webkit-inner-spin-button {
-        display: none;
-    }
-}
-
-// input[type=number] {
-//     border: 1px solid #dedede;
-//     border-radius: $BORDER_RADIUS_M;
-//     padding: 3px 0 3px $SPACING_1X;
-//     width: 25px;
-// }
-
-input[type=submit] {
-    cursor: pointer;
-    font-size: $FONT_SIZE_M;
-    padding: $SPACING_HALFX;
-
-    &:active {
-        padding: 3px !important;
-    }
-
-    &:hover {
-        background-color: $COLOR_BG_PRIMARY;
-    }
-}
-
 .input-checkbox + .input-label_checkbox {
     cursor: pointer;
     display: block;
@@ -120,7 +49,47 @@ input[type=submit] {
     transform: scale(1);
 }
 
+.input-date {
+    @include boxShadow-subtle;
+
+    border: 1px solid #dedede;
+    padding: $SPACING_HALFX;
+
+    &::-webkit-clear-button,
+    &::-webkit-inner-spin-button {
+        display: none;
+    }
+}
+
+.input-label,
+.checkbox > label {
+    @include sansSerifFont;
+
+    display: inline-block;
+    font-size: $FONT_SIZE_L;
+    margin-right: 10px;
+    min-width: 80px;
+}
+
+.input-text {
+    @include boxShadow-subtle;
+
+    border: 1px solid #dedede;
+    padding: $SPACING_HALFX;
+    width: 150px;
+}
+
+.mix-label_subdued {
+    @include monospaceFont;
+
+    color: $COLOR_SECONDARY_ACCENT;
+    font-size: $FONT_SIZE_XS;
+    min-width: auto;
+    vertical-align: text-top;
+}
+
 .error {
     color: $COLOR_ERROR_FG;
     display: block;
 }
+

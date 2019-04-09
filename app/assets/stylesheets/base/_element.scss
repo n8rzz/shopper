@@ -26,3 +26,14 @@ button:hover {
     cursor: pointer;
 }
 
+input {
+    border-radius: $BORDER_RADIUS_M;
+    font-size: $FONT_SIZE_M;
+}
+
+input:active,
+input:focus {
+    border: 3px solid $COLOR_PRIMARY;
+    outline: none;
+    padding: 3px;
+}

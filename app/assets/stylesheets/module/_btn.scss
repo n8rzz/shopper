@@ -7,6 +7,20 @@
     cursor: pointer;
 }
 
+.btn-submit {
+    font-size: $FONT_SIZE_M;
+    padding: $SPACING_HALFX;
+
+    &:active {
+        padding: 3px !important;
+    }
+
+    &:hover {
+        background-color: $COLOR_PRIMARY;
+        color: #ffffff;
+    }
+}
+
 .btn-toggle {
     background-color: $COLOR_BG_SECONDARY;
     border-radius: $BORDER_RADIUS_M;
