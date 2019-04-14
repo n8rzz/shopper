@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :assembly do
-    name { Faker::Food.dish }
+    sequence(:name) { |n| "#{Faker::Food.dish}-#{n}" }
 
     trait :with_item do
       after(:create) do |assembly|

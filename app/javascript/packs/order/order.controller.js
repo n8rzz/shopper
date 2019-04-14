@@ -44,7 +44,7 @@ export class OrderController {
         this._onClickPickedCheckboxHandler = this._onClickPickedCheckbox.bind(this);
         this._onClickRemoveItemHandler = this._onClickRemoveItem.bind(this);
         this._onUpdatePickedSuccessHandler = this._onUpdatePickedSuccess.bind(this);
-        this._onRemoveSuccessHandler = this._onRemoveSuccess.bind(this);
+        this._onRemoveItemSuccessHandler = this._onRemoveItemSuccess.bind(this);
 
         return this;
     }
@@ -127,7 +127,7 @@ export class OrderController {
                     return;
                 }
 
-                this._onRemoveSuccess(orderItemId);
+                this._onRemoveItemSuccess(orderItemId);
             })
             .catch((error) => { throw error; });
     }
@@ -146,7 +146,7 @@ export class OrderController {
         orderItemElement.classList.remove(CLASSNAMES.IS_PICKED_ORDER_ITEM);
     }
 
-    _onRemoveSuccess(orderItemId) {
+    _onRemoveItemSuccess(orderItemId) {
         const elementToRemoveSelector = `${CLASSNAMES.ROOT_ELEMENT}-${orderItemId}`;
         const elementToRemove = document.getElementsByClassName(elementToRemoveSelector)[0];
 

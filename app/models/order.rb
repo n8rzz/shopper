@@ -46,6 +46,14 @@ class Order < ApplicationRecord
     self.group_by_department.sort_by { |k, v| k.name.to_s }
   end
 
+  def delete_assembly(id)
+    order_items_to_remove = self.order_items.where(assembly_id: id)
+
+    return nil if !self.live? || order_items_to_remove.size == 0
+
+    order_items_to_remove.destroy_all
+  end
+
   def duplicate
     return nil if Order.pending.count > 0
 
@@ -53,5 +61,9 @@ class Order < ApplicationRecord
     duplicate_order.order_items << self.order_items.map { |order_item| order_item.duplicate(duplicate_order.id) }
 
     duplicate_order
+  end
+
+  def live?
+    self.status == 'pending' || self.status == 'active'
   end
 end

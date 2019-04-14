@@ -23,4 +23,17 @@ RSpec.describe "Order", :type => :request do
       it { expect(flash[:notice]).to match(/^Order duplicated successfully/) }
     end
   end
+
+  context 'Post #delete_assembly' do
+    let(:active_order) { create(:order, :with_order_items) }
+
+    context 'when an assembly exists' do
+      before :each do
+        delete order_assembly_path(active_order.id, active_order.order_items.first.assembly_id)
+      end
+
+      it { expect(response).to redirect_to "/orders/#{active_order.id}" }
+      it { expect(flash[:notice]).to match(/^Assembly deleted successfully/) }
+    end
+  end
 end

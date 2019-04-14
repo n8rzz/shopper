@@ -67,6 +67,8 @@ class OrdersController < ApplicationController
     end
   end
 
+  # POST /orders/1/duplicate
+  # POST /orders/1/duplicate.json
   def duplicate
     order = Order.find(params[:order_id])
     duplicate_order = order.duplicate
@@ -78,6 +80,22 @@ class OrdersController < ApplicationController
       else
         format.html { redirect_to edit_order_url(order.id) }
         format.json { render :show, status: :created, location: orders_path }
+      end
+    end
+  end
+
+  # DELETE /orders/1/assembly/1
+  # DELETE /orders/1/assembly/1.json
+  def delete_assembly
+    order = Order.find(params[:order_id])
+
+    respond_to do |format|
+      if order.delete_assembly(params[:assembly_id])
+        format.html { redirect_to order_url(order.id), notice: 'Assembly deleted successfully' }
+        format.json { render :show, status: 204, location: orders_path }
+      else
+        format.html { redirect_to order_url(order.id) }
+        format.json { render :show, status: 204, location: orders_path }
       end
     end
   end

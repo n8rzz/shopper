@@ -19,7 +19,7 @@ FactoryBot.define do
 
     trait :with_order_items do
       after(:create) do |order|
-        order.order_items << create(:order_item)
+        order.order_items << create(:order_item, :with_assembly)
       end
     end
   end

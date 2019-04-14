@@ -11,4 +11,9 @@
     color: $COLOR_DARK;
     font-size: $FONT_SIZE_L;
     margin-bottom: $SPACING_1X;
+
+    a {
+        font-size: $FONT_SIZE_S;
+        margin-left: $SPACING_1X;
+    }
 }

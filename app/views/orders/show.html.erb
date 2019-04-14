@@ -65,7 +65,11 @@
                     </div>
                 <% elsif key != nil %>
                     <div class="concernGroup-hd">
-                        <h2><%= key.name%></h2>
+                        <h2>
+                            <%= key.name%>
+                                <%= link_to 'Delete', order_assembly_path(@order.id, key.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+                            </span>
+                        </h2>
                     </div>
                 <% end %>
 

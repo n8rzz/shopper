@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe OrderItem, type: :model do
   it 'has a valid factory' do
     expect(build(:order_item)).to be_instance_of(OrderItem)
+    expect(build(:order_item, :with_assembly)).to be_instance_of(OrderItem)
   end
 
   describe 'data and associations' do

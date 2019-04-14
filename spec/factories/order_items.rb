@@ -6,6 +6,9 @@ FactoryBot.define do
     order
     department
     item
-    assembly
+
+    trait :with_assembly do
+      assembly
+    end
   end
 end
