@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'View an order' do
   let!(:pending_order) { create(:order, :pending) }
-  let!(:complete_order) { create(:order, :complete) }
+  let!(:complete_order) { create(:order, :complete, :with_order_items) }
 
   context 'when an order has pending status' do
     before :each do
@@ -25,6 +25,7 @@ RSpec.feature 'View an order' do
       visit order_path(complete_order.id)
     end
 
-    it { expect(page).to have_link('Duplicate')}
+    it { expect(page).to have_link('Duplicate') }
+    it { expect(page).to have_no_link('Delete') }
   end
 end

@@ -91,7 +91,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if order.delete_assembly(params[:assembly_id])
-        format.html { redirect_to order_url(order.id), notice: 'Assembly deleted successfully' }
+        format.html { redirect_to order_url(order.id, order: 'assembly'), notice: 'Assembly deleted successfully' }
         format.json { render :show, status: 204, location: orders_path }
       else
         format.html { redirect_to order_url(order.id) }

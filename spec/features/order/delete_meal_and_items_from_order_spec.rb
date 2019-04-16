@@ -14,6 +14,7 @@ RSpec.feature 'Delete meal and items from order', js: true do
       end
 
       expect(page).to have_no_text(pending_order.order_items.first.item.name)
+      expect(page).to have_current_path("/orders/#{pending_order.id}?order=assembly")
     end
   end
 

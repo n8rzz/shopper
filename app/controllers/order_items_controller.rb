@@ -82,5 +82,9 @@ end
 
   def set_pending_order
     @order = Order.find_or_initialize_by(status: 'pending')
+
+    unless @order.shopping_date != nil
+      @order.shopping_date = Time.now
+    end
   end
 end

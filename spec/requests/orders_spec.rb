@@ -32,7 +32,7 @@ RSpec.describe "Order", :type => :request do
         delete order_assembly_path(active_order.id, active_order.order_items.first.assembly_id)
       end
 
-      it { expect(response).to redirect_to "/orders/#{active_order.id}" }
+      it { expect(response).to redirect_to "/orders/#{active_order.id}?order=assembly" }
       it { expect(flash[:notice]).to match(/^Assembly deleted successfully/) }
     end
   end
