@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @order = Order.new
+    @order = Order.new(shopping_date: Time.now)
   end
 
   # POST /orders
