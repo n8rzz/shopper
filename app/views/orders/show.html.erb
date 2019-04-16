@@ -67,7 +67,9 @@
                     <div class="concernGroup-hd">
                         <h2>
                             <%= key.name%>
-                                <%= link_to 'Delete', order_assembly_path(@order.id, key.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+                                <% if @order.live? %>
+                                    <%= link_to 'Delete', order_assembly_path(@order.id, key.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+                                <% end %>
                             </span>
                         </h2>
                     </div>
