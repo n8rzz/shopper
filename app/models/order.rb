@@ -57,7 +57,7 @@ class Order < ApplicationRecord
   def duplicate
     return nil if Order.pending.count > 0
 
-    duplicate_order = Order.new(status: 'pending', location_id: self.location_id)
+    duplicate_order = Order.new(status: 'pending', location_id: self.location_id, shopping_date: Time.now)
     duplicate_order.order_items << self.order_items.map { |order_item| order_item.duplicate(duplicate_order.id) }
 
     duplicate_order

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Create an order' do
+RSpec.feature 'Create an order', js: true do
   let!(:order) { create(:order, :pending) }
 
   # TODO: this should live somewhere else
@@ -12,14 +12,30 @@ RSpec.feature 'Create an order' do
     expect(page).to have_button 'Create Order'
   end
 
-  scenario 'adds a new order' do
-    visit new_order_path
+  context 'when #shopping_date is not filled in' do
+    before :each do
+      visit new_order_path
 
-    select 'active', from: 'Status'
-    fill_in 'date', with: Time.now
-    click_button 'Create Order'
+      select 'active', from: 'Status'
 
-    expect(page).to have_text 'Order was created successfully'
-    expect(page).to have_current_path(orders_path)
+      click_button 'Create Order'
+    end
+
+    it { expect(page).to have_text('Order was created successfully') }
+    it { expect(page).to have_current_path(orders_path) }
+  end
+
+  context 'when #shopping_date is filled in' do
+    before :each do
+      visit new_order_path
+
+      select 'active', from: 'Status'
+      fill_in 'order_shopping_date', with: Time.now
+
+      click_button 'Create Order'
+    end
+
+    it { expect(page).to have_text('Order was created successfully') }
+    it { expect(page).to have_current_path(orders_path) }
   end
 end
