@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StepperContainer renders correctly with valid props 1`] = `
+<Stepper
+  isSubmitSuccess={false}
+  isSubmitting={false}
+  itemId={42}
+  onChangeQtyHandler={[Function]}
+  onClickDecreaseHandler={[Function]}
+  onClickIncreaseHandler={[Function]}
+  onClickSubmitHandler={[Function]}
+  qty={1}
+/>
+`;

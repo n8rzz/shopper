@@ -13,6 +13,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'simple_form', '>=4.1.0'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '>= 4.0.0.rc.3'
+gem 'webpacker-react', "~> 1.0.0.beta.1"
 
 group :development, :test do
   gem "better_errors"
