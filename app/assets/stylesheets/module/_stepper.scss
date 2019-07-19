@@ -54,14 +54,26 @@
 }
 
 .stepper-ft-submit {
-    @include animationCubicBezier;
+    // transition below comes from this mixin, done inline to
+    // override `all` for the transition element
+    // @include animationCubicBezier;
 
     border: none;
     color: $COLOR_DARK;
     font-size: $FONT_SIZE_S;
     flex-grow: 1;
-    padding: $SPACING_1X $SPACING_HALFX;
+    padding-bottom: ($SPACING_HALFX + 1);
+    padding-top: ($SPACING_HALFX + 1);
+    transition: background-color 600ms cubic-bezier(0.075, 0.82, 0.165, 1);
     -webkit-appearance: none;
+    -webkit-transition: background-color 600ms cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &:active,
+    &:focus {
+        background-color: $COLOR_GREY;
+        padding-top: 3px;
+        padding-bottom: 3px;
+    }
 
     &:hover {
         // overriding input[type=submit] styles, should be fixed with input classes

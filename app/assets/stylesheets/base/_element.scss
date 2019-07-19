@@ -29,6 +29,7 @@ button:hover {
 input {
     border-radius: $BORDER_RADIUS_M;
     font-size: $FONT_SIZE_M;
+    box-sizing: border-box;
 }
 
 input:active,
