@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stepper renders correctly with valid props 1`] = `
+<form
+  onSubmit={[MockFunction]}
+>
+  <div
+    className="stepper"
+    data-stepper-id={42}
+  >
+    <div
+      className="stepper-bd"
+    >
+      <label
+        className="stepper-bd-label u-isVisuallyHidden"
+        htmlFor="qty"
+      >
+        Qty
+      </label>
+      <span
+        className="stepper-bd-btn js-stepper-btn-decrease"
+        onClick={[MockFunction]}
+      >
+        -
+      </span>
+      <input
+        className="stepper-bd-input"
+        id="item-42-qty"
+        min="0"
+        name="item-42-qty"
+        onChange={[MockFunction]}
+        pattern="[0-9]*"
+        type="number"
+        value={3}
+      />
+      <span
+        className="stepper-bd-btn js-stepper-btn-increase"
+        onClick={[MockFunction]}
+      >
+        +
+      </span>
+    </div>
+    <div
+      className="stepper-ft"
+    >
+      <input
+        className="stepper-ft-submit"
+        type="submit"
+        value="Add to order"
+      />
+    </div>
+  </div>
+</form>
+`;

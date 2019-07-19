@@ -11,40 +11,7 @@
             </div>
         </div>
         <div class="listItem-action">
-            <form class="js-item-createOrderItemForm">
-                <div class="stepper js-stepper" data-stepper-id="<%= item.id %>">
-                    <div class="stepper-bd">
-                        <label
-                            class="stepper-bd-label u-isVisuallyHidden"
-                            for="qty"
-                        >
-                            Qty
-                        </label>
-                        <span class="stepper-bd-btn js-stepper-decrease-<%= item.id %>">-</span>
-                        <input
-                            class="stepper-bd-input js-stepper-value-<%= item.id %>"
-                            type="number"
-                            pattern="[0-9]*"
-                            id="item-<%= item.id %>-qty"
-                            name="item-<%= item.id %>-qty"
-                            min="0"
-                            value="1"
-                        />
-                        <span class="stepper-bd-btn js-stepper-increase-<%= item.id %>">+</span>
-                    </div>
-                    <div class="stepper-ft">
-                        <input
-                            type="submit"
-                            value="Add to order"
-                            class="stepper-ft-submit js-stepper-submit-<%= item.id %> js-item-action"
-                            data-item-id="<%= item.id %>"
-                            data-item-name="<%= item.name %>"
-                            data-department-id="<%= item.department.id %>"
-                            data-csrf="<%= form_authenticity_token %>"
-                        />
-                    </div>
-                </div>
-            </form>
+            <%= react_component('StepperContainer', itemId: item.id, itemName: item.name, departmentId: item.department.id, csrf: form_authenticity_token) %>
         </div>
     </div>
 </li>

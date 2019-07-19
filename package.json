@@ -1,16 +1,44 @@
 {
-  "name": "Shopper",
+  "name": "shopper",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watchAll"
+  },
   "private": true,
   "dependencies": {
+    "@babel/preset-react": "^7.0.0",
     "@rails/actioncable": "^6.0.0-alpha",
     "@rails/activestorage": "^6.0.0-alpha",
     "@rails/ujs": "^6.0.0-alpha",
     "@rails/webpacker": "^4.0.0-rc.7",
     "axios": "^0.18.0",
-    "turbolinks": "^5.2.0"
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "classnames": "^2.2.6",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "turbolinks": "^5.2.0",
+    "webpacker-react": "^0.3.2"
   },
   "version": "0.1.0",
   "devDependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.3.5",
+    "jest": "^24.8.0",
+    "react-test-renderer": "^16.8.6",
+    "sinon": "^7.3.2",
     "webpack-dev-server": "^3.2.1"
+  },
+  "jest": {
+    "roots": [
+      "app/javascript"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/app/javascript/packs/setupTests.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }
