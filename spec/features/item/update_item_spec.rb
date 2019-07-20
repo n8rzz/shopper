@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Update an Item' do
+RSpec.feature 'Update an Item', js: true do
   let!(:item) { create(:item) }
 
   scenario 'visit item#edit' do

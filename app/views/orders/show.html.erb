@@ -47,11 +47,22 @@
         <%= link_to "Meal", order_path(order: 'assembly'), class: 'filterBar-link' %>
     </li>
 </ul>
+
 <div class="js-orderItem ">
     <% if @order_items_by_concern == nil %>
         <ul class="vlist">
             <% @order.order_items.each do |order_item| %>
-                <%= render partial: "shared/action_list_item", locals: { order_item: order_item } %>
+                <%= react_component(
+                    'OrderItemContainer',
+                    csrf: form_authenticity_token,
+                    orderItemId: order_item.id,
+                    qty: order_item.qty,
+                    itemName: order_item.item.name,
+                    editItemUrl: edit_item_path(order_item.item.id),
+                    departmentName: order_item.department.name,
+                    assemblyName: order_item.assembly_name_or_null,
+                    isPicked: order_item.picked
+                ) %>
             <% end %>
         </ul>
     <% end %>
@@ -77,7 +88,17 @@
 
                 <ul class="vlist">
                     <% order_items.each do |order_item| %>
-                        <%= render partial: "shared/action_list_item", locals: { order_item: order_item } %>
+                        <%= react_component(
+                            'OrderItemContainer',
+                            csrf: form_authenticity_token,
+                            orderItemId: order_item.id,
+                            qty: order_item.qty,
+                            itemName: order_item.item.name,
+                            editItemUrl: edit_item_path(order_item.item.id),
+                            departmentName: order_item.department.name,
+                            assemblyName: order_item.assembly_name_or_null,
+                            isPicked: order_item.picked
+                        ) %>
                     <% end %>
                 </ul>
             </div>

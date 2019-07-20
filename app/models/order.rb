@@ -28,6 +28,18 @@ class Order < ApplicationRecord
     self.shopping_date.strftime("%b %m, %Y")
   end
 
+  def order_items_by_concern(concern = nil)
+    items_by_concern = nil
+
+    if concern == 'assembly'
+      items_by_concern = self.group_by_assembly
+    elsif concern == 'department'
+      items_by_concern = self.group_by_department_and_sort
+    end
+
+    items_by_concern
+  end
+
   def group_by_assembly
     self.order_items.group_by(&:assembly)
   end

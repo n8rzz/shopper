@@ -12,8 +12,10 @@ require("./accordion/accordion.controller");
 require("./assembly-item/assembly-item.controller");
 require("./flash/flash.controller");
 require("./flyout/flyout.controller");
-require("./order/order.controller");
 
+import {Item} from './item/item.component';
+import {OrderItemContainer} from './order/order-item.container';
+import {OrderItem} from './order/order-item';
 import {StepperContainer} from './components/stepper/stepper.container';
 import {Stepper} from './components/stepper/stepper';
 
@@ -23,6 +25,9 @@ import WebpackerReact from 'webpacker-react';
 // Turbolinks.start()
 
 WebpackerReact.setup({
+    Item,
+    OrderItemContainer,
+    OrderItem,
     StepperContainer,
     Stepper,
 });

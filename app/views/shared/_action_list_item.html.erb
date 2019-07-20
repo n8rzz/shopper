@@ -2,7 +2,7 @@
     <li class="<%= order_item.list_item_classnames %>">
         <div class="orderItem-action">
             <form>
-                <%= check_box_tag order_item.id, true, order_item.picked, class: "input-checkbox u-isVisuallyHidden js-orderItem-action-value"%>
+                <%= check_box_tag order_item.id, true, order_item.picked, class: "input-checkbox u-isVisuallyHidden js-orderItem-action-value" %>
                 <label
                     class="input-label_checkbox js-orderItem-action"
                     for="<%= order_item.id%>"

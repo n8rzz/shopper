@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderItem when passed a non-empty \`#assemblyName\` renders correctly with valid props without  1`] = `
+<li
+  className="orderItem js-orderItem-11"
+>
+  <div
+    className="orderItem-action"
+  >
+    <form>
+      <input
+        checked={false}
+        className="input-checkbox js-orderItem-action-value u-isVisuallyHidden"
+        name={11}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <label
+        className="input-label_checkbox js-orderItem-action"
+        htmlFor={11}
+        onClick={[MockFunction]}
+      />
+    </form>
+  </div>
+  <div
+    className="orderItem-content"
+  >
+    <div
+      className="orderItem-hd"
+    >
+      <div
+        className="orderItem-hd-content"
+      >
+        <h3>
+          <a
+            className="orderItem-hd-link"
+            href="http://localhost:3000/orders/21/edit"
+          >
+            Red Face Tuna
+          </a>
+        </h3>
+      </div>
+      <button
+        className="icon-btn js-orderItem-remove"
+        onClick={[MockFunction]}
+        type="submit"
+      >
+        <span
+          className="icon icon-trashcan"
+        />
+      </button>
+    </div>
+    <div
+      className="orderItem-bd"
+    >
+      sushi
+    </div>
+    <div
+      className="orderItem-ft"
+    >
+      meat
+    </div>
+  </div>
+</li>
+`;
+
+exports[`OrderItem when passed an empty \`#assemblyName\` renders correctly with valid props without  1`] = `
+<li
+  className="orderItem js-orderItem-11"
+>
+  <div
+    className="orderItem-action"
+  >
+    <form>
+      <input
+        checked={false}
+        className="input-checkbox js-orderItem-action-value u-isVisuallyHidden"
+        name={11}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <label
+        className="input-label_checkbox js-orderItem-action"
+        htmlFor={11}
+        onClick={[MockFunction]}
+      />
+    </form>
+  </div>
+  <div
+    className="orderItem-content"
+  >
+    <div
+      className="orderItem-hd"
+    >
+      <div
+        className="orderItem-hd-content"
+      >
+        <h3>
+          <a
+            className="orderItem-hd-link"
+            href="http://localhost:3000/orders/21/edit"
+          >
+            Red Face Tuna
+          </a>
+        </h3>
+      </div>
+      <button
+        className="icon-btn js-orderItem-remove"
+        onClick={[MockFunction]}
+        type="submit"
+      >
+        <span
+          className="icon icon-trashcan"
+        />
+      </button>
+    </div>
+    <div
+      className="orderItem-ft"
+    >
+      meat
+    </div>
+  </div>
+</li>
+`;

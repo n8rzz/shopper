@@ -28,4 +28,12 @@ class OrderItem < ApplicationRecord
       qty: self.qty
     )
   end
+
+  def assembly_name_or_null
+    if self.assembly_id == nil
+      return ''
+    end
+
+    self.assembly.name
+  end
 end

@@ -25,6 +25,14 @@ export class StepperContainer extends React.Component {
         this._onSubmitSuccessHandler = this._onSubmitSuccessHandler.bind(this);
     }
 
+    componentWillUnmount() {
+        this.onChangeQtyHandler = null;
+        this.onClickDecreaseHandler = null;
+        this.onClickIncreaseHandler = null;
+        this.onClickSubmitHandler = null;
+        this._onSubmitSuccessHandler = null;
+    }
+
     render() {
         return (
             <Stepper

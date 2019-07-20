@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-RSpec.feature 'Item#index' do
+RSpec.feature 'Item#index', js: true do
   let!(:item) { create(:item) }
 
-  scenario 'visit item#index' do
+  scenario 'visit item#index', js: true do
     visit items_path
 
     within first('.listItem') do
-      expect(page).to have_text item.name
-      expect(page).to have_link item.name, href: edit_item_path(item.id)
-      # expect(page).to have_button 'Add to order'
+      expect(page).to have_text(item.name)
+      expect(page).to have_link(item.name)
+      expect(page).to have_button('Add to order')
     end
   end
 end

@@ -10,15 +10,8 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
-    @order_items_by_concern = nil
     @should_show_non_grouped = false
-
-    if params[:order] == 'assembly'
-      @order_items_by_concern = @order.group_by_assembly
-      @should_show_non_grouped = true
-    elsif params[:order] == 'department'
-      @order_items_by_concern = @order.group_by_department_and_sort
-    end
+    @order_items_by_concern = @order.order_items_by_concern(params[:order])
   end
 
   # GET /orders/new

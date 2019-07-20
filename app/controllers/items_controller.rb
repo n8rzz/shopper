@@ -6,8 +6,8 @@ class ItemsController < ApplicationController
   def index
     @item = Item.new
     @items = Item.by_name
-    @items_by_concern = nil
     @order_item = OrderItem.new
+    @items_by_concern = nil
 
     if params[:order] == 'department'
       @items_by_concern = @items.group_by_department_and_sort

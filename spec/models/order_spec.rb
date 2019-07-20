@@ -29,6 +29,32 @@ RSpec.describe Order, type: :model do
     it { should validate_presence_of(:shopping_date) }
   end
 
+  # describe '.order_items_by_concern' do
+  #   context 'when passed `#concern` is `nil`' do
+  #     let(:pending_order) { create(:order, :pending, :with_order_items) }
+
+  #     subject { pending_order.order_items_by_concern(nil) }
+
+  #     it { puts subject.to_json }
+  #   end
+
+  #   context 'when passed `#concern` is `assembly`' do
+  #     let(:pending_order) { create(:order, :pending, :with_order_items) }
+
+  #     subject { pending_order.order_items_by_concern('assembly') }
+
+  #     it { puts subject.to_json }
+  #   end
+
+  #   context 'when passed `#concern` is `department`' do
+  #     let(:pending_order) { create(:order, :pending, :with_order_items) }
+
+  #     subject { pending_order.order_items_by_concern('department') }
+
+  #     it { puts subject.to_json }
+  #   end
+  # end
+
   describe '.duplicate' do
     context 'when no pending order exists' do
       let(:complete_order) { create(:order, :complete, :with_order_items) }

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Follow link to item from order#show ' do
+RSpec.feature 'Follow link to item from order#show ', js: true do
   let!(:active_order) { create(:order, :with_order_items) }
 
   before :each do

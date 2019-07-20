@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Destroy an item' do
+RSpec.feature 'Destroy an item', js: true do
   let!(:item) { create(:item) }
 
   scenario 'visit item#index' do
@@ -10,7 +10,9 @@ RSpec.feature 'Destroy an item' do
       click_link item.name
     end
 
-    click_link 'Destroy'
+    accept_alert do
+      click_link 'Destroy'
+    end
 
     expect(page).to have_text 'Item was successfully destroyed'
     expect(page).to_not have_text item.name

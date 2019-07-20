@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderItemContainer when passed a non-empty \`#assemblyName\` renders correctly with valid props without  1`] = `
+<OrderItem
+  assemblyName="sushi"
+  departmentName="meat"
+  editItemUrl="http://localhost:3000/orders/21/edit"
+  isPicked={false}
+  itemName="Red Face Tuna"
+  onClickCheckboxHandler={[Function]}
+  onClickRemoveItemHandler={[Function]}
+  orderItemId={11}
+  qty={1}
+/>
+`;
+
+exports[`OrderItemContainer when passed an empty \`#assemblyName\` renders correctly with valid props without  1`] = `
+<OrderItem
+  assemblyName=""
+  departmentName="meat"
+  editItemUrl="http://localhost:3000/orders/21/edit"
+  isPicked={false}
+  itemName="Red Face Tuna"
+  onClickCheckboxHandler={[Function]}
+  onClickRemoveItemHandler={[Function]}
+  orderItemId={11}
+  qty={1}
+/>
+`;

@@ -18,7 +18,14 @@
 <% if @items_by_concern == nil %>
     <ul class="vlist">
         <% @items.each do |item| %>
-            <%= render partial: "list_item", locals: { item: item } %>
+            <%= react_component(
+                'Item',
+                csrf: form_authenticity_token,
+                departmentId: item.department.id,
+                departmentName: item.department.name,
+                itemId: item.id,
+                itemName: item.name,
+            ) %>
         <% end %>
     </ul>
 <% else %>
@@ -29,7 +36,14 @@
             </div>
             <ul class="vlist">
                 <% department_items.each do |item| %>
-                    <%= render partial: "list_item", locals: { item: item } %>
+                    <%= react_component(
+                        'Item',
+                        csrf: form_authenticity_token,
+                        departmentId: item.department.id,
+                        departmentName: item.department.name,
+                        itemId: item.id,
+                        itemName: item.name,
+                    ) %>
                 <% end %>
             </ul>
         </div>

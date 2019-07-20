@@ -11,7 +11,13 @@
             </div>
         </div>
         <div class="listItem-action">
-            <%= react_component('StepperContainer', itemId: item.id, itemName: item.name, departmentId: item.department.id, csrf: form_authenticity_token) %>
+            <%= react_component(
+                'StepperContainer',
+                itemId: item.id,
+                itemName: item.name,
+                departmentId: item.department.id,
+                csrf: form_authenticity_token)
+            %>
         </div>
     </div>
 </li>
