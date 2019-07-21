@@ -13,6 +13,8 @@ require("./assembly-item/assembly-item.controller");
 require("./flash/flash.controller");
 require("./flyout/flyout.controller");
 
+import {FilterBar} from './components/filter-bar/filter-bar.component';
+import {FilterBarItem} from './components/filter-bar/filter-bar-item.component';
 import {Item} from './item/item.component';
 import {OrderItemContainer} from './order/order-item.container';
 import {OrderItem} from './order/order-item';
@@ -25,6 +27,8 @@ import WebpackerReact from 'webpacker-react';
 // Turbolinks.start()
 
 WebpackerReact.setup({
+    FilterBar,
+    FilterBarItem,
     Item,
     OrderItemContainer,
     OrderItem,

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'View an order' do
+RSpec.feature 'View an order', js: true do
   let!(:pending_order) { create(:order, :pending) }
   let!(:complete_order) { create(:order, :complete, :with_order_items) }
 

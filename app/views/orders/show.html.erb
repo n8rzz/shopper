@@ -36,17 +36,24 @@
         </div>
     <% end %>
 </div>
-<ul class="filterBar">
-    <li>
-        <%= link_to "Item", order_path, class: 'filterBar-link' %>
-    </li>
-    <li>
-        <%= link_to "Department", order_path(order: 'department'), class: 'filterBar-link' %>
-    </li>
-    <li>
-        <%= link_to "Meal", order_path(order: 'assembly'), class: 'filterBar-link' %>
-    </li>
-</ul>
+
+<%= react_component(
+    'FilterBar',
+    items: [
+        {
+            text: 'Item',
+            url: order_path,
+        },
+        {
+            text: 'Department',
+            url: order_path(order: 'department'),
+        },
+        {
+            text: 'Meal',
+            url: order_path(order: 'assembly'),
+        }
+    ]
+) %>
 
 <div class="js-orderItem ">
     <% if @order_items_by_concern == nil %>

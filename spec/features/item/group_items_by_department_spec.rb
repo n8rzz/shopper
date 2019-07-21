@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Group Items by Department' do
+RSpec.feature 'Group Items by Department', js: true do
   let(:produce) { create(:department, name: 'Produce') }
   let(:meat) { create(:department, name: 'Meat') }
   let!(:produce_item) { create(:item, department: produce) }

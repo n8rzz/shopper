@@ -7,14 +7,21 @@
         <a href="#" class="js-flyout-trigger">New Item</a>
     </li>
 </ul>
-<ul class="filterBar">
-    <li>
-        <%= link_to "Alpha", items_path, class: 'filterBar-link' %>
-    </li>
-    <li>
-        <%= link_to "Department", items_path(order: 'department'), class: 'filterBar-link' %>
-    </li>
-</ul>
+
+<%= react_component(
+    'FilterBar',
+    items: [
+        {
+            text: 'Alpha',
+            url: items_path
+        },
+        {
+            text: 'Department',
+            url: items_path(order: 'department')
+        }
+    ]
+) %>
+
 <% if @items_by_concern == nil %>
     <ul class="vlist">
         <% @items.each do |item| %>

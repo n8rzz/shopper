@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterBarItem renders correctly with valid props 1`] = `
+<li>
+  <a
+    className="filterBar-link"
+    href="/items"
+  >
+    Alpha
+  </a>
+</li>
+`;

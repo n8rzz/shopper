@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterBar renders correctly with valid props 1`] = `
+<ul
+  className="filterBar"
+>
+  <FilterBarItem
+    key="filterBar-item-0"
+    text="Alpha"
+    url="/items"
+  />
+  <FilterBarItem
+    key="filterBar-item-1"
+    text="Department"
+    url="/items/?order=department"
+  />
+</ul>
+`;
