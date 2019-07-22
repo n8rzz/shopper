@@ -11,6 +11,7 @@ export function FilterBar(props) {
                         key={`filterBar-item-${index}`}
                         text={filterBarItem.text}
                         url={filterBarItem.url}
+                        onChangeFilterHandler={props.onChangeFilterHandler}
                     />
                 );
             })}
@@ -19,5 +20,6 @@ export function FilterBar(props) {
 }
 
 FilterBar.propTypes = {
-    items: PropTypes.array.isRequired
+    items: PropTypes.array.isRequired,
+    onChangeFilterHandler: PropTypes.func,
 };

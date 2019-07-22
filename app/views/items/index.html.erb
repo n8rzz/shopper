@@ -9,50 +9,8 @@
 </ul>
 
 <%= react_component(
-    'FilterBar',
-    items: [
-        {
-            text: 'Alpha',
-            url: items_path
-        },
-        {
-            text: 'Department',
-            url: items_path(order: 'department')
-        }
-    ]
+    'ItemListPage',
+    csrf: form_authenticity_token,
+    departments: @departments,
+    items: @items,
 ) %>
-
-<% if @items_by_concern == nil %>
-    <ul class="vlist">
-        <% @items.each do |item| %>
-            <%= react_component(
-                'Item',
-                csrf: form_authenticity_token,
-                departmentId: item.department.id,
-                departmentName: item.department.name,
-                itemId: item.id,
-                itemName: item.name,
-            ) %>
-        <% end %>
-    </ul>
-<% else %>
-    <% @items_by_concern.each do |department, department_items| %>
-        <div class="concernGroup">
-            <div class="concernGroup-hd">
-                <h2><%= department.name %></h2>
-            </div>
-            <ul class="vlist">
-                <% department_items.each do |item| %>
-                    <%= react_component(
-                        'Item',
-                        csrf: form_authenticity_token,
-                        departmentId: item.department.id,
-                        departmentName: item.department.name,
-                        itemId: item.id,
-                        itemName: item.name,
-                    ) %>
-                <% end %>
-            </ul>
-        </div>
-    <% end %>
-<% end %>

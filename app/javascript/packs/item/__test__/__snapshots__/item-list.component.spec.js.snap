@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ItemList renders correctly with valid props 1`] = `
+<ul
+  className="vlist"
+>
+  <Item
+    csrf="3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=="
+    departmentId={5}
+    departmentName="Meat"
+    itemId={15}
+    itemName="Agave Syrup"
+    key="item-0"
+  />
+  <Item
+    csrf="3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=="
+    departmentId={3}
+    departmentName="Bakery"
+    itemId={13}
+    itemName="Agave Syrup"
+    key="item-1"
+  />
+</ul>
+`;

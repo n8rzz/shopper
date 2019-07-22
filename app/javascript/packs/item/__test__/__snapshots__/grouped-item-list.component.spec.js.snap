@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GroupedItemList renders correctly with valid props 1`] = `
+<Fragment>
+  <ConcernGroup
+    csrf="3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=="
+    departmentMap={
+      Object {
+        "3": Object {
+          "created_at": "2019-07-21T16:03:32.883Z",
+          "id": 3,
+          "name": "Bakery",
+          "updated_at": "2019-07-21T16:03:32.883Z",
+        },
+        "5": Object {
+          "created_at": "2019-07-21T16:03:32.883Z",
+          "id": 5,
+          "name": "Meat",
+          "updated_at": "2019-07-21T16:03:32.883Z",
+        },
+      }
+    }
+    groupName="Bakery"
+    itemList={
+      Array [
+        Object {
+          "created_at": "2019-07-21T16:03:33.162Z",
+          "department_id": 3,
+          "id": 13,
+          "name": "Agave Syrup",
+          "updated_at": "2019-07-21T16:03:33.162Z",
+        },
+      ]
+    }
+    key="ConcernGroup-0"
+  />
+  <ConcernGroup
+    csrf="3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=="
+    departmentMap={
+      Object {
+        "3": Object {
+          "created_at": "2019-07-21T16:03:32.883Z",
+          "id": 3,
+          "name": "Bakery",
+          "updated_at": "2019-07-21T16:03:32.883Z",
+        },
+        "5": Object {
+          "created_at": "2019-07-21T16:03:32.883Z",
+          "id": 5,
+          "name": "Meat",
+          "updated_at": "2019-07-21T16:03:32.883Z",
+        },
+      }
+    }
+    groupName="Meat"
+    itemList={
+      Array [
+        Object {
+          "created_at": "2019-07-21T16:03:33.162Z",
+          "department_id": 5,
+          "id": 15,
+          "name": "Agave Syrup",
+          "updated_at": "2019-07-21T16:03:33.162Z",
+        },
+      ]
+    }
+    key="ConcernGroup-1"
+  />
+</Fragment>
+`;

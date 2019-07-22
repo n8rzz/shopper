@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   def index
     @item = Item.new
     @items = Item.by_name
+    @departments = Department.by_name
     @order_item = OrderItem.new
     @items_by_concern = nil
 

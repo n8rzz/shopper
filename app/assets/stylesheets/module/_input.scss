@@ -71,6 +71,12 @@
     min-width: 80px;
 }
 
+.input-select {
+    display: block;
+    margin-top: $SPACING_1X;
+    width: 100%;
+}
+
 .input-text {
     @include boxShadow-subtle;
 

@@ -99,6 +99,7 @@ export class StepperContainer extends React.Component {
                 // TODO: add ability to set flash success
                 // this._flashController.showNoticeMessage(`${orderItemModel.name} added to pending order`);
                 const nextState = {
+                    qty: 1,
                     isSubmitting: false,
                     isSubmitSuccess: true,
                 };
