@@ -5,7 +5,7 @@ export function FilterBarItem(props) {
     return (
         <li>
             <a
-                className="filterBar-link"
+                className={'filterBar-link'}
                 href={props.url}
                 onClick={props.onChangeFilterHandler}
             >

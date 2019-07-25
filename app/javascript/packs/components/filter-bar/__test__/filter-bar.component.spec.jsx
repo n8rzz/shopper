@@ -1,6 +1,5 @@
 import React from 'react';
-import {shallow} from 'enzyme';
-
+import { shallow } from 'enzyme';
 import { FilterBar } from '../filter-bar.component';
 
 const filterBarItemListMock = [
@@ -11,7 +10,7 @@ const filterBarItemListMock = [
     {
         text: 'Department',
         url: '/items/?order=department',
-    }
+    },
 ];
 
 describe('FilterBar', () => {

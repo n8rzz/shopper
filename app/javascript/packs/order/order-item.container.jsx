@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import ApiService from '../service/api.service';
-import {OrderItem} from './order-item';
+import { OrderItem } from './order-item';
 
 export class OrderItemContainer extends React.Component {
     constructor(props) {
@@ -27,26 +26,10 @@ export class OrderItemContainer extends React.Component {
         this._onRemoveItemSuccessHandler = null;
     }
 
-    render() {
-        return (
-            <OrderItem
-                assemblyName={this.props.assemblyName}
-                departmentName={this.props.departmentName}
-                editItemUrl={this.props.editItemUrl}
-                isPicked={this.state.isPicked}
-                itemName={this.props.itemName}
-                orderItemId={this.props.orderItemId}
-                qty={this.props.qty}
-                onClickCheckboxHandler={this._onClickPickedCheckboxHandler}
-                onClickRemoveItemHandler={this._onClickRemoveItemHandler}
-            />
-        );
-    }
-
-    _onClickPickedCheckbox(event) {
+    _onClickPickedCheckbox() {
         const orderItemUrl = `/order_items/${this.props.orderItemId}.json`;
         const itemUpdateToSend = {
-            picked: !this.state.isPicked
+            picked: !this.state.isPicked,
         };
 
         ApiService.patch(orderItemUrl, itemUpdateToSend, this.props.csrf)
@@ -62,7 +45,7 @@ export class OrderItemContainer extends React.Component {
             .catch((error) => { throw error; });
     }
 
-    _onClickRemoveItem(event) {
+    _onClickRemoveItem() {
         const orderItemUrl = `/order_items/${this.props.orderItemId}.json`;
 
         ApiService.delete(orderItemUrl, this.props.csrf)
@@ -78,13 +61,29 @@ export class OrderItemContainer extends React.Component {
             .catch((error) => { throw error; });
     }
 
-    _onUpdatePickedSuccess(responseData) {
-        this.setState({ isPicked: !this.state.isPicked });
+    _onUpdatePickedSuccess() {
+        this.setState((prevState) => ({ isPicked: !prevState.isPicked }));
     }
 
     _onRemoveItemSuccess(orderItemId) {
         console.log('+++ _onRemoveItemSuccess', orderItemId);
-        console.log('--- this should bubble up and remove this item from the list ---')
+        console.log('--- this should bubble up and remove this item from the list ---');
+    }
+
+    render() {
+        return (
+            <OrderItem
+                assemblyName={this.props.assemblyName}
+                departmentName={this.props.departmentName}
+                editItemUrl={this.props.editItemUrl}
+                isPicked={this.state.isPicked}
+                itemName={this.props.itemName}
+                orderItemId={this.props.orderItemId}
+                qty={this.props.qty}
+                onClickCheckboxHandler={this._onClickPickedCheckboxHandler}
+                onClickRemoveItemHandler={this._onClickRemoveItemHandler}
+            />
+        );
     }
 }
 

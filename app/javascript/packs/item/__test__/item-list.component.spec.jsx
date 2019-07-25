@@ -1,10 +1,10 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
-import {ItemList} from '../item-list.component';
+import { ItemList } from '../item-list.component';
 import {
     departmentMapMock,
-    itemListMock
+    itemListMock,
 } from './__mock__/item.mocks';
 
 describe('ItemList', () => {
@@ -28,5 +28,5 @@ describe('ItemList', () => {
 
             expect(component).not.toBeUndefined();
         });
-    })
+    });
 });

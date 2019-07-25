@@ -2,8 +2,7 @@
 
 exports[`Notice renders correctly with valid props 1`] = `
 <div
-  className=""
-  id="notice"
+  className="notice"
 >
   this is a notice!
 </div>

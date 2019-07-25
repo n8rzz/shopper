@@ -1,12 +1,12 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
-import {GroupedItemList} from '../grouped-item-list.component';
+import { GroupedItemList } from '../grouped-item-list.component';
 import {
     csrfMock,
     departmentListMock,
     departmentMapMock,
-    itemListMock
+    itemListMock,
 } from './__mock__/item.mocks';
 
 describe('GroupedItemList', () => {

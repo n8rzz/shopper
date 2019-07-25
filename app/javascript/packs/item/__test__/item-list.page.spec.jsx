@@ -1,10 +1,10 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
-import {ItemListPage, FILTER_CONCERN} from '../item-list.page';
-import {GroupedItemList} from '../grouped-item-list.component';
-import {ItemList} from '../item-list.component';
-import {departmentListMock, itemListMock} from './__mock__/item.mocks';
+import { ItemListPage, FILTER_CONCERN } from '../item-list.page';
+import { GroupedItemList } from '../grouped-item-list.component';
+import { ItemList } from '../item-list.component';
+import { departmentListMock, itemListMock } from './__mock__/item.mocks';
 
 describe('ItemListPage', () => {
     test('renders correctly with valid props', () => {
@@ -24,7 +24,7 @@ describe('ItemListPage', () => {
                 departments={departmentListMock}
                 items={itemListMock}
             />);
-            component.setState({ concern:  FILTER_CONCERN.DEPARTMENT });
+            component.setState({ concern: FILTER_CONCERN.DEPARTMENT });
 
             expect(component.find(GroupedItemList).length).toBe(1);
         });
@@ -37,7 +37,7 @@ describe('ItemListPage', () => {
                 departments={departmentListMock}
                 items={itemListMock}
             />);
-            component.setState({ concern:  FILTER_CONCERN.ALPHA });
+            component.setState({ concern: FILTER_CONCERN.ALPHA });
 
             expect(component.find(GroupedItemList).length).toBe(0);
             expect(component.find(ItemList).length).toBe(1);
@@ -53,7 +53,7 @@ describe('ItemListPage', () => {
                 departments={departmentListMock}
                 items={itemListMock}
             />);
-            component.setState({ concern:  FILTER_CONCERN.FILTER });
+            component.setState({ concern: FILTER_CONCERN.FILTER });
         });
 
         afterEach(() => {

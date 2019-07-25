@@ -1,7 +1,7 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
-import {FilterBarItem} from '../filter-bar-item.component';
+import { FilterBarItem } from '../filter-bar-item.component';
 
 const filterBarItemPropsMock = {
     text: 'Alpha',

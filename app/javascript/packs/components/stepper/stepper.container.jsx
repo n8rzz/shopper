@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ApiService from '../../service/api.service';
-import {Stepper} from './stepper';
+import { Stepper } from './stepper';
 
-const CREATE_ORDER_ITEM_URL = `/order_items/create/item.json`;
+const CREATE_ORDER_ITEM_URL = '/order_items/create/item.json';
 
 export class StepperContainer extends React.Component {
     constructor(props) {
@@ -33,41 +33,27 @@ export class StepperContainer extends React.Component {
         this._onSubmitSuccessHandler = null;
     }
 
-    render() {
-        return (
-            <Stepper
-                itemId={this.props.itemId}
-                qty={this.state.qty}
-                isSubmitting={this.state.isSubmitting}
-                isSubmitSuccess={this.state.isSubmitSuccess}
-                onChangeQtyHandler={this.onChangeQtyHandler}
-                onClickDecreaseHandler={this.onClickDecreaseHandler}
-                onClickIncreaseHandler={this.onClickIncreaseHandler}
-                onClickSubmitHandler={this.onClickSubmitHandler}
-            />
-        );
-    }
-
     _onChangeQty(event) {
         if (event.currentTarget.value === '') {
             return;
         }
 
-        this.setState({qty: event.currentTarget.value});
+        this.setState({ qty: event.currentTarget.value });
     }
 
     _onClickDecrease() {
+        // eslint-disable-next-line react/no-access-state-in-setstate
         let nextQty = this.state.qty - 1;
 
         if (nextQty < 1) {
             nextQty = 1;
         }
 
-        this.setState({qty: nextQty});
+        this.setState({ qty: nextQty });
     }
 
     _onClickIncrease() {
-        this.setState({qty: this.state.qty + 1});
+        this.setState((prevState) => ({ qty: prevState.qty + 1 }));
     }
 
     _onClickSubmit(event) {
@@ -82,7 +68,7 @@ export class StepperContainer extends React.Component {
             item_id: this.props.itemId,
             department_id: this.props.departmentId,
             qty: this.state.qty,
-        }
+        };
 
         this.setState({ isSubmitting: true }, this._callSubmit(orderItem));
     }
@@ -97,7 +83,8 @@ export class StepperContainer extends React.Component {
                 }
 
                 // TODO: add ability to set flash success
-                // this._flashController.showNoticeMessage(`${orderItemModel.name} added to pending order`);
+                // this._flashController.showNoticeMessage(`${orderItemModel.name}
+                // added to pending order`);
                 const nextState = {
                     qty: 1,
                     isSubmitting: false,
@@ -107,7 +94,8 @@ export class StepperContainer extends React.Component {
             })
             .catch((error) => {
                 // TODO: add ability to set flash warning, error
-                // this._flashController.showNoticeMessage('Something went wrong, Item was not successfully added to Order');
+                // this._flashController.showNoticeMessage('Something went wrong, Item
+                // was not successfully added to Order');
 
                 throw error;
             });
@@ -118,11 +106,25 @@ export class StepperContainer extends React.Component {
             this.setState({ isSubmitSuccess: false });
         }, 3000);
     }
+
+    render() {
+        return (
+            <Stepper
+                itemId={this.props.itemId}
+                qty={this.state.qty}
+                isSubmitting={this.state.isSubmitting}
+                isSubmitSuccess={this.state.isSubmitSuccess}
+                onChangeQtyHandler={this.onChangeQtyHandler}
+                onClickDecreaseHandler={this.onClickDecreaseHandler}
+                onClickIncreaseHandler={this.onClickIncreaseHandler}
+                onClickSubmitHandler={this.onClickSubmitHandler}
+            />
+        );
+    }
 }
 
 StepperContainer.propTypes = {
     itemId: PropTypes.number.isRequired,
-    itemName: PropTypes.string.isRequired,
     departmentId: PropTypes.number.isRequired,
     csrf: PropTypes.string.isRequired,
 };

@@ -1,18 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import {noop} from 'lodash/noop';
+import _noop from 'lodash/noop';
 
 export class OrderItem extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     _buildOrderItemClassnames() {
         const orderItemIdClassname = `js-orderItem-${this.props.orderItemId}`;
 
         return classnames({
-            'orderItem': true,
+            orderItem: true,
             [orderItemIdClassname]: true,
             'mix-orderItem_isPicked': this.props.isPicked,
         });
@@ -20,17 +16,17 @@ export class OrderItem extends React.Component {
 
     _buildCheckboxJsx() {
         return (
-            <div className="orderItem-action">
+            <div className={'orderItem-action'}>
                 <form>
                     <input
-                        type="checkbox"
-                        className="input-checkbox js-orderItem-action-value u-isVisuallyHidden"
+                        type={'checkbox'}
+                        className={'input-checkbox js-orderItem-action-value u-isVisuallyHidden'}
                         name={this.props.orderItemId}
                         checked={this.props.isPicked}
-                        onChange={() => noop}
+                        onChange={() => _noop}
                     />
                     <label
-                        className="input-label_checkbox js-orderItem-action"
+                        className={'input-label_checkbox js-orderItem-action'}
                         htmlFor={this.props.orderItemId}
                         onClick={this.props.onClickCheckboxHandler}
                     >
@@ -43,11 +39,11 @@ export class OrderItem extends React.Component {
 
     _buildItemTitleJsx() {
         return (
-            <div className="orderItem-hd-content">
+            <div className={'orderItem-hd-content'}>
                 <h3>
                     <a
                         href={this.props.editItemUrl}
-                        className="orderItem-hd-link"
+                        className={'orderItem-hd-link'}
                     >
                         {this.props.itemName}
                     </a>
@@ -62,9 +58,10 @@ export class OrderItem extends React.Component {
         }
 
         return (
-            <div className="orderItem-hd-supplement">
+            <div className={'orderItem-hd-supplement'}>
                 <h3>
-                    <span className="txt-light">Qty:</span> {this.props.qty}
+                    <span className={'txt-light'}>Qty: </span>
+                    {this.props.qty}
                 </h3>
             </div>
         );
@@ -73,11 +70,11 @@ export class OrderItem extends React.Component {
     _buildRemoveItemButtonJsx() {
         return (
             <button
-                type="submit"
-                className="icon-btn js-orderItem-remove"
+                type={'submit'}
+                className={'icon-btn js-orderItem-remove'}
                 onClick={this.props.onClickRemoveItemHandler}
             >
-                <span className="icon icon-trashcan"></span>
+                <span className={'icon icon-trashcan'} />
             </button>
         );
     }
@@ -88,7 +85,7 @@ export class OrderItem extends React.Component {
         }
 
         return (
-            <div className="orderItem-bd">
+            <div className={'orderItem-bd'}>
                 {this.props.assemblyName}
             </div>
         );
@@ -99,14 +96,14 @@ export class OrderItem extends React.Component {
             <li className={this._buildOrderItemClassnames()}>
                 {this._buildCheckboxJsx()}
 
-                <div className="orderItem-content">
-                    <div className="orderItem-hd">
+                <div className={'orderItem-content'}>
+                    <div className={'orderItem-hd'}>
                         {this._buildItemTitleJsx()}
                         {this._buildQtyJsx()}
                         {this._buildRemoveItemButtonJsx()}
                     </div>
                     {this._buildAssemblyTitleJsx()}
-                    <div className="orderItem-ft">
+                    <div className={'orderItem-ft'}>
                         {this.props.departmentName}
                     </div>
                 </div>

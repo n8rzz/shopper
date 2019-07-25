@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _groupBy from 'lodash/groupBy';
 import _sortBy from 'lodash/sortBy';
-import {ConcernGroup} from './concern-group.component';
+import { ConcernGroup } from './concern-group.component';
 
 export class GroupedItemList extends React.PureComponent {
     constructor(props) {

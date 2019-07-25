@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {ItemList} from './item-list.component';
+import { ItemList } from './item-list.component';
 
 export function ConcernGroup(props) {
     return (
-        <div className="concernGroup" key={`concernGroup-${props.groupName}`}>
-            <div className="concernGroup-hd">
+        <div className={'concernGroup'} key={`concernGroup-${props.groupName}`}>
+            <div className={'concernGroup-hd'}>
                 <h2>{props.groupName}</h2>
             </div>
             <ItemList

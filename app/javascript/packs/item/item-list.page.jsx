@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import _groupBy from 'lodash/groupBy';
-import _sortBy from 'lodash/sortBy';
-import {FilterBar} from '../components/filter-bar/filter-bar.component';
-import {ItemList} from './item-list.component';
+import { FilterBar } from '../components/filter-bar/filter-bar.component';
+import { ItemList } from './item-list.component';
 import { GroupedItemList } from './grouped-item-list.component';
 
 // TODO: abstract these constants to another file
@@ -16,7 +14,7 @@ export const FILTER_LABEL = {
     [FILTER_CONCERN.ALPHA]: 'Alpha',
     [FILTER_CONCERN.DEPARTMENT]: 'Department',
     [FILTER_CONCERN.FILTER]: 'Filter',
-}
+};
 export const FILTER_BAR_ITEMS = [
     {
         text: FILTER_LABEL.ALPHA,
@@ -59,17 +57,15 @@ export class ItemListPage extends React.Component {
     _buildSecondaryFilterOptionListJsx() {
         return (
             <select
-                className="input-select"
+                className={'input-select'}
                 onChange={this._onChangeLetterFilterValueHandler}
             >
                 <option value={DEFAULT_DRILL_DOWN_VALUE}>{DEFAULT_DRILL_DOWN_VALUE}</option>
-                {this._filterableItemList.map((filterableLetter, index) => {
-                    return (
-                        <option value={filterableLetter} key={`select-${index}`}>
-                            {filterableLetter.toUpperCase()}
-                        </option>
-                    );
-                })}
+                {this._filterableItemList.map((filterableLetter, index) => (
+                    <option value={filterableLetter} key={`select-${index}`}>
+                        {filterableLetter.toUpperCase()}
+                    </option>
+                ))}
             </select>
         );
     }
@@ -88,7 +84,7 @@ export class ItemListPage extends React.Component {
             case FILTER_CONCERN.FILTER:
                 return (
                     <React.Fragment>
-                        <div className="vr_3">
+                        <div className={'vr_3'}>
                             {this._buildSecondaryFilterOptionListJsx()}
                         </div>
 
@@ -108,19 +104,6 @@ export class ItemListPage extends React.Component {
                     />
                 );
         }
-    }
-
-    render() {
-        return (
-            <React.Fragment>
-                <FilterBar
-                    items={FILTER_BAR_ITEMS}
-                    onChangeFilterHandler={this._onChangeFilterHandler}
-                />
-
-                {this._buildItemListForActiveConcernJsx()}
-            </React.Fragment>
-        );
     }
 
     // TODO: rename this
@@ -168,6 +151,19 @@ export class ItemListPage extends React.Component {
 
             return sum;
         }, {});
+    }
+
+    render() {
+        return (
+            <React.Fragment>
+                <FilterBar
+                    items={FILTER_BAR_ITEMS}
+                    onChangeFilterHandler={this._onChangeFilterHandler}
+                />
+
+                {this._buildItemListForActiveConcernJsx()}
+            </React.Fragment>
+        );
     }
 }
 

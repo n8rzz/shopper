@@ -1,8 +1,6 @@
 import React from 'react';
-import sinon from 'sinon';
-import {mount, shallow} from 'enzyme';
-
-import {Stepper} from '../stepper';
+import { shallow } from 'enzyme';
+import { Stepper } from '../stepper';
 
 describe('Stepper', () => {
     let component;

@@ -1,10 +1,10 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
-import {ConcernGroup} from '../concern-group.component';
+import { ConcernGroup } from '../concern-group.component';
 import {
     departmentMapMock,
-    itemListMock
+    itemListMock,
 } from './__mock__/item.mocks';
 
 describe('ConcernGroup', () => {
@@ -12,7 +12,7 @@ describe('ConcernGroup', () => {
         const component = shallow(<ConcernGroup
             csrf={'3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=='}
             departmentMap={departmentMapMock}
-            groupName={"Bakery"}
+            groupName={'Bakery'}
             itemList={itemListMock}
         />);
 
