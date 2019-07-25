@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoticeContainer renders correctly with valid props 1`] = `
+<div
+  className="js-notice"
+>
+  <Notice
+    isVisible={true}
+    message="this is a notice!"
+  />
+</div>
+`;

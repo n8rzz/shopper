@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Update a Location' do
+RSpec.feature 'Update a Location', js: true do
   let!(:location) { create(:location) }
 
   scenario ':edit template has correct links' do

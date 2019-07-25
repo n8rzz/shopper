@@ -10,7 +10,6 @@ require("channels");
 
 require("./accordion/accordion.controller");
 require("./assembly-item/assembly-item.controller");
-require("./flash/flash.controller");
 require("./flyout/flyout.controller");
 
 import {FilterBar} from './components/filter-bar/filter-bar.component';
@@ -19,6 +18,8 @@ import {GroupedItemList} from './item/grouped-item-list.component';
 import {Item} from './item/item.component';
 import {ItemList} from './item/item-list.component';
 import {ItemListPage} from './item/item-list.page';
+import {Notice} from './components/notice/notice.component';
+import {NoticeContainer} from './components/notice/notice.container';
 import {OrderItemContainer} from './order/order-item.container';
 import {OrderItem} from './order/order-item';
 import {StepperContainer} from './components/stepper/stepper.container';
@@ -36,6 +37,8 @@ WebpackerReact.setup({
     Item,
     ItemList,
     ItemListPage,
+    Notice,
+    NoticeContainer,
     OrderItemContainer,
     OrderItem,
     StepperContainer,

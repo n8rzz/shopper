@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Update Department' do
+RSpec.feature 'Update Department', js: true do
   let!(:department) { create(:department) }
 
   scenario 'has the correct links' do

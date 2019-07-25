@@ -2,7 +2,7 @@
 @import "../base/mixins";
 @import "../base/vars";
 
-#notice {
+.notice {
     @include monospaceFont;
     @include notificationPanel;
 

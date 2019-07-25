@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Edit an Assembly' do
+RSpec.feature 'Edit an Assembly', js: true do
   let!(:assembly) { create(:assembly, :with_item) }
 
   scenario 'updates a record' do

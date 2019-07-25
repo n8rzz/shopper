@@ -48,12 +48,9 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-# Uncomment to watch integration tests
-# Capybara.register_driver :selenium_chrome do |app|
-#   Capybara::Selenium::Driver.new(app, browser: :chrome)
-# end
-
-# Capybara.javascript_driver = :selenium_chrome
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+end
 
 Capybara.register_driver :headless_chrome do |app|
   capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
@@ -66,6 +63,7 @@ Capybara.register_driver :headless_chrome do |app|
 end
 
 Capybara.javascript_driver = :headless_chrome
+
 
 RSpec.configure do |config|
   config.before(:suite) do

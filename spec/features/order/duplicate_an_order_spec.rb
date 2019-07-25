@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Duplicate an order' do
+RSpec.feature 'Duplicate an order', js: true do
   let!(:complete_order) { create(:order, :complete) }
 
   context 'when an order is not pending status' do
