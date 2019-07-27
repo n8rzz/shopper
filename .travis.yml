@@ -34,11 +34,7 @@ install:
 before_script:
   - cp config/database.yml.travis config/database.yml
   - bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
-
-script:
   - bin/webpack
-  - bundle exec rspec
-  - npm run test
 
 branches:
   only:
@@ -46,3 +42,20 @@ branches:
     - stage
     - develop
     - ^\d+\.\d+(\.\d+)?(-\S*)?$
+
+jobs:
+  allow_failures:
+    - script: npm run lint
+    - script: bundle exec rubocop
+  stages:
+    Lint
+    Test
+  include:
+    - stage: Lint
+      script: npm run lint
+    - stage:  Lint
+      script: bundle exec rubocop
+    - stage: Test
+      script: bundle exec rspec
+    - stage: Test
+      script: npm run test
