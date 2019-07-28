@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderSimple when passed a valid \`orderList\` renders correctly with valid props 1`] = `
+<ul
+  className="vlist"
+>
+  <li
+    key="orderSimple-item-0"
+  >
+    <div>
+      <a
+        href="/orders/3"
+      >
+        Erdman-Abbott
+      </a>
+    </div>
+    <div>
+      pending - 7/26/2019
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`OrderSimple when passed an empty \`orderList\` renders correctly with valid props 1`] = `
+<div>
+  No Items to display
+</div>
+`;

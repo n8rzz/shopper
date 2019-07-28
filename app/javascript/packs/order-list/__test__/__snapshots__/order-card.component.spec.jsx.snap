@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderCard when passed a valid \`orderList\` renders correctly with valid props 1`] = `
+<ul
+  className="card"
+>
+  <li
+    className="orderListItem"
+    key="orderCard-item0"
+  >
+    <a
+      className="card-link"
+      href="/orders/3"
+    >
+      <div
+        className="orderListItem-hd"
+      >
+        2
+      </div>
+      <div
+        className="orderListItem-bd"
+      >
+        Dec
+      </div>
+      <div
+        className="orderListItem-ft"
+      >
+        Erdman-Abbott
+      </div>
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`OrderCard when passed an empty \`orderList\` renders correctly with valid props 1`] = `
+<div>
+  No Items to display
+</div>
+`;

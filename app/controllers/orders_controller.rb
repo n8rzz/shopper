@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     @orders = Order.all.order('status DESC')
+    @locations = Location.all.order('id ASC')
   end
 
   # GET /orders/1
