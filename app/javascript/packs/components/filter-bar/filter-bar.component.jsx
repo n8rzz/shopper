@@ -21,3 +21,7 @@ FilterBar.propTypes = {
     items: PropTypes.array.isRequired,
     onChangeFilterHandler: PropTypes.func,
 };
+
+FilterBar.defaultProps = {
+    onChangeFilterHandler: () => {},
+};

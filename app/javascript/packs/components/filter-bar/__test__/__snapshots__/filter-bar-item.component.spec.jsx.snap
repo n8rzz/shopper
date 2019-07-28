@@ -5,6 +5,7 @@ exports[`FilterBarItem renders correctly with valid props 1`] = `
   <a
     className="filterBar-link"
     href="/items"
+    onClick={[Function]}
   >
     Alpha
   </a>

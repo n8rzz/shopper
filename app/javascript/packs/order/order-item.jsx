@@ -15,11 +15,14 @@ export class OrderItem extends React.Component {
     }
 
     _buildCheckboxJsx() {
+        const inputId = `orderItem-${this.props.orderItemId}`;
+
         return (
             <div className={'orderItem-action'}>
                 <form>
                     <input
                         type={'checkbox'}
+                        id={inputId}
                         className={'input-checkbox js-orderItem-action-value u-isVisuallyHidden'}
                         name={this.props.orderItemId}
                         checked={this.props.isPicked}
@@ -27,7 +30,7 @@ export class OrderItem extends React.Component {
                     />
                     <label
                         className={'input-label_checkbox js-orderItem-action'}
-                        htmlFor={this.props.orderItemId}
+                        htmlFor={inputId}
                         onClick={this.props.onClickCheckboxHandler}
                     >
                         {this.props.isPicked}

@@ -169,6 +169,6 @@ export class ItemListPage extends React.Component {
 
 ItemListPage.propTypes = {
     csrf: PropTypes.string.isRequired,
-    departments: PropTypes.array,
-    items: PropTypes.array,
+    departments: PropTypes.array.isRequired,
+    items: PropTypes.array.isRequired,
 };

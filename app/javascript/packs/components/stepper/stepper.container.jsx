@@ -77,7 +77,9 @@ export class StepperContainer extends React.Component {
         ApiService.post(CREATE_ORDER_ITEM_URL, orderItem, this.props.csrf)
             .then((response) => {
                 if (response.status >= 300) {
-                    console.error(`Received an unexpected status code from ${CREATE_ORDER_ITEM_URL}. See response: ${response}`);
+                    console.error(`
+                        Received an unexpected status code from ${CREATE_ORDER_ITEM_URL}. See response: ${response}
+                    `);
 
                     return;
                 }

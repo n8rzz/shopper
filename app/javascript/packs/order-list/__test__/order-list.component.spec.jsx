@@ -28,5 +28,5 @@ describe('OrderList', () => {
 
             expect(component).toMatchSnapshot();
         });
-    })
+    });
 });

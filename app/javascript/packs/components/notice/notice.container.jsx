@@ -49,3 +49,8 @@ export class NoticeContainer extends React.Component {
 NoticeContainer.propTypes = {
     message: PropTypes.string,
 };
+
+
+NoticeContainer.defaultProps = {
+    message: '',
+};
