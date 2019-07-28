@@ -12,11 +12,13 @@ export class Stepper extends React.Component {
     }
 
     _buildStepperBody() {
+        const inputId = `item-${this.props.itemId}-qty`;
+
         return (
             <div className={'stepper-bd'}>
                 <label
                     className={'stepper-bd-label u-isVisuallyHidden'}
-                    htmlFor={'qty'}
+                    htmlFor={inputId}
                 >
                     Qty
                 </label>
@@ -30,7 +32,7 @@ export class Stepper extends React.Component {
                     className={'stepper-bd-input'}
                     type={'number'}
                     pattern={'[0-9]*'}
-                    id={`item-${this.props.itemId}-qty`}
+                    id={inputId}
                     name={`item-${this.props.itemId}-qty`}
                     min={'0'}
                     value={this.props.qty}

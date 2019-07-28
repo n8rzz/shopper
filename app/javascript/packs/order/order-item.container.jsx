@@ -35,7 +35,9 @@ export class OrderItemContainer extends React.Component {
         ApiService.patch(orderItemUrl, itemUpdateToSend, this.props.csrf)
             .then((response) => {
                 if (response.status !== 200) {
-                    console.error(`Received an unexpected status code from ${this.props.editItemUrl}. See response: ${response}`);
+                    console.error(`
+                        Received an unexpected status code from ${this.props.editItemUrl}. See response: ${response}
+                    `);
 
                     return;
                 }

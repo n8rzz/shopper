@@ -20,3 +20,7 @@ FilterBarItem.propTypes = {
     url: PropTypes.string.isRequired,
     onChangeFilterHandler: PropTypes.func,
 };
+
+FilterBarItem.defaultProps = {
+    onChangeFilterHandler: () => {},
+};

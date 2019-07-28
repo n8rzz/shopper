@@ -11,13 +11,14 @@ exports[`OrderItem when passed a non-empty \`#assemblyName\` renders correctly w
       <input
         checked={false}
         className="input-checkbox js-orderItem-action-value u-isVisuallyHidden"
+        id="orderItem-11"
         name={11}
         onChange={[Function]}
         type="checkbox"
       />
       <label
         className="input-label_checkbox js-orderItem-action"
-        htmlFor={11}
+        htmlFor="orderItem-11"
         onClick={[MockFunction]}
       />
     </form>
@@ -75,13 +76,14 @@ exports[`OrderItem when passed an empty \`#assemblyName\` renders correctly with
       <input
         checked={false}
         className="input-checkbox js-orderItem-action-value u-isVisuallyHidden"
+        id="orderItem-11"
         name={11}
         onChange={[Function]}
         type="checkbox"
       />
       <label
         className="input-label_checkbox js-orderItem-action"
-        htmlFor={11}
+        htmlFor="orderItem-11"
         onClick={[MockFunction]}
       />
     </form>

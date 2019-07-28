@@ -13,7 +13,7 @@ exports[`Stepper renders correctly with valid props 1`] = `
     >
       <label
         className="stepper-bd-label u-isVisuallyHidden"
-        htmlFor="qty"
+        htmlFor="item-42-qty"
       >
         Qty
       </label>

@@ -41,6 +41,7 @@ branches:
     - master
     - stage
     - develop
+    - bug/fix-linting-and-snapshots
     - ^\d+\.\d+(\.\d+)?(-\S*)?$
 
 jobs:

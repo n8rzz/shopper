@@ -2,22 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-function buildClassNames(props) {
-    return classnames({
-        notice: true,
-        'u-isVisuallyHidden': props.message == null || props.isVisible === false,
-    });
-}
-
 export function Notice(props) {
+    const noticeClassnames = classnames({
+        notice: true,
+        'u-isVisuallyHidden': props.message === '' || props.isVisible === false,
+    });
+
     return (
-        <div className={buildClassNames(props)}>
+        <div className={noticeClassnames}>
             {props.message}
         </div>
     );
 }
 
 Notice.propTypes = {
-    message: PropTypes.string,
+    message: PropTypes.string.isRequired,
     isVisible: PropTypes.bool.isRequired,
 };
