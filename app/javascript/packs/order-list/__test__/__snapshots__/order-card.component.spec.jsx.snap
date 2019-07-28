@@ -15,7 +15,7 @@ exports[`OrderCard when passed a valid \`orderList\` renders correctly with vali
       <div
         className="orderListItem-hd"
       >
-        2
+        3
       </div>
       <div
         className="orderListItem-bd"
