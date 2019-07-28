@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OrderItem when passed a non-empty \`#assemblyName\` renders correctly with valid props without  1`] = `
+exports[`OrderItem when passed a non-empty \`#assemblyName\` renders correctly with valid props 1`] = `
 <li
   className="orderItem js-orderItem-11"
 >
@@ -64,7 +64,7 @@ exports[`OrderItem when passed a non-empty \`#assemblyName\` renders correctly w
 </li>
 `;
 
-exports[`OrderItem when passed an empty \`#assemblyName\` renders correctly with valid props without  1`] = `
+exports[`OrderItem when passed an empty \`#assemblyName\` renders correctly with valid props 1`] = `
 <li
   className="orderItem js-orderItem-11"
 >

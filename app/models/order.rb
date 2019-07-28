@@ -16,14 +16,6 @@ class Order < ApplicationRecord
   scope :pending, -> { where(status: 'pending') }
   scope :finished, -> { where.not(status: ['active', 'pending']) }
 
-  def month_name
-    self.shopping_date.strftime("%B")
-  end
-
-  def zero_padded_day
-    self.shopping_date.strftime("%d")
-  end
-
   def order_date
     self.shopping_date.strftime("%b %m, %Y")
   end

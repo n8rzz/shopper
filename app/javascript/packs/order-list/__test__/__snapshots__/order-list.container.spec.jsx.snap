@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderListContainer renders correctly with valid props 1`] = `
+<OrderList
+  locationMap={
+    Object {
+      "1": Object {
+        "city": "Elyria",
+        "created_at": "2019-07-27T02:41:50.022Z",
+        "id": 1,
+        "name": "Dickinson and Sons",
+        "state": "Yavin 4",
+        "updated_at": "2019-07-27T02:41:50.022Z",
+      },
+      "2": Object {
+        "city": "Gulltown",
+        "created_at": "2019-07-27T02:41:50.027Z",
+        "id": 2,
+        "name": "Erdman-Abbott",
+        "state": "Crait",
+        "updated_at": "2019-07-27T02:41:50.027Z",
+      },
+    }
+  }
+  ordersByConcern={
+    Array [
+      Object {
+        "items": Array [
+          Object {
+            "created_at": "2019-07-27T02:41:50.579Z",
+            "id": 3,
+            "location_id": 2,
+            "shopping_date": "2018-12-03T00:00:00.000Z",
+            "status": "pending",
+            "updated_at": "2019-07-27T02:41:50.579Z",
+          },
+        ],
+        "name": "Pending",
+        "renderer": "card",
+      },
+      Object {
+        "items": Array [],
+        "name": "Active",
+        "renderer": "card",
+      },
+      Object {
+        "items": Array [
+          Object {
+            "created_at": "2019-07-27T02:41:50.579Z",
+            "id": 4,
+            "location_id": 1,
+            "shopping_date": "2018-12-03T00:00:00.000Z",
+            "status": "complete",
+            "updated_at": "2019-07-27T02:41:50.579Z",
+          },
+          Object {
+            "created_at": "2019-07-27T02:41:50.595Z",
+            "id": 5,
+            "location_id": 2,
+            "shopping_date": "2020-05-24T00:00:00.000Z",
+            "status": "complete",
+            "updated_at": "2019-07-27T02:41:50.595Z",
+          },
+        ],
+        "name": "Complete",
+        "renderer": "simple",
+      },
+    ]
+  }
+/>
+`;

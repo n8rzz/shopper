@@ -6,12 +6,24 @@
         <%= link_to 'New Order', new_order_path, class: "link" %>
     </li>
 </ul>
-<div class="vr_3">
-    <%= render partial: "order_item_card", locals: { orders: @orders.pending, title: 'Pending' } %>
-</div>
-<div class="vr_3">
-    <%= render partial: "order_item_card", locals: { orders: @orders.active, title: 'Active' } %>
-</div>
-<div class="vr_3">
-    <%= render partial: "finished_order", locals: { orders: @orders.finished, title: 'Finished' } %>
-</div>
+<%= react_component(
+    'OrderListContainer',
+    locations: @locations,
+    ordersByConcern: [
+        {
+            name: 'Pending',
+            items: @orders.pending,
+            renderer: 'card',
+        },
+        {
+            name: 'Active',
+            items: @orders.active,
+            renderer: 'card',
+        },
+        {
+            name: 'Finished',
+            items: @orders.finished,
+            renderer: 'simple',
+        },
+    ]
+) %>

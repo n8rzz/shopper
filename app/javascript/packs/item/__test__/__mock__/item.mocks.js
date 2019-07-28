@@ -5,19 +5,19 @@ export const departmentListMock = [
         created_at: '2019-07-21T16:03:32.883Z',
         id: 3,
         name: 'Bakery',
-        updated_at: '2019-07-21T16:03:32.883Z'
+        updated_at: '2019-07-21T16:03:32.883Z',
     },
     {
         created_at: '2019-07-21T16:03:32.883Z',
         id: 5,
         name: 'Meat',
-        updated_at: '2019-07-21T16:03:32.883Z'
-    }
+        updated_at: '2019-07-21T16:03:32.883Z',
+    },
 ];
 
 export const departmentMapMock = {
     3: departmentListMock[0],
-    5: departmentListMock[1]
+    5: departmentListMock[1],
 };
 
 export const itemListMock = [
@@ -26,13 +26,13 @@ export const itemListMock = [
         department_id: 5,
         id: 15,
         name: 'Agave Syrup',
-        updated_at: '2019-07-21T16:03:33.162Z'
+        updated_at: '2019-07-21T16:03:33.162Z',
     },
     {
         created_at: '2019-07-21T16:03:33.162Z',
         department_id: 3,
         id: 13,
         name: 'Agave Syrup',
-        updated_at: '2019-07-21T16:03:33.162Z'
-    }
+        updated_at: '2019-07-21T16:03:33.162Z',
+    },
 ];
