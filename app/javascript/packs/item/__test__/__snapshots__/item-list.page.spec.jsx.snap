@@ -3,6 +3,7 @@
 exports[`ItemListPage renders correctly with valid props 1`] = `
 <Fragment>
   <FilterBar
+    initialSelection="Alpha"
     items={
       Array [
         Object {

@@ -9,6 +9,7 @@ exports[`OrderSimple when passed a valid \`orderList\` renders correctly with va
   >
     <div>
       <a
+        className="link"
         href="/orders/3"
       >
         Erdman-Abbott

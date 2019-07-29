@@ -10,19 +10,17 @@ export class StepperContainer extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            qty: 1,
-            isSubmitting: false,
-            isSubmitSuccess: false,
-        };
-    }
-
-    componentWillMount() {
         this.onChangeQtyHandler = this._onChangeQty.bind(this);
         this.onClickDecreaseHandler = this._onClickDecrease.bind(this);
         this.onClickIncreaseHandler = this._onClickIncrease.bind(this);
         this.onClickSubmitHandler = this._onClickSubmit.bind(this);
         this._onSubmitSuccessHandler = this._onSubmitSuccessHandler.bind(this);
+
+        this.state = {
+            qty: 1,
+            isSubmitting: false,
+            isSubmitSuccess: false,
+        };
     }
 
     componentWillUnmount() {

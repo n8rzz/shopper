@@ -4,7 +4,7 @@
         <h1 class="hdg hdg_1">Locations</h1>
     </li>
     <li>
-        <a href="#" class="js-flyout-trigger">New Location</a>
+        <a href="#" class="link js-flyout-trigger">New Location</a>
     </li>
 </ul>
 <ul class="vlist">
@@ -13,7 +13,7 @@
             <div class="listItem-hd">
                 <ul class="stereo">
                     <li>
-                        <%= link_to location.name, edit_location_path(location) %>
+                        <%= link_to location.name, edit_location_path(location), class: "link" %>
                     </li>
                     <li>
                         <%= button_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -6,18 +6,18 @@
         <li>
             <ul class="hlist hlist-divided">
                 <li>
-                    <%= link_to 'Back', orders_path %>
+                    <%= link_to 'Back', orders_path, class: "link" %>
                 </li>
                     <% if @order.status != 'pending' %>
                         <li>
-                            <%= link_to 'Duplicate', order_duplicate_path(@order), method: :post %>
+                            <%= link_to 'Duplicate', order_duplicate_path(@order), method: :post, class: "link" %>
                         </li>
                     <% end %>
                 <li>
-                    <%= link_to 'Edit', edit_order_path(@order) %>
+                    <%= link_to 'Edit', edit_order_path(@order), class: "link" %>
                 </li>
                 <li>
-                    <%= link_to 'Destroy', @order, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <%= link_to 'Destroy', @order, method: :delete, data: { confirm: 'Are you sure?' }, class: "link" %>
                 </li>
             </ul>
         </li>
@@ -39,6 +39,7 @@
 
 <%= react_component(
     'FilterBar',
+    initialSelection: @concern,
     items: [
         {
             text: 'Item',
@@ -86,7 +87,7 @@
                         <h2>
                             <%= key.name%>
                                 <% if @order.live? %>
-                                    <%= link_to 'Delete', order_assembly_path(@order.id, key.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+                                    <%= link_to 'Delete', order_assembly_path(@order.id, key.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "link" %>
                                 <% end %>
                             </span>
                         </h2>

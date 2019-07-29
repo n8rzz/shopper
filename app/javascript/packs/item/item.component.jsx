@@ -11,7 +11,10 @@ export function Item(props) {
                 <div className={'listItem-content'}>
                     <div className={'listItem-hd'}>
                         <h2 className={'hdg hdg_2'}>
-                            <a href={editItemPath}>
+                            <a
+                                className={'link'}
+                                href={editItemPath}
+                            >
                                 {props.itemName}
                             </a>
                         </h2>

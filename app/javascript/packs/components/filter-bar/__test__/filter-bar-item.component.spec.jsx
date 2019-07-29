@@ -9,12 +9,27 @@ const filterBarItemPropsMock = {
 };
 
 describe('FilterBarItem', () => {
-    test('renders correctly with valid props', () => {
-        const component = shallow(<FilterBarItem
-            text={filterBarItemPropsMock.text}
-            url={filterBarItemPropsMock.url}
-        />);
+    describe('when #isActive is false', () => {
+        test('renders correctly with valid props', () => {
+            const component = shallow(<FilterBarItem
+                isActive={false}
+                text={filterBarItemPropsMock.text}
+                url={filterBarItemPropsMock.url}
+            />);
 
-        expect(component).toMatchSnapshot();
+            expect(component).toMatchSnapshot();
+        });
+    });
+
+    describe('when #isActive is true', () => {
+        test('renders correctly with valid props', () => {
+            const component = shallow(<FilterBarItem
+                isActive={true}
+                text={filterBarItemPropsMock.text}
+                url={filterBarItemPropsMock.url}
+            />);
+
+            expect(component).toMatchSnapshot();
+        });
     });
 });

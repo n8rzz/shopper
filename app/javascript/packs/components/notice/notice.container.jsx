@@ -36,11 +36,15 @@ export class NoticeContainer extends React.Component {
     }
 
     render() {
+        const message = this.props.message != null
+            ? this.props.message
+            : '';
+
         return (
             <div
                 className={'js-notice'}
             >
-                <Notice message={this.props.message} isVisible={this.state.isVisible} />
+                <Notice message={message} isVisible={this.state.isVisible} />
             </div>
         );
     }

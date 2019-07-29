@@ -3,6 +3,16 @@
 
 .link,
 .link:visited {
+    @include sansSerifFont;
+
+    color: $COLOR_PRIMARY_ACCENT;
     font-size: $FONT_SIZE_M;
     font-weight: 500;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: $COLOR_DARK;
+    text-decoration: underline;
+    transition: all ease-in-out 300ms;
 }

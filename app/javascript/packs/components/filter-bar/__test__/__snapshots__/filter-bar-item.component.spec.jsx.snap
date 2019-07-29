@@ -1,9 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FilterBarItem renders correctly with valid props 1`] = `
+exports[`FilterBarItem when #isActive is false renders correctly with valid props 1`] = `
 <li>
   <a
     className="filterBar-link"
+    href="/items"
+    onClick={[Function]}
+  >
+    Alpha
+  </a>
+</li>
+`;
+
+exports[`FilterBarItem when #isActive is true renders correctly with valid props 1`] = `
+<li>
+  <a
+    className="filterBar-link mix-filterBar-link_isActive"
     href="/items"
     onClick={[Function]}
   >

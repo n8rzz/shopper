@@ -5,13 +5,13 @@
     <div>
         <ul class="hlist hlist-divided">
             <li>
-                <%= link_to 'Back', orders_path %>
+                <%= link_to 'Back', orders_path, class: "link" %>
             </li>
             <li>
-                <%= link_to 'Show', @order %>
+                <%= link_to 'Show', @order, class: "link" %>
             </li>
             <li>
-                <%= link_to 'Destroy', @order, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to 'Destroy', @order, method: :delete, data: { confirm: 'Are you sure?' }, class: "link" %>
             </li>
         </ul>
     </div>

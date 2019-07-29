@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 export function FilterBarItem(props) {
+    const filterBarClassnames = classnames({
+        'filterBar-link': true,
+        'mix-filterBar-link_isActive': props.isActive,
+    });
+
     return (
         <li>
             <a
-                className={'filterBar-link'}
+                className={filterBarClassnames}
                 href={props.url}
                 onClick={props.onChangeFilterHandler}
             >
@@ -16,6 +22,7 @@ export function FilterBarItem(props) {
 }
 
 FilterBarItem.propTypes = {
+    isActive: PropTypes.bool.isRequired,
     text: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
     onChangeFilterHandler: PropTypes.func,
