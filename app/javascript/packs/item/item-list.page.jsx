@@ -157,6 +157,7 @@ export class ItemListPage extends React.Component {
         return (
             <React.Fragment>
                 <FilterBar
+                    initialSelection={FILTER_LABEL.ALPHA}
                     items={FILTER_BAR_ITEMS}
                     onChangeFilterHandler={this._onChangeFilterHandler}
                 />

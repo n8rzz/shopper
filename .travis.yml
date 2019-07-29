@@ -36,13 +36,12 @@ before_script:
   - bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
   - bin/webpack
 
-branches:
-  only:
-    - master
-    - stage
-    - develop
-    - bug/fix-linting-and-snapshots
-    - ^\d+\.\d+(\.\d+)?(-\S*)?$
+# branches:
+#   only:
+#     - master
+#     - stage
+#     - develop
+#     - ^\d+\.\d+(\.\d+)?(-\S*)?$
 
 jobs:
   allow_failures:

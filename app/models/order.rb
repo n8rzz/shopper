@@ -20,6 +20,18 @@ class Order < ApplicationRecord
     self.shopping_date.strftime("%b %m, %Y")
   end
 
+  def self.build_concern_name_from_params(param = nil)
+    concern = 'Item'
+
+    if param == 'assembly'
+      concern = 'Meal'
+    elsif param == 'department'
+      concern = 'Department'
+    end
+
+    concern
+  end
+
   def order_items_by_concern(concern = nil)
     items_by_concern = nil
 

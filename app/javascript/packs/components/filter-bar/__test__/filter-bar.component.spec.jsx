@@ -16,6 +16,7 @@ const filterBarItemListMock = [
 describe('FilterBar', () => {
     test('renders correctly with valid props', () => {
         const component = shallow(<FilterBar
+            initialSelection={filterBarItemListMock[0].text}
             items={filterBarItemListMock}
         />);
 

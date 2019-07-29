@@ -5,12 +5,14 @@ exports[`FilterBar renders correctly with valid props 1`] = `
   className="filterBar"
 >
   <FilterBarItem
+    isActive={true}
     key="filterBar-item-0"
     onChangeFilterHandler={[Function]}
     text="Alpha"
     url="/items"
   />
   <FilterBarItem
+    isActive={false}
     key="filterBar-item-1"
     onChangeFilterHandler={[Function]}
     text="Department"

@@ -1,3 +1,4 @@
+@import '../base/_font';
 @import "../base/mixins";
 @import "../base/vars";
 
@@ -20,7 +21,14 @@
 }
 
 .filterBar-link {
-    // FIXME: remove important
-    color: $COLOR_PRIMARY !important;
+    @include sansSerifFont;
+
+    color: $COLOR_PRIMARY;
     font-weight: 600;
+    text-decoration: none;
+}
+
+.mix-filterBar-link_isActive {
+    color: $COLOR_DARK;
+    cursor: default;
 }

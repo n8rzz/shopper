@@ -5,10 +5,10 @@
     <li>
         <ul class="hlist hlist-divided">
             <li>
-                <%= link_to 'Back', assemblies_path %>
+                <%= link_to 'Back', assemblies_path, class: "link" %>
             </li>
             <li>
-                <%= link_to 'Destroy', @assembly, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to 'Destroy', @assembly, method: :delete, data: { confirm: 'Are you sure?' }, class: "link" %>
             </li>
         </ul>
     </li>

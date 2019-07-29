@@ -16,7 +16,10 @@ export class OrderSimple extends React.PureComponent {
         return (
             <li key={`orderSimple-item-${index}`}>
                 <div>
-                    <a href={`/orders/${order.id}`}>
+                    <a
+                        className={'link'}
+                        href={`/orders/${order.id}`}
+                    >
                         {locationName}
                     </a>
                 </div>

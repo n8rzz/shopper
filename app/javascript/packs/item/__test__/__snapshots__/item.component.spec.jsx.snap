@@ -17,6 +17,7 @@ exports[`Item renders correctly with valid props 1`] = `
           className="hdg hdg_2"
         >
           <a
+            className="link"
             href="items/11/edit"
           >
             Red Face Tuna
