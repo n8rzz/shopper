@@ -78,7 +78,7 @@
     <% if @order_items_by_concern != nil %>
         <% @order_items_by_concern.each do |key, order_items| %>
             <div class="concernGroup">
-                <% if key == nil && @should_show_non_grouped %>
+                <% if key == nil %>
                     <div class="concernGroup-hd">
                         <h2>Not Grouped</h2>
                     </div>
@@ -87,7 +87,12 @@
                         <h2>
                             <%= key.name%>
                                 <% if @order.live? %>
-                                    <%= link_to 'Delete', order_assembly_path(@order.id, key.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "link" %>
+                                    <%= link_to 'Delete',
+                                        order_assembly_path(@order.id, key.id),
+                                        method: :delete,
+                                        data: { confirm: 'Are you sure?' },
+                                        class: "link"
+                                    %>
                                 <% end %>
                             </span>
                         </h2>

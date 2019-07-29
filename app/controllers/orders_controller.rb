@@ -11,7 +11,6 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
-    @should_show_non_grouped = false
     # used as a stop-gap until this view moves to ui components
     @concern = Order.build_concern_name_from_params(params[:order])
     @order_items_by_concern = @order.order_items_by_concern(params[:order])
