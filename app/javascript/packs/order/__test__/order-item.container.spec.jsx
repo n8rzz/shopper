@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { OrderItemContainer } from '../order-item.container';
-// import { OrderItem } from '../order-item';
 
 describe('OrderItemContainer', () => {
     describe('when passed an empty `#assemblyName`', () => {

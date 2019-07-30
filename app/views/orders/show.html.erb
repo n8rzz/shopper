@@ -38,83 +38,10 @@
 </div>
 
 <%= react_component(
-    'FilterBar',
-    initialSelection: @concern,
-    items: [
-        {
-            text: 'Item',
-            url: order_path,
-        },
-        {
-            text: 'Department',
-            url: order_path(order: 'department'),
-        },
-        {
-            text: 'Meal',
-            url: order_path(order: 'assembly'),
-        }
-    ]
+    'OrderPage',
+    csrf: form_authenticity_token,
+    departments: @departments,
+    assemblies: @assemblies,
+    orderItems: @order.order_items,
+    items: @items
 ) %>
-
-<div class="js-orderItem ">
-    <% if @order_items_by_concern == nil %>
-        <ul class="vlist">
-            <% @order.order_items.each do |order_item| %>
-                <%= react_component(
-                    'OrderItemContainer',
-                    csrf: form_authenticity_token,
-                    orderItemId: order_item.id,
-                    qty: order_item.qty,
-                    itemName: order_item.item.name,
-                    editItemUrl: edit_item_path(order_item.item.id),
-                    departmentName: order_item.department.name,
-                    assemblyName: order_item.assembly_name_or_null,
-                    isPicked: order_item.picked
-                ) %>
-            <% end %>
-        </ul>
-    <% end %>
-
-    <% if @order_items_by_concern != nil %>
-        <% @order_items_by_concern.each do |key, order_items| %>
-            <div class="concernGroup">
-                <% if key == nil %>
-                    <div class="concernGroup-hd">
-                        <h2>Not Grouped</h2>
-                    </div>
-                <% elsif key != nil %>
-                    <div class="concernGroup-hd">
-                        <h2>
-                            <%= key.name%>
-                                <% if @order.live? %>
-                                    <%= link_to 'Delete',
-                                        order_assembly_path(@order.id, key.id),
-                                        method: :delete,
-                                        data: { confirm: 'Are you sure?' },
-                                        class: "link"
-                                    %>
-                                <% end %>
-                            </span>
-                        </h2>
-                    </div>
-                <% end %>
-
-                <ul class="vlist">
-                    <% order_items.each do |order_item| %>
-                        <%= react_component(
-                            'OrderItemContainer',
-                            csrf: form_authenticity_token,
-                            orderItemId: order_item.id,
-                            qty: order_item.qty,
-                            itemName: order_item.item.name,
-                            editItemUrl: edit_item_path(order_item.item.id),
-                            departmentName: order_item.department.name,
-                            assemblyName: order_item.assembly_name_or_null,
-                            isPicked: order_item.picked
-                        ) %>
-                    <% end %>
-                </ul>
-            </div>
-        <% end %>
-    <% end %>
-</div>
