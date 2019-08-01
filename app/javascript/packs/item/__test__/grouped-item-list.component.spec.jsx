@@ -3,11 +3,12 @@ import { shallow } from 'enzyme';
 
 import { GroupedItemList } from '../grouped-item-list.component';
 import {
-    csrfMock,
     departmentListMock,
     departmentMapMock,
-    itemListMock,
-} from './__mock__/item.mocks';
+} from '../../__mocks__/department.mock';
+import { itemListMock } from '../../__mocks__/item.mock';
+import { csrfMock } from '../../__mocks__/csrf.mock';
+
 
 describe('GroupedItemList', () => {
     test('renders correctly with valid props', () => {

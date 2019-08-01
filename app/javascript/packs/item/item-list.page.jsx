@@ -3,18 +3,11 @@ import PropTypes from 'prop-types';
 import { FilterBar } from '../components/filter-bar/filter-bar.component';
 import { ItemList } from './item-list.component';
 import { GroupedItemList } from './grouped-item-list.component';
+import {
+    FILTER_CONCERN,
+    FILTER_LABEL,
+} from '../constants/filter-concern';
 
-// TODO: abstract these constants to another file
-export const FILTER_CONCERN = {
-    ALPHA: 'ALPHA',
-    DEPARTMENT: 'DEPARTMENT',
-    FILTER: 'FILTER',
-};
-export const FILTER_LABEL = {
-    [FILTER_CONCERN.ALPHA]: 'Alpha',
-    [FILTER_CONCERN.DEPARTMENT]: 'Department',
-    [FILTER_CONCERN.FILTER]: 'Filter',
-};
 export const FILTER_BAR_ITEMS = [
     {
         text: FILTER_LABEL.ALPHA,
@@ -38,15 +31,12 @@ export class ItemListPage extends React.Component {
         this._departmentMap = this._buildDepartmentMap(props);
         this._itemsByFirstLetter = this._buildItemsByFirstLetter(props);
         this._filterableItemList = Object.keys(this._itemsByFirstLetter);
+        this._onChangeFilterHandler = this._onChangeFilter.bind(this);
+        this._onChangeLetterFilterValueHandler = this._onChangeLetterFilterValue.bind(this);
         this.state = {
             concern: FILTER_CONCERN.ALPHA,
             itemsByFilter: props.items,
         };
-    }
-
-    componentWillMount() {
-        this._onChangeFilterHandler = this._onChangeFilter.bind(this);
-        this._onChangeLetterFilterValueHandler = this._onChangeLetterFilterValue.bind(this);
     }
 
     componentWillUnmount() {
@@ -161,7 +151,6 @@ export class ItemListPage extends React.Component {
                     items={FILTER_BAR_ITEMS}
                     onChangeFilterHandler={this._onChangeFilterHandler}
                 />
-
                 {this._buildItemListForActiveConcernJsx()}
             </React.Fragment>
         );

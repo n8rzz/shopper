@@ -2,10 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { ConcernGroup } from '../concern-group.component';
-import {
-    departmentMapMock,
-    itemListMock,
-} from './__mock__/item.mocks';
+import { departmentMapMock } from '../../__mocks__/department.mock';
+import { itemListMock } from '../../__mocks__/item.mock';
 
 describe('ConcernGroup', () => {
     test('renders correctly with valid props', () => {

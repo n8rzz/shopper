@@ -7,16 +7,13 @@ export class OrderItemContainer extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            isPicked: props.isPicked,
-        };
-    }
-
-    componentWillMount() {
         this._onClickPickedCheckboxHandler = this._onClickPickedCheckbox.bind(this);
         this._onClickRemoveItemHandler = this._onClickRemoveItem.bind(this);
         this._onUpdatePickedSuccessHandler = this._onUpdatePickedSuccess.bind(this);
         this._onRemoveItemSuccessHandler = this._onRemoveItemSuccess.bind(this);
+        this.state = {
+            isPicked: props.isPicked,
+        };
     }
 
     componentWillUnmount() {

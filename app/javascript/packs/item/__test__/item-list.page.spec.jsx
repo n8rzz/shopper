@@ -1,10 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { ItemListPage, FILTER_CONCERN } from '../item-list.page';
+import { ItemListPage } from '../item-list.page';
 import { GroupedItemList } from '../grouped-item-list.component';
 import { ItemList } from '../item-list.component';
-import { departmentListMock, itemListMock } from './__mock__/item.mocks';
+import { FILTER_CONCERN } from '../../constants/filter-concern';
+import { departmentListMock } from '../../__mocks__/department.mock';
+import { itemListMock } from '../../__mocks__/item.mock';
 
 describe('ItemListPage', () => {
     test('renders correctly with valid props', () => {

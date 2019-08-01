@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.feature 'Select a filter', js: true do
-  let!(:pending_order) { create(:order, :pending) }
+  let!(:pending_order) { create(:order, :pending, :with_order_items) }
 
   context 'when loading #show' do
     before do
       visit order_path(pending_order.id)
     end
 
-    it { expect(page).to have_link('Item', href: order_path(pending_order.id)) }
+    it { expect(page).to have_link('Item') }
     it { expect(page).to have_link('Department') }
     it { expect(page).to have_link('Meal') }
   end

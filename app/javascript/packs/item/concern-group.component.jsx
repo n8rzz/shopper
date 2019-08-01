@@ -4,7 +4,10 @@ import { ItemList } from './item-list.component';
 
 export function ConcernGroup(props) {
     return (
-        <div className={'concernGroup'} key={`concernGroup-${props.groupName}`}>
+        <div
+            className={'concernGroup'}
+            key={`concernGroup-${props.groupName}`}
+        >
             <div className={'concernGroup-hd'}>
                 <h2>{props.groupName}</h2>
             </div>

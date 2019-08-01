@@ -24,6 +24,7 @@ import {NoticeContainer} from './components/notice/notice.container';
 import {OrderCard} from './order-list/order-card.component';
 import {OrderListContainer} from './order-list/order-list.container';
 import {OrderList} from './order-list/order-list.component';
+import {OrderPage} from './order/order.page';
 import {OrderSimple} from './order-list/order-simple.component';
 import {OrderItemContainer} from './order/order-item.container';
 import {OrderItem} from './order/order-item';
@@ -49,6 +50,7 @@ WebpackerReact.setup({
     OrderItemContainer,
     OrderList,
     OrderListContainer,
+    OrderPage,
     OrderSimple,
     Stepper,
     StepperContainer,

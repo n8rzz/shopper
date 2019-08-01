@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderItemList renders correctly with valid props 1`] = `
+<ul
+  className="vlist"
+>
+  <OrderItemContainer
+    assemblyName="Souvlaki"
+    csrf="3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=="
+    departmentName="Bakery"
+    editItemUrl="/item/15/edit"
+    isPicked={false}
+    itemName="Agave Syrup"
+    key="orderItemContainer-0"
+    orderItemId={22}
+    qty={3}
+  />
+  <OrderItemContainer
+    assemblyName=""
+    csrf="3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=="
+    departmentName="Meat"
+    editItemUrl="/item/13/edit"
+    isPicked={false}
+    itemName="Agave Syrup"
+    key="orderItemContainer-1"
+    orderItemId={23}
+    qty={1}
+  />
+</ul>
+`;
