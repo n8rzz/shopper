@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AssemblyItemList renders correctly with valid props 1`] = `
+<ul
+  className="vlist mix-vlist_isClickable js-accordionList"
+>
+  <AssemblyItemContainer
+    assembly={
+      Object {
+        "created_at": "2019-07-29T22:49:47.431Z",
+        "id": 1,
+        "name": "Souvlaki",
+        "updated_at": "2019-07-29T22:49:47.431Z",
+      }
+    }
+    assemblyItemsGroupedByAssemblyId={
+      Object {
+        "1": Array [
+          Object {
+            "assembly_id": 1,
+            "created_at": "2019-08-01T22:58:09.157Z",
+            "id": 1,
+            "item_id": 13,
+            "qty": 8,
+            "updated_at": "2019-08-01T22:58:09.157Z",
+          },
+        ],
+      }
+    }
+    csrf="3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=="
+    departmentIdMap={
+      Object {
+        "3": Object {
+          "created_at": "2019-07-21T16:03:32.883Z",
+          "id": 3,
+          "name": "Bakery",
+          "updated_at": "2019-07-21T16:03:32.883Z",
+        },
+        "5": Object {
+          "created_at": "2019-07-21T16:03:32.883Z",
+          "id": 5,
+          "name": "Meat",
+          "updated_at": "2019-07-21T16:03:32.883Z",
+        },
+      }
+    }
+    itemIdMap={
+      Object {
+        "13": Object {
+          "created_at": "2019-07-21T16:03:33.162Z",
+          "department_id": 3,
+          "id": 13,
+          "name": "Agave Syrup",
+          "updated_at": "2019-07-21T16:03:33.162Z",
+        },
+        "15": Object {
+          "created_at": "2019-07-21T16:03:33.162Z",
+          "department_id": 5,
+          "id": 15,
+          "name": "Agave Syrup",
+          "updated_at": "2019-07-21T16:03:33.162Z",
+        },
+      }
+    }
+    key="assemblyItemContainer-0"
+  />
+  <AssemblyItemContainer
+    assembly={
+      Object {
+        "created_at": "2019-07-29T22:49:47.519Z",
+        "id": 2,
+        "name": "Chilli con Carne",
+        "updated_at": "2019-07-29T22:49:47.519Z",
+      }
+    }
+    assemblyItemsGroupedByAssemblyId={
+      Object {
+        "1": Array [
+          Object {
+            "assembly_id": 1,
+            "created_at": "2019-08-01T22:58:09.157Z",
+            "id": 1,
+            "item_id": 13,
+            "qty": 8,
+            "updated_at": "2019-08-01T22:58:09.157Z",
+          },
+        ],
+      }
+    }
+    csrf="3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=="
+    departmentIdMap={
+      Object {
+        "3": Object {
+          "created_at": "2019-07-21T16:03:32.883Z",
+          "id": 3,
+          "name": "Bakery",
+          "updated_at": "2019-07-21T16:03:32.883Z",
+        },
+        "5": Object {
+          "created_at": "2019-07-21T16:03:32.883Z",
+          "id": 5,
+          "name": "Meat",
+          "updated_at": "2019-07-21T16:03:32.883Z",
+        },
+      }
+    }
+    itemIdMap={
+      Object {
+        "13": Object {
+          "created_at": "2019-07-21T16:03:33.162Z",
+          "department_id": 3,
+          "id": 13,
+          "name": "Agave Syrup",
+          "updated_at": "2019-07-21T16:03:33.162Z",
+        },
+        "15": Object {
+          "created_at": "2019-07-21T16:03:33.162Z",
+          "department_id": 5,
+          "id": 15,
+          "name": "Agave Syrup",
+          "updated_at": "2019-07-21T16:03:33.162Z",
+        },
+      }
+    }
+    key="assemblyItemContainer-1"
+  />
+</ul>
+`;

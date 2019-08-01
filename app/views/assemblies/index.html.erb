@@ -6,8 +6,13 @@
         <%= link_to 'New Assembly', new_assembly_path, class: "link" %>
     </li>
 </ul>
-<ul class="vlist mix-vlist_isClickable js-accordionList">
-    <% @assemblies.each_with_index do |assembly, assembly_index| %>
-        <%= render partial: "assembly_item", locals: { assembly: assembly, assembly_index: assembly_index } %>
-    <% end %>
-</ul>
+
+<%= react_component(
+    'AssemblyPage',
+    assemblies: @assemblies,
+    assemblyItems: @assembly_items,
+    csrf: form_authenticity_token,
+    departments: @departments,
+    items: @items
+) %>
+

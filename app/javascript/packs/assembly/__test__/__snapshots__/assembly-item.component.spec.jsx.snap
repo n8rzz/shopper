@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AssemblyItem renders correctly with valid props 1`] = `
+<li
+  key="assembly-Souvlaki"
+>
+  <div
+    className="listItem"
+  >
+    <div
+      className="listItem-hd"
+    >
+      <h2
+        className="hdg hdg_2"
+        onClick={[Function]}
+      >
+        Souvlaki
+      </h2>
+      <div>
+        <button
+          data-assembly-id={1}
+          onClick={[Function]}
+          type="button"
+        >
+          Add to order
+        </button>
+      </div>
+    </div>
+    <div
+      className="listItem-ft"
+    >
+      <ul
+        className="stereo"
+      >
+        <li>
+          Items:
+          1
+        </li>
+        <li>
+          <a
+            className="link"
+            href="/assemblies/"
+          >
+            Edit Assembly
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <ul
+    className="vlist vlist-short u-isVisuallyHidden"
+  >
+    <li
+      className="listItem listItem-child"
+      key="assemblyItem-0"
+    >
+      <div
+        className="listItem-hd"
+      >
+        <h3
+          className="hdg"
+        >
+          Agave Syrup
+        </h3>
+      </div>
+      <div
+        className="listItem-ft"
+      >
+        <ul
+          className="stereo"
+        >
+          <li>
+            Bakery
+          </li>
+          <li>
+            <form>
+              <button
+                data-assembly-item-id={1}
+                data-department-id={3}
+                onClick={[Function]}
+                type="submit"
+              >
+                Add Item to order
+              </button>
+            </form>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</li>
+`;

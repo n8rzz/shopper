@@ -9,27 +9,29 @@ require('turbolinks').start();
 require('@rails/activestorage').start();
 require('channels');
 
-require('./accordion/accordion.controller');
-require('./assembly-item/assembly-item.controller');
 require('./flyout/flyout.controller');
 
-import {FilterBar} from './components/filter-bar/filter-bar.component';
-import {FilterBarItem} from './components/filter-bar/filter-bar-item.component';
-import {GroupedItemList} from './item/grouped-item-list.component';
-import {Item} from './item/item.component';
-import {ItemList} from './item/item-list.component';
-import {ItemListPage} from './item/item-list.page';
-import {Notice} from './components/notice/notice.component';
-import {NoticeContainer} from './components/notice/notice.container';
-import {OrderCard} from './order-list/order-card.component';
-import {OrderListContainer} from './order-list/order-list.container';
-import {OrderList} from './order-list/order-list.component';
-import {OrderPage} from './order/order.page';
-import {OrderSimple} from './order-list/order-simple.component';
-import {OrderItemContainer} from './order/order-item.container';
-import {OrderItem} from './order/order-item';
-import {StepperContainer} from './components/stepper/stepper.container';
-import {Stepper} from './components/stepper/stepper';
+import { AssemblyPage } from './assembly/assembly.page';
+import { AssemblyItem } from './assembly/assembly-item.component';
+import { AssemblyItemContainer } from './assembly/assembly-item.container';
+import { AssemblyItemList } from './assembly/assembly-item-list.component';
+import { FilterBar } from './components/filter-bar/filter-bar.component';
+import { FilterBarItem } from './components/filter-bar/filter-bar-item.component';
+import { GroupedItemList } from './item/grouped-item-list.component';
+import { Item } from './item/item.component';
+import { ItemList } from './item/item-list.component';
+import { ItemListPage } from './item/item-list.page';
+import { Notice } from './components/notice/notice.component';
+import { NoticeContainer } from './components/notice/notice.container';
+import { OrderCard } from './order-list/order-card.component';
+import { OrderListContainer } from './order-list/order-list.container';
+import { OrderList } from './order-list/order-list.component';
+import { OrderPage } from './order/order.page';
+import { OrderSimple } from './order-list/order-simple.component';
+import { OrderItemContainer } from './order/order-item.container';
+import { OrderItem } from './order/order-item';
+import { StepperContainer } from './components/stepper/stepper.container';
+import { Stepper } from './components/stepper/stepper';
 
 import WebpackerReact from 'webpacker-react';
 // TODO: this is happening already a few lines up
@@ -37,6 +39,10 @@ import WebpackerReact from 'webpacker-react';
 // Turbolinks.start()
 
 WebpackerReact.setup({
+    AssemblyItem,
+    AssemblyItemContainer,
+    AssemblyItemList,
+    AssemblyPage,
     FilterBar,
     FilterBarItem,
     GroupedItemList,

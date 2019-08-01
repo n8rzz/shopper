@@ -2,6 +2,7 @@ class OrderItemsController < ApplicationController
   before_action :set_pending_order, only: [:create_assembly, :create_item]
 
 #  POST /order_items/create/assembly
+#  POST /order_items/create/assembly.json
 def create_assembly
   assembly = Assembly.find(order_item_params[:assembly_id])
 
@@ -24,7 +25,7 @@ def create_assembly
     end
 
     format.html { redirect_to assemblies_path, notice: "#{assembly.name} added to pending order" }
-    format.json { render :show, status: :created, location: @assemblies_path }
+    format.json { render json: @order_item, status: :created }
   end
 end
 
