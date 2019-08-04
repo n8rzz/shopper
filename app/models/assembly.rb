@@ -5,6 +5,7 @@ class Assembly < ApplicationRecord
   has_many :assemblies, through: :assembly_items
   has_many :items, through: :assembly_items
 
+  # TODO: this may be unused after `feature/34`
   scope :items, -> { AssemblyItem.where(assembly_id: self.ids).map { |assembly_item|
     assembly_item.item
   }}

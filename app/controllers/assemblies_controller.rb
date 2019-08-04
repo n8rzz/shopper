@@ -5,7 +5,9 @@ class AssembliesController < ApplicationController
   # GET /assemblies.json
   def index
     @assemblies = Assembly.all.order('name ASC')
-    @order_item = OrderItem.new
+    @assembly_items = AssemblyItem.all
+    @departments = Department.all
+    @items = Item.all
   end
 
   # GET /assemblies/new
