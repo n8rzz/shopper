@@ -53,8 +53,74 @@ exports[`OrderPage when passed 0 \`orderItems\` renders correctly with valid pro
       },
     ]
   }
+  order={
+    Object {
+      "created_at": "2019-08-06T22:19:49.806Z",
+      "id": 2,
+      "location_id": 8,
+      "shopping_date": "2019-11-05T00:00:00.000Z",
+      "status": "active",
+      "updated_at": "2019-08-06T22:19:49.806Z",
+    }
+  }
   orderItems={Array []}
+  orderLocationName="Durgan, Mills and Labadie"
 >
+  <OrderMeta
+    locationName="Durgan, Mills and Labadie"
+    shoppingDate="2019-11-05T00:00:00.000Z"
+    status="active"
+  >
+    <div
+      className="orderMeta"
+    >
+      <div>
+        Shopping Date: 
+        Nov 04, 2019
+      </div>
+      <div>
+        Status: 
+        active
+      </div>
+      <div>
+        Location: 
+        Durgan, Mills and Labadie
+      </div>
+    </div>
+  </OrderMeta>
+  <Progress
+    currentCount={0}
+    totalCount={0}
+  >
+    <div
+      className="progress"
+    >
+      <div
+        className="progress-caption"
+      >
+        0
+      </div>
+      <div
+        className="progress-bar"
+      >
+        <div
+          className="progress-bar-fill mix-progress-bar-fill_isComplete"
+          style={
+            Object {
+              "width": "NaN%",
+            }
+          }
+        >
+           
+        </div>
+      </div>
+      <div
+        className="progress-caption"
+      >
+        0
+      </div>
+    </div>
+  </Progress>
   <FilterBar
     initialSelection="Item"
     items={
@@ -219,6 +285,8 @@ exports[`OrderPage when passed 0 \`orderItems\` renders correctly with valid pro
           },
         }
       }
+      onClickIsPickedHandler={[Function]}
+      onClickRemoveItemHandler={[Function]}
       orderItems={Array []}
     />
   </div>
@@ -227,6 +295,15 @@ exports[`OrderPage when passed 0 \`orderItems\` renders correctly with valid pro
 
 exports[`OrderPage when passed more than 0 \`orderItems\` renders correctly with valid props 1`] = `
 <Fragment>
+  <OrderMeta
+    locationName="Durgan, Mills and Labadie"
+    shoppingDate="2019-11-05T00:00:00.000Z"
+    status="active"
+  />
+  <Progress
+    currentCount={0}
+    totalCount={2}
+  />
   <FilterBar
     initialSelection="Item"
     items={
@@ -335,6 +412,8 @@ exports[`OrderPage when passed more than 0 \`orderItems\` renders correctly with
           },
         }
       }
+      onClickIsPickedHandler={[Function]}
+      onClickRemoveItemHandler={[Function]}
       orderItems={
         Array [
           Object {

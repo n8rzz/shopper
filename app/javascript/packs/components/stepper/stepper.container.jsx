@@ -14,7 +14,7 @@ export class StepperContainer extends React.Component {
         this.onClickDecreaseHandler = this._onClickDecrease.bind(this);
         this.onClickIncreaseHandler = this._onClickIncrease.bind(this);
         this.onClickSubmitHandler = this._onClickSubmit.bind(this);
-        this._onSubmitSuccessHandler = this._onSubmitSuccessHandler.bind(this);
+        this.onSubmitSuccessHandler = this._onSubmitSuccess.bind(this);
 
         this.state = {
             qty: 1,
@@ -28,7 +28,7 @@ export class StepperContainer extends React.Component {
         this.onClickDecreaseHandler = null;
         this.onClickIncreaseHandler = null;
         this.onClickSubmitHandler = null;
-        this._onSubmitSuccessHandler = null;
+        this.onSubmitSuccessHandler = null;
     }
 
     _onChangeQty(event) {
@@ -90,7 +90,7 @@ export class StepperContainer extends React.Component {
                     isSubmitting: false,
                     isSubmitSuccess: true,
                 };
-                this.setState(nextState, this._onSubmitSuccessHandler);
+                this.setState(nextState, this.onSubmitSuccessHandler);
             })
             .catch((error) => {
                 // TODO: add ability to set flash warning, error
@@ -101,7 +101,7 @@ export class StepperContainer extends React.Component {
             });
     }
 
-    _onSubmitSuccessHandler() {
+    _onSubmitSuccess() {
         setTimeout(() => {
             this.setState({ isSubmitSuccess: false });
         }, 3000);

@@ -4,6 +4,13 @@ import classnames from 'classnames';
 import _noop from 'lodash/noop';
 
 export class OrderItem extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this._onClickIsPickedHandler = this._onClickIsPicked.bind(this);
+        this._onClickRemoveItemHandler = this._onClickRemoveItem.bind(this);
+    }
+
     _buildOrderItemClassnames() {
         const orderItemIdClassname = `js-orderItem-${this.props.orderItemId}`;
 
@@ -31,7 +38,7 @@ export class OrderItem extends React.Component {
                     <label
                         className={'input-label_checkbox js-orderItem-action'}
                         htmlFor={inputId}
-                        onClick={this.props.onClickCheckboxHandler}
+                        onClick={this._onClickIsPickedHandler}
                     >
                         {this.props.isPicked}
                     </label>
@@ -75,7 +82,7 @@ export class OrderItem extends React.Component {
             <button
                 type={'submit'}
                 className={'icon-btn js-orderItem-remove'}
-                onClick={this.props.onClickRemoveItemHandler}
+                onClick={this._onClickRemoveItemHandler}
             >
                 <span className={'icon icon-trashcan'} />
             </button>
@@ -92,6 +99,14 @@ export class OrderItem extends React.Component {
                 {this.props.assemblyName}
             </div>
         );
+    }
+
+    _onClickIsPicked() {
+        this.props.onClickIsPickedHandler(this.props.orderItemId, this.props.isPicked);
+    }
+
+    _onClickRemoveItem() {
+        this.props.onClickRemoveItemHandler(this.props.orderItemId);
     }
 
     render() {
@@ -123,6 +138,6 @@ OrderItem.propTypes = {
     itemName: PropTypes.string.isRequired,
     orderItemId: PropTypes.number.isRequired,
     qty: PropTypes.number.isRequired,
-    onClickCheckboxHandler: PropTypes.func.isRequired,
+    onClickIsPickedHandler: PropTypes.func.isRequired,
     onClickRemoveItemHandler: PropTypes.func.isRequired,
 };

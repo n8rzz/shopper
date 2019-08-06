@@ -3,17 +3,22 @@ import PropTypes from 'prop-types';
 import _get from 'lodash/get';
 import _groupBy from 'lodash/groupBy';
 import _sortBy from 'lodash/sortBy';
+import { OrderItem } from './order-item.component';
 import { FILTER_CONCERN } from '../constants/filter-concern';
-import { OrderItemContainer } from './order-item.container';
 
 export class OrderConcernGroup extends React.Component {
     constructor(props) {
         super(props);
 
-        this._sortedDepartmentNameList = _sortBy(this.props.departments, 'name');
-        this._groupedByDepartmentOrderItemList = _groupBy(this.props.orderItems, 'department_id');
         this._sortedAssemblyNameList = _sortBy(this.props.assemblies, 'name');
+        this._sortedDepartmentNameList = _sortBy(this.props.departments, 'name');
         this._groupedByAssemblyOrderItemList = _groupBy(this.props.orderItems, 'assembly_id');
+        this._groupedByDepartmentOrderItemList = _groupBy(this.props.orderItems, 'department_id');
+    }
+
+    componentWillUpdate(nextProps) {
+        this._groupedByAssemblyOrderItemList = _groupBy(nextProps.orderItems, 'assembly_id');
+        this._groupedByDepartmentOrderItemList = _groupBy(nextProps.orderItems, 'department_id');
     }
 
     _buildOrderItemListForConcernGroupJsx(orderItems) {
@@ -25,16 +30,18 @@ export class OrderConcernGroup extends React.Component {
             const editItemUrl = `/item/${orderItem.item_id}/edit`;
 
             return (
-                <OrderItemContainer
-                    key={`orderItemContainer-${index}`}
-                    csrf={this.props.csrf}
-                    orderItemId={orderItem.id}
-                    qty={orderItem.qty}
-                    itemName={itemName}
-                    editItemUrl={editItemUrl}
-                    departmentName={departmentName}
+                <OrderItem
                     assemblyName={assemblyName}
+                    csrf={this.props.csrf}
+                    departmentName={departmentName}
+                    editItemUrl={editItemUrl}
                     isPicked={orderItem.picked}
+                    itemName={itemName}
+                    key={`orderItem-${index}`}
+                    orderItemId={orderItem.id}
+                    onClickIsPickedHandler={this.props.onClickIsPickedHandler}
+                    onClickRemoveItemHandler={this.props.onClickRemoveItemHandler}
+                    qty={orderItem.qty}
                 />
             );
         });
@@ -126,12 +133,14 @@ export class OrderConcernGroup extends React.Component {
 }
 
 OrderConcernGroup.propTypes = {
-    csrf: PropTypes.string.isRequired,
-    orderItems: PropTypes.array.isRequired,
-    departmentMap: PropTypes.object.isRequired,
-    assemblyMap: PropTypes.object.isRequired,
-    itemMap: PropTypes.object.isRequired,
-    concern: PropTypes.string.isRequired,
-    departments: PropTypes.array.isRequired,
     assemblies: PropTypes.array.isRequired,
+    assemblyMap: PropTypes.object.isRequired,
+    concern: PropTypes.string.isRequired,
+    csrf: PropTypes.string.isRequired,
+    departmentMap: PropTypes.object.isRequired,
+    departments: PropTypes.array.isRequired,
+    itemMap: PropTypes.object.isRequired,
+    orderItems: PropTypes.array.isRequired,
+    onClickIsPickedHandler: PropTypes.func.isRequired,
+    onClickRemoveItemHandler: PropTypes.func.isRequired,
 };

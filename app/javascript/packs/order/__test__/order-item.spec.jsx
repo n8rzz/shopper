@@ -1,19 +1,19 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { OrderItem } from '../order-item';
+import { OrderItem } from '../order-item.component';
 
 describe('OrderItem', () => {
-    let onClickCheckboxHandlerSpy;
+    let onClickIsPickedHandlerSpy;
     let onClickRemoveItemHandlerSpy;
 
     beforeEach(() => {
-        onClickCheckboxHandlerSpy = jest.fn();
+        onClickIsPickedHandlerSpy = jest.fn();
         onClickRemoveItemHandlerSpy = jest.fn();
     });
 
     afterEach(() => {
-        onClickCheckboxHandlerSpy = null;
+        onClickIsPickedHandlerSpy = null;
         onClickRemoveItemHandlerSpy = null;
     });
 
@@ -21,7 +21,6 @@ describe('OrderItem', () => {
         test('renders correctly with valid props', () => {
             const component = shallow(<OrderItem
                 assemblyName={''}
-                csrf={'3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=='}
                 departmentId={32}
                 departmentName={'meat'}
                 editItemUrl={'http://localhost:3000/orders/21/edit'}
@@ -29,7 +28,7 @@ describe('OrderItem', () => {
                 itemName={'Red Face Tuna'}
                 orderItemId={11}
                 qty={1}
-                onClickCheckboxHandler={onClickCheckboxHandlerSpy}
+                onClickIsPickedHandler={onClickIsPickedHandlerSpy}
                 onClickRemoveItemHandler={onClickRemoveItemHandlerSpy}
             />);
 
@@ -41,7 +40,6 @@ describe('OrderItem', () => {
         test('renders correctly with valid props', () => {
             const component = shallow(<OrderItem
                 assemblyName={'sushi'}
-                csrf={'3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=='}
                 departmentId={32}
                 departmentName={'meat'}
                 editItemUrl={'http://localhost:3000/orders/21/edit'}
@@ -49,7 +47,7 @@ describe('OrderItem', () => {
                 itemName={'Red Face Tuna'}
                 orderItemId={11}
                 qty={1}
-                onClickCheckboxHandler={onClickCheckboxHandlerSpy}
+                onClickIsPickedHandler={onClickIsPickedHandlerSpy}
                 onClickRemoveItemHandler={onClickRemoveItemHandlerSpy}
             />);
 

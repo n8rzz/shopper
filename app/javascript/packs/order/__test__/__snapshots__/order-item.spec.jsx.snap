@@ -19,7 +19,7 @@ exports[`OrderItem when passed a non-empty \`#assemblyName\` renders correctly w
       <label
         className="input-label_checkbox js-orderItem-action"
         htmlFor="orderItem-11"
-        onClick={[MockFunction]}
+        onClick={[Function]}
       />
     </form>
   </div>
@@ -43,7 +43,7 @@ exports[`OrderItem when passed a non-empty \`#assemblyName\` renders correctly w
       </div>
       <button
         className="icon-btn js-orderItem-remove"
-        onClick={[MockFunction]}
+        onClick={[Function]}
         type="submit"
       >
         <span
@@ -84,7 +84,7 @@ exports[`OrderItem when passed an empty \`#assemblyName\` renders correctly with
       <label
         className="input-label_checkbox js-orderItem-action"
         htmlFor="orderItem-11"
-        onClick={[MockFunction]}
+        onClick={[Function]}
       />
     </form>
   </div>
@@ -108,7 +108,7 @@ exports[`OrderItem when passed an empty \`#assemblyName\` renders correctly with
       </div>
       <button
         className="icon-btn js-orderItem-remove"
-        onClick={[MockFunction]}
+        onClick={[Function]}
         type="submit"
       >
         <span

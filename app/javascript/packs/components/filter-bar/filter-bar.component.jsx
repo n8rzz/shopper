@@ -12,6 +12,22 @@ export class FilterBar extends React.PureComponent {
         };
     }
 
+    _buildFilterBarListItemsJsx() {
+        return this.props.items.map((filterBarItem, index) => {
+            const isActive = this.state.activeFilter === filterBarItem.text;
+
+            return (
+                <FilterBarItem
+                    key={`filterBar-item-${index}`}
+                    isActive={isActive}
+                    text={filterBarItem.text}
+                    url={filterBarItem.url}
+                    onChangeFilterHandler={this._onChangeFilterHandler}
+                />
+            );
+        });
+    }
+
     _onChangeFilter(event) {
         const nextFilterSelection = event.target.text;
 
@@ -19,21 +35,11 @@ export class FilterBar extends React.PureComponent {
     }
 
     render() {
+        const filterbarListItemsJsx = this._buildFilterBarListItemsJsx();
+
         return (
             <ul className={'filterBar'}>
-                {this.props.items.map((filterBarItem, index) => {
-                    const isActive = this.state.activeFilter === filterBarItem.text;
-
-                    return (
-                        <FilterBarItem
-                            key={`filterBar-item-${index}`}
-                            isActive={isActive}
-                            text={filterBarItem.text}
-                            url={filterBarItem.url}
-                            onChangeFilterHandler={this._onChangeFilterHandler}
-                        />
-                    );
-                })}
+                {filterbarListItemsJsx}
             </ul>
         );
     }

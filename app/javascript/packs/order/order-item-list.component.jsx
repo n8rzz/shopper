@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _get from 'lodash/get';
-import { OrderItemContainer } from './order-item.container';
+import { OrderItem } from './order-item.component';
 
 export function OrderItemList(props) {
     return (
@@ -14,16 +14,18 @@ export function OrderItemList(props) {
                 const editItemUrl = `/item/${orderItem.item_id}/edit`;
 
                 return (
-                    <OrderItemContainer
-                        key={`orderItemContainer-${index}`}
-                        csrf={props.csrf}
-                        orderItemId={orderItem.id}
-                        qty={orderItem.qty}
-                        itemName={itemName}
-                        editItemUrl={editItemUrl}
-                        departmentName={departmentName}
+                    <OrderItem
                         assemblyName={assemblyName}
+                        csrf={props.csrf}
+                        departmentName={departmentName}
+                        editItemUrl={editItemUrl}
                         isPicked={orderItem.picked}
+                        itemName={itemName}
+                        key={`orderItem-${index}`}
+                        orderItemId={orderItem.id}
+                        onClickIsPickedHandler={props.onClickIsPickedHandler}
+                        onClickRemoveItemHandler={props.onClickRemoveItemHandler}
+                        qty={orderItem.qty}
                     />
                 );
             })}
@@ -37,4 +39,6 @@ OrderItemList.propTypes = {
     departmentMap: PropTypes.object.isRequired,
     itemMap: PropTypes.object.isRequired,
     orderItems: PropTypes.array.isRequired,
+    onClickIsPickedHandler: PropTypes.func.isRequired,
+    onClickRemoveItemHandler: PropTypes.func.isRequired,
 };

@@ -5,6 +5,7 @@ import { FILTER_CONCERN } from '../../constants/filter-concern';
 import { assemblyListMock } from '../../__mocks__/assembly.mock';
 import { csrfMock } from '../../__mocks__/csrf.mock';
 import { departmentListMock } from '../../__mocks__/department.mock';
+import { orderMock, orderLocationNameMock } from '../../__mocks__/order.mock';
 import { orderItemListMock } from '../../__mocks__/order-item.mock';
 import { itemListMock } from '../../__mocks__/item.mock';
 
@@ -17,6 +18,8 @@ describe('OrderPage', () => {
                 departments={departmentListMock}
                 items={itemListMock}
                 orderItems={orderItemListMock}
+                order={orderMock}
+                orderLocationName={orderLocationNameMock}
             />);
 
             expect(component).toMatchSnapshot();
@@ -31,6 +34,8 @@ describe('OrderPage', () => {
                 departments={departmentListMock}
                 items={itemListMock}
                 orderItems={[]}
+                order={orderMock}
+                orderLocationName={orderLocationNameMock}
             />);
             component.setState({ concern: FILTER_CONCERN.MEAL });
 

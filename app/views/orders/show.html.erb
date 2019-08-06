@@ -23,19 +23,6 @@
         </li>
     </ul>
 </div>
-<div class="orderMeta">
-    <div>
-        Shopping Date: <%= @order.order_date %>
-    </div>
-    <div>
-        Status: <%= @order.status %>
-    </div>
-    <% if @order.location %>
-        <div>
-            Location: <%= @order.location.name %>
-        </div>
-    <% end %>
-</div>
 
 <%= react_component(
     'OrderPage',
@@ -43,5 +30,7 @@
     departments: @departments,
     assemblies: @assemblies,
     orderItems: @order.order_items,
-    items: @items
+    items: @items,
+    order: @order,
+    orderLocationName: @order.location.name
 ) %>

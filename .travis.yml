@@ -18,6 +18,8 @@ cache:
   yarn: true
 
 before_install:
+  - export TZ=America/Chicago
+  - date
   - wget http://chromedriver.storage.googleapis.com/2.9/chromedriver_linux64.zip
   - unzip chromedriver_linux64.zip
   - rm chromedriver_linux64.zip
