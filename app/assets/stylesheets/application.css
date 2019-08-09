@@ -35,6 +35,7 @@
  *= require "module/_orderItem"
  *= require "module/_orderListItem"
  *= require "module/_orderMeta"
+ *= require "module/_progress"
  *= require "module/_notice"
  *= require "module/_stereo"
  *= require "module/_util"

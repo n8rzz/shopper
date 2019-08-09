@@ -1,0 +1,41 @@
+@import '../base/_font';
+@import "../base/mixins";
+@import "../base/vars";
+
+.progress {
+    @include basePanel;
+
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $SPACING_1X * -1;
+    margin-top: $SPACING_2X;
+}
+
+.progress-bar {
+    background-color: $COLOR_LIGHT;
+    border-radius: $BORDER_RADIUS_L;
+    flex-grow: 1;
+    margin: $SPACING_1X 0;
+}
+
+.progress-bar-fill {
+    @include animationCubicBezier;
+
+    background-color: rgba(30, 144, 255, 0.5);
+    border-radius: $BORDER_RADIUS_L;
+    width: 0%;
+}
+
+.progress-caption {
+    @include sansSerifFont;
+
+    color: $COLOR_DARK;
+    font-size: $FONT_SIZE_S;
+    padding-left: $SPACING_1X;
+    padding-right: $SPACING_1X;
+}
+
+.mix-progress-bar-fill_isComplete {
+    background-color: rgba($COLOR_PRIMARY_ACCENT, 0.5);
+}

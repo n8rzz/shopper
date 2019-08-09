@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Progress when \`currentCount\` < \`totalCount\` renders correctly with valid props 1`] = `
+<div
+  className="progress"
+>
+  <div
+    className="progress-caption"
+  >
+    10
+  </div>
+  <div
+    className="progress-bar"
+  >
+    <div
+      className="progress-bar-fill"
+      style={
+        Object {
+          "width": "77%",
+        }
+      }
+    >
+       
+    </div>
+  </div>
+  <div
+    className="progress-caption"
+  >
+    13
+  </div>
+</div>
+`;

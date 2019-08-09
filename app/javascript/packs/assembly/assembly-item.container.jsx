@@ -23,8 +23,6 @@ export class AssemblyItemContainer extends React.Component {
     _onClickAddAssembly(event) {
         event.preventDefault();
 
-        console.log('+++ _onClickAddAssembly', this.props);
-
         // /order_items/create/assembly
         const assemblyId = this.props.assembly.id;
         // FIXME: move these away from data attributes

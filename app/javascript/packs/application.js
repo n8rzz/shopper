@@ -26,10 +26,11 @@ import { NoticeContainer } from './components/notice/notice.container';
 import { OrderCard } from './order-list/order-card.component';
 import { OrderListContainer } from './order-list/order-list.container';
 import { OrderList } from './order-list/order-list.component';
+import { OrderMeta } from './order/order-meta.component';
 import { OrderPage } from './order/order.page';
 import { OrderSimple } from './order-list/order-simple.component';
-import { OrderItemContainer } from './order/order-item.container';
-import { OrderItem } from './order/order-item';
+import { OrderItem } from './order/order-item.component';
+import { Progress } from './components/progress/progress.component';
 import { StepperContainer } from './components/stepper/stepper.container';
 import { Stepper } from './components/stepper/stepper';
 
@@ -53,11 +54,12 @@ WebpackerReact.setup({
     NoticeContainer,
     OrderCard,
     OrderItem,
-    OrderItemContainer,
     OrderList,
     OrderListContainer,
+    OrderMeta,
     OrderPage,
     OrderSimple,
+    Progress,
     Stepper,
     StepperContainer,
 });

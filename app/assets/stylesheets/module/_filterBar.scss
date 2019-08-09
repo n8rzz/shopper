@@ -2,7 +2,6 @@
 @import "../base/mixins";
 @import "../base/vars";
 
-// hlist hlist-divided mix-hlist_spacious mix-hlist_centered
 .filterBar {
     @include hlist;
     @include basePanel;

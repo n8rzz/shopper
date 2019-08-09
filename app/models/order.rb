@@ -16,43 +16,6 @@ class Order < ApplicationRecord
   scope :pending, -> { where(status: 'pending') }
   scope :finished, -> { where.not(status: ['active', 'pending']) }
 
-  def order_date
-    self.shopping_date.strftime("%b %m, %Y")
-  end
-
-  def self.build_concern_name_from_params(param = nil)
-    concern = 'Item'
-
-    if param == 'assembly'
-      concern = 'Meal'
-    elsif param == 'department'
-      concern = 'Department'
-    end
-
-    concern
-  end
-
-  def order_items_by_concern(concern = nil)
-    items_by_concern = nil
-
-    if concern == 'assembly'
-      items_by_concern = self.group_by_assembly
-    elsif concern == 'department'
-      items_by_concern = self.group_by_department_and_sort
-    end
-
-    items_by_concern
-  end
-
-  def group_by_assembly
-    self.order_items.group_by(&:assembly)
-  end
-
-  def group_by_assembly_and_sort
-    # FIXME: currently fails due to `nil` value keys from `group_by`
-    self.order_items.group_by(&:assembly).sort_by { |k, v| k.name.to_s }
-  end
-
   # TODO: shared method used in Item, should be abstracted
   def group_by_department
     self.order_items.group_by(&:department)

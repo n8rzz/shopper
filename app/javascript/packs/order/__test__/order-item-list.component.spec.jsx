@@ -1,4 +1,5 @@
 import React from 'react';
+import sinon from 'sinon';
 import { shallow } from 'enzyme';
 import { OrderItemList } from '../order-item-list.component';
 import { assemblyMapMock } from '../../__mocks__/assembly.mock';
@@ -15,6 +16,8 @@ describe('OrderItemList', () => {
             departmentMap={departmentMapMock}
             itemMap={itemMapMock}
             orderItems={orderItemListMock}
+            onClickIsPickedHandler={sinon.spy()}
+            onClickRemoveItemHandler={sinon.spy()}
         />);
 
         expect(component).toMatchSnapshot();

@@ -1,4 +1,5 @@
 import React from 'react';
+import sinon from 'sinon';
 import { shallow } from 'enzyme';
 import { OrderConcernGroup } from '../order-concern-group.component';
 // TODO: implement tests for all states of the filter
@@ -21,6 +22,8 @@ describe('OrderConcernGroup', () => {
             itemMap={itemMapMock}
             items={itemListMock}
             orderItems={orderItemListMock}
+            onClickIsPickedHandler={sinon.spy()}
+            onClickRemoveItemHandler={sinon.spy()}
         />);
 
         expect(component).toMatchSnapshot();
