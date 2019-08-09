@@ -14,14 +14,15 @@ RSpec.feature 'Create an Item', js: true do
     it { expect(page).to have_no_link('Destroy') }
   end
 
-  context 'when a user fills in Item form' do
+  context 'when a user completes Item form' do
     before :each do
       fill_in 'Name', with: '$texas'
-      select 'Produce', from: 'Department'
+      select department.name, from: 'Department'
 
       click_button 'Create Item'
     end
 
+    it { expect(page).to have_text('$texas') }
     it { expect(page).to have_text('Item was created successfully') }
     it { expect(page).to have_current_path(items_path) }
     it { expect(page).to have_css('.mix-flyout_isHidden') }

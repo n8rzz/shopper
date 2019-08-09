@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature 'Create an Location', js: true do
-  let!(:location) { create(:location) }
-
   before :each do
     visit locations_path
     click_link 'New Location'
@@ -23,6 +21,6 @@ RSpec.feature 'Create an Location', js: true do
 
     it { expect(page).to have_text('Location was created successfully') }
     it { expect(page).to have_current_path(locations_path) }
-    it { expect(page).to have_no_css('.mix-flyout_isHidden') }
+    it { expect(page).to have_text('Icebox') }
   end
 end

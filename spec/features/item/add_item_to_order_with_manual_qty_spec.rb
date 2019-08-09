@@ -1,20 +1,19 @@
 require 'rails_helper'
 
-RSpec.feature 'Add item to order', js: true do
+RSpec.feature 'Add item to an order with manual qty', js: true do
   let!(:pending_order) { create(:order, :pending) }
   let!(:item) { create(:item) }
 
   before :each do
     visit items_path
 
-    within first('.listItem') do
-      click_button 'Add to order'
-    end
+    fill_in "item-#{item.id}-qty", with: 3
+    click_button 'Add to order'
 
     visit order_path(pending_order.id)
   end
 
+  it { expect(page).to have_text('Qty: 3') }
   it { expect(page).to have_text(item.name) }
-  it { expect(page).to_not have_text('Qty: 1') }
   it { expect(page).to have_text(item.department.name) }
 end

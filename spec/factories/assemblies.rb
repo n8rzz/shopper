@@ -4,7 +4,9 @@ FactoryBot.define do
 
     trait :with_item do
       after(:create) do |assembly|
-        assembly.assembly_items << create(:assembly_item)
+        item = create(:item)
+
+        assembly.assembly_items.new({ id: item.id, qty: rand(1..10) })
       end
     end
   end

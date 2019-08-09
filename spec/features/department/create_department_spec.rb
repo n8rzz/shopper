@@ -24,8 +24,6 @@ RSpec.feature 'Create an Department', js: true do
 
     it { expect(page).to have_text('Department was created successfully') }
     it { expect(page).to have_current_path(departments_path) }
-    # FIXME: This works in the other tests, but is failing here
-    # it { expect(page).to have_css('.mix-flyout_isHidden') }
   end
 end
 
