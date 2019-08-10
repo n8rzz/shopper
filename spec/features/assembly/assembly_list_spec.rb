@@ -7,6 +7,8 @@ require 'rails_helper'
 #   scenario 'visit assembly#index' do
 #     visit assemblies_path
 
+#     save_and_open_page
+
 #     expect(page).to have_text(assembly.name)
 #     expect(page).to have_text("Items: #{assembly.items.count}")
 #     expect(page).to have_button('Add to order')

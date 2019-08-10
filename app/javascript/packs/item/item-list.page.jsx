@@ -47,12 +47,16 @@ export class ItemListPage extends React.Component {
     _buildSecondaryFilterOptionListJsx() {
         return (
             <select
+                name={'filter-item-by-first-letter'}
                 className={'input-select'}
                 onChange={this._onChangeLetterFilterValueHandler}
             >
                 <option value={DEFAULT_DRILL_DOWN_VALUE}>{DEFAULT_DRILL_DOWN_VALUE}</option>
                 {this._filterableItemList.map((filterableLetter, index) => (
-                    <option value={filterableLetter} key={`select-${index}`}>
+                    <option
+                        value={filterableLetter}
+                        key={`select-${index}`}
+                    >
                         {filterableLetter.toUpperCase()}
                     </option>
                 ))}

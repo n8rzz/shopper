@@ -1,3 +1,16 @@
+=begin
+
+id:             integer
+order_id:       integer
+item_id:        integer
+assembly_id:    integer
+created_at:     datetime
+updated_at:     datetime
+department_id:  integer
+picked:         boolean
+qty:            integer
+
+=end
 class OrderItem < ApplicationRecord
   belongs_to :order
   belongs_to :department, optional: true

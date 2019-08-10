@@ -12,14 +12,14 @@ RSpec.feature 'Update an Item', js: true do
     expect(page).to have_button 'Update Item'
   end
 
-  scenario 'They see the item updates on the page' do
+  scenario 'the item updates are displayed' do
     visit items_path
     click_on item.name
 
     fill_in 'Name', with: '$texas'
     click_button 'Update Item'
 
-    expect(page).to have_text 'Item was updated successfully'
+    expect(page).to have_text('Item was updated successfully')
     expect(page).to have_current_path(items_path)
   end
 end

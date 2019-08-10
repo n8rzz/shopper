@@ -1,3 +1,11 @@
+=begin
+
+id:           integer
+name:         string
+created_at:   datetime
+updated_at:   datetime
+
+=end
 class Assembly < ApplicationRecord
   has_many :order_items, dependent: :destroy
   has_many :orders, through: :order_items

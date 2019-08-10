@@ -5,7 +5,10 @@ RSpec.feature 'Delete an Assembly', js: true do
 
   # scenario 'clicks an assembly at assembly#index' do
   #   visit assemblies_path
-  #   first('.listItem').click_link('Edit Assembly')
+
+  #   within first('.listItem') do
+  #     click_link('Edit Assembly')
+  #   end
 
   #   expect(page).to have_current_path(edit_assembly_path(assembly.id))
   # end

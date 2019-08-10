@@ -10,16 +10,14 @@ RSpec.feature 'Group Items by Department', js: true do
     visit items_path
   end
 
-  it 'has Department link' do
-    expect(page).to have_link 'Department'
-  end
+  it { expect(page).to have_link('Department') }
 
   context 'when clicking on Department link' do
     it 'Department names are headings' do
       click_link 'Department'
 
-      expect(page).to have_selector 'h2', text: produce.name
-      expect(page).to have_selector 'h2', text: meat.name
+      expect(page).to have_selector('h2', text: produce.name)
+      expect(page).to have_selector('h2', text: meat.name)
     end
   end
 end

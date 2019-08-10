@@ -1,3 +1,12 @@
+=begin
+
+id:             integer
+name:           string
+created_at:     datetime
+updated_at:     datetime
+department_id:  integer
+
+=end
 class Item < ApplicationRecord
   belongs_to :department
 

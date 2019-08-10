@@ -1,3 +1,13 @@
+=begin
+
+id:             integer
+status:         string
+created_at:     datetime
+updated_at:     datetime
+location_id:    datetime
+shopping_date:  datetime
+
+=end
 class Order < ApplicationRecord
   belongs_to :location, optional: true
 

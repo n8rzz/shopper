@@ -1,3 +1,11 @@
+=begin
+
+id:           integer
+name:         string
+created_at:   datetime
+updated_at:   datetime
+
+=end
 class Department < ApplicationRecord
   has_many :items, dependent: :nullify
   has_many :order_items, dependent: :nullify

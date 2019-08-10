@@ -1,3 +1,13 @@
+=begin
+
+id:           integer
+name:         string
+city:         string
+state:        string
+created_at:   datetime
+updated_a:    datetime
+
+=end
 class Location < ApplicationRecord
   has_many :orders, dependent: :destroy
 
