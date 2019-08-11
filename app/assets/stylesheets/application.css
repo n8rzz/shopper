@@ -20,6 +20,7 @@
  *= require "landmark/_header-nav"
  *= require "landmark/_footer-nav"
  *= require "landmark/_site"
+ *= require "landmark/_stickyHeader"
  *= require "module/_btn"
  *= require "module/_card"
  *= require "module/_concernGroup"
