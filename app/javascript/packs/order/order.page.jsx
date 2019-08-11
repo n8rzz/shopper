@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _keyBy from 'lodash/keyBy';
+import classnames from 'classnames';
+import Sticky from 'react-stickynode';
 import ApiService from '../service/api.service';
 import { FilterBar } from '../components/filter-bar/filter-bar.component';
 import { OrderConcernGroup } from './order-concern-group.component';
@@ -40,6 +42,7 @@ export class OrderPage extends React.Component {
         this._assemblyMap = _keyBy(props.assemblies, 'id');
         this._departmentMap = _keyBy(props.departments, 'id');
         this._itemMap = _keyBy(props.items, 'id');
+        this._onStickyStateChangeHandler = this._onStickyStateChange.bind(this);
         this._onChangeFilterHandler = this._onChangeFilter.bind(this);
         this._onClickIsPickedHandler = this._onClickIsPicked.bind(this);
         this._onUpdateIsPickedSuccessHandler = this._onUpdateIsPickedSuccess.bind(this);
@@ -48,6 +51,7 @@ export class OrderPage extends React.Component {
         this.state = {
             concern: FILTER_CONCERN.ITEM,
             orderItems: props.orderItems,
+            stickyHeaderClassnames: 'stickyHeader',
         };
     }
 
@@ -65,6 +69,15 @@ export class OrderPage extends React.Component {
                 totalCount={this.props.orderItems.length}
             />
         );
+    }
+
+    _onStickyStateChange(event) {
+        const stickyHeaderClassnames = classnames({
+            stickyHeader: true,
+            'mix-stickyHeader_isSticky': event.status === 2,
+        });
+
+        this.setState({ stickyHeaderClassnames });
     }
 
     _onChangeFilter(event) {
@@ -145,12 +158,20 @@ export class OrderPage extends React.Component {
                     status={this.props.order.status}
                     locationName={this.props.orderLocationName}
                 />
-                { this._buildOrderItemPickProgressJsx() }
-                <FilterBar
-                    initialSelection={'Item'}
-                    items={FILTER_BAR_ITEMS}
-                    onChangeFilterHandler={this._onChangeFilterHandler}
-                />
+                <Sticky
+                    enabled={true}
+                    top={0}
+                    onStateChange={this._onStickyStateChangeHandler}
+                >
+                    <div className={this.state.stickyHeaderClassnames}>
+                        { this._buildOrderItemPickProgressJsx() }
+                        <FilterBar
+                            initialSelection={'Item'}
+                            items={FILTER_BAR_ITEMS}
+                            onChangeFilterHandler={this._onChangeFilterHandler}
+                        />
+                    </div>
+                </Sticky>
                 {/* this div should probably be removed */}
                 <div className={'js-orderItem'}>
                     <OrderItemListComponent

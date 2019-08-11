@@ -88,115 +88,147 @@ exports[`OrderPage when passed 0 \`orderItems\` renders correctly with valid pro
       </div>
     </div>
   </OrderMeta>
-  <Progress
-    currentCount={0}
-    totalCount={0}
+  <Sticky
+    activeClass="active"
+    bottomBoundary={0}
+    enableTransforms={true}
+    enabled={true}
+    onStateChange={[Function]}
+    releasedClass="released"
+    shouldFreeze={[Function]}
+    top={0}
   >
     <div
-      className="progress"
+      className="sticky-outer-wrapper"
+      style={Object {}}
     >
       <div
-        className="progress-caption"
-      >
-        0
-      </div>
-      <div
-        className="progress-bar"
+        className="sticky-inner-wrapper"
+        style={
+          Object {
+            "position": "relative",
+            "top": "",
+            "transform": "translate3d(0,0px,0)",
+            "zIndex": undefined,
+          }
+        }
       >
         <div
-          className="progress-bar-fill mix-progress-bar-fill_isComplete"
-          style={
-            Object {
-              "width": "NaN%",
-            }
-          }
+          className="stickyHeader"
         >
-           
+          <Progress
+            currentCount={0}
+            totalCount={0}
+          >
+            <div
+              className="progress"
+            >
+              <div
+                className="progress-caption"
+              >
+                0
+              </div>
+              <div
+                className="progress-bar"
+              >
+                <div
+                  className="progress-bar-fill mix-progress-bar-fill_isComplete"
+                  style={
+                    Object {
+                      "width": "NaN%",
+                    }
+                  }
+                >
+                   
+                </div>
+              </div>
+              <div
+                className="progress-caption"
+              >
+                0
+              </div>
+            </div>
+          </Progress>
+          <FilterBar
+            initialSelection="Item"
+            items={
+              Array [
+                Object {
+                  "text": "Item",
+                  "url": "",
+                },
+                Object {
+                  "text": "Department",
+                  "url": "",
+                },
+                Object {
+                  "text": "Meal",
+                  "url": "",
+                },
+              ]
+            }
+            onChangeFilterHandler={[Function]}
+          >
+            <ul
+              className="filterBar"
+            >
+              <FilterBarItem
+                isActive={true}
+                key="filterBar-item-0"
+                onChangeFilterHandler={[Function]}
+                text="Item"
+                url=""
+              >
+                <li>
+                  <a
+                    className="filterBar-link mix-filterBar-link_isActive"
+                    href=""
+                    onClick={[Function]}
+                  >
+                    Item
+                  </a>
+                </li>
+              </FilterBarItem>
+              <FilterBarItem
+                isActive={false}
+                key="filterBar-item-1"
+                onChangeFilterHandler={[Function]}
+                text="Department"
+                url=""
+              >
+                <li>
+                  <a
+                    className="filterBar-link"
+                    href=""
+                    onClick={[Function]}
+                  >
+                    Department
+                  </a>
+                </li>
+              </FilterBarItem>
+              <FilterBarItem
+                isActive={false}
+                key="filterBar-item-2"
+                onChangeFilterHandler={[Function]}
+                text="Meal"
+                url=""
+              >
+                <li>
+                  <a
+                    className="filterBar-link"
+                    href=""
+                    onClick={[Function]}
+                  >
+                    Meal
+                  </a>
+                </li>
+              </FilterBarItem>
+            </ul>
+          </FilterBar>
         </div>
       </div>
-      <div
-        className="progress-caption"
-      >
-        0
-      </div>
     </div>
-  </Progress>
-  <FilterBar
-    initialSelection="Item"
-    items={
-      Array [
-        Object {
-          "text": "Item",
-          "url": "",
-        },
-        Object {
-          "text": "Department",
-          "url": "",
-        },
-        Object {
-          "text": "Meal",
-          "url": "",
-        },
-      ]
-    }
-    onChangeFilterHandler={[Function]}
-  >
-    <ul
-      className="filterBar"
-    >
-      <FilterBarItem
-        isActive={true}
-        key="filterBar-item-0"
-        onChangeFilterHandler={[Function]}
-        text="Item"
-        url=""
-      >
-        <li>
-          <a
-            className="filterBar-link mix-filterBar-link_isActive"
-            href=""
-            onClick={[Function]}
-          >
-            Item
-          </a>
-        </li>
-      </FilterBarItem>
-      <FilterBarItem
-        isActive={false}
-        key="filterBar-item-1"
-        onChangeFilterHandler={[Function]}
-        text="Department"
-        url=""
-      >
-        <li>
-          <a
-            className="filterBar-link"
-            href=""
-            onClick={[Function]}
-          >
-            Department
-          </a>
-        </li>
-      </FilterBarItem>
-      <FilterBarItem
-        isActive={false}
-        key="filterBar-item-2"
-        onChangeFilterHandler={[Function]}
-        text="Meal"
-        url=""
-      >
-        <li>
-          <a
-            className="filterBar-link"
-            href=""
-            onClick={[Function]}
-          >
-            Meal
-          </a>
-        </li>
-      </FilterBarItem>
-    </ul>
-  </FilterBar>
+  </Sticky>
   <div
     className="js-orderItem"
   >
@@ -300,30 +332,45 @@ exports[`OrderPage when passed more than 0 \`orderItems\` renders correctly with
     shoppingDate="2019-11-05T00:00:00.000Z"
     status="active"
   />
-  <Progress
-    currentCount={0}
-    totalCount={2}
-  />
-  <FilterBar
-    initialSelection="Item"
-    items={
-      Array [
-        Object {
-          "text": "Item",
-          "url": "",
-        },
-        Object {
-          "text": "Department",
-          "url": "",
-        },
-        Object {
-          "text": "Meal",
-          "url": "",
-        },
-      ]
-    }
-    onChangeFilterHandler={[Function]}
-  />
+  <Sticky
+    activeClass="active"
+    bottomBoundary={0}
+    enableTransforms={true}
+    enabled={true}
+    onStateChange={[Function]}
+    releasedClass="released"
+    shouldFreeze={[Function]}
+    top={0}
+  >
+    <div
+      className="stickyHeader"
+    >
+      <Progress
+        currentCount={0}
+        totalCount={2}
+      />
+      <FilterBar
+        initialSelection="Item"
+        items={
+          Array [
+            Object {
+              "text": "Item",
+              "url": "",
+            },
+            Object {
+              "text": "Department",
+              "url": "",
+            },
+            Object {
+              "text": "Meal",
+              "url": "",
+            },
+          ]
+        }
+        onChangeFilterHandler={[Function]}
+      />
+    </div>
+  </Sticky>
   <div
     className="js-orderItem"
   >
