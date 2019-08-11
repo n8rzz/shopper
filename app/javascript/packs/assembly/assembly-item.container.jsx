@@ -10,9 +10,15 @@ export class AssemblyItemContainer extends React.Component {
         this._onClickAccordionTriggerHandler = this._onClickAccordionTrigger.bind(this);
         this._onClickAddAssemblyHandler = this._onClickAddAssembly.bind(this);
         this._onClickAddAssemblyItemHandler = this._onClickAddAssemblyItem.bind(this);
+        this._onSubmitAddAssemblySuccessHandler = this._onSubmitAddAssemblySuccess.bind(this);
+        this._onSubmitAddAssemblyItemSuccessHandler = this._onSubmitAddAssemblyItemSuccess.bind(this);
 
         this.state = {
             isOpen: false,
+            isSubmittingAssembly: false,
+            isSubmitAssemblySuccess: false,
+            submittedAssemblyItemId: -1,
+            isAssemblyItemSubmitSuccess: false,
         };
     }
 
@@ -22,6 +28,7 @@ export class AssemblyItemContainer extends React.Component {
 
     _onClickAddAssembly(event) {
         event.preventDefault();
+        event.currentTarget.blur();
 
         // /order_items/create/assembly
         const assemblyId = this.props.assembly.id;
@@ -31,6 +38,10 @@ export class AssemblyItemContainer extends React.Component {
             assembly_id: assemblyId,
         };
 
+        this.setState({ isSubmittingAssembly: true }, this._onSubmitAddAssembly(addAssemblyToOrderUrl, requestPayload));
+    }
+
+    _onSubmitAddAssembly(addAssemblyToOrderUrl, requestPayload) {
         ApiService.post(addAssemblyToOrderUrl, requestPayload, this.props.csrf)
             .then((response) => {
                 if (response.status >= 300) {
@@ -42,13 +53,24 @@ export class AssemblyItemContainer extends React.Component {
                 }
 
                 console.log('Assembly added successfully.  Need to trigger Notice banner');
+                this.setState(
+                    { isSubmittingAssembly: false, isSubmitAssemblySuccess: true },
+                    this._onSubmitAddAssemblySuccessHandler,
+                );
                 // this._onAddAssemblySuccess(requestPayload, response);
             })
             .catch((error) => { throw error; });
     }
 
+    _onSubmitAddAssemblySuccess() {
+        setTimeout(() => {
+            this.setState({ isSubmitAssemblySuccess: false });
+        }, 3000);
+    }
+
     _onClickAddAssemblyItem(event) {
         event.preventDefault();
+        event.currentTarget.blur();
 
         const assemblyId = this.props.assembly.id;
         // FIXME: move these away from data attributes
@@ -60,6 +82,13 @@ export class AssemblyItemContainer extends React.Component {
             item_id: assemblyItemId,
         };
 
+        this.setState(
+            { submittedAssemblyItemId: parseInt(assemblyItemId, 10) },
+            this._onSubmitAddAssemblyItem(assemblyItemUrl, requestPayload),
+        );
+    }
+
+    _onSubmitAddAssemblyItem(assemblyItemUrl, requestPayload) {
         ApiService.post(assemblyItemUrl, requestPayload, this.props.csrf)
             .then((response) => {
                 if (response.status >= 300) {
@@ -71,9 +100,18 @@ export class AssemblyItemContainer extends React.Component {
                 }
 
                 console.log('Item added successfully.  Need to trigger Notice banner');
-                // this._onAddItemSuccess(requestPayload, response);
+                this.setState({ isAssemblyItemSubmitSuccess: true }, this._onSubmitAddAssemblyItemSuccessHandler);
             })
             .catch((error) => { throw error; });
+    }
+
+    _onSubmitAddAssemblyItemSuccess() {
+        setTimeout(() => {
+            this.setState({
+                isAssemblyItemSubmitSuccess: false,
+                submittedAssemblyItemId: -1,
+            });
+        }, 3000);
     }
 
     render() {
@@ -83,6 +121,10 @@ export class AssemblyItemContainer extends React.Component {
                 assemblyItemsGroupedByAssemblyId={this.props.assemblyItemsGroupedByAssemblyId}
                 departmentIdMap={this.props.departmentIdMap}
                 itemIdMap={this.props.itemIdMap}
+                isSubmittingAssembly={this.state.isSubmittingAssembly}
+                isSubmitAssemblySuccess={this.state.isSubmitAssemblySuccess}
+                isAssemblyItemSubmitSuccess={this.state.isAssemblyItemSubmitSuccess}
+                submittedAssemblyItemId={this.state.submittedAssemblyItemId}
                 isOpen={this.state.isOpen}
                 onClickAccordionTriggerHandler={this._onClickAccordionTriggerHandler}
                 onClickAddAssemblyHandler={this._onClickAddAssemblyHandler}

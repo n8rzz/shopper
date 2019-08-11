@@ -4,6 +4,7 @@
 .btn {
     @include animationCubicBezier;
 
+    background-color: inherit;
     cursor: pointer;
 }
 
@@ -29,6 +30,7 @@
 
     &:hover {
         background-color: $COLOR_PRIMARY;
+        color: #ffffff;
     }
 }
 
@@ -40,5 +42,6 @@
 .mix-btn_isSuccess {
     background-color: $COLOR_SUCCESS_BG;
 }
+
 
 

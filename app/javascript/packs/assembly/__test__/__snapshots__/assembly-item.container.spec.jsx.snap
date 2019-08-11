@@ -40,7 +40,10 @@ exports[`AssemblyItemContainer renders correctly with valid props 1`] = `
       },
     }
   }
+  isAssemblyItemSubmitSuccess={false}
   isOpen={false}
+  isSubmitAssemblySuccess={false}
+  isSubmittingAssembly={false}
   itemIdMap={
     Object {
       "13": Object {
@@ -62,5 +65,6 @@ exports[`AssemblyItemContainer renders correctly with valid props 1`] = `
   onClickAccordionTriggerHandler={[Function]}
   onClickAddAssemblyHandler={[Function]}
   onClickAddAssemblyItemHandler={[Function]}
+  submittedAssemblyItemId={-1}
 />
 `;
