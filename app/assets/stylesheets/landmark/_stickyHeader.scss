@@ -1,0 +1,12 @@
+@import "../base//mixins";
+@import "../base/vars";
+
+.mix-stickyHeader_isSticky {
+    background-color: #fafafa;
+    box-shadow: 1px 1px 7px 3px rgba(0, 0, 0, 0.1);
+    // using negative margins here to stretch `stickyHeader` beyond
+    // `Sticky` component container
+    margin-left: -$SPACING_2X;
+    margin-right: -$SPACING_2X;
+    padding: $SPACING_1X $SPACING_2X;
+}
