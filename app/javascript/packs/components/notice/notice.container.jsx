@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import EventService from '../../service/event.service';
 import { Notice } from './notice.component';
+import { EVENT_NAME } from '../../constants/event-names';
 
 const DEAFULT_REMOVAL_DELAY = 7000;
 
@@ -10,9 +12,12 @@ export class NoticeContainer extends React.Component {
 
         this._timer = -1;
         this._updateNoticeVisibilityHandler = this._updateNoticeVisibility.bind(this);
+        this._onTriggerNoticeHandler = this._onTriggerNotice.bind(this);
         this.state = {
-            isVisible: props.message !== null,
+            message: props.message,
         };
+
+        EventService.on(EVENT_NAME.NOTICE_SUCCESS, this._onTriggerNoticeHandler);
     }
 
     componentDidMount() {
@@ -25,26 +30,29 @@ export class NoticeContainer extends React.Component {
 
     componentWillUnmount() {
         clearTimeout(this._timer);
+        EventService.off(EVENT_NAME.NOTICE_SUCCESS, this._onTriggerNoticeHandler);
     }
 
     _registerRemovalTimer() {
         this._timer = setTimeout(this._updateNoticeVisibilityHandler, DEAFULT_REMOVAL_DELAY);
     }
 
+    _onTriggerNotice(message) {
+        this.setState({ message }, this._registerRemovalTimer);
+    }
+
     _updateNoticeVisibility() {
-        this.setState((prevState) => ({ isVisible: !prevState.isVisible }));
+        this.setState({ message: '' });
     }
 
     render() {
-        const message = this.props.message != null
-            ? this.props.message
+        const message = this.state.message != null
+            ? this.state.message
             : '';
 
         return (
-            <div
-                className={'js-notice'}
-            >
-                <Notice message={message} isVisible={this.state.isVisible} />
+            <div className={'js-notice'}>
+                <Notice message={message} isVisible={this.state.message !== ''} />
             </div>
         );
     }
@@ -53,7 +61,6 @@ export class NoticeContainer extends React.Component {
 NoticeContainer.propTypes = {
     message: PropTypes.string,
 };
-
 
 NoticeContainer.defaultProps = {
     message: '',

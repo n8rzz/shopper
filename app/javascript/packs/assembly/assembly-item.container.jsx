@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ApiService from '../service/api.service';
+import EventService from '../service/event.service';
+import { EVENT_NAME } from '../constants/event-names';
 import { AssemblyItem } from './assembly-item.component';
 
 export class AssemblyItemContainer extends React.Component {
@@ -52,12 +54,14 @@ export class AssemblyItemContainer extends React.Component {
                     return;
                 }
 
-                console.log('Assembly added successfully.  Need to trigger Notice banner');
+                const notice = `${this.props.assembly.name} added to order`;
+
+                EventService.emit(EVENT_NAME.NOTICE_SUCCESS, notice);
+
                 this.setState(
                     { isSubmittingAssembly: false, isSubmitAssemblySuccess: true },
                     this._onSubmitAddAssemblySuccessHandler,
                 );
-                // this._onAddAssemblySuccess(requestPayload, response);
             })
             .catch((error) => { throw error; });
     }
@@ -74,7 +78,7 @@ export class AssemblyItemContainer extends React.Component {
 
         const assemblyId = this.props.assembly.id;
         // FIXME: move these away from data attributes
-        const { assemblyItemId, departmentId } = event.currentTarget.dataset;
+        const { assemblyItemId, assemblyItemName, departmentId } = event.currentTarget.dataset;
         const assemblyItemUrl = '/order_items/create/item.json';
         const requestPayload = {
             assembly_id: assemblyId,
@@ -84,11 +88,11 @@ export class AssemblyItemContainer extends React.Component {
 
         this.setState(
             { submittedAssemblyItemId: parseInt(assemblyItemId, 10) },
-            this._onSubmitAddAssemblyItem(assemblyItemUrl, requestPayload),
+            this._onSubmitAddAssemblyItem(assemblyItemName, assemblyItemUrl, requestPayload),
         );
     }
 
-    _onSubmitAddAssemblyItem(assemblyItemUrl, requestPayload) {
+    _onSubmitAddAssemblyItem(assemblyItemName, assemblyItemUrl, requestPayload) {
         ApiService.post(assemblyItemUrl, requestPayload, this.props.csrf)
             .then((response) => {
                 if (response.status >= 300) {
@@ -99,7 +103,10 @@ export class AssemblyItemContainer extends React.Component {
                     return;
                 }
 
-                console.log('Item added successfully.  Need to trigger Notice banner');
+                const notice = `${assemblyItemName} added to order`;
+
+                EventService.emit(EVENT_NAME.NOTICE_SUCCESS, notice);
+
                 this.setState({ isAssemblyItemSubmitSuccess: true }, this._onSubmitAddAssemblyItemSuccessHandler);
             })
             .catch((error) => { throw error; });
