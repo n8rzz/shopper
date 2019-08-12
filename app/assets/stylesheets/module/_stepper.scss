@@ -57,7 +57,8 @@
     // override `all` for the transition element
     // @include animationCubicBezier;
 
-    border: none;
+    background-color: $COLOR_BG_PRIMARY;
+    border: 1px solid $COLOR_LIGHT;
     color: $COLOR_DARK;
     font-size: $FONT_SIZE_S;
     flex-grow: 1;

@@ -1,3 +1,7 @@
+lint:
+	npm run lint
+	bundle exec rubocop
+
 test:
 	npm run test
 	bundle exec rspec
