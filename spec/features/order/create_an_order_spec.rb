@@ -3,15 +3,6 @@ require 'rails_helper'
 RSpec.feature 'Create an order', js: true do
   let!(:order) { create(:order, :pending) }
 
-  # TODO: this should live somewhere else
-  scenario 'visits new_order_path' do
-    visit new_order_path
-
-    expect(page).to have_text 'New Order'
-    expect(page).to have_link 'Back'
-    expect(page).to have_button 'Create Order'
-  end
-
   context 'when #shopping_date is not filled in' do
     before :each do
       visit new_order_path

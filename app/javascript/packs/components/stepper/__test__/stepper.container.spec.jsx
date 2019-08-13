@@ -4,33 +4,37 @@ import { mount, shallow } from 'enzyme';
 
 import { StepperContainer } from '../stepper.container';
 import { Stepper } from '../stepper';
+import { csrfMock } from '../../../__mocks__/csrf.mock';
+import { itemMock } from '../../../__mocks__/item.mock';
 
 describe('StepperContainer', () => {
+    let component = null;
+
+    beforeEach(() => {
+        component = mount(<StepperContainer
+            csrf={csrfMock}
+            departmentId={itemMock.department_id}
+            itemId={itemMock.id}
+            itemName={itemMock.name}
+        />);
+    });
+
+    afterEach(() => {
+        component = null;
+    });
+
     test('renders correctly with valid props', () => {
-        const component = shallow(<StepperContainer
-            itemId={42}
-            departmentId={32}
-            csrf={'3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=='}
+        const shallowComponent = shallow(<StepperContainer
+            csrf={csrfMock}
+            departmentId={itemMock.department_id}
+            itemId={itemMock.id}
+            itemName={itemMock.name}
         />);
 
-        expect(component).toMatchSnapshot();
+        expect(shallowComponent).toMatchSnapshot();
     });
 
     describe('decrease btn element', () => {
-        let component;
-
-        beforeEach(() => {
-            component = mount(<StepperContainer
-                itemId={42}
-                departmentId={32}
-                csrf={'3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=='}
-            />);
-        });
-
-        afterEach(() => {
-            component = null;
-        });
-
         test('contains decrease btn element', () => {
             const decreaseBtn = component.find('.js-stepper-btn-decrease');
 
@@ -50,20 +54,6 @@ describe('StepperContainer', () => {
     });
 
     describe('increase btn element', () => {
-        let component;
-
-        beforeEach(() => {
-            component = mount(<StepperContainer
-                itemId={42}
-                departmentId={32}
-                csrf={'3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=='}
-            />);
-        });
-
-        afterEach(() => {
-            component = null;
-        });
-
         test('contains increase btn element', () => {
             const increaseBtn = component.find('.js-stepper-btn-increase');
 
