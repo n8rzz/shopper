@@ -1,12 +1,67 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NoticeContainer renders correctly with valid props 1`] = `
-<div
-  className="js-notice"
+exports[`NoticeContainer renders correctly with valid props when called with a non-empty #mesage prop 1`] = `
+<Sticky
+  activeClass="active"
+  bottomBoundary={0}
+  enableTransforms={true}
+  enabled={true}
+  onStateChange={[Function]}
+  releasedClass="released"
+  shouldFreeze={[Function]}
+  top={0}
 >
-  <Notice
-    isVisible={true}
-    message="this is a notice!"
-  />
-</div>
+  <div
+    className="js-notice"
+  >
+    <Notice
+      isVisible={true}
+      message="this is a notice!"
+    />
+  </div>
+</Sticky>
+`;
+
+exports[`NoticeContainer renders correctly with valid props when called with a null #mesage prop 1`] = `
+<Sticky
+  activeClass="active"
+  bottomBoundary={0}
+  enableTransforms={true}
+  enabled={true}
+  onStateChange={[Function]}
+  releasedClass="released"
+  shouldFreeze={[Function]}
+  top={0}
+>
+  <div
+    className="js-notice"
+  >
+    <Notice
+      isVisible={true}
+      message=""
+    />
+  </div>
+</Sticky>
+`;
+
+exports[`NoticeContainer renders correctly with valid props when called with an empty #mesage prop 1`] = `
+<Sticky
+  activeClass="active"
+  bottomBoundary={0}
+  enableTransforms={true}
+  enabled={true}
+  onStateChange={[Function]}
+  releasedClass="released"
+  shouldFreeze={[Function]}
+  top={0}
+>
+  <div
+    className="js-notice"
+  >
+    <Notice
+      isVisible={false}
+      message=""
+    />
+  </div>
+</Sticky>
 `;

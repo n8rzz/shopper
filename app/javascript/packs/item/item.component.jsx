@@ -27,6 +27,7 @@ export function Item(props) {
                     <StepperContainer
                         csrf={props.csrf}
                         departmentId={props.departmentId}
+                        itemName={props.itemName}
                         itemId={props.itemId}
                     />
                 </div>

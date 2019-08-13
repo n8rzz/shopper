@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ApiService from '../../service/api.service';
+import EventService from '../../service/event.service';
 import { Stepper } from './stepper';
+import { EVENT_NAME } from '../../constants/event-names';
 
 const CREATE_ORDER_ITEM_URL = '/order_items/create/item.json';
 
@@ -81,10 +83,11 @@ export class StepperContainer extends React.Component {
 
                     return;
                 }
-
-                // TODO: add ability to set flash success
-                // this._flashController.showNoticeMessage(`${orderItemModel.name}
                 // added to pending order`);
+                const notice = `${this.props.itemName} added to order`;
+
+                EventService.emit(EVENT_NAME.NOTICE_SUCCESS, notice);
+
                 const nextState = {
                     qty: 1,
                     isSubmitting: false,
@@ -124,7 +127,8 @@ export class StepperContainer extends React.Component {
 }
 
 StepperContainer.propTypes = {
-    itemId: PropTypes.number.isRequired,
-    departmentId: PropTypes.number.isRequired,
     csrf: PropTypes.string.isRequired,
+    departmentId: PropTypes.number.isRequired,
+    itemId: PropTypes.number.isRequired,
+    itemName: PropTypes.string.isRequired,
 };

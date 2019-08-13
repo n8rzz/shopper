@@ -10,11 +10,19 @@ RSpec.feature 'Add item to order', js: true do
     within first('.listItem') do
       click_button 'Add to order'
     end
-
-    visit order_path(pending_order.id)
   end
 
-  it { expect(page).to have_text(item.name) }
-  it { expect(page).to_not have_text('Qty: 1') }
-  it { expect(page).to have_text(item.department.name) }
+  context 'displays notification of added Item' do
+    it { expect(page).to have_text("#{item.name} added to order") }
+  end
+
+  context 'adds item to an order' do
+    before :each do
+      visit order_path(pending_order.id)
+    end
+
+    it { expect(page).to have_text(item.name) }
+    it { expect(page).to_not have_text('Qty: 1') }
+    it { expect(page).to have_text(item.department.name) }
+  end
 end

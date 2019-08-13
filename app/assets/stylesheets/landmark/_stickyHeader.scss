@@ -9,4 +9,8 @@
     margin-left: -$SPACING_2X;
     margin-right: -$SPACING_2X;
     padding: $SPACING_1X $SPACING_2X;
+
+    > .notice {
+        margin-bottom: 0;
+    }
 }
