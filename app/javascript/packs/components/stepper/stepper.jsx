@@ -12,38 +12,23 @@ export class Stepper extends React.Component {
     }
 
     _buildStepperBody() {
-        const inputId = `item-${this.props.itemId}-qty`;
-
         return (
             <div className={'stepper-bd'}>
-                <label
-                    className={'stepper-bd-label u-isVisuallyHidden'}
-                    htmlFor={inputId}
-                >
-                    Qty
-                </label>
-                <span
+                <div
                     className={'stepper-bd-btn js-stepper-btn-decrease'}
                     onClick={this.props.onClickDecreaseHandler}
                 >
                     -
-                </span>
-                <input
-                    className={'stepper-bd-input'}
-                    type={'number'}
-                    pattern={'[0-9]*'}
-                    id={inputId}
-                    name={`item-${this.props.itemId}-qty`}
-                    min={'0'}
-                    value={this.props.qty}
-                    onChange={this.props.onChangeQtyHandler}
-                />
-                <span
+                </div>
+                <div id={`item-${this.props.itemId}-qty`}>
+                    {this.props.qty}
+                </div>
+                <div
                     className={'stepper-bd-btn js-stepper-btn-increase'}
                     onClick={this.props.onClickIncreaseHandler}
                 >
                     +
-                </span>
+                </div>
             </div>
         );
     }
@@ -88,7 +73,6 @@ Stepper.propTypes = {
     qty: PropTypes.number.isRequired,
     isSubmitting: PropTypes.bool.isRequired,
     isSubmitSuccess: PropTypes.bool.isRequired,
-    onChangeQtyHandler: PropTypes.func.isRequired,
     onClickDecreaseHandler: PropTypes.func.isRequired,
     onClickIncreaseHandler: PropTypes.func.isRequired,
     onClickSubmitHandler: PropTypes.func.isRequired,

@@ -18,9 +18,9 @@ exports[`Item renders correctly with valid props 1`] = `
         >
           <a
             className="link"
-            href="items/11/edit"
+            href="items/15/edit"
           >
-            Red Face Tuna
+            Agave Syrup
           </a>
         </h2>
       </div>
@@ -35,9 +35,12 @@ exports[`Item renders correctly with valid props 1`] = `
     >
       <StepperContainer
         csrf="3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=="
-        departmentId={32}
-        itemId={11}
-        itemName="Red Face Tuna"
+        departmentId={5}
+        isSubmitSuccess={false}
+        isSubmitting={false}
+        itemId={15}
+        itemName="Agave Syrup"
+        onSubmitHandler={[Function]}
       />
     </div>
   </div>

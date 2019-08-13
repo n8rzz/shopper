@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Item renders correctly with valid props 1`] = `
+<Item
+  csrf="3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=="
+  departmentId={32}
+  departmentName="meat"
+  isSubmitSuccess={false}
+  isSubmitting={false}
+  itemId={11}
+  itemName="Red Face Tuna"
+  onSubmitHandler={[Function]}
+/>
+`;
