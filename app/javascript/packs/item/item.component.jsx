@@ -29,6 +29,9 @@ export function Item(props) {
                         departmentId={props.departmentId}
                         itemName={props.itemName}
                         itemId={props.itemId}
+                        isSubmitting={props.isSubmitting}
+                        isSubmitSuccess={props.isSubmitSuccess}
+                        onSubmitHandler={props.onSubmitHandler}
                     />
                 </div>
             </div>
@@ -42,4 +45,8 @@ Item.propTypes = {
     departmentName: PropTypes.string.isRequired,
     itemId: PropTypes.number.isRequired,
     itemName: PropTypes.string.isRequired,
+
+    isSubmitting: PropTypes.bool.isRequired,
+    isSubmitSuccess: PropTypes.bool.isRequired,
+    onSubmitHandler: PropTypes.func.isRequired,
 };

@@ -1,3 +1,4 @@
+@import "../base/font";
 @import "../base/mixins";
 @import "../base/vars";
 
@@ -7,9 +8,11 @@
 }
 
 .stepper-bd {
+    @include monospaceFont;
+
     align-items: center;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .stepper-bd-btn {

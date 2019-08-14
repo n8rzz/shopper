@@ -11,34 +11,23 @@ exports[`Stepper renders correctly with valid props 1`] = `
     <div
       className="stepper-bd"
     >
-      <label
-        className="stepper-bd-label u-isVisuallyHidden"
-        htmlFor="item-42-qty"
-      >
-        Qty
-      </label>
-      <span
+      <div
         className="stepper-bd-btn js-stepper-btn-decrease"
         onClick={[MockFunction]}
       >
         -
-      </span>
-      <input
-        className="stepper-bd-input"
+      </div>
+      <div
         id="item-42-qty"
-        min="0"
-        name="item-42-qty"
-        onChange={[MockFunction]}
-        pattern="[0-9]*"
-        type="number"
-        value={3}
-      />
-      <span
+      >
+        3
+      </div>
+      <div
         className="stepper-bd-btn js-stepper-btn-increase"
         onClick={[MockFunction]}
       >
         +
-      </span>
+      </div>
     </div>
     <div
       className="stepper-ft"

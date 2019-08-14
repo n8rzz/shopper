@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Item } from './item.component';
+import { ItemContainer } from './item.container';
 
 export function ItemList(props) {
     if (props.itemList.length === 0) {
@@ -10,7 +10,7 @@ export function ItemList(props) {
     return (
         <ul className={'vlist'}>
             {props.itemList.map((item, index) => (
-                <Item
+                <ItemContainer
                     csrf={props.csrf}
                     departmentId={item.department_id}
                     departmentName={props.departmentMap[item.department_id].name}

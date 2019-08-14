@@ -15,7 +15,7 @@ RSpec.feature 'Increase qty and add Item to an order', js: true do
     end
   end
 
-  it { expect(find("#item-#{item.id}-qty").value).to eq('1') }
+  it { expect(find("#item-#{item.id}-qty")).to have_text('1') }
 
   scenario 'Displays correct qty on order#show' do
     visit order_path(order.id)

@@ -16,6 +16,9 @@ describe('StepperContainer', () => {
             departmentId={itemMock.department_id}
             itemId={itemMock.id}
             itemName={itemMock.name}
+            isSubmitting={false}
+            isSubmitSuccess={false}
+            onSubmitHandler={sinon.spy()}
         />);
     });
 
@@ -29,6 +32,9 @@ describe('StepperContainer', () => {
             departmentId={itemMock.department_id}
             itemId={itemMock.id}
             itemName={itemMock.name}
+            isSubmitting={false}
+            isSubmitSuccess={false}
+            onSubmitHandler={sinon.spy()}
         />);
 
         expect(shallowComponent).toMatchSnapshot();

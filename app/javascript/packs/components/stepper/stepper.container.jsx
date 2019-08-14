@@ -1,36 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import ApiService from '../../service/api.service';
-import EventService from '../../service/event.service';
 import { Stepper } from './stepper';
-import { EVENT_NAME } from '../../constants/event-names';
-
-const CREATE_ORDER_ITEM_URL = '/order_items/create/item.json';
 
 export class StepperContainer extends React.Component {
     constructor(props) {
         super(props);
 
-        this.onChangeQtyHandler = this._onChangeQty.bind(this);
         this.onClickDecreaseHandler = this._onClickDecrease.bind(this);
         this.onClickIncreaseHandler = this._onClickIncrease.bind(this);
         this.onClickSubmitHandler = this._onClickSubmit.bind(this);
-        this.onSubmitSuccessHandler = this._onSubmitSuccess.bind(this);
 
         this.state = {
             qty: 1,
-            isSubmitting: false,
-            isSubmitSuccess: false,
         };
     }
 
     componentWillUnmount() {
-        this.onChangeQtyHandler = null;
         this.onClickDecreaseHandler = null;
         this.onClickIncreaseHandler = null;
         this.onClickSubmitHandler = null;
-        this.onSubmitSuccessHandler = null;
     }
 
     _onChangeQty(event) {
@@ -64,50 +52,9 @@ export class StepperContainer extends React.Component {
             return;
         }
 
-        const orderItem = {
-            item_id: this.props.itemId,
-            department_id: this.props.departmentId,
-            qty: this.state.qty,
-        };
+        this.props.onSubmitHandler(this.state.qty);
 
-        this.setState({ isSubmitting: true }, this._callSubmit(orderItem));
-    }
-
-    _callSubmit(orderItem) {
-        ApiService.post(CREATE_ORDER_ITEM_URL, orderItem, this.props.csrf)
-            .then((response) => {
-                if (response.status >= 300) {
-                    console.error(`
-                        Received an unexpected status code from ${CREATE_ORDER_ITEM_URL}. See response: ${response}
-                    `);
-
-                    return;
-                }
-                // added to pending order`);
-                const notice = `${this.props.itemName} added to order`;
-
-                EventService.emit(EVENT_NAME.NOTICE_SUCCESS, notice);
-
-                const nextState = {
-                    qty: 1,
-                    isSubmitting: false,
-                    isSubmitSuccess: true,
-                };
-                this.setState(nextState, this.onSubmitSuccessHandler);
-            })
-            .catch((error) => {
-                // TODO: add ability to set flash warning, error
-                // this._flashController.showNoticeMessage('Something went wrong, Item
-                // was not successfully added to Order');
-
-                throw error;
-            });
-    }
-
-    _onSubmitSuccess() {
-        setTimeout(() => {
-            this.setState({ isSubmitSuccess: false });
-        }, 3000);
+        this.setState({ qty: 1 });
     }
 
     render() {
@@ -115,9 +62,8 @@ export class StepperContainer extends React.Component {
             <Stepper
                 itemId={this.props.itemId}
                 qty={this.state.qty}
-                isSubmitting={this.state.isSubmitting}
-                isSubmitSuccess={this.state.isSubmitSuccess}
-                onChangeQtyHandler={this.onChangeQtyHandler}
+                isSubmitting={this.props.isSubmitting}
+                isSubmitSuccess={this.props.isSubmitSuccess}
                 onClickDecreaseHandler={this.onClickDecreaseHandler}
                 onClickIncreaseHandler={this.onClickIncreaseHandler}
                 onClickSubmitHandler={this.onClickSubmitHandler}
@@ -127,8 +73,8 @@ export class StepperContainer extends React.Component {
 }
 
 StepperContainer.propTypes = {
-    csrf: PropTypes.string.isRequired,
-    departmentId: PropTypes.number.isRequired,
     itemId: PropTypes.number.isRequired,
-    itemName: PropTypes.string.isRequired,
+    isSubmitting: PropTypes.bool.isRequired,
+    isSubmitSuccess: PropTypes.bool.isRequired,
+    onSubmitHandler: PropTypes.func.isRequired,
 };

@@ -5,7 +5,6 @@ exports[`StepperContainer renders correctly with valid props 1`] = `
   isSubmitSuccess={false}
   isSubmitting={false}
   itemId={15}
-  onChangeQtyHandler={[Function]}
   onClickDecreaseHandler={[Function]}
   onClickIncreaseHandler={[Function]}
   onClickSubmitHandler={[Function]}
