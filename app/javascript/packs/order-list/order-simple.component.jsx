@@ -5,7 +5,7 @@ import { extractLocationNameFromMapByLocationId } from './extractLocationNameFro
 export class OrderSimple extends React.PureComponent {
     _buildListItemJsx(order, index) {
         // %b %m, %Y
-        const completedDate = new Date(order.updated_at).toLocaleDateString('en-US', {
+        const completedDate = new Date(order.shopping_date).toLocaleDateString('en-US', {
             day: '2-digit',
             month: 'short',
             year: 'numeric',
