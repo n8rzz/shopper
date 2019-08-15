@@ -55,4 +55,8 @@ class Order < ApplicationRecord
   def live?
     self.status == 'pending' || self.status == 'active'
   end
+
+  def finished_by_shopping_date
+    self.finished.order('shopping_date DESC')
+  end
 end
