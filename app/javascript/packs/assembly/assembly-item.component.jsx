@@ -124,8 +124,8 @@ export class AssemblyItem extends React.Component {
                                 <button
                                     type={'button'}
                                     className={buttonClassnames}
-                                    data-assembly-item-id={assemblyItem.id}
-                                    data-assembly-item-name={this.props.itemIdMap[assemblyItem.item_id].name}
+                                    data-item-id={assemblyItem.item_id}
+                                    data-item-name={this.props.itemIdMap[assemblyItem.item_id].name}
                                     data-department-id={item.department_id}
                                     onClick={this.props.onClickAddAssemblyItemHandler}
                                 >
