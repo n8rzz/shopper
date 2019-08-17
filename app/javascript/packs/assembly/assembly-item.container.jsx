@@ -78,21 +78,24 @@ export class AssemblyItemContainer extends React.Component {
 
         const assemblyId = this.props.assembly.id;
         // FIXME: move these away from data attributes
-        const { assemblyItemId, assemblyItemName, departmentId } = event.currentTarget.dataset;
+        const { dataset } = event.currentTarget;
+        const { itemName } = dataset;
+        const itemId = parseInt(dataset.itemId, 10);
+        const departmentId = parseInt(dataset.departmentId, 10);
         const assemblyItemUrl = '/order_items/create/item.json';
         const requestPayload = {
             assembly_id: assemblyId,
             department_id: departmentId,
-            item_id: assemblyItemId,
+            item_id: itemId,
         };
 
         this.setState(
-            { submittedAssemblyItemId: parseInt(assemblyItemId, 10) },
-            this._onSubmitAddAssemblyItem(assemblyItemName, assemblyItemUrl, requestPayload),
+            { submittedAssemblyItemId: itemId },
+            this._onSubmitAddAssemblyItem(itemName, assemblyItemUrl, requestPayload),
         );
     }
 
-    _onSubmitAddAssemblyItem(assemblyItemName, assemblyItemUrl, requestPayload) {
+    _onSubmitAddAssemblyItem(itemName, assemblyItemUrl, requestPayload) {
         ApiService.post(assemblyItemUrl, requestPayload, this.props.csrf)
             .then((response) => {
                 if (response.status >= 300) {
@@ -103,7 +106,7 @@ export class AssemblyItemContainer extends React.Component {
                     return;
                 }
 
-                const notice = `${assemblyItemName} added to order`;
+                const notice = `${itemName} added to order`;
 
                 EventService.emit(EVENT_NAME.NOTICE_SUCCESS, notice);
 
