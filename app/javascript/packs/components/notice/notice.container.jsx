@@ -18,7 +18,7 @@ export class NoticeContainer extends React.Component {
         this._onStickyStateChangeHandler = this._onStickyStateChange.bind(this);
         this.state = {
             message: props.message,
-            stickyHeaderClassnames: 'js-notice',
+            stickyStatus: 0,
         };
 
         EventService.on(EVENT_NAME.NOTICE_SUCCESS, this._onTriggerNoticeHandler);
@@ -37,21 +37,25 @@ export class NoticeContainer extends React.Component {
         EventService.off(EVENT_NAME.NOTICE_SUCCESS, this._onTriggerNoticeHandler);
     }
 
-    _buildClassnames(status = -1) {
+    _buildClassnames() {
         return classnames({
             'js-notice': true,
-            'mix-stickyHeader_isSticky': this.state.message !== '' && status === 2,
+            'mix-stickyHeader_isSticky': this.state.message !== '' && this.state.stickyStatus === 2,
         });
     }
 
     _registerRemovalTimer() {
+        if (this._timer !== -1) {
+            clearTimeout(this._timer);
+        }
+
         this._timer = setTimeout(this._updateNoticeVisibilityHandler, DEAFULT_REMOVAL_DELAY);
     }
 
     _onStickyStateChange(event) {
-        const stickyHeaderClassnames = this._buildClassnames(event.status);
-
-        this.setState({ stickyHeaderClassnames });
+        this.setState({
+            stickyStatus: event.status,
+        });
     }
 
     _onTriggerNotice(message) {
@@ -60,9 +64,10 @@ export class NoticeContainer extends React.Component {
 
 
     _updateNoticeVisibility() {
+        this._timer = -1;
+
         this.setState({
             message: '',
-            stickyHeaderClassnames: this._buildClassnames(),
         });
     }
 
@@ -77,7 +82,7 @@ export class NoticeContainer extends React.Component {
                 top={0}
                 onStateChange={this._onStickyStateChangeHandler}
             >
-                <div className={this.state.stickyHeaderClassnames}>
+                <div className={this._buildClassnames()}>
                     <Notice message={message} isVisible={this.state.message !== ''} />
                 </div>
             </Sticky>
