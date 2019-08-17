@@ -3,7 +3,7 @@ department_names.each do |department_name|
   Department.create(name: department_name)
 end
 
-10.times do
+5.times do
   Location.create(
     name: Faker::Company.name,
     city: Faker::TvShows::GameOfThrones.city,
@@ -11,17 +11,17 @@ end
   )
 end
 
-20.times do
+40.times do
   Item.create(
     name: Faker::Food.ingredient,
     department_id: Department.all.sample.id
   )
 end
 
-5.times.each do
+7.times.each do
   a = Assembly.create(name: Faker::Food.dish)
 
-  rand(1..5).times do
+  rand(1..10).times do
     a.assembly_items.new(
       qty: rand(1..42),
       item_id: Item.all.sample.id

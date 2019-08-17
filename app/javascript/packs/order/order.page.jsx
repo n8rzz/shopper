@@ -60,17 +60,6 @@ export class OrderPage extends React.Component {
         this._onClickIsPickedHandler = null;
     }
 
-    _buildOrderItemPickProgressJsx() {
-        const pickedItems = this.state.orderItems.filter((orderItem) => orderItem.picked !== false);
-
-        return (
-            <Progress
-                currentCount={pickedItems.length}
-                totalCount={this.props.orderItems.length}
-            />
-        );
-    }
-
     _onStickyStateChange(event) {
         const stickyHeaderClassnames = classnames({
             stickyHeader: true,
@@ -150,6 +139,7 @@ export class OrderPage extends React.Component {
 
     render() {
         const OrderItemListComponent = ORDER_LIST_COMPONENT_MAP[this.state.concern];
+        const pickedItems = this.state.orderItems.filter((orderItem) => orderItem.picked !== false);
 
         return (
             <React.Fragment>
@@ -164,7 +154,10 @@ export class OrderPage extends React.Component {
                     onStateChange={this._onStickyStateChangeHandler}
                 >
                     <div className={this.state.stickyHeaderClassnames}>
-                        { this._buildOrderItemPickProgressJsx() }
+                        <Progress
+                            currentCount={pickedItems.length}
+                            totalCount={this.state.orderItems.length}
+                        />
                         <FilterBar
                             initialSelection={'Item'}
                             items={FILTER_BAR_ITEMS}

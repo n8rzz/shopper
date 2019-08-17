@@ -5,7 +5,7 @@ exports[`Progress when \`currentCount\` < \`totalCount\` renders correctly with 
   className="progress"
 >
   <div
-    className="progress-caption"
+    className="progress-caption js-progress-currentCount"
   >
     10
   </div>
@@ -24,7 +24,7 @@ exports[`Progress when \`currentCount\` < \`totalCount\` renders correctly with 
     </div>
   </div>
   <div
-    className="progress-caption"
+    className="progress-caption js-progress-totalCount"
   >
     13
   </div>
