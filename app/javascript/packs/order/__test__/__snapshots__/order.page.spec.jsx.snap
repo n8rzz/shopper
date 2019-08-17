@@ -124,7 +124,7 @@ exports[`OrderPage when passed 0 \`orderItems\` renders correctly with valid pro
               className="progress"
             >
               <div
-                className="progress-caption"
+                className="progress-caption js-progress-currentCount"
               >
                 0
               </div>
@@ -143,7 +143,7 @@ exports[`OrderPage when passed 0 \`orderItems\` renders correctly with valid pro
                 </div>
               </div>
               <div
-                className="progress-caption"
+                className="progress-caption js-progress-totalCount"
               >
                 0
               </div>

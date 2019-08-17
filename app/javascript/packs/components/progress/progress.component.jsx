@@ -19,7 +19,7 @@ export function Progress(props) {
 
     return (
         <div className={'progress'}>
-            <div className={'progress-caption'}>
+            <div className={'progress-caption js-progress-currentCount'}>
                 {props.currentCount}
             </div>
             <div className={'progress-bar'}>
@@ -30,7 +30,7 @@ export function Progress(props) {
                     &nbsp;
                 </div>
             </div>
-            <div className={'progress-caption'}>
+            <div className={'progress-caption js-progress-totalCount'}>
                 {props.totalCount}
             </div>
         </div>
