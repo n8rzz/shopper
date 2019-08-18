@@ -7,7 +7,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'faker', '>= 1.9.3'
 gem 'jbuilder', git: 'https://github.com/rails/jbuilder', branch: 'master'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.0.beta1'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form', '>=4.1.0'
