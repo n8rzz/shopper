@@ -1,4 +1,8 @@
-lint:
+update:
+	bundle
+	yarn install --check-dependencies
+
+lint: ## runs linters to check for style inconsistencies
 	npm run lint
 	bundle exec rubocop
 

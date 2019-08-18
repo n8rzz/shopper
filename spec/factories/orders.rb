@@ -3,7 +3,7 @@ FactoryBot.define do
     status { 'active' }
 
     location
-    shopping_date { Faker::Date.between(1.year.ago, 1.year.from_now) }
+    shopping_date { Faker::Date.between(from: 1.year.ago, to: 1.year.from_now) }
 
     trait :pending do
       status { 'pending' }

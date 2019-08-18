@@ -36,7 +36,7 @@ order_statuses = ['active', 'cancelled', 'complete']
   o = Order.create(
     status: order_statuses.sample,
     location_id: Location.all.sample.id,
-    shopping_date: Faker::Date.between(1.year.ago, 1.year.from_now)
+    shopping_date: Faker::Date.between(from: 1.year.ago, to: 1.year.from_now)
   )
 
   rand(1..3).times do
