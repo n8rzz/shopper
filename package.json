@@ -21,7 +21,7 @@
     "enzyme-to-json": "^3.3.5",
     "eventemitter3": "^4.0.0",
     "ignore-loader": "^0.1.2",
-    "jest": "^24.8.0",
+    "jest": "^24.9.0",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
