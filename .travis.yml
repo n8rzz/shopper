@@ -1,43 +1,44 @@
 services:
-  - xvfb
-  - postgresql
-
+- xvfb
+- postgresql
 addons:
-  - postgresql: '9.6'
-  - chrome: stable
-
+- postgresql: '9.6'
+- chrome: stable
 language: ruby
-
 rvm:
-  - 2.6.3
-
+- 2.6.3
 cache:
   bundler: true
   directories:
-    - node_modules
+  - node_modules
   yarn: true
-
 before_install:
-  - export TZ=America/Chicago
-  - date
-  - wget http://chromedriver.storage.googleapis.com/2.9/chromedriver_linux64.zip
-  - unzip chromedriver_linux64.zip
-  - rm chromedriver_linux64.zip
-  - sudo mv -f chromedriver /usr/local/bin/
-  - sudo chmod +x /usr/local/bin/chromedriver
-  - google-chrome-stable --headless --no-sandbox
-
+- export TZ=America/Chicago
+- date
+- wget http://chromedriver.storage.googleapis.com/2.9/chromedriver_linux64.zip
+- unzip chromedriver_linux64.zip
+- rm chromedriver_linux64.zip
+- sudo mv -f chromedriver /usr/local/bin/
+- sudo chmod +x /usr/local/bin/chromedriver
+- google-chrome-stable --headless --no-sandbox
 install:
-  - bundle install
-  - node -v
-  - npm i -g yarn
-  - yarn
-
+- bundle install
+- node -v
+- npm i -g yarn
+- yarn
 before_script:
-  - cp config/database.yml.travis config/database.yml
-  - bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
-  - bin/webpack
-
+- cp config/database.yml.travis config/database.yml
+- bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
+- bin/webpack
 script:
 - make lint
 - make test
+deploy:
+  provdder: heroku
+  api_key:
+    secure: zA4CKMp1Cnp3oQ6Akc3keVIMnTXm8NeylNKl6xdAk0hyLU/8RVL9RSUQF21PGw0zCNqLtcp3h3X/aXwT/GN92pFWhff9dH/+l5XLQ69Pvxgo66VWKIu3jFspflL+HRlwVT/FH7P/pLMhKQXKPXmGWdvJOxhjt8Wi1m1WIQ3he80PraFt+V+YRJEdS8dyC4ztqJmmJNtC2RaPZZfDguSBh5nMcJ0h6CxgWJKxQYnkDZV3UkjV07fa8HYP8SjEQJ/FrHjcOXEyRph5OSOiuL8//umyaERo5TzMpO9kVWBJKX8LD2ojHETPrzvaDD4JPR37nQ9U7MRPMRuYtKeAvFMQ1tux0dtSAdhLdEn1790Pvs7wHA9HBN0XtHw+CCfTd49TFuN+v5YBMjXU1BidwmAvP8PCOOHW23ecTyCqkVjUTNb9B81yObmOqLEwAtcJzC9CqM1Ly0aGAa/Fs7cZYdh/kcSJSW39RnfiFiJoYVMl9Qo8rdDiJ47dGa0O1UEnoRFIcDxQ5fo5228hKdYeu1YiHuBcJCgh+bg7WFKSzQls6eFEQFS5h9smCsD/s/uGGXYK3elEPUWkr6LbokkIY9Y0akKLrIsepsxZaKQu0l9URfJ1xKLxFuadKwAFHiYktSljXlDiKvT2IZs3wDQBiS86+ytDBmUj/f0UidZzBWqkOuw=
+  develop: xray-shopper-stage
+  master: xray-shopper
+  branch:
+  - deploy
+  - master
