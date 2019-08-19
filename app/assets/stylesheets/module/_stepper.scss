@@ -27,7 +27,7 @@
 
     &:hover {
         background-color: $COLOR_PRIMARY;
-        color: black;
+        color: #ffffff;
         cursor: pointer;
     }
 }
@@ -60,13 +60,14 @@
     // override `all` for the transition element
     // @include animationCubicBezier;
 
-    background-color: $COLOR_BG_PRIMARY;
     border: 1px solid $COLOR_LIGHT;
+    border-radius: $BORDER_RADIUS_M;
     color: $COLOR_DARK;
-    font-size: $FONT_SIZE_S;
+    font-size: $FONT_SIZE_XS;
     flex-grow: 1;
-    padding-bottom: ($SPACING_HALFX + 1);
-    padding-top: ($SPACING_HALFX + 1);
+    margin-top: $SPACING_HALFX;
+    padding-bottom: $SPACING_HALFX;
+    padding-top: $SPACING_HALFX;
     transition: background-color 600ms cubic-bezier(0.075, 0.82, 0.165, 1);
     -webkit-appearance: none;
     -webkit-transition: background-color 600ms cubic-bezier(0.075, 0.82, 0.165, 1);

@@ -80,9 +80,18 @@
 .input-text {
     @include boxShadow-subtle;
 
+    border-radius: $BORDER_RADIUS_M;
     border: 1px solid #dedede;
+    font-size: $FONT_SIZE_M;
     padding: $SPACING_HALFX;
     width: 150px;
+
+    &:active,
+    &:focus {
+        border: 3px solid $COLOR_PRIMARY;
+        outline: none;
+        padding: $SPACING_HALFX - 2px;
+    }
 }
 
 .mix-label_subdued {
