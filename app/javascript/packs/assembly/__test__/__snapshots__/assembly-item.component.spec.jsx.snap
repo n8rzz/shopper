@@ -76,6 +76,7 @@ exports[`AssemblyItem renders correctly with valid props 1`] = `
           <li>
             <button
               className="btn btn-toggle"
+              data-assembly-item-id={1}
               data-department-id={3}
               data-item-id={13}
               data-item-name="Agave Syrup"
