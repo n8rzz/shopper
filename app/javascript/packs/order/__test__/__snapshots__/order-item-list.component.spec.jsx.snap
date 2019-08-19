@@ -8,7 +8,7 @@ exports[`OrderItemList renders correctly with valid props 1`] = `
     assemblyName="Souvlaki"
     csrf="3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=="
     departmentName="Bakery"
-    editItemUrl="/item/15/edit"
+    editItemUrl="/items/15/edit"
     isPicked={false}
     itemName="Agave Syrup"
     key="orderItem-0"
@@ -21,7 +21,7 @@ exports[`OrderItemList renders correctly with valid props 1`] = `
     assemblyName=""
     csrf="3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=="
     departmentName="Meat"
-    editItemUrl="/item/13/edit"
+    editItemUrl="/items/13/edit"
     isPicked={false}
     itemName="Agave Syrup"
     key="orderItem-1"

@@ -11,7 +11,7 @@ export function OrderItemList(props) {
                 const assemblyName = _get(assembly, 'name', '');
                 const departmentName = props.departmentMap[orderItem.department_id].name;
                 const itemName = props.itemMap[orderItem.item_id].name;
-                const editItemUrl = `/item/${orderItem.item_id}/edit`;
+                const editItemUrl = `/items/${orderItem.item_id}/edit`;
 
                 return (
                     <OrderItem
