@@ -8,5 +8,8 @@ RSpec.feature 'Follow link to item from order#show ', js: true do
   end
 
   it { expect(page).to have_css('.orderItem-hd-link') }
-  it { expect(page).to have_link(active_order.order_items.first.item.name) }
+  it { expect(page).to have_link(
+    active_order.order_items.first.item.name,
+    href: edit_item_path(active_order.order_items.first.item.id)
+  ) }
 end

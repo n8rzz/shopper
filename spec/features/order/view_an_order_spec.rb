@@ -16,7 +16,7 @@ RSpec.feature 'View an order', js: true do
     it { expect(page).to have_link('Item') }
     it { expect(page).to have_link('Department') }
     it { expect(page).to have_link('Meal') }
-    it { expect(page).to have_text("Shopping Date: ") }
+    it { expect(page).to have_text('Shopping Date: ') }
     it { expect(page).to have_text("Status: #{pending_order.status}") }
   end
 
