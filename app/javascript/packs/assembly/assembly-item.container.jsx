@@ -80,8 +80,9 @@ export class AssemblyItemContainer extends React.Component {
         // FIXME: move these away from data attributes
         const { dataset } = event.currentTarget;
         const { itemName } = dataset;
-        const itemId = parseInt(dataset.itemId, 10);
+        const assemblyItemId = parseInt(dataset.assemblyItemId, 10);
         const departmentId = parseInt(dataset.departmentId, 10);
+        const itemId = parseInt(dataset.itemId, 10);
         const assemblyItemUrl = '/order_items/create/item.json';
         const requestPayload = {
             assembly_id: assemblyId,
@@ -90,7 +91,7 @@ export class AssemblyItemContainer extends React.Component {
         };
 
         this.setState(
-            { submittedAssemblyItemId: itemId },
+            { submittedAssemblyItemId: assemblyItemId },
             this._onSubmitAddAssemblyItem(itemName, assemblyItemUrl, requestPayload),
         );
     }
