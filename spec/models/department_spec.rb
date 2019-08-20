@@ -9,6 +9,8 @@ RSpec.describe Department, type: :model do
     it { should have_db_column(:name) }
     it { should have_many(:items) }
     it { should have_many(:order_items) }
+    it { should have_many(:location_departments) }
+    it { should have_many(:locations) }
     it { should have_many(:orders) }
   end
 

@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NonSortedDepartmentList renders correctly with valid props 1`] = `
+<Fragment>
+  <div
+    className="vr_1"
+  >
+    <h3
+      className="hdg hdg_3"
+    >
+      Unsorted Departments
+    </h3>
+  </div>
+  <ul
+    className="vlist js-nonSortedDepartmentList"
+  >
+    <li
+      className="listItem mix-listItem_tight"
+      key="nonSorted-department-0"
+    >
+      <div
+        className="listItem-hd"
+      >
+        <ul
+          className="stereo"
+        >
+          <li>
+            <a
+              className="link"
+              href="/departments/3"
+            >
+              Bakery
+            </a>
+          </li>
+          <li>
+            <button
+              className="btn js-addDepartmentToSort-3"
+              onClick={[Function]}
+              type="button"
+            >
+              ADD
+            </button>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li
+      className="listItem mix-listItem_tight"
+      key="nonSorted-department-1"
+    >
+      <div
+        className="listItem-hd"
+      >
+        <ul
+          className="stereo"
+        >
+          <li>
+            <a
+              className="link"
+              href="/departments/5"
+            >
+              Meat
+            </a>
+          </li>
+          <li>
+            <button
+              className="btn js-addDepartmentToSort-5"
+              onClick={[Function]}
+              type="button"
+            >
+              ADD
+            </button>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</Fragment>
+`;

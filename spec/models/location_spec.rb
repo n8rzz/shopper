@@ -9,6 +9,8 @@ RSpec.describe Location, type: :model do
     it { should have_db_column(:name) }
     it { should have_db_column(:city) }
     it { should have_db_column(:state) }
+    it { should have_many(:location_departments) }
+    it { should have_many(:departments) }
   end
 
   before do

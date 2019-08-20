@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
     @departments = Department.all
     @assemblies = Assembly.all
     @items = Item.all
+    @locationDepartments = LocationDepartment.find_all_by_location_id(@order.location_id)
   end
 
   # GET /orders/new

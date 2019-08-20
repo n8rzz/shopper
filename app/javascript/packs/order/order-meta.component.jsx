@@ -14,7 +14,13 @@ export function OrderMeta(props) {
                 Status: { props.status }
             </div>
             <div>
-                Location: { props.locationName }
+                Location:
+                <a
+                    className={'link'}
+                    href={`/locations/${props.locationId}/edit`}
+                >
+                    { props.locationName }
+                </a>
             </div>
         </div>
     );
@@ -23,9 +29,11 @@ export function OrderMeta(props) {
 OrderMeta.propTypes = {
     shoppingDate: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
+    locationId: PropTypes.number,
     locationName: PropTypes.string,
 };
 
 OrderMeta.defaultProps = {
+    locationId: 1,
     locationName: '',
 };

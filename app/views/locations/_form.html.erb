@@ -1,28 +1,29 @@
+<div class="vr_4">
+    <%= simple_form_for(@location) do |f| %>
+        <div class="vr_2">
+            <%= f.error_notification %>
+            <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-<%= simple_form_for(@location) do |f| %>
-    <div class="vr_2">
-        <%= f.error_notification %>
-        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+            <div class="form-group">
+                <%= f.input :name, :input_html => { :class => 'input-text' } %>
+            </div>
+            <div class="form-group">
+                <%= f.input :city, :input_html => { :class => 'input-text' } %>
+            </div>
+            <div class="form-group">
+                <%= f.input :state, :input_html => { :class => 'input-text' } %>
+            </div>
+        </div>
 
-        <div class="form-group">
-            <%= f.input :name, :input_html => { :class => 'input-text' } %>
-        </div>
-        <div class="form-group">
-            <%= f.input :city, :input_html => { :class => 'input-text' } %>
-        </div>
-        <div class="form-group">
-            <%= f.input :state, :input_html => { :class => 'input-text' } %>
-        </div>
-    </div>
-
-    <ul class="hlist">
-        <% if !current_page?(locations_path) %>
+        <ul class="hlist">
+            <% if !current_page?(locations_path) %>
+                <li>
+                    <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' }, class: "link" %>
+                </li>
+            <% end %>
             <li>
-                <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' }, class: "link" %>
+                <%= f.button :submit, :class => 'btn-submit mix-btn_inverse'  %>
             </li>
-        <% end %>
-        <li>
-            <%= f.button :submit, :class => 'btn-submit mix-btn_inverse'  %>
-        </li>
-    </ul>
-<% end %>
+        </ul>
+    <% end %>
+</div>

@@ -53,6 +53,26 @@ exports[`OrderPage when passed 0 \`orderItems\` renders correctly with valid pro
       },
     ]
   }
+  locationDepartments={
+    Array [
+      Object {
+        "created_at": "2019-08-22T00:58:38.793Z",
+        "department_id": 3,
+        "id": 1,
+        "location_id": 1,
+        "sort_order": 0,
+        "updated_at": "2019-08-22T00:58:38.793Z",
+      },
+      Object {
+        "created_at": "2019-08-22T00:58:38.793Z",
+        "department_id": 5,
+        "id": 2,
+        "location_id": 1,
+        "sort_order": 0,
+        "updated_at": "2019-08-22T00:58:38.793Z",
+      },
+    ]
+  }
   order={
     Object {
       "created_at": "2019-08-06T22:19:49.806Z",
@@ -64,10 +84,19 @@ exports[`OrderPage when passed 0 \`orderItems\` renders correctly with valid pro
     }
   }
   orderItems={Array []}
+  orderLocation={
+    Object {
+      "locationId": 1,
+      "locationName": "Williamson and Sons",
+      "shoppingDate": "2019-08-27T00:00:00.000Z",
+      "status": "pending",
+    }
+  }
   orderLocationName="Durgan, Mills and Labadie"
 >
   <OrderMeta
-    locationName="Durgan, Mills and Labadie"
+    locationId={1}
+    locationName=""
     shoppingDate="2019-11-05T00:00:00.000Z"
     status="active"
   >
@@ -83,8 +112,11 @@ exports[`OrderPage when passed 0 \`orderItems\` renders correctly with valid pro
         active
       </div>
       <div>
-        Location: 
-        Durgan, Mills and Labadie
+        Location:
+        <a
+          className="link"
+          href="/locations/1/edit"
+        />
       </div>
     </div>
   </OrderMeta>
@@ -317,6 +349,26 @@ exports[`OrderPage when passed 0 \`orderItems\` renders correctly with valid pro
           },
         }
       }
+      locationDepartments={
+        Array [
+          Object {
+            "created_at": "2019-08-22T00:58:38.793Z",
+            "department_id": 3,
+            "id": 1,
+            "location_id": 1,
+            "sort_order": 0,
+            "updated_at": "2019-08-22T00:58:38.793Z",
+          },
+          Object {
+            "created_at": "2019-08-22T00:58:38.793Z",
+            "department_id": 5,
+            "id": 2,
+            "location_id": 1,
+            "sort_order": 0,
+            "updated_at": "2019-08-22T00:58:38.793Z",
+          },
+        ]
+      }
       onClickIsPickedHandler={[Function]}
       onClickRemoveItemHandler={[Function]}
       orderItems={Array []}
@@ -328,7 +380,8 @@ exports[`OrderPage when passed 0 \`orderItems\` renders correctly with valid pro
 exports[`OrderPage when passed more than 0 \`orderItems\` renders correctly with valid props 1`] = `
 <Fragment>
   <OrderMeta
-    locationName="Durgan, Mills and Labadie"
+    locationId={1}
+    locationName=""
     shoppingDate="2019-11-05T00:00:00.000Z"
     status="active"
   />
@@ -458,6 +511,26 @@ exports[`OrderPage when passed more than 0 \`orderItems\` renders correctly with
             "updated_at": "2019-07-21T16:03:33.162Z",
           },
         }
+      }
+      locationDepartments={
+        Array [
+          Object {
+            "created_at": "2019-08-22T00:58:38.793Z",
+            "department_id": 3,
+            "id": 1,
+            "location_id": 1,
+            "sort_order": 0,
+            "updated_at": "2019-08-22T00:58:38.793Z",
+          },
+          Object {
+            "created_at": "2019-08-22T00:58:38.793Z",
+            "department_id": 5,
+            "id": 2,
+            "location_id": 1,
+            "sort_order": 0,
+            "updated_at": "2019-08-22T00:58:38.793Z",
+          },
+        ]
       }
       onClickIsPickedHandler={[Function]}
       onClickRemoveItemHandler={[Function]}

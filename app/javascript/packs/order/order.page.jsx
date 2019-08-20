@@ -146,7 +146,8 @@ export class OrderPage extends React.Component {
                 <OrderMeta
                     shoppingDate={this.props.order.shopping_date}
                     status={this.props.order.status}
-                    locationName={this.props.orderLocationName}
+                    locationName={this.props.orderLocation.name}
+                    locationId={this.props.orderLocation.id}
                 />
                 <Sticky
                     enabled={true}
@@ -175,6 +176,7 @@ export class OrderPage extends React.Component {
                         departmentMap={this._departmentMap}
                         departments={this.props.departments}
                         itemMap={this._itemMap}
+                        locationDepartments={this.props.locationDepartments}
                         orderItems={this.state.orderItems}
                         onClickIsPickedHandler={this._onClickIsPickedHandler}
                         onClickRemoveItemHandler={this._onClickRemoveItemHandler}
@@ -190,7 +192,8 @@ OrderPage.propTypes = {
     csrf: PropTypes.string.isRequired,
     departments: PropTypes.array.isRequired,
     items: PropTypes.array.isRequired,
+    locationDepartments: PropTypes.array.isRequired,
     order: PropTypes.object.isRequired,
     orderItems: PropTypes.array.isRequired,
-    orderLocationName: PropTypes.string.isRequired,
+    orderLocation: PropTypes.object.isRequired,
 };

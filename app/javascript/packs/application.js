@@ -21,6 +21,9 @@ import { GroupedItemList } from './item/grouped-item-list.component';
 import { Item } from './item/item.component';
 import { ItemList } from './item/item-list.component';
 import { ItemListPage } from './item/item-list.page';
+import { LocationDepartmentsPage } from './location-department/location-departments.page';
+import { LocationDepartmentsContainer } from './location-department/location-departments.container';
+import { NonSortedDepartmentList } from './location-department/non-sorted-department-list.component.jsx';
 import { Notice } from './components/notice/notice.component';
 import { NoticeContainer } from './components/notice/notice.container';
 import { OrderCard } from './order-list/order-card.component';
@@ -31,6 +34,7 @@ import { OrderPage } from './order/order.page';
 import { OrderSimple } from './order-list/order-simple.component';
 import { OrderItem } from './order/order-item.component';
 import { Progress } from './components/progress/progress.component';
+import { SortedDepartmentList } from './location-department/sorted-department-list.component';
 import { StepperContainer } from './components/stepper/stepper.container';
 import { Stepper } from './components/stepper/stepper';
 
@@ -50,6 +54,9 @@ WebpackerReact.setup({
     Item,
     ItemList,
     ItemListPage,
+    LocationDepartmentsContainer,
+    LocationDepartmentsPage,
+    NonSortedDepartmentList,
     Notice,
     NoticeContainer,
     OrderCard,
@@ -60,6 +67,7 @@ WebpackerReact.setup({
     OrderPage,
     OrderSimple,
     Progress,
+    SortedDepartmentList,
     Stepper,
     StepperContainer,
 });

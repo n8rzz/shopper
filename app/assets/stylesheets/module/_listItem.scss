@@ -16,8 +16,6 @@
 
 .listItem-hd {
     @include flexBetween;
-
-    padding-bottom: $SPACING_HALFX;
 }
 
 .listItem-ft {
@@ -25,6 +23,7 @@
 
     color: $COLOR_SECONDARY_ACCENT;
     font-size: $FONT_SIZE_S;
+    padding-top: $SPACING_HALFX;
 }
 
 .listItem-child {
@@ -67,4 +66,12 @@
 .mix-listItem_flex {
     align-items: center;
     display: flex;
+}
+
+.mix-listItem_tight {
+    padding: $SPACING_HALFX $SPACING_1X;
+}
+
+.mix-listItem_tight + .mix-listItem_tight {
+    margin-top: $SPACING_HALFX;
 }

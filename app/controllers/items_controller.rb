@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
     @order_item = OrderItem.new
     @items_by_concern = nil
 
+    # FIXME: remove, this may be deprecated
     if params[:order] == 'department'
       @items_by_concern = @items.group_by_department_and_sort
     end

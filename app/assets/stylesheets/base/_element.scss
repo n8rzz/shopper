@@ -6,3 +6,11 @@ abbr[title="required"] {
     color: #e00e00;
     padding: 0 5px;
 }
+
+button:hover {
+    cursor: pointer;
+
+    &:disabled {
+        cursor: default;
+    }
+}

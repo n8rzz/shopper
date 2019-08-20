@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   end
   resources :assemblies, except: [:show]
   resources :items, except: [:show]
+  resources :location_departments, only: [:create, :update, :destroy]
+  post 'location_departments/:id/:direction', to: 'location_departments#change_direction'
 
   root to: 'orders#index'
 end

@@ -15,6 +15,8 @@ class LocationsController < ApplicationController
 
   # GET /locations/1/edit
   def edit
+    @location_departments = LocationDepartment.find_all_by_location_id(params[:id])
+    @departments = Department.all
   end
 
   # POST /locations
@@ -33,8 +35,8 @@ class LocationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /locations/1
-  # PATCH/PUT /locations/1.json
+  # PATCH/PUT /locations/:id
+  # PATCH/PUT /locations/:id.json
   def update
     respond_to do |format|
       if @location.update(location_params)

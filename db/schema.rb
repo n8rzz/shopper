@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_16_003022) do
+ActiveRecord::Schema.define(version: 2019_08_20_010443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 2019_04_16_003022) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "department_id"
     t.index ["department_id"], name: "index_items_on_department_id"
+  end
+
+  create_table "location_departments", force: :cascade do |t|
+    t.bigint "location_id", null: false
+    t.bigint "department_id", null: false
+    t.integer "sort_order"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["department_id"], name: "index_location_departments_on_department_id"
+    t.index ["location_id"], name: "index_location_departments_on_location_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -80,6 +90,8 @@ ActiveRecord::Schema.define(version: 2019_04_16_003022) do
   add_foreign_key "assembly_items", "assemblies"
   add_foreign_key "assembly_items", "items"
   add_foreign_key "items", "departments"
+  add_foreign_key "location_departments", "departments"
+  add_foreign_key "location_departments", "locations"
   add_foreign_key "order_items", "assemblies"
   add_foreign_key "order_items", "departments"
   add_foreign_key "order_items", "items"

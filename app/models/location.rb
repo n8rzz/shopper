@@ -10,6 +10,8 @@ updated_a:    datetime
 =end
 class Location < ApplicationRecord
   has_many :orders, dependent: :destroy
+  has_many :location_departments, dependent: :nullify
+  has_many :departments, through: :location_departments, dependent: :nullify
 
   validates :name, presence: true, uniqueness: true
 
