@@ -33,12 +33,16 @@ before_script:
 script:
 - make lint
 - make test
-# deploy:
-#   provider: heroku
-#   api_key:
-#     secure: zA4CKMp1Cnp3oQ6Akc3keVIMnTXm8NeylNKl6xdAk0hyLU/8RVL9RSUQF21PGw0zCNqLtcp3h3X/aXwT/GN92pFWhff9dH/+l5XLQ69Pvxgo66VWKIu3jFspflL+HRlwVT/FH7P/pLMhKQXKPXmGWdvJOxhjt8Wi1m1WIQ3he80PraFt+V+YRJEdS8dyC4ztqJmmJNtC2RaPZZfDguSBh5nMcJ0h6CxgWJKxQYnkDZV3UkjV07fa8HYP8SjEQJ/FrHjcOXEyRph5OSOiuL8//umyaERo5TzMpO9kVWBJKX8LD2ojHETPrzvaDD4JPR37nQ9U7MRPMRuYtKeAvFMQ1tux0dtSAdhLdEn1790Pvs7wHA9HBN0XtHw+CCfTd49TFuN+v5YBMjXU1BidwmAvP8PCOOHW23ecTyCqkVjUTNb9B81yObmOqLEwAtcJzC9CqM1Ly0aGAa/Fs7cZYdh/kcSJSW39RnfiFiJoYVMl9Qo8rdDiJ47dGa0O1UEnoRFIcDxQ5fo5228hKdYeu1YiHuBcJCgh+bg7WFKSzQls6eFEQFS5h9smCsD/s/uGGXYK3elEPUWkr6LbokkIY9Y0akKLrIsepsxZaKQu0l9URfJ1xKLxFuadKwAFHiYktSljXlDiKvT2IZs3wDQBiS86+ytDBmUj/f0UidZzBWqkOuw=
-#   develop: xray-shopper-stage
-#   master: xray-shopper
-#   branch:
-#   - deploy
-#   - master
+deploy:
+  provider: heroku
+  skip_cleanup: true
+  api_key:
+    secure: B/3X779GI74oE9nXSHubCOmgz1VXmXeJNxzwEEuimqXdGFAAJSzReFsj4m16rkZxmnB8WfCbcDytd3MWQyFFfGdGlaGCVZBhUSSO0hsU0DfTpnL6KnZePRj2s2/XCarBdI1Aav+w2hykEOVu8u1cmUdnmhLpsGS+a7T9RHBLHuaPkeXdxy7hzSlSeMgQpxTSwFQsCY5PDkVUifsCCkDh7REHA6X2XYw+LVnOrni5YkHINabtqhAcmZ0LQeVM9rKrkVDY2IIfpxRIpN4ADObmmut/sOl1S5GmMHzG9iQOjPOXbS2aDGGKdoNoMVvW7TmswEr+7o6jL4YwcTeskjTvi+TrQn0/Jj3mJJK0zg5X4zpcHj6ssHkM4aKEYD73NZGKBihqvRSy/iCnzh0LEYlU91pscbGPYLZy1tc9Ywy8NGnJujuthafocb/XXlPjkXXbzmZYQt3+idFmc7W4Z2MOwRq0v+myIzR8KCK6BcaN8pQdwjpRPgA7BfzbLeTD/omKRcKYQExt8cbYDaskH09qnoecuBQdpI+m/yLG3c3NKv9M6DSXuYtCjbY6MXq2A8xA/KkqbAhUi2inE5NEcRFtjrHPnFzGtc8k5SSTQHPVJkLe9fJfN2WO52hfBHtnPTL82KCzVRG6M3poCDk7qcIgiskMiEY8kudMO7OSHFjuhB8=
+  app:
+    - develop: xray-shopper-stage
+    - master: xray-shopper
+  on:
+    repo: n8rzz/shopper
+    branch:
+    - develop
+    - master
