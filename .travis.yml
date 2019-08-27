@@ -33,12 +33,12 @@ before_script:
 script:
 - make lint
 - make test
-deploy:
-  provdder: heroku
-  api_key:
-    secure: zA4CKMp1Cnp3oQ6Akc3keVIMnTXm8NeylNKl6xdAk0hyLU/8RVL9RSUQF21PGw0zCNqLtcp3h3X/aXwT/GN92pFWhff9dH/+l5XLQ69Pvxgo66VWKIu3jFspflL+HRlwVT/FH7P/pLMhKQXKPXmGWdvJOxhjt8Wi1m1WIQ3he80PraFt+V+YRJEdS8dyC4ztqJmmJNtC2RaPZZfDguSBh5nMcJ0h6CxgWJKxQYnkDZV3UkjV07fa8HYP8SjEQJ/FrHjcOXEyRph5OSOiuL8//umyaERo5TzMpO9kVWBJKX8LD2ojHETPrzvaDD4JPR37nQ9U7MRPMRuYtKeAvFMQ1tux0dtSAdhLdEn1790Pvs7wHA9HBN0XtHw+CCfTd49TFuN+v5YBMjXU1BidwmAvP8PCOOHW23ecTyCqkVjUTNb9B81yObmOqLEwAtcJzC9CqM1Ly0aGAa/Fs7cZYdh/kcSJSW39RnfiFiJoYVMl9Qo8rdDiJ47dGa0O1UEnoRFIcDxQ5fo5228hKdYeu1YiHuBcJCgh+bg7WFKSzQls6eFEQFS5h9smCsD/s/uGGXYK3elEPUWkr6LbokkIY9Y0akKLrIsepsxZaKQu0l9URfJ1xKLxFuadKwAFHiYktSljXlDiKvT2IZs3wDQBiS86+ytDBmUj/f0UidZzBWqkOuw=
-  develop: xray-shopper-stage
-  master: xray-shopper
-  branch:
-  - deploy
-  - master
+# deploy:
+#   provider: heroku
+#   api_key:
+#     secure: zA4CKMp1Cnp3oQ6Akc3keVIMnTXm8NeylNKl6xdAk0hyLU/8RVL9RSUQF21PGw0zCNqLtcp3h3X/aXwT/GN92pFWhff9dH/+l5XLQ69Pvxgo66VWKIu3jFspflL+HRlwVT/FH7P/pLMhKQXKPXmGWdvJOxhjt8Wi1m1WIQ3he80PraFt+V+YRJEdS8dyC4ztqJmmJNtC2RaPZZfDguSBh5nMcJ0h6CxgWJKxQYnkDZV3UkjV07fa8HYP8SjEQJ/FrHjcOXEyRph5OSOiuL8//umyaERo5TzMpO9kVWBJKX8LD2ojHETPrzvaDD4JPR37nQ9U7MRPMRuYtKeAvFMQ1tux0dtSAdhLdEn1790Pvs7wHA9HBN0XtHw+CCfTd49TFuN+v5YBMjXU1BidwmAvP8PCOOHW23ecTyCqkVjUTNb9B81yObmOqLEwAtcJzC9CqM1Ly0aGAa/Fs7cZYdh/kcSJSW39RnfiFiJoYVMl9Qo8rdDiJ47dGa0O1UEnoRFIcDxQ5fo5228hKdYeu1YiHuBcJCgh+bg7WFKSzQls6eFEQFS5h9smCsD/s/uGGXYK3elEPUWkr6LbokkIY9Y0akKLrIsepsxZaKQu0l9URfJ1xKLxFuadKwAFHiYktSljXlDiKvT2IZs3wDQBiS86+ytDBmUj/f0UidZzBWqkOuw=
+#   develop: xray-shopper-stage
+#   master: xray-shopper
+#   branch:
+#   - deploy
+#   - master
