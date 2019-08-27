@@ -3,7 +3,7 @@ department_names.each do |department_name|
   Department.create(name: department_name)
 end
 
-5.times do
+2.times do
   Location.create(
     name: Faker::Company.name,
     city: Faker::TvShows::GameOfThrones.city,
@@ -11,7 +11,19 @@ end
   )
 end
 
-40.times do
+Department.all.each_with_index do |department, index|
+  if index > 5
+    break
+  end
+
+  LocationDepartment.create(
+    department_id: department.id,
+    location_id: Location.first.id,
+    sort_order: index,
+  )
+end
+
+rand(13..42).times do
   Item.create(
     name: Faker::Food.ingredient,
     department_id: Department.all.sample.id

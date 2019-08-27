@@ -5,6 +5,8 @@ import { FILTER_CONCERN } from '../../constants/filter-concern';
 import { assemblyListMock } from '../../__mocks__/assembly.mock';
 import { csrfMock } from '../../__mocks__/csrf.mock';
 import { departmentListMock } from '../../__mocks__/department.mock';
+import { locationDepartmentListMock } from '../../__mocks__/location-department.mock';
+import { locationMock } from '../../__mocks__/location.mock';
 import { orderMock, orderLocationNameMock } from '../../__mocks__/order.mock';
 import { orderItemListMock } from '../../__mocks__/order-item.mock';
 import { itemListMock } from '../../__mocks__/item.mock';
@@ -17,9 +19,11 @@ describe('OrderPage', () => {
                 csrf={csrfMock}
                 departments={departmentListMock}
                 items={itemListMock}
+                locationDepartments={locationDepartmentListMock}
                 orderItems={orderItemListMock}
                 order={orderMock}
                 orderLocationName={orderLocationNameMock}
+                orderLocation={locationMock}
             />);
 
             expect(component).toMatchSnapshot();
@@ -33,9 +37,11 @@ describe('OrderPage', () => {
                 csrf={csrfMock}
                 departments={departmentListMock}
                 items={itemListMock}
+                locationDepartments={locationDepartmentListMock}
                 orderItems={[]}
                 order={orderMock}
                 orderLocationName={orderLocationNameMock}
+                orderLocation={locationMock}
             />);
             component.setState({ concern: FILTER_CONCERN.MEAL });
 
@@ -52,9 +58,11 @@ describe('OrderPage', () => {
                 csrf={csrfMock}
                 departments={departmentListMock}
                 items={itemListMock}
+                locationDepartments={locationDepartmentListMock}
                 orderItems={[]}
                 order={orderMock}
                 orderLocationName={orderLocationNameMock}
+                orderLocation={locationMock}
             />);
         });
 

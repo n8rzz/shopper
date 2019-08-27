@@ -7,6 +7,7 @@ import { FILTER_CONCERN } from '../../constants/filter-concern';
 import { assemblyListMock, assemblyMapMock } from '../../__mocks__/assembly.mock';
 import { csrfMock } from '../../__mocks__/csrf.mock';
 import { departmentListMock, departmentMapMock } from '../../__mocks__/department.mock';
+import { locationDepartmentListMock } from '../../__mocks__/location-department.mock';
 import { orderItemListMock } from '../../__mocks__/order-item.mock';
 import { itemListMock, itemMapMock } from '../../__mocks__/item.mock';
 
@@ -21,6 +22,7 @@ describe('OrderConcernGroup', () => {
             departments={departmentListMock}
             itemMap={itemMapMock}
             items={itemListMock}
+            locationDepartments={locationDepartmentListMock}
             orderItems={orderItemListMock}
             onClickIsPickedHandler={sinon.spy()}
             onClickRemoveItemHandler={sinon.spy()}

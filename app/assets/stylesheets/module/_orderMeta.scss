@@ -5,4 +5,9 @@
     @include sansSerifFont;
 
     font-size: $FONT_SIZE_S;
+
+    .link {
+        font-size: $FONT_SIZE_S;
+        margin-left: $SPACING_HALFX;
+    }
 }

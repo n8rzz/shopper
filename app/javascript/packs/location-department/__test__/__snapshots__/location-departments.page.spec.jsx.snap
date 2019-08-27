@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LocationDepartmentsPage renders correctly with valid props 1`] = `
+<LocationDepartmentsContainer
+  csrf="3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=="
+  departments={
+    Array [
+      Object {
+        "created_at": "2019-07-21T16:03:32.883Z",
+        "id": 3,
+        "name": "Bakery",
+        "updated_at": "2019-07-21T16:03:32.883Z",
+      },
+      Object {
+        "created_at": "2019-07-21T16:03:32.883Z",
+        "id": 5,
+        "name": "Meat",
+        "updated_at": "2019-07-21T16:03:32.883Z",
+      },
+    ]
+  }
+  locationDepartments={
+    Array [
+      Object {
+        "created_at": "2019-08-22T00:58:38.793Z",
+        "department_id": 3,
+        "id": 1,
+        "location_id": 1,
+        "sort_order": 0,
+        "updated_at": "2019-08-22T00:58:38.793Z",
+      },
+      Object {
+        "created_at": "2019-08-22T00:58:38.793Z",
+        "department_id": 5,
+        "id": 2,
+        "location_id": 1,
+        "sort_order": 0,
+        "updated_at": "2019-08-22T00:58:38.793Z",
+      },
+    ]
+  }
+  locationId={1}
+/>
+`;

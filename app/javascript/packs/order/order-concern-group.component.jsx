@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import _get from 'lodash/get';
 import _groupBy from 'lodash/groupBy';
 import _sortBy from 'lodash/sortBy';
+import _uniqBy from 'lodash/uniqBy';
 import { OrderItem } from './order-item.component';
 import { FILTER_CONCERN } from '../constants/filter-concern';
 
@@ -10,15 +11,38 @@ export class OrderConcernGroup extends React.Component {
     constructor(props) {
         super(props);
 
-        this._sortedAssemblyNameList = _sortBy(this.props.assemblies, 'name');
-        this._sortedDepartmentNameList = _sortBy(this.props.departments, 'name');
-        this._groupedByAssemblyOrderItemList = _groupBy(this.props.orderItems, 'assembly_id');
-        this._groupedByDepartmentOrderItemList = _groupBy(this.props.orderItems, 'department_id');
+        this._sortedAssemblyNameList = _sortBy(props.assemblies, 'name');
+        this._sortedDepartmentNameList = this._buildSortedDepartmentList();
+        this._groupedByAssemblyOrderItemList = _groupBy(props.orderItems, 'assembly_id');
+        this._groupedByDepartmentOrderItemList = _groupBy(props.orderItems, 'department_id');
     }
 
     componentWillUpdate(nextProps) {
         this._groupedByAssemblyOrderItemList = _groupBy(nextProps.orderItems, 'assembly_id');
         this._groupedByDepartmentOrderItemList = _groupBy(nextProps.orderItems, 'department_id');
+    }
+
+    _buildSortedDepartmentList() {
+        if (this.props.locationDepartments.length > 0) {
+            return this._buildSortedDepartmentListWithSortOrder();
+        }
+
+        return this._buildSortedByNameDepartmentList();
+    }
+
+    _buildSortedDepartmentListWithSortOrder() {
+        const departmentListBySortOrder = this.props.locationDepartments.map(
+            (locationDepartment) => this.props.departmentMap[locationDepartment.department_id],
+        );
+
+        return _uniqBy([
+            ...departmentListBySortOrder,
+            ...this._buildSortedByNameDepartmentList(),
+        ], 'id');
+    }
+
+    _buildSortedByNameDepartmentList() {
+        return _sortBy(this.props.departments, 'name');
     }
 
     _buildOrderItemListForConcernGroupJsx(orderItems) {
@@ -140,6 +164,7 @@ OrderConcernGroup.propTypes = {
     departmentMap: PropTypes.object.isRequired,
     departments: PropTypes.array.isRequired,
     itemMap: PropTypes.object.isRequired,
+    locationDepartments: PropTypes.array.isRequired,
     orderItems: PropTypes.array.isRequired,
     onClickIsPickedHandler: PropTypes.func.isRequired,
     onClickRemoveItemHandler: PropTypes.func.isRequired,

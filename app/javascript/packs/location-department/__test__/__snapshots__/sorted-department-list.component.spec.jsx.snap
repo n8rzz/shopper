@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SortedDepartmentList renders correctly with valid props 1`] = `
+<Fragment>
+  <div
+    className="vr_1"
+  >
+    <h3
+      className="hdg hdg_3"
+    >
+      Sort Order
+    </h3>
+  </div>
+  <ul
+    className="vlist js-sortedDepartmentList"
+  >
+    <li
+      className="listItem"
+      key="sorted-department-0"
+    >
+      <div
+        className="listItem-hd"
+      >
+        <ul
+          className="stereo"
+        >
+          <li>
+            <a
+              className="link"
+              href="/departments/3"
+            >
+              Bakery
+            </a>
+          </li>
+          <li>
+            <button
+              className="icon-btn js-sortedDepartment-remove-1"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="icon icon-trashcan"
+              />
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="listItem-ft"
+      >
+        <ul
+          className="hlist"
+        >
+          <li>
+            <button
+              className="btn js-sortedDepartment-up-1"
+              disabled={true}
+              onClick={[Function]}
+              type="button"
+            >
+              UP
+            </button>
+          </li>
+          <li>
+            <button
+              className="btn js-sortedDepartment-down-1"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              DOWN
+            </button>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li
+      className="listItem"
+      key="sorted-department-1"
+    >
+      <div
+        className="listItem-hd"
+      >
+        <ul
+          className="stereo"
+        >
+          <li>
+            <a
+              className="link"
+              href="/departments/5"
+            >
+              Meat
+            </a>
+          </li>
+          <li>
+            <button
+              className="icon-btn js-sortedDepartment-remove-2"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="icon icon-trashcan"
+              />
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="listItem-ft"
+      >
+        <ul
+          className="hlist"
+        >
+          <li>
+            <button
+              className="btn js-sortedDepartment-up-2"
+              disabled={true}
+              onClick={[Function]}
+              type="button"
+            >
+              UP
+            </button>
+          </li>
+          <li>
+            <button
+              className="btn js-sortedDepartment-down-2"
+              disabled={true}
+              onClick={[Function]}
+              type="button"
+            >
+              DOWN
+            </button>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</Fragment>
+`;

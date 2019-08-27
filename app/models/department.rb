@@ -10,6 +10,8 @@ class Department < ApplicationRecord
   has_many :items, dependent: :nullify
   has_many :order_items, dependent: :nullify
   has_many :orders, through: :order_items, dependent: :nullify
+  has_many :location_departments, dependent: :nullify
+  has_many :locations, through: :location_departments, dependent: :nullify
 
   validates :name, presence: true, uniqueness: true
 

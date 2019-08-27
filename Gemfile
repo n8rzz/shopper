@@ -16,7 +16,6 @@ gem 'webpacker', '>= 4.0.0.rc.3'
 gem 'webpacker-react', "~> 1.0.0.beta.1"
 
 group :development, :test do
-  gem "better_errors"
   gem "binding_of_caller"
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails'
@@ -27,6 +26,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "better_errors"
   gem 'guard', '>= 2.15.0', require: false
   gem 'guard-bundler', require: false
   gem 'guard-rspec', require: false

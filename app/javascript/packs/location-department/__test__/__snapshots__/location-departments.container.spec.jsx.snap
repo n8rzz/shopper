@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LocationDepartmentsContainer renders correctly with valid props 1`] = `
+<Fragment>
+  <div
+    className="vr_3"
+  >
+    <SortedDepartmentList
+      departmentMap={
+        Object {
+          "3": Object {
+            "created_at": "2019-07-21T16:03:32.883Z",
+            "id": 3,
+            "name": "Bakery",
+            "updated_at": "2019-07-21T16:03:32.883Z",
+          },
+          "5": Object {
+            "created_at": "2019-07-21T16:03:32.883Z",
+            "id": 5,
+            "name": "Meat",
+            "updated_at": "2019-07-21T16:03:32.883Z",
+          },
+        }
+      }
+      locationDepartments={
+        Array [
+          Object {
+            "created_at": "2019-08-22T00:58:38.793Z",
+            "department_id": 3,
+            "id": 1,
+            "location_id": 1,
+            "sort_order": 0,
+            "updated_at": "2019-08-22T00:58:38.793Z",
+          },
+          Object {
+            "created_at": "2019-08-22T00:58:38.793Z",
+            "department_id": 5,
+            "id": 2,
+            "location_id": 1,
+            "sort_order": 0,
+            "updated_at": "2019-08-22T00:58:38.793Z",
+          },
+        ]
+      }
+      onClickChangeDirectionHandler={[Function]}
+      onClickRemoveHandler={[Function]}
+    />
+  </div>
+  <div
+    className="vr_2"
+  >
+    <NonSortedDepartmentList
+      departments={Array []}
+      onClickCreateLocationDepartmentHanlder={[Function]}
+    />
+  </div>
+</Fragment>
+`;
