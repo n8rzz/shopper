@@ -1,10 +1,10 @@
 GIT
   remote: https://github.com/rails/jbuilder
-  revision: 821f514741a3e9102082a6e98eb59a08671f75d0
+  revision: 44bc207ff15fb9f0c1a58138b90122c0d300dff3
   branch: master
   specs:
     jbuilder (2.9.1)
-      activesupport (>= 4.2.0)
+      activesupport (>= 5.0.0)
 
 GEM
   remote: https://rubygems.org/
