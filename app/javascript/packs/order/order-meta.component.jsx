@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import format from 'date-fns/format';
 
 export function OrderMeta(props) {
-    const formattedShoppingDate = format(props.shoppingDate, 'MMM DD, YYYY');
+    const formattedShoppingDate = format(new Date(props.shoppingDate), 'MMM dd, yyyy');
 
     return (
         <div className={'orderMeta'}>
