@@ -68,3 +68,5 @@ exports[`GroupedItemList renders correctly with valid props 1`] = `
   />
 </Fragment>
 `;
+
+exports[`GroupedItemList returns \`null\` when passed no #items 1`] = `<Fragment />`;

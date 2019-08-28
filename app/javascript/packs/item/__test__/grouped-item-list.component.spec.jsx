@@ -3,12 +3,11 @@ import { shallow } from 'enzyme';
 
 import { GroupedItemList } from '../grouped-item-list.component';
 import {
+    csrfMock,
     departmentListMock,
     departmentMapMock,
-} from '../../__mocks__/department.mock';
-import { itemListMock } from '../../__mocks__/item.mock';
-import { csrfMock } from '../../__mocks__/csrf.mock';
-
+    itemListMock,
+} from '../../__mocks__/mocks';
 
 describe('GroupedItemList', () => {
     test('renders correctly with valid props', () => {
@@ -17,6 +16,17 @@ describe('GroupedItemList', () => {
             departments={departmentListMock}
             departmentMap={departmentMapMock}
             items={itemListMock}
+        />);
+
+        expect(component).toMatchSnapshot();
+    });
+
+    test('returns `null` when passed no #items', () => {
+        const component = shallow(<GroupedItemList
+            csrf={csrfMock}
+            departments={departmentListMock}
+            departmentMap={departmentMapMock}
+            items={[]}
         />);
 
         expect(component).toMatchSnapshot();

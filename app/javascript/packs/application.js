@@ -39,10 +39,8 @@ import { StepperContainer } from './components/stepper/stepper.container';
 import { Stepper } from './components/stepper/stepper';
 
 import WebpackerReact from 'webpacker-react';
-// TODO: this is happening already a few lines up
-// import Turbolinks from 'turbolinks'
-// Turbolinks.start()
 
+// Turbolinks.start()
 WebpackerReact.setup({
     AssemblyItem,
     AssemblyItemContainer,

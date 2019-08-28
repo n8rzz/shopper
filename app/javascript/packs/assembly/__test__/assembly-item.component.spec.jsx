@@ -3,10 +3,12 @@ import sinon from 'sinon';
 import { shallow } from 'enzyme';
 
 import { AssemblyItem } from '../assembly-item.component';
-import { assemblyMock } from '../../__mocks__/assembly.mock';
-import { assemblyItemsGroupedByAssemblyIdMock } from '../../__mocks__/assembly-item.mocks';
-import { departmentMapMock } from '../../__mocks__/department.mock';
-import { itemMapMock } from '../../__mocks__/item.mock';
+import {
+    assemblyMock,
+    assemblyItemsGroupedByAssemblyIdMock,
+    departmentMapMock,
+    itemMapMock,
+} from '../../__mocks__/mocks';
 
 describe('AssemblyItem', () => {
     test('renders correctly with valid props', () => {

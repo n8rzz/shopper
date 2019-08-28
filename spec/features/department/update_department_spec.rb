@@ -7,10 +7,10 @@ RSpec.feature 'Update Department', js: true do
     visit '/departments'
     click_link department.name
 
-    expect(page).to have_text 'Editing Department'
-    expect(page).to have_link 'Back', href: departments_path
-    expect(page).to have_link 'New Department', href: new_department_path
-    expect(page).to have_button 'Update Department'
+    expect(page).to have_text('Edit Department')
+    expect(page).to have_link('Back', href: departments_path)
+    expect(page).to have_link('New', href: new_department_path)
+    expect(page).to have_button('Update')
   end
 
   scenario 'They see the department updates on the page' do

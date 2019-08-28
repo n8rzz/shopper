@@ -2,14 +2,16 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import { OrderPage } from '../order.page';
 import { FILTER_CONCERN } from '../../constants/filter-concern';
-import { assemblyListMock } from '../../__mocks__/assembly.mock';
-import { csrfMock } from '../../__mocks__/csrf.mock';
-import { departmentListMock } from '../../__mocks__/department.mock';
-import { locationDepartmentListMock } from '../../__mocks__/location-department.mock';
-import { locationMock } from '../../__mocks__/location.mock';
-import { orderMock, orderLocationNameMock } from '../../__mocks__/order.mock';
-import { orderItemListMock } from '../../__mocks__/order-item.mock';
-import { itemListMock } from '../../__mocks__/item.mock';
+import {
+    assemblyListMock,
+    csrfMock,
+    departmentListMock,
+    locationDepartmentListMock,
+    locationMock,
+    orderMock, orderLocationNameMock,
+    orderItemListMock,
+    itemListMock,
+} from '../../__mocks__/mocks';
 
 describe('OrderPage', () => {
     describe('when passed more than 0 `orderItems`', () => {

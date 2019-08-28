@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import _noop from 'lodash/noop';
 
 export function FilterBarItem(props) {
     const filterBarClassnames = classnames({
@@ -29,5 +30,5 @@ FilterBarItem.propTypes = {
 };
 
 FilterBarItem.defaultProps = {
-    onChangeFilterHandler: () => {},
+    onChangeFilterHandler: _noop,
 };

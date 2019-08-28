@@ -56,6 +56,7 @@ export class AssemblyItem extends React.Component {
     _buildAssemblyGroupHeaderJsx() {
         const assemblyItemList = this.props.assemblyItemsGroupedByAssemblyId[this.props.assembly.id];
         const buttonText = this._buildAssemblyButtonText();
+        const assemblyItemId = parseInt(this.props.assembly.id, 10);
 
         return (
             <div className={`listItem js-assembly-${this.props.assembly.id}`}>
@@ -70,8 +71,7 @@ export class AssemblyItem extends React.Component {
                         <button
                             type={'button'}
                             className={this._buildAssemblyButtonClassnames()}
-                            data-assembly-id={this.props.assembly.id}
-                            onClick={this.props.onClickAddAssemblyHandler}
+                            onClick={(event) => this.props.onClickAddAssemblyHandler(event, assemblyItemId)}
                         >
                             {buttonText}
                         </button>

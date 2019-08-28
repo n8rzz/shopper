@@ -1,22 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { extractLocationNameFromMapByLocationId } from './extractLocationNameFromMapByLocationId';
-
-// TODO: move this
-const MONTH_NAME = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'June',
-    'July',
-    'Aug',
-    'Sept',
-    'Oct',
-    'Nov',
-    'Dec',
-];
+import { MONTH_NAME } from '../constants/month-name';
 
 export class OrderCard extends React.PureComponent {
     _buildListItemJsx(order, index) {

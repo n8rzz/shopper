@@ -3,14 +3,14 @@ import sinon from 'sinon';
 import { mount, shallow } from 'enzyme';
 
 import { StepperContainer } from '../stepper.container';
-import { Stepper } from '../stepper';
-import { csrfMock } from '../../../__mocks__/csrf.mock';
-import { itemMock } from '../../../__mocks__/item.mock';
+import { csrfMock, itemMock } from '../../../__mocks__/mocks';
 
 describe('StepperContainer', () => {
     let component = null;
+    let onSubmitHandlerSpy = null;
 
     beforeEach(() => {
+        onSubmitHandlerSpy = sinon.spy();
         component = mount(<StepperContainer
             csrf={csrfMock}
             departmentId={itemMock.department_id}
@@ -18,11 +18,12 @@ describe('StepperContainer', () => {
             itemName={itemMock.name}
             isSubmitting={false}
             isSubmitSuccess={false}
-            onSubmitHandler={sinon.spy()}
+            onSubmitHandler={onSubmitHandlerSpy}
         />);
     });
 
     afterEach(() => {
+        onSubmitHandlerSpy = null;
         component = null;
     });
 
@@ -48,14 +49,21 @@ describe('StepperContainer', () => {
         });
 
         test('responds to click', () => {
-            const onClickDecreaseHandlerSpy = sinon.spy();
+            const instance = component.instance();
+            component.setState({ qty: 2 });
 
-            component.props.onClickDecreaseHandler = onClickDecreaseHandlerSpy;
-            const stepperChild = component.find(Stepper);
+            instance._onClickDecrease();
 
-            stepperChild.props.onClickDecreaseHandler();
+            expect(component.state('qty')).toBe(1);
+        });
 
-            expect(onClickDecreaseHandlerSpy.callCount).toBe(1);
+        test('does not decrease passed 1', () => {
+            const instance = component.instance();
+            component.setState({ qty: 1 });
+
+            instance._onClickDecrease();
+
+            expect(component.state('qty')).toBe(1);
         });
     });
 
@@ -67,14 +75,57 @@ describe('StepperContainer', () => {
         });
 
         test('responds to click', () => {
-            const onClickIncreaseHandlerSpy = sinon.spy();
+            const instance = component.instance();
 
-            component.props.onClickIncreaseHandler = onClickIncreaseHandlerSpy;
-            const stepperChild = component.find(Stepper);
+            instance._onClickIncrease();
 
-            stepperChild.props.onClickIncreaseHandler();
+            expect(component.state('qty')).toBe(2);
+        });
+    });
 
-            expect(onClickIncreaseHandlerSpy.callCount).toBe(1);
+    describe('submit element', () => {
+        test('contains submit btn element', () => {
+            const submitBtn = component.find('.stepper-ft-submit');
+
+            expect(submitBtn.length).toBe(1);
+        });
+
+        test('responds to click', () => {
+            const eventMock = {
+                stopPropagation: sinon.spy(),
+                preventDefault: sinon.spy(),
+            };
+            const instance = component.instance();
+
+            instance._onClickSubmit(eventMock);
+
+            expect(onSubmitHandlerSpy.calledWith(component.state('qty'))).toBe(true);
+        });
+
+        test('returns early if #qty is < 1', () => {
+            const eventMock = {
+                stopPropagation: sinon.spy(),
+                preventDefault: sinon.spy(),
+            };
+            const instance = component.instance();
+
+            component.setState({ qty: 0 });
+            instance._onClickSubmit(eventMock);
+
+            expect(onSubmitHandlerSpy.callCount).toBe(0);
+        });
+
+        test('resets #qty to 1 after submit', () => {
+            const eventMock = {
+                stopPropagation: sinon.spy(),
+                preventDefault: sinon.spy(),
+            };
+            const instance = component.instance();
+
+            component.setState({ qty: 3 });
+            instance._onClickSubmit(eventMock);
+
+            expect(component.state('qty')).toBe(1);
         });
     });
 });

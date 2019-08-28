@@ -141,18 +141,15 @@ export class OrderConcernGroup extends React.Component {
     }
 
     render() {
-        // TODO: rename this var
-        let jsx = null;
-
         if (this.props.concern === FILTER_CONCERN.DEPARTMENT) {
-            jsx = this._buildOrderItemListForDepartmentConcernGroupJsx();
+            return this._buildOrderItemListForDepartmentConcernGroupJsx();
         }
 
         if (this.props.concern === FILTER_CONCERN.MEAL) {
-            jsx = this._buildOrderItemListForAssemblyConcernGroupJsx();
+            return this._buildOrderItemListForAssemblyConcernGroupJsx();
         }
 
-        return jsx;
+        return null;
     }
 }
 

@@ -2,11 +2,13 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { AssemblyItemContainer } from '../assembly-item.container';
-import { assemblyMock } from '../../__mocks__/assembly.mock';
-import { assemblyItemsGroupedByAssemblyIdMock } from '../../__mocks__/assembly-item.mocks';
-import { csrfMock } from '../../__mocks__/csrf.mock';
-import { departmentMapMock } from '../../__mocks__/department.mock';
-import { itemMapMock } from '../../__mocks__/item.mock';
+import {
+    assemblyMock,
+    assemblyItemsGroupedByAssemblyIdMock,
+    csrfMock,
+    departmentMapMock,
+    itemMapMock,
+} from '../../__mocks__/mocks';
 
 describe('AssemblyItemContainer', () => {
     test('renders correctly with valid props', () => {

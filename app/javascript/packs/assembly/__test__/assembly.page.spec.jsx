@@ -2,10 +2,12 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { AssemblyPage } from '../assembly.page';
-import { assemblyListMock } from '../../__mocks__/assembly.mock';
-import { csrfMock } from '../../__mocks__/csrf.mock';
-import { departmentListMock } from '../../__mocks__/department.mock';
-import { itemListMock } from '../../__mocks__/item.mock';
+import {
+    assemblyListMock,
+    csrfMock,
+    departmentListMock,
+    itemListMock,
+} from '../../__mocks__/mocks';
 
 describe('AssemblyPage', () => {
     test('renders correctly with valid props', () => {

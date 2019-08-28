@@ -7,14 +7,14 @@
             <%= f.input :name, :input_html => { :class => 'input-text' } %>
         </div>
     </div>
-
     <div class="vr_2">
         <div class="form-group">
             <%= f.association :items, as: :check_boxes, collection: Item.by_name %>
         </div>
     </div>
-
-    <div class="form-actions">
-        <%= f.button :submit, :class => 'btn-submit'  %>
+    <div class="vr_2">
+        <div class="form-actions">
+            <%= f.button :submit, :class => 'btn-submit mix-btn_inverse'  %>
+        </div>
     </div>
 <% end %>

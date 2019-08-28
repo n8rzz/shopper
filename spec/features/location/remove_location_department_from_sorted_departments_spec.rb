@@ -19,14 +19,16 @@ RSpec.feature 'Remove location_department to sorted departments', js: true do
     it { expect(page).to have_selector('.js-nonSortedDepartmentList > li', count: 2) }
   end
 
-  # TODO: this works for real, but this test is failing for some reason?
-  # context 'updates #sort_order of remaining items' do
-  #   before :each do
-  #     visit edit_location_path(location.id)
+  context 'updates #sort_order of remaining items' do
+    before :each do
+      visit edit_location_path(location.id)
 
-  #     find(".js-sortedDepartment-remove-#{location_department_meat.id}").click
-  #   end
+      find(".js-sortedDepartment-remove-#{location_department_meat.id}").click
 
-  #   it { expect(location_department_produce.sort_order).to eq(0) }
-  # end
+      # FIXME: this test passes now, but this is wrong
+      sleep 1
+    end
+
+    it { expect(location_department_produce.reload.sort_order).to eq(0) }
+  end
 end
