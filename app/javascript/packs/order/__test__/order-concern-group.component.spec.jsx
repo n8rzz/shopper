@@ -4,12 +4,17 @@ import { shallow } from 'enzyme';
 import { OrderConcernGroup } from '../order-concern-group.component';
 // TODO: implement tests for all states of the filter
 import { FILTER_CONCERN } from '../../constants/filter-concern';
-import { assemblyListMock, assemblyMapMock } from '../../__mocks__/assembly.mock';
-import { csrfMock } from '../../__mocks__/csrf.mock';
-import { departmentListMock, departmentMapMock } from '../../__mocks__/department.mock';
-import { locationDepartmentListMock } from '../../__mocks__/location-department.mock';
-import { orderItemListMock } from '../../__mocks__/order-item.mock';
-import { itemListMock, itemMapMock } from '../../__mocks__/item.mock';
+import {
+    assemblyListMock,
+    assemblyMapMock,
+    csrfMock,
+    departmentListMock,
+    departmentMapMock,
+    locationDepartmentListMock,
+    orderItemListMock,
+    itemListMock,
+    itemMapMock,
+} from '../../__mocks__/mocks';
 
 describe('OrderConcernGroup', () => {
     test('renders correctly with valid props', () => {

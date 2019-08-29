@@ -44,14 +44,14 @@ end
 end
 
 order_statuses = ['active', 'cancelled', 'complete']
-10.times.each do |order_status|
+5.times.each do |order_status|
   o = Order.create(
     status: order_statuses.sample,
     location_id: Location.all.sample.id,
     shopping_date: Faker::Date.between(from: 1.year.ago, to: 1.year.from_now)
   )
 
-  rand(1..3).times do
+  rand(1..15).times do
     item = Item.all.sample
 
     o.order_items.new(

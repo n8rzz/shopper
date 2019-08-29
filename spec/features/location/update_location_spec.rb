@@ -7,9 +7,9 @@ RSpec.feature 'Update a Location', js: true do
     visit locations_path
     click_link location.name
 
-    expect(page).to have_text('Editing Location')
+    expect(page).to have_text('Edit Location')
     expect(page).to have_link('Back', href: locations_path)
-    expect(page).to have_link('New Location', href: new_location_path)
+    expect(page).to have_link('New', href: new_location_path)
     expect(page).to have_button('Update Location')
   end
 

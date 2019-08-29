@@ -1,43 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Stepper renders correctly with valid props 1`] = `
-<form
-  onSubmit={[MockFunction]}
+<Stepper
+  isSubmitSuccess={false}
+  isSubmitting={false}
+  itemId={42}
+  onClickDecreaseHandler={[MockFunction]}
+  onClickIncreaseHandler={[MockFunction]}
+  onClickSubmitHandler={[MockFunction]}
+  qty={3}
 >
-  <div
-    className="stepper"
-    data-stepper-id={42}
+  <form
+    onSubmit={[MockFunction]}
   >
     <div
-      className="stepper-bd"
+      className="stepper"
+      data-stepper-id={42}
     >
       <div
-        className="stepper-bd-btn js-stepper-btn-decrease"
-        onClick={[MockFunction]}
+        className="stepper-bd"
       >
-        -
+        <div
+          className="stepper-bd-btn js-stepper-btn-decrease"
+          onClick={[MockFunction]}
+        >
+          -
+        </div>
+        <div
+          id="item-42-qty"
+        >
+          3
+        </div>
+        <div
+          className="stepper-bd-btn js-stepper-btn-increase"
+          onClick={[MockFunction]}
+        >
+          +
+        </div>
       </div>
       <div
-        id="item-42-qty"
+        className="stepper-ft"
       >
-        3
-      </div>
-      <div
-        className="stepper-bd-btn js-stepper-btn-increase"
-        onClick={[MockFunction]}
-      >
-        +
+        <input
+          className="stepper-ft-submit"
+          type="submit"
+          value="Add to order"
+        />
       </div>
     </div>
-    <div
-      className="stepper-ft"
-    >
-      <input
-        className="stepper-ft-submit"
-        type="submit"
-        value="Add to order"
-      />
-    </div>
-  </div>
-</form>
+  </form>
+</Stepper>
 `;

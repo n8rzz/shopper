@@ -2,8 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { ItemList } from '../item-list.component';
-import { departmentMapMock } from '../../__mocks__/department.mock';
-import { itemListMock } from '../../__mocks__/item.mock';
+import { departmentMapMock, itemListMock } from '../../__mocks__/mocks';
 
 describe('ItemList', () => {
     test('renders correctly with valid props', () => {

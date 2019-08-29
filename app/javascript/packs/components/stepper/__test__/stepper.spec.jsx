@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import { Stepper } from '../stepper';
 
 describe('Stepper', () => {
@@ -22,7 +22,18 @@ describe('Stepper', () => {
     });
 
     test('renders correctly with valid props', () => {
-        expect(component).toMatchSnapshot();
+        const mountedComponent = mount(<Stepper
+            itemId={42}
+            qty={3}
+            isSubmitting={false}
+            isSubmitSuccess={false}
+            onClickDecreaseHandler={jest.fn()}
+            onClickIncreaseHandler={jest.fn()}
+            onClickSubmitHandler={jest.fn()}
+        />);
+
+        expect(mountedComponent).toMatchSnapshot();
+        mountedComponent.unmount();
     });
 
     test('contains decrease btn element', () => {

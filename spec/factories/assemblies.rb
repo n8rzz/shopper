@@ -6,7 +6,16 @@ FactoryBot.define do
       after(:create) do |assembly|
         item = create(:item)
 
-        assembly.assembly_items.new({ id: item.id, qty: rand(1..10) })
+        create(:assembly_item, item_id: item.id, assembly_id: assembly.id)
+      end
+    end
+
+    # FIXME: use `transient` here instead
+    trait :with_two_items do
+      after(:create) do |assembly|
+        2.times do
+          create(:assembly_item, item_id: create(:item).id, assembly_id: assembly.id)
+        end
       end
     end
   end

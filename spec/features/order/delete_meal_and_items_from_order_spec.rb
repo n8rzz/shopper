@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 # TODO: re-implement delete via ui component
+# see: [#21](https://github.com/n8rzz/shopper/issues/21)
 # RSpec.feature 'Delete meal and items from order', js: true do
 #   let!(:pending_order) { create(:order, :pending, :with_order_items) }
 #   let!(:complete_order) { create(:order, :complete, :with_order_items) }

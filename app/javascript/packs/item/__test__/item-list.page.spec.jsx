@@ -5,8 +5,7 @@ import { ItemListPage } from '../item-list.page';
 import { GroupedItemList } from '../grouped-item-list.component';
 import { ItemList } from '../item-list.component';
 import { FILTER_CONCERN } from '../../constants/filter-concern';
-import { departmentListMock } from '../../__mocks__/department.mock';
-import { itemListMock } from '../../__mocks__/item.mock';
+import { departmentListMock, itemListMock } from '../../__mocks__/mocks';
 
 describe('ItemListPage', () => {
     test('renders correctly with valid props', () => {

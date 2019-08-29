@@ -3,7 +3,8 @@
   "scripts": {
     "lint": "yarn run eslint -- --ext .jsx app/javascript",
     "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --coverage --watchAll"
   },
   "private": true,
   "dependencies": {
@@ -59,8 +60,9 @@
       }
     },
     "coverageReporters": [
-      "text",
+      "html",
       "lcov",
+      "text",
       "text-summary"
     ]
   },

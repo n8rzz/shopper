@@ -21,14 +21,6 @@ export class StepperContainer extends React.Component {
         this.onClickSubmitHandler = null;
     }
 
-    _onChangeQty(event) {
-        if (event.currentTarget.value === '') {
-            return;
-        }
-
-        this.setState({ qty: event.currentTarget.value });
-    }
-
     _onClickDecrease() {
         // eslint-disable-next-line react/no-access-state-in-setstate
         let nextQty = this.state.qty - 1;

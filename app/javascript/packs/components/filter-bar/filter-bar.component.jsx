@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import _noop from 'lodash/noop';
 import { FilterBarItem } from './filter-bar-item.component';
 
 export class FilterBar extends React.PureComponent {
@@ -10,6 +11,10 @@ export class FilterBar extends React.PureComponent {
         this.state = {
             activeFilter: props.initialSelection,
         };
+    }
+
+    componentWillUnmount() {
+        this._onChangeFilterHandler = null;
     }
 
     _buildFilterBarListItemsJsx() {
@@ -29,9 +34,7 @@ export class FilterBar extends React.PureComponent {
     }
 
     _onChangeFilter(event) {
-        const nextFilterSelection = event.target.text;
-
-        this.setState({ activeFilter: nextFilterSelection }, this.props.onChangeFilterHandler(event));
+        this.setState({ activeFilter: event.target.text }, this.props.onChangeFilterHandler(event));
     }
 
     render() {
@@ -52,5 +55,5 @@ FilterBar.propTypes = {
 };
 
 FilterBar.defaultProps = {
-    onChangeFilterHandler: () => {},
+    onChangeFilterHandler: _noop,
 };

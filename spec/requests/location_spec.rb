@@ -12,7 +12,6 @@ RSpec.describe "Location", :type => :request do
     end
   end
 
-  # TODO: should be updated to use json request
   context '/locations/new route' do
     context 'renders #new template' do
       before :each do
@@ -23,18 +22,18 @@ RSpec.describe "Location", :type => :request do
       it { expect(response).to_not render_template(:show) }
     end
 
-    # context 'create a Location' do
-    #   before :each do
-    #     post "/locations", :params => { :locations => attributes_for(:location) }
-    #   end
+    context 'create a Location' do
+      before :each do
+        post "/locations", :params => { :location => attributes_for(:location) }
+      end
 
-    #   it { expect(response).to redirect_to(locations_path) }
+      it { expect(response).to redirect_to(locations_path) }
 
-    #   it "redirects to the Locations page" do
-    #     follow_redirect!
+      it "redirects to the Locations page" do
+        follow_redirect!
 
-    #     expect(response).to render_template(:index)
-    #   end
-    # end
+        expect(response).to render_template(:index)
+      end
+    end
   end
 end

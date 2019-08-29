@@ -14,8 +14,7 @@ export class LocationDepartmentsContainer extends React.Component {
         this._onClickCreateLocationDepartmentHanlder = this._onClickCreateLocationDepartment.bind(this);
         this._onClickRemoveHandler = this._onClickRemove.bind(this);
         this._onUpdateSortOrderSuccessHandler = this._onUpdateSortOrderSuccess.bind(this);
-        this._onCreateLocationDepartmentHandler = this._onCreateLocationDepartment.bind(this);
-        this._onDestroyLocationDepartmentHandler = this._onDestroyLocationDepartment.bind(this);
+        this._onCreateOrDestroyLocationDepartmentHandler = this._onCreateOrDestroyLocationDepartment.bind(this);
 
         this.state = {
             unsortedDepartmentList: this._buildUnsortedDepartmentsList(props.departments, props.locationDepartments),
@@ -63,30 +62,19 @@ export class LocationDepartmentsContainer extends React.Component {
         };
 
         ApiService.post(url, locationDepartmentParams, this.props.csrf)
-            .then((response) => this._onCreateLocationDepartmentHandler(response.data))
+            .then((response) => this._onCreateOrDestroyLocationDepartmentHandler(response.data))
             .catch((error) => { throw error; });
-    }
-
-    // FIXME: combine this with identical method
-    _onCreateLocationDepartment(locationDepartments) {
-        const unsortedDepartmentList = this._buildUnsortedDepartmentsList(this.props.departments, locationDepartments);
-
-        this.setState({
-            unsortedDepartmentList,
-            sortedDepartmentList: locationDepartments,
-        });
     }
 
     _onClickRemove(locationDepartment) {
         const url = `/location_departments/${locationDepartment.id}.json`;
 
         ApiService.delete(url, null, this.props.csrf)
-            .then((response) => this._onDestroyLocationDepartmentHandler(response.data))
+            .then((response) => this._onCreateOrDestroyLocationDepartmentHandler(response.data))
             .catch((error) => { throw error; });
     }
 
-    // FIXME: combine this with identical method
-    _onDestroyLocationDepartment(locationDepartments) {
+    _onCreateOrDestroyLocationDepartment(locationDepartments) {
         const unsortedDepartmentList = this._buildUnsortedDepartmentsList(this.props.departments, locationDepartments);
 
         this.setState({

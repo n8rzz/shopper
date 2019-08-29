@@ -19,7 +19,6 @@ exports[`AssemblyItem renders correctly with valid props 1`] = `
       <div>
         <button
           className="btn btn-toggle"
-          data-assembly-id={1}
           onClick={[Function]}
           type="button"
         >

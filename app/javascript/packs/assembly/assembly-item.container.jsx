@@ -32,9 +32,7 @@ export class AssemblyItemContainer extends React.Component {
         event.preventDefault();
         event.currentTarget.blur();
 
-        // /order_items/create/assembly
         const assemblyId = this.props.assembly.id;
-        // FIXME: move these away from data attributes
         const addAssemblyToOrderUrl = '/order_items/create/assembly.json';
         const requestPayload = {
             assembly_id: assemblyId,
@@ -72,20 +70,17 @@ export class AssemblyItemContainer extends React.Component {
         }, 3000);
     }
 
-    _onClickAddAssemblyItem(event) {
+    _onClickAddAssemblyItem(event, assemblyItemId) {
         event.preventDefault();
         event.currentTarget.blur();
 
-        const assemblyId = this.props.assembly.id;
-        // FIXME: move these away from data attributes
         const { dataset } = event.currentTarget;
         const { itemName } = dataset;
-        const assemblyItemId = parseInt(dataset.assemblyItemId, 10);
         const departmentId = parseInt(dataset.departmentId, 10);
         const itemId = parseInt(dataset.itemId, 10);
         const assemblyItemUrl = '/order_items/create/item.json';
         const requestPayload = {
-            assembly_id: assemblyId,
+            assembly_id: this.props.assembly.id,
             department_id: departmentId,
             item_id: itemId,
         };

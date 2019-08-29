@@ -1,7 +1,7 @@
 import React from 'react';
 import sinon from 'sinon';
 import { shallow } from 'enzyme';
-import { departmentListMock } from '../../__mocks__/department.mock';
+import { departmentListMock } from '../../__mocks__/mocks';
 import { NonSortedDepartmentList } from '../non-sorted-department-list.component';
 
 describe('NonSortedDepartmentList', () => {
