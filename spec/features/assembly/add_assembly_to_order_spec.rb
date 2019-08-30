@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Add assembly to Order', js: true do
   let!(:pending_order) { create(:order, :pending) }
-  let!(:assembly) { create(:assembly, :with_two_items) }
+  let!(:assembly) { create(:assembly, :with_items) }
 
   before :each do
     visit assemblies_path

@@ -17,7 +17,7 @@ export class OrderConcernGroup extends React.Component {
         this._groupedByDepartmentOrderItemList = _groupBy(props.orderItems, 'department_id');
     }
 
-    componentWillUpdate(nextProps) {
+    componentDidUpdate(nextProps) {
         this._groupedByAssemblyOrderItemList = _groupBy(nextProps.orderItems, 'assembly_id');
         this._groupedByDepartmentOrderItemList = _groupBy(nextProps.orderItems, 'department_id');
     }

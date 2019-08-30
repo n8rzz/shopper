@@ -9,11 +9,6 @@ class ItemsController < ApplicationController
     @departments = Department.by_name
     @order_item = OrderItem.new
     @items_by_concern = nil
-
-    # FIXME: remove, this may be deprecated
-    if params[:order] == 'department'
-      @items_by_concern = @items.group_by_department_and_sort
-    end
   end
 
   # GET /items/new
@@ -59,6 +54,7 @@ class ItemsController < ApplicationController
   # DELETE /items/1.json
   def destroy
     @item.destroy
+
     respond_to do |format|
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
