@@ -11,9 +11,9 @@ RSpec.feature 'Delete order_item from order', js: true do
     end
   end
 
-  # context 'an order_item is removed from an order' do
-  #   it { expect(page).to have_no_text(pending_order.order_items.first.item.name) }
-  # end
+  context 'an order_item is removed from an order' do
+    it { expect(page).to have_no_text(pending_order.order_items.first.item.name) }
+  end
 
   context 'progress bar totalCount' do
     it { expect(find('.js-progress-currentCount')).to have_text('0') }

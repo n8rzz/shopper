@@ -4,16 +4,17 @@ FactoryBot.define do
 
     trait :with_item do
       after(:create) do |assembly|
-        item = create(:item)
-
-        create(:assembly_item, item_id: item.id, assembly_id: assembly.id)
+        create(:assembly_item, item_id: create(:item).id, assembly_id: assembly.id)
       end
     end
 
-    # FIXME: use `transient` here instead
-    trait :with_two_items do
-      after(:create) do |assembly|
-        2.times do
+    trait :with_items do
+      transient do
+        items_count { 2 }
+      end
+
+      after(:create) do |assembly, evaluator|
+        evaluator.items_count.times do
           create(:assembly_item, item_id: create(:item).id, assembly_id: assembly.id)
         end
       end
