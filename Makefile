@@ -1,5 +1,5 @@
-update:
-	bundle
+update: ## install gems and npm packages
+	bundle install
 	yarn install --check-dependencies
 
 lint: ## runs linters to check for style inconsistencies
@@ -18,4 +18,7 @@ release: ## updates `master` branch, generates a new tag, pushes tag, pushes mas
 	git push origin ${v}
 	git push origin master
 
+help:
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
+.PHONY: update lint test release
