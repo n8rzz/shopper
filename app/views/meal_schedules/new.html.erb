@@ -1,0 +1,12 @@
+<div class="stereo">
+    <h1 class="hdg hdg_1">Schedule Item</h1>
+    <div>
+        <ul class="hlist hlist-divided">
+            <li>
+                <%= link_to 'Back', meal_schedules_path, class: "link" %>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<%= render 'form', meal_schedule: @meal_schedule %>

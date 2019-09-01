@@ -16,15 +16,13 @@ exports[`AssemblyItem renders correctly with valid props 1`] = `
       >
         Souvlaki
       </h2>
-      <div>
-        <button
-          className="btn btn-toggle"
-          onClick={[Function]}
-          type="button"
-        >
-          Add to order
-        </button>
-      </div>
+      <button
+        className="btn btn-toggle"
+        onClick={[Function]}
+        type="button"
+      >
+        Add to order
+      </button>
     </div>
     <div
       className="listItem-ft"
@@ -37,12 +35,26 @@ exports[`AssemblyItem renders correctly with valid props 1`] = `
           1
         </li>
         <li>
-          <a
-            className="link"
-            href="/assemblies/1/edit"
+          <ul
+            className="hlist hlist-divided"
           >
-            Edit Assembly
-          </a>
+            <li>
+              <a
+                className="link"
+                href="/meal_schedules/new?assembly_id=1"
+              >
+                Schedule
+              </a>
+            </li>
+            <li>
+              <a
+                className="link"
+                href="/assemblies/1/edit"
+              >
+                Edit
+              </a>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>

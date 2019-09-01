@@ -1,5 +1,8 @@
 update: ## install gems and npm packages
+	@echo ""
 	bundle install
+	@echo ""
+	@echo ""
 	yarn install --check-dependencies
 
 lint: ## runs linters to check for style inconsistencies
@@ -11,9 +14,13 @@ test: ## runs entire test suite
 	bundle exec rspec
 
 release: ## updates `master` branch, generates a new tag, pushes tag, pushes master. expects `v={VERSION}` arg
+	@echo ""
 	git checkout master
 	git pull origin	master
 	git pull origin develop
+	@echo ""
+	@echo ""
+	@echo ""
 	git tag ${v}
 	git push origin ${v}
 	git push origin master

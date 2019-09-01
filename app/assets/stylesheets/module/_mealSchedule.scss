@@ -1,0 +1,52 @@
+@import "../base/font";
+@import "../base/mixins";
+@import "../base/vars";
+
+.mealSchedule {
+    padding: $SPACING_1X 0;
+}
+
+.mealSchedule-hd {
+    @include serifFont;
+
+    font-size: $FONT_SIZE_L;
+    padding: $SPACING_HALFX $SPACING_HALFX $SPACING_HALFX 0;
+}
+
+.mealSchedule-bd-itemList {
+    @include monospaceFont;
+    @include boxShadow-subtle;
+
+    background-color: $COLOR_BG_SECONDARY;
+    border-left: 7px solid;
+    border-radius: $BORDER_RADIUS_M;
+    // color: $COLOR_SECONDARY_ACCENT;
+    font-size: $FONT_SIZE_XS;
+    margin-top: $SPACING_1X;
+    padding-left: $SPACING_1X ;
+    padding-right: $SPACING_1X ;
+
+    &_none {
+        border-color: $COLOR_SECONDARY_ACCENT;
+    }
+
+    &_morning {
+        border-color: $COLOR_MORNING;
+    }
+
+    &_afternoon {
+        border-color: $COLOR_AFTERNOON;
+    }
+
+    &_evening {
+        border-color: $COLOR_EVENING;
+    }
+}
+
+.mealSchedule-bd-itemList-item {
+    padding: $SPACING_1X 0;
+}
+
+.mealSchedule-bd-itemList-item {
+    border-top: 1px solid $COLOR_LIGHT;
+}

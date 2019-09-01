@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScheduleItem when passed an assembly renders correctly with valid props 1`] = `
+<li
+  className="mealSchedule-bd-itemList-item"
+>
+  <ul
+    className="stereo"
+  >
+    <li>
+      Souvlaki
+    </li>
+    <li>
+      <ul
+        className="hlist"
+      >
+        <li
+          className="u-isVisuallyHidden"
+        >
+          <button
+            className="icon-btn"
+            type="button"
+          >
+            <span
+              className="icon icon-cart-check"
+            />
+          </button>
+        </li>
+        <li>
+          <button
+            className="icon-btn js-mealSchedule-remove"
+            onClick={[Function]}
+            type="button"
+          >
+            <span
+              className="icon icon-trashcan"
+            />
+          </button>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</li>
+`;
+
+exports[`ScheduleItem when passed an item renders correctly with valid props 1`] = `
+<li
+  className="mealSchedule-bd-itemList-item"
+>
+  <ul
+    className="stereo"
+  >
+    <li>
+      Agave Syrup
+    </li>
+    <li>
+      <ul
+        className="hlist"
+      >
+        <li
+          className="u-isVisuallyHidden"
+        >
+          <button
+            className="icon-btn"
+            type="button"
+          >
+            <span
+              className="icon icon-cart-check"
+            />
+          </button>
+        </li>
+        <li>
+          <button
+            className="icon-btn js-mealSchedule-remove"
+            onClick={[Function]}
+            type="button"
+          >
+            <span
+              className="icon icon-trashcan"
+            />
+          </button>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</li>
+`;

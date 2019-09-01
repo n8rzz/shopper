@@ -8,6 +8,7 @@
 }
 
 .icon-btn {
+    @include animationCubicBezier;
     @include boxShadow-subtle;
 
     background-color: $COLOR_BG_PRIMARY;
@@ -19,14 +20,24 @@
 .icon-btn:active,
 .icon-btn:focus,
 .icon-btn:hover {
-    @include animationCubicBezier;
-
-    background-color: $COLOR_BG_PRIMARY;
+    background-color: $COLOR_BG_SECONDARY;
     border: 1px solid $COLOR_PRIMARY;
 }
 
 .icon-trashcan {
     background: image-url('basic_trashcan.svg') 50% 50% no-repeat transparent;
+}
+
+.icon-calendar-check {
+    background: image-url('calendar-check.svg') 50% 50% no-repeat transparent;
+    margin-top: 2px;
+    margin-bottom: -1px;
+}
+
+.icon-cart-check {
+    background: image-url('cart-check.svg') 50% 50% no-repeat transparent;
+    margin-top: 2px;
+    margin-bottom: -2px;
 }
 
 .mix-icon-btn_verticalOffset {

@@ -67,15 +67,13 @@ export class AssemblyItem extends React.Component {
                     >
                         {this.props.assembly.name}
                     </h2>
-                    <div>
-                        <button
-                            type={'button'}
-                            className={this._buildAssemblyButtonClassnames()}
-                            onClick={(event) => this.props.onClickAddAssemblyHandler(event, assemblyItemId)}
-                        >
-                            {buttonText}
-                        </button>
-                    </div>
+                    <button
+                        type={'button'}
+                        className={this._buildAssemblyButtonClassnames()}
+                        onClick={(event) => this.props.onClickAddAssemblyHandler(event, assemblyItemId)}
+                    >
+                        {buttonText}
+                    </button>
                 </div>
                 <div className={'listItem-ft'}>
                     <ul className={'stereo'}>
@@ -84,12 +82,25 @@ export class AssemblyItem extends React.Component {
                             {assemblyItemList.length}
                         </li>
                         <li>
-                            <a
-                                className={'link'}
-                                href={`/assemblies/${this.props.assembly.id}/edit`}
-                            >
-                                Edit Assembly
-                            </a>
+                            <ul className={'hlist hlist-divided'}>
+                                <li>
+                                    <a
+                                        href={`/meal_schedules/new?assembly_id=${this.props.assembly.id}`}
+                                        className={'link'}
+                                    >
+                                        Schedule
+                                    </a>
+                                </li>
+                                <li>
+
+                                    <a
+                                        className={'link'}
+                                        href={`/assemblies/${this.props.assembly.id}/edit`}
+                                    >
+                                        Edit
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

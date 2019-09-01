@@ -44,7 +44,7 @@ end
 end
 
 order_statuses = ['active', 'cancelled', 'complete']
-5.times.each do |order_status|
+5.times.each do
   o = Order.create(
     status: order_statuses.sample,
     location_id: Location.all.sample.id,
@@ -66,3 +66,50 @@ order_statuses = ['active', 'cancelled', 'complete']
   o.save
 end
 
+meal_time_option_list = ['morning', 'afternoon', 'evening', 'none']
+
+date_for_all_meal_times = Faker::Date.between(from: 1.week.ago, to: 1.month.from_now)
+meal_time_option_list.each do |meal_time|
+  MealSchedule.create(
+    schedule_date: date_for_all_meal_times,
+    purchased: false,
+    item_id: Item.all.sample.id,
+    meal_time: meal_time
+  )
+end
+
+2.times.each do
+  MealSchedule.create(
+    schedule_date: date_for_all_meal_times,
+    purchased: false,
+    item_id: Item.all.sample.id,
+    meal_time: 'morning'
+  )
+end
+
+2.times.each do
+  MealSchedule.create(
+    schedule_date: date_for_all_meal_times,
+    purchased: false,
+    item_id: Item.all.sample.id,
+    meal_time: 'afternoon'
+  )
+end
+
+rand(13..32).times.each do
+  MealSchedule.create(
+    schedule_date: Faker::Date.between(from: 1.week.ago, to: 2.months.from_now),
+    purchased: [true, false].sample,
+    item_id: Item.all.sample.id,
+    meal_time: meal_time_option_list.sample
+  )
+end
+
+rand(11..17).times.each do
+  MealSchedule.create(
+    schedule_date: Faker::Date.between(from: 1.month.ago, to: 1.month.from_now),
+    purchased: [true, false].sample,
+    assembly_id: Assembly.all.sample.id,
+    meal_time: meal_time_option_list.sample
+  )
+end

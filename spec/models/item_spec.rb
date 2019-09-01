@@ -11,6 +11,8 @@ RSpec.describe Item, type: :model do
     it { should have_many(:order_items) }
     it { should have_many(:assembly_items) }
     it { should have_many(:assemblies) }
+    it { should have_many(:assemblies) }
+    it { should have_many(:meal_schedules) }
   end
 
   before do
@@ -31,9 +33,24 @@ RSpec.describe Item, type: :model do
     let(:apple) { create(:item, name: 'Apple') }
 
     it 'returns Items sorted ASC' do
-      expect(Item.by_name).to eq [apple, orange]
+      expect(Item.by_name).to eq([apple, orange])
     end
   end
+
+  describe 'by_id' do
+    describe 'returns a hash of Items by #id' do
+      let!(:item_1) { create(:item) }
+      let!(:item_2) { create(:item) }
+
+      before :each do
+        @item_hash = Item.by_id
+      end
+
+      it { expect(@item_hash[item_1['id']]).to eq(item_1) }
+      it { expect(@item_hash[item_2['id']]).to eq(item_2) }
+    end
+  end
+
 
   # FIXME: fill this test in
   # describe '.group_by_department' do

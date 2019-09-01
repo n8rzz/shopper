@@ -44,6 +44,7 @@
         "react/jsx-indent": [2, 4],
         "react/jsx-indent-props": [2, 4],
         "react/jsx-one-expression-per-line": "off",
-        "react/no-array-index-key": "off"
+        "react/no-array-index-key": "off",
+        "react/sort-comp": "off"
     }
 }
