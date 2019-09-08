@@ -1,0 +1,23 @@
+<%= simple_form_for(@meal_schedule) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <div class="vr_1">
+        <div class="form-group">
+            <%= f.input :meal_time, collection: ['none', 'morning', 'afternoon', 'evening'], include_blank: false %>
+        </div>
+        <div class="form-group">
+            <%= f.association :assembly %>
+        </div>
+        <div class="form-group">
+            <%= f.association :item %>
+        </div>
+        <div class="form-group">
+            <%= f.input :schedule_date, as: :date, html5: true, :input_html => { :class => 'input-date' } %>
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <%= f.button :submit, :class => 'btn-submit mix-btn_inverse' %>
+    </div>
+<% end %>

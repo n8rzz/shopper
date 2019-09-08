@@ -15,6 +15,9 @@ import { AssemblyPage } from './assembly/assembly.page';
 import { AssemblyItem } from './assembly/assembly-item.component';
 import { AssemblyItemContainer } from './assembly/assembly-item.container';
 import { AssemblyItemList } from './assembly/assembly-item-list.component';
+import { CalendarContainer }  from './meal-schedule/calendar-container';
+import { CalendarDay }  from './meal-schedule/calendar-day.component';
+import { EventListContainer } from './meal-schedule/event-list.container';
 import { FilterBar } from './components/filter-bar/filter-bar.component';
 import { FilterBarItem } from './components/filter-bar/filter-bar-item.component';
 import { GroupedItemList } from './item/grouped-item-list.component';
@@ -23,6 +26,7 @@ import { ItemList } from './item/item-list.component';
 import { ItemListPage } from './item/item-list.page';
 import { LocationDepartmentsPage } from './location-department/location-departments.page';
 import { LocationDepartmentsContainer } from './location-department/location-departments.container';
+import { MealSchedulePage } from './meal-schedule/meal-schedule.page';
 import { NonSortedDepartmentList } from './location-department/non-sorted-department-list.component.jsx';
 import { Notice } from './components/notice/notice.component';
 import { NoticeContainer } from './components/notice/notice.container';
@@ -46,6 +50,9 @@ WebpackerReact.setup({
     AssemblyItemContainer,
     AssemblyItemList,
     AssemblyPage,
+    CalendarContainer,
+    CalendarDay,
+    EventListContainer,
     FilterBar,
     FilterBarItem,
     GroupedItemList,
@@ -54,6 +61,7 @@ WebpackerReact.setup({
     ItemListPage,
     LocationDepartmentsContainer,
     LocationDepartmentsPage,
+    MealSchedulePage,
     NonSortedDepartmentList,
     Notice,
     NoticeContainer,

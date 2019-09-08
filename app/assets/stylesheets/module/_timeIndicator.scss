@@ -1,0 +1,31 @@
+// @import "../base/font";
+@import "../base/mixins";
+@import "../base/vars";
+
+.timeIndicator {
+    margin-top: $SPACING_HALFX;
+
+    > li {
+        border-radius: $BORDER_RADIUS_L;
+        content: "";
+        height: $SPACING_1X;
+        margin: 2px 0;
+        width: 75%;
+    }
+}
+
+.timeIndicator-item {
+    background-color: $COLOR_SECONDARY_ACCENT;
+}
+
+.timeIndicator-item_morning {
+    background-color: $COLOR_MORNING;
+}
+
+.timeIndicator-item_afternoon {
+    background-color: $COLOR_AFTERNOON;
+}
+
+.timeIndicator-item_evening {
+    background-color: $COLOR_EVENING;
+}

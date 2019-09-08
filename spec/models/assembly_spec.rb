@@ -14,6 +14,7 @@ RSpec.describe Assembly, type: :model do
     it { should have_many(:assembly_items) }
     it { should have_many(:assemblies) }
     it { should have_many(:items) }
+    it { should have_many(:meal_schedules) }
   end
 
   before do
@@ -27,5 +28,19 @@ RSpec.describe Assembly, type: :model do
     it { should validate_presence_of(:name) }
     it { should validate_uniqueness_of(:name) }
     it { should be_valid }
+  end
+
+  describe 'by_id' do
+    describe 'returns a hash of Assemblies by #id' do
+      let!(:assembly_1) { create(:assembly) }
+      let!(:assembly_2) { create(:assembly) }
+
+      before :each do
+        @assembly_hash = Assembly.by_id
+      end
+
+      it { expect(@assembly_hash[assembly_1['id']]).to eq(assembly_1) }
+      it { expect(@assembly_hash[assembly_2['id']]).to eq(assembly_2) }
+    end
   end
 end

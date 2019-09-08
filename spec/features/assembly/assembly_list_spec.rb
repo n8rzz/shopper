@@ -9,6 +9,7 @@ RSpec.feature 'Assembly#index', js: true do
     expect(page).to have_text(assembly.name)
     expect(page).to have_text("Items:#{assembly.items.count}")
     expect(page).to have_button('Add to order')
-    expect(page).to have_link('Edit Assembly')
+    expect(page).to have_link('Schedule')
+    expect(page).to have_link('Edit')
   end
 end

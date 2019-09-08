@@ -1,0 +1,26 @@
+@import "../base/font";
+@import "../base/mixins";
+@import "../base/vars";
+
+.calendar {
+    @include boxShadow-subtle;
+    @include monospaceFont;
+
+    background-color: $COLOR_BG_SECONDARY;
+    border: 1px solid $COLOR_GREY;
+    border-radius: 0 0 $BORDER_RADIUS_L $BORDER_RADIUS_L;
+}
+
+.calendar-hd {
+    @include boxShadow-subtle;
+    @include flexBetween;
+
+    background-color: $COLOR_LIGHT;
+    border-bottom: 1px solid $COLOR_GREY;
+    padding: $SPACING_HALFX $SPACING_1X;
+}
+
+.calendar-bd {
+    padding: $SPACING_HALFX;
+}
+

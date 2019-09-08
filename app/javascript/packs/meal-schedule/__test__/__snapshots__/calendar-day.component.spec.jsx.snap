@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CalendarDay renders correctly when passed #mealSchedules prop 1`] = `
+<td
+  className="calendarTable-td"
+  key="calendar-day-4"
+>
+  <div
+    className="calendarTable-td-cell"
+    onClick={[Function]}
+  >
+    <div>
+      4
+    </div>
+    <ul
+      className="timeIndicator"
+    />
+  </div>
+</td>
+`;
+
+exports[`CalendarDay renders correctly with valid props 1`] = `
+<td
+  className="calendarTable-td"
+  key="calendar-day-4"
+>
+  <div
+    className="calendarTable-td-cell"
+    onClick={[Function]}
+  >
+    <div>
+      4
+    </div>
+    <ul
+      className="timeIndicator"
+    />
+  </div>
+</td>
+`;

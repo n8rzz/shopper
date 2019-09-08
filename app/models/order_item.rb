@@ -17,6 +17,8 @@ class OrderItem < ApplicationRecord
   belongs_to :item, optional: true
   belongs_to :assembly, optional: true
 
+  has_many :meal_schedules
+
   scope :has_department, -> { where.not(department_id: nil) }
   scope :has_assembly, -> { where.not(assembly_id: nil) }
   scope :has_item, -> { where.not(item_id: nil) }

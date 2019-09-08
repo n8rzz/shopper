@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DayScheduleList renders correctly with valid props 1`] = `
+<li
+  className="eventList-bd-item"
+>
+  <div
+    className="mealSchedule"
+  >
+    <div
+      className="mealSchedule-hd"
+    >
+      9th
+    </div>
+    <div
+      className="mealSchedule-bd"
+    />
+  </div>
+</li>
+`;

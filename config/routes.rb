@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   resources :items, except: [:show]
   resources :location_departments, only: [:create, :update, :destroy]
   post 'location_departments/:id/:direction', to: 'location_departments#change_direction'
+  # TODO: remove only constraint
+  resources :meal_schedules, only: [:index, :new, :create, :destroy]
 
   root to: 'orders#index'
 end

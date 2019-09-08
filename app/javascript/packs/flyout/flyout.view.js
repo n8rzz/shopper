@@ -3,7 +3,7 @@ import ViewAbstract from '../abstract/view.abstract';
 const CLASSNAME = {
     ROOT_ELEMENT: 'js-flyout',
     TRIGGER_ELEMENT: 'js-flyout-trigger',
-    IS_HIDDEN: 'mix-flyout_isHidden'
+    IS_HIDDEN: 'mix-flyout_isHidden',
 };
 
 export default class FlyoutView extends ViewAbstract {

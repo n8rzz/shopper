@@ -77,6 +77,4 @@ export default class FlyoutController {
 }
 
 
-document.addEventListener('turbolinks:load', () => {
-    const flyoutController = new FlyoutController();
-});
+document.addEventListener('turbolinks:load', () => new FlyoutController());

@@ -1,0 +1,43 @@
+@import "../base/font";
+@import "../base/mixins";
+@import "../base/vars";
+
+// $columnCount: 7;
+
+.calendarTable {
+    @include monospaceFont;
+
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+}
+
+.calendarTable-th {
+    font-size: $FONT_SIZE_XXS;
+    padding: $SPACING_HALFX 0;
+    text-align: center;
+}
+
+.calendarTable-td {
+    @include animationCubicBezier;
+
+    border: 1px solid $COLOR_LIGHT;
+    width: calc(100% / 7);
+}
+
+.calendarTable-td-cell {
+    border: 1px solid transparent;
+    font-size: $FONT_SIZE_XXS;
+    padding: $SPACING_HALFX 0 $SPACING_HALFX $SPACING_HALFX;
+    height: 60px;
+
+    &:hover {
+        border: 1px solid $COLOR_PRIMARY;
+        background-color: $COLOR_BG_PRIMARY;
+        cursor: pointer;
+    }
+}
+
+.mix-calendarTable-td-cell_isEmpty {
+    background-color: $COLOR_LIGHT;
+}

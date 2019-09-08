@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_20_010443) do
+ActiveRecord::Schema.define(version: 2019_09_04_024259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,20 @@ ActiveRecord::Schema.define(version: 2019_08_20_010443) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "meal_schedules", force: :cascade do |t|
+    t.datetime "schedule_date", null: false
+    t.boolean "purchased", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "item_id"
+    t.bigint "order_item_id"
+    t.bigint "assembly_id"
+    t.string "meal_time"
+    t.index ["assembly_id"], name: "index_meal_schedules_on_assembly_id"
+    t.index ["item_id"], name: "index_meal_schedules_on_item_id"
+    t.index ["order_item_id"], name: "index_meal_schedules_on_order_item_id"
+  end
+
   create_table "order_items", force: :cascade do |t|
     t.bigint "order_id"
     t.bigint "item_id"
@@ -92,6 +106,9 @@ ActiveRecord::Schema.define(version: 2019_08_20_010443) do
   add_foreign_key "items", "departments"
   add_foreign_key "location_departments", "departments"
   add_foreign_key "location_departments", "locations"
+  add_foreign_key "meal_schedules", "assemblies"
+  add_foreign_key "meal_schedules", "items"
+  add_foreign_key "meal_schedules", "order_items"
   add_foreign_key "order_items", "assemblies"
   add_foreign_key "order_items", "departments"
   add_foreign_key "order_items", "items"

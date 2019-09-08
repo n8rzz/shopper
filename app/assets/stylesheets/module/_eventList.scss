@@ -1,0 +1,24 @@
+@import "../base/font";
+@import "../base/vars";
+
+.eventList {
+    border-radius: $BORDER_RADIUS_M;
+    padding: $SPACING_HALFX 0;
+}
+
+.eventList-hd {
+    @include serifFont;
+
+    font-size: $FONT_SIZE_L;
+    margin-bottom: $SPACING_1X;
+}
+
+.eventList-bd {
+    @include monospaceFont;
+
+    font-size: $FONT_SIZE_S;
+}
+
+.eventList-bd-item + .eventList-bd-item {
+    margin-top: 15px;
+}
