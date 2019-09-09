@@ -8,17 +8,21 @@ exports[`ScheduleItem when passed an assembly renders correctly with valid props
     className="stereo"
   >
     <li>
-      Souvlaki
+      <a
+        className="link"
+        href="meal_schedules/1/edit"
+      >
+        Souvlaki
+      </a>
     </li>
     <li>
       <ul
         className="hlist"
       >
-        <li
-          className="u-isVisuallyHidden"
-        >
+        <li>
           <button
-            className="icon-btn"
+            className="icon-btn qa-scheduleItem-addToOrder-1"
+            onClick={[Function]}
             type="button"
           >
             <span
@@ -51,17 +55,21 @@ exports[`ScheduleItem when passed an item renders correctly with valid props 1`]
     className="stereo"
   >
     <li>
-      Agave Syrup
+      <a
+        className="link"
+        href="meal_schedules/1/edit"
+      >
+        Agave Syrup
+      </a>
     </li>
     <li>
       <ul
         className="hlist"
       >
-        <li
-          className="u-isVisuallyHidden"
-        >
+        <li>
           <button
-            className="icon-btn"
+            className="icon-btn qa-scheduleItem-addToOrder-1"
+            onClick={[Function]}
             type="button"
           >
             <span

@@ -17,6 +17,7 @@ describe('DayScheduleList', () => {
             daySchedule={dayScheduleMock}
             items={itemMapMock}
             mealScheduleMap={mealScheduleMapMock}
+            onClickAddScheduleToOrderHandler={sinon.spy()}
             onClickRemoveHandler={sinon.spy()}
         />);
 

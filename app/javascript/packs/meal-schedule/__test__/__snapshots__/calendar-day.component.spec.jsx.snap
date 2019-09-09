@@ -6,7 +6,7 @@ exports[`CalendarDay renders correctly when passed #mealSchedules prop 1`] = `
   key="calendar-day-4"
 >
   <div
-    className="calendarTable-td-cell"
+    className="calendarTable-td-cell qa-calendarTable-td-cell-4"
     onClick={[Function]}
   >
     <div>
@@ -25,7 +25,7 @@ exports[`CalendarDay renders correctly with valid props 1`] = `
   key="calendar-day-4"
 >
   <div
-    className="calendarTable-td-cell"
+    className="calendarTable-td-cell qa-calendarTable-td-cell-4"
     onClick={[Function]}
   >
     <div>

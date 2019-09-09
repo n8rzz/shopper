@@ -1,24 +1,19 @@
-# README
+# Shopper
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Create shopping lists with items and assemblies (groups of items)
 
-Things you may want to cover:
+## Running locally
 
-* Ruby version
+### Verify Ruby and Node
 
-* System dependencies
+* `ruby` - 2.6.3
+* `node` - 11.10.1
 
-* Configuration
+### Installation
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+$ bundle install
+$ rails db:create
+$ rails db:migrate
+$ rails db:seed
+```

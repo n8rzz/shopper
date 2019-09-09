@@ -29,6 +29,7 @@ export class EventListContainer extends React.Component {
                 daySchedule={daySchedule}
                 items={this.props.items}
                 mealScheduleMap={this._mealScheduleMap}
+                onClickAddScheduleToOrderHandler={this.props.onClickAddScheduleToOrderHandler}
                 onClickRemoveHandler={this.props.onClickRemoveHandler}
             />
         ));
@@ -66,5 +67,6 @@ EventListContainer.propTypes = {
     items: PropTypes.object.isRequired,
     // eslint-disable-next-line react/no-unused-prop-types
     mealSchedules: PropTypes.array.isRequired,
+    onClickAddScheduleToOrderHandler: PropTypes.func.isRequired,
     onClickRemoveHandler: PropTypes.func.isRequired,
 };

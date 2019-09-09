@@ -10,7 +10,7 @@ import {
     mealScheduleListMock,
 } from '../../__mocks__/mocks';
 
-const currentDateFixture = moment(currentDateMock);
+const currentDateFixture = moment.utc(currentDateMock);
 
 describe('EventListContainer', () => {
     test('renders correctly with valid props', () => {
@@ -19,6 +19,7 @@ describe('EventListContainer', () => {
             currentDate={currentDateFixture}
             items={itemMapMock}
             mealSchedules={mealScheduleListMock}
+            onClickAddScheduleToOrderHandler={sinon.spy()}
             onClickRemoveHandler={sinon.spy()}
         />);
 

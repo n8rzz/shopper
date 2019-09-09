@@ -10,7 +10,7 @@ exports[`DayScheduleList renders correctly with valid props 1`] = `
     <div
       className="mealSchedule-hd"
     >
-      9th
+      10th
     </div>
     <div
       className="mealSchedule-bd"

@@ -102,6 +102,7 @@ exports[`EventListContainer renders correctly with valid props 1`] = `
           ],
         }
       }
+      onClickAddScheduleToOrderHandler={[Function]}
       onClickRemoveHandler={[Function]}
     />
     <DayScheduleList
@@ -182,6 +183,7 @@ exports[`EventListContainer renders correctly with valid props 1`] = `
           ],
         }
       }
+      onClickAddScheduleToOrderHandler={[Function]}
       onClickRemoveHandler={[Function]}
     />
   </ul>

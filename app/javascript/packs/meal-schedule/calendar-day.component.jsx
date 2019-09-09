@@ -74,7 +74,7 @@ export class CalendarDay extends React.Component {
                 key={`calendar-day-${this.props.dayNumber}`}
             >
                 <div
-                    className={'calendarTable-td-cell'}
+                    className={`calendarTable-td-cell qa-calendarTable-td-cell-${this.props.dayNumber}`}
                     onClick={(event) => this.props.onClickDayHandler(event, this.props.dayNumber)}
                 >
                     <div>

@@ -1,5 +1,5 @@
 class MealSchedulesController < ApplicationController
-  before_action :set_meal_schedule, only: [:destroy]
+  before_action :set_meal_schedule, only: [:edit, :update, :destroy]
 
   # GET /meal_schedules
   def index
@@ -9,9 +9,10 @@ class MealSchedulesController < ApplicationController
   end
 
   def new
-    @meal_schedule = MealSchedule.new(assembly_id: params[:assembly_id])
+    @meal_schedule = MealSchedule.new(assembly_id: params[:assembly_id], schedule_date: Time.current)
+  end
 
-    puts @meal_schedule.to_json
+  def edit
   end
 
   # POST /meal_schedules
@@ -21,10 +22,24 @@ class MealSchedulesController < ApplicationController
 
     respond_to do |format|
       if @meal_schedule.save
-        format.html { render :index, notice: 'MealSchedule was added successfully' }
+        format.html { redirect_to meal_schedules_path, notice: 'MealSchedule was added successfully' }
         format.json { render json: @meal_schedule, status: :created }
       else
         format.html { render :new }
+        format.json { render json: @meal_schedule.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /meal_schedules/1
+  # PATCH/PUT /meal_schedules/1.json
+  def update
+    respond_to do |format|
+      if @meal_schedule.update(meal_schedule_params)
+        format.html { redirect_to meal_schedules_path, notice: 'MealSchedule was updated successfully' }
+        format.json { render :show, status: :ok, location: meal_schedules_path }
+      else
+        format.html { render :edit }
         format.json { render json: @meal_schedule.errors, status: :unprocessable_entity }
       end
     end
