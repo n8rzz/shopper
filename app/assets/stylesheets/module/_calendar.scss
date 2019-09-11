@@ -18,6 +18,10 @@
     background-color: $COLOR_LIGHT;
     border-bottom: 1px solid $COLOR_GREY;
     padding: $SPACING_HALFX $SPACING_1X;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .calendar-bd {

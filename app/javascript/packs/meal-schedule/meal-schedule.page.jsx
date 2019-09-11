@@ -4,8 +4,10 @@ import moment from 'moment';
 import _get from 'lodash/get';
 import _orderBy from 'lodash/orderBy';
 import ApiService from '../service/api.service';
+import EventService from '../service/event.service';
 import { CalendarContainer } from './calendar-container';
 import { EventListContainer } from './event-list.container';
+import { EVENT_NAME } from '../constants/event-names';
 
 export class MealSchedulePage extends React.Component {
     constructor(props) {
@@ -19,11 +21,12 @@ export class MealSchedulePage extends React.Component {
         this._onClickNextMonthHandler = this._onClickNextMonth.bind(this);
         this._onClickDayHandler = this._onClickDay.bind(this);
         this._onClickRemoveHandler = this._onClickRemove.bind(this);
-        this._onClickDaySuccessHandler = this._onClickDaySuccess.bind(this);
+        this._onClickRemoveScheduleSuccessHandler = this._onClickRemoveScheduleSuccess.bind(this);
+        this._onClickAddScheduleToOrderHandler = this._onClickAddScheduleToOrder.bind(this);
 
         this.state = {
-            currentDate: moment(currentDate),
-            eventsForCurrentMonth: this._buildEventListForCurrentMonth(moment(currentDate), props.mealSchedules),
+            currentDate: moment.utc(currentDate),
+            eventsForCurrentMonth: this._buildEventListForCurrentMonth(moment.utc(currentDate), props.mealSchedules),
             mealSchedules: props.mealSchedules,
         };
     }
@@ -33,11 +36,12 @@ export class MealSchedulePage extends React.Component {
         this._onClickNextMonthHandler = null;
         this._onClickDayHandler = null;
         this._onClickRemoveHandler = null;
-        this._onClickDaySuccessHandler = null;
+        this._onClickRemoveScheduleSuccessHandler = null;
+        this._onClickAddScheduleToOrderHandler = null;
     }
 
     _getFullDateFromDayNumber(dayNumber) {
-        return moment(new Date(this.state.currentDate.year(), this.state.currentDate.month(), dayNumber));
+        return moment.utc(new Date(this.state.currentDate.year(), this.state.currentDate.month(), dayNumber));
     }
 
     _buildEventListForCurrentMonth(currentDate = null, mealSchedules) {
@@ -47,7 +51,7 @@ export class MealSchedulePage extends React.Component {
             : this.state.currentDate;
 
         const eventsForCurrentMonth = sortedSchedule.filter(
-            (schedule) => moment(schedule.schedule_date).isSame(dateUsedForCurrentMonth, 'month'),
+            (schedule) => moment.utc(schedule.schedule_date).isSame(dateUsedForCurrentMonth, 'month'),
         );
 
         return eventsForCurrentMonth;
@@ -79,10 +83,10 @@ export class MealSchedulePage extends React.Component {
         });
     }
 
-    _onClickDay(event, dayNumber) {
-        const selectedDay = this._getFullDateFromDayNumber(dayNumber);
+    _onClickDay(/* event, dayNumber */) {
+        // const selectedDay = this._getFullDateFromDayNumber(dayNumber);
 
-        console.log('+++', dayNumber, selectedDay, selectedDay.week());
+        // console.log('+++', dayNumber, selectedDay, selectedDay.week());
     }
 
     _onClickRemove(mealScheduleId) {
@@ -90,16 +94,14 @@ export class MealSchedulePage extends React.Component {
 
         ApiService.delete(destroyMealScheduleUrl, this.props.csrf)
             .then((response) => {
-                this._onClickDaySuccessHandler(response, mealScheduleId);
+                this._onClickRemoveScheduleSuccessHandler(response, mealScheduleId);
             })
             .catch((error) => {
                 throw error;
             });
     }
 
-    _onClickDaySuccess(response, mealScheduleId) {
-        console.log('$$$', mealScheduleId, response);
-
+    _onClickRemoveScheduleSuccess(response, mealScheduleId) {
         this.setState((prevState) => {
             const mealSchedules = prevState.mealSchedules.filter((schedule) => schedule.id !== mealScheduleId);
             const eventsForCurrentMonth = this._buildEventListForCurrentMonth(null, mealSchedules);
@@ -109,6 +111,69 @@ export class MealSchedulePage extends React.Component {
                 mealSchedules,
             };
         });
+    }
+
+    _onClickAddScheduleToOrder(schedule) {
+        if (schedule.isAssembly) {
+            return this._addAssemblyToOrder(schedule);
+        }
+
+        return this._addItemToOrder(schedule);
+    }
+
+    _addAssemblyToOrder(schedule) {
+        const addAssemblyToOrderUrl = '/order_items/create/assembly.json';
+        const payload = {
+            assembly_id: schedule.scheduleItem.id,
+        };
+
+        ApiService.post(addAssemblyToOrderUrl, payload, this.props.csrf)
+            .then((response) => {
+                if (response.status >= 300) {
+                    const errorNotice = `
+                        Received an unexpected status code from ${addAssemblyToOrderUrl}: ${response.status}}
+                    `;
+
+                    EventService.emit(EVENT_NAME.NOTICE_ERROR, errorNotice);
+
+                    return;
+                }
+
+                const notice = `${schedule.scheduleItem.name} added to order`;
+
+                EventService.emit(EVENT_NAME.NOTICE_SUCCESS, notice);
+            })
+            .catch((error) => {
+                throw error;
+            });
+    }
+
+    _addItemToOrder(schedule) {
+        const addItemToOrderUrl = '/order_items/create/item.json';
+        const payload = {
+            item_id: schedule.scheduleItem.id,
+            department_id: schedule.scheduleItem.department_id,
+        };
+
+        ApiService.post(addItemToOrderUrl, payload, this.props.csrf)
+            .then((response) => {
+                if (response.status >= 300) {
+                    const errorNotice = `
+                        Received an unexpected status code from ${addItemToOrderUrl}: ${response.status}}
+                    `;
+
+                    EventService.emit(EVENT_NAME.NOTICE_ERROR, errorNotice);
+
+                    return;
+                }
+
+                const notice = `${schedule.scheduleItem.name} added to order`;
+
+                EventService.emit(EVENT_NAME.NOTICE_SUCCESS, notice);
+            })
+            .catch((error) => {
+                throw error;
+            });
     }
 
     render() {
@@ -128,6 +193,7 @@ export class MealSchedulePage extends React.Component {
                     currentDate={this.state.currentDate}
                     items={this.props.items}
                     mealSchedules={this.state.eventsForCurrentMonth}
+                    onClickAddScheduleToOrderHandler={this._onClickAddScheduleToOrderHandler}
                     onClickRemoveHandler={this._onClickRemoveHandler}
                 />
             </React.Fragment>

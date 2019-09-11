@@ -8,7 +8,7 @@ import {
     mealScheduleListMock,
 } from '../../__mocks__/mocks';
 
-const currentDateFixture = moment(currentDateMock);
+const currentDateFixture = moment.utc(currentDateMock);
 
 describe('CalendarContainer', () => {
     test('renders correctly with valid props', () => {

@@ -6,9 +6,11 @@ import { ScheduleItem } from './schedule-item.component';
 
 export class DayScheduleList extends React.Component {
     _buildMealScheduleItemsForDay(mealTimeItem, itemIndex) {
+        let isAssembly = false;
         let scheduleItem = this.props.items[mealTimeItem.item_id];
 
         if (mealTimeItem.item_id == null) {
+            isAssembly = true;
             scheduleItem = this.props.assemblies[mealTimeItem.assembly_id];
         }
 
@@ -17,6 +19,8 @@ export class DayScheduleList extends React.Component {
                 key={`eventItem-${scheduleItem.name}-${itemIndex}`}
                 mealScheduleId={mealTimeItem.id}
                 scheduleItem={scheduleItem}
+                isAssembly={isAssembly}
+                onClickAddScheduleToOrderHandler={this.props.onClickAddScheduleToOrderHandler}
                 onClickRemoveHandler={this.props.onClickRemoveHandler}
             />
         );
@@ -43,7 +47,7 @@ export class DayScheduleList extends React.Component {
     }
 
     render() {
-        const formattedDate = moment(this.props.daySchedule).format('Do');
+        const formattedDate = moment.utc(this.props.daySchedule).format('Do');
         const mealScheduleItemsForDay = this._buildMealScheduleItemListForDay(this.props.daySchedule);
 
         return (
@@ -67,5 +71,6 @@ DayScheduleList.propTypes = {
     items: PropTypes.object.isRequired,
     // TODO: may make more sense to build in this component
     mealScheduleMap: PropTypes.object.isRequired,
+    onClickAddScheduleToOrderHandler: PropTypes.func.isRequired,
     onClickRemoveHandler: PropTypes.func.isRequired,
 };

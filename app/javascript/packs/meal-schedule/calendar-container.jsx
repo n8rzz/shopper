@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import classnames from 'classnames';
 import { CalendarDay } from './calendar-day.component';
 
 export class CalendarContainer extends React.Component {
@@ -8,6 +9,14 @@ export class CalendarContainer extends React.Component {
         super(props);
 
         this._weekdayShortNames = moment.weekdaysShort();
+        this._onClickCalendarHeaderHandler = this._onClickCalendarHeader.bind(this);
+        this.state = {
+            isCalendarBodyHidden: false,
+        };
+    }
+
+    componentWillUnmount() {
+        this._onClickCalendarHeaderHandler = null;
     }
 
     _getfirstDayOfCurrentMonth() {
@@ -17,11 +26,11 @@ export class CalendarContainer extends React.Component {
     }
 
     _getCurrentMonthName() {
-        return moment(this.props.currentDate).format('MMM');
+        return moment.utc(this.props.currentDate).format('MMM');
     }
 
     _getCurrentYear() {
-        return moment(this.props.currentDate).format('YYYY');
+        return moment.utc(this.props.currentDate).format('YYYY');
     }
 
     _findMealScheduleForDay(day = []) {
@@ -30,7 +39,7 @@ export class CalendarContainer extends React.Component {
         }
 
         return this.props.mealSchedules.filter(
-            (schedule) => day.format('DD/MM') === moment(schedule.schedule_date).format('DD/MM'),
+            (schedule) => day.format('DD/MM') === moment.utc(schedule.schedule_date).format('DD/MM'),
         );
     }
 
@@ -38,6 +47,13 @@ export class CalendarContainer extends React.Component {
         const foundEvent = this._findMealScheduleForDay(day);
 
         return typeof foundEvent.length > 0;
+    }
+
+    _buildTableBodyClassnames() {
+        return classnames({
+            'calendar-bd': true,
+            'u-isVisuallyHidden': this.state.isCalendarBodyHidden,
+        });
     }
 
     _buildTableHeadJsx() {
@@ -82,7 +98,7 @@ export class CalendarContainer extends React.Component {
         // eslint-disable-next-line no-plusplus
         for (let dayNumber = 1; dayNumber <= this.props.currentDate.daysInMonth(); dayNumber++) {
             const rawDate = new Date(this.props.currentDate.year(), this.props.currentDate.month(), dayNumber);
-            const eventDate = moment(rawDate);
+            const eventDate = moment.utc(rawDate);
             // FIXME: could be multiple, fix this
             const mealScheduleForDay = this._findMealScheduleForDay(eventDate);
 
@@ -133,6 +149,10 @@ export class CalendarContainer extends React.Component {
         return rows.map((rowJsx, i) => (<tr key={`calendar-row-${i}`}>{rowJsx}</tr>));
     }
 
+    _onClickCalendarHeader() {
+        this.setState((prevState) => ({ isCalendarBodyHidden: !prevState.isCalendarBodyHidden }));
+    }
+
     render() {
         return (
             <div className={'calendar'}>
@@ -146,7 +166,10 @@ export class CalendarContainer extends React.Component {
                             &lt;
                         </button>
                     </div>
-                    <div className={'calendar-hd-title'}>
+                    <div
+                        className={'calendar-hd-title'}
+                        onClick={this._onClickCalendarHeaderHandler}
+                    >
                         {this._getCurrentMonthName()} - {this._getCurrentYear()}
                     </div>
                     <div className={'calendar-hd-btn'}>
@@ -159,7 +182,7 @@ export class CalendarContainer extends React.Component {
                         </button>
                     </div>
                 </div>
-                <div className={'calendar-bd'}>
+                <div className={this._buildTableBodyClassnames()}>
                     <table className={'calendarTable'}>
                         <thead>
                             <tr>{this._buildTableHeadJsx()}</tr>

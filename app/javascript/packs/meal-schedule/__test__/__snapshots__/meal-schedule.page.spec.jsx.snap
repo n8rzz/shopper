@@ -122,6 +122,7 @@ exports[`MealSchedulePage renders correctly with valid props 1`] = `
         },
       ]
     }
+    onClickAddScheduleToOrderHandler={[Function]}
     onClickRemoveHandler={[Function]}
   />
 </Fragment>

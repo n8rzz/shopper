@@ -13,7 +13,9 @@ describe('ScheduleItem', () => {
         test('renders correctly with valid props', () => {
             const component = shallow(<ScheduleItem
                 mealScheduleId={mealScheduleItemMock.id}
+                isAssembly={true}
                 scheduleItem={assemblyMock}
+                onClickAddScheduleToOrderHandler={sinon.spy()}
                 onClickRemoveHandler={sinon.spy()}
             />);
 
@@ -25,7 +27,9 @@ describe('ScheduleItem', () => {
         test('renders correctly with valid props', () => {
             const component = shallow(<ScheduleItem
                 mealScheduleId={mealScheduleItemMock.id}
+                isAssembly={false}
                 scheduleItem={itemMock}
+                onClickAddScheduleToOrderHandler={sinon.spy()}
                 onClickRemoveHandler={sinon.spy()}
             />);
 

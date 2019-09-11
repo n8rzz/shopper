@@ -20,6 +20,7 @@ exports[`CalendarContainer renders correctly with valid props 1`] = `
     </div>
     <div
       className="calendar-hd-title"
+      onClick={[Function]}
     >
       Sep
        - 
@@ -243,6 +244,12 @@ exports[`CalendarContainer renders correctly with valid props 1`] = `
           <CalendarDay
             dayNumber={23}
             key="calendarDay-23"
+            mealScheduleForDay={Array []}
+            onClickDayHandler={[Function]}
+          />
+          <CalendarDay
+            dayNumber={24}
+            key="calendarDay-24"
             mealScheduleForDay={
               Array [
                 Object {
@@ -272,12 +279,6 @@ exports[`CalendarContainer renders correctly with valid props 1`] = `
             onClickDayHandler={[Function]}
           />
           <CalendarDay
-            dayNumber={24}
-            key="calendarDay-24"
-            mealScheduleForDay={Array []}
-            onClickDayHandler={[Function]}
-          />
-          <CalendarDay
             dayNumber={25}
             key="calendarDay-25"
             mealScheduleForDay={Array []}
@@ -298,6 +299,16 @@ exports[`CalendarContainer renders correctly with valid props 1`] = `
           <CalendarDay
             dayNumber={28}
             key="calendarDay-28"
+            mealScheduleForDay={Array []}
+            onClickDayHandler={[Function]}
+          />
+        </tr>
+        <tr
+          key="calendar-row-5"
+        >
+          <CalendarDay
+            dayNumber={29}
+            key="calendarDay-29"
             mealScheduleForDay={
               Array [
                 Object {
@@ -313,16 +324,6 @@ exports[`CalendarContainer renders correctly with valid props 1`] = `
                 },
               ]
             }
-            onClickDayHandler={[Function]}
-          />
-        </tr>
-        <tr
-          key="calendar-row-5"
-        >
-          <CalendarDay
-            dayNumber={29}
-            key="calendarDay-29"
-            mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
