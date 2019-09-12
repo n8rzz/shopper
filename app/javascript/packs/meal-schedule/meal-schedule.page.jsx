@@ -15,7 +15,8 @@ export class MealSchedulePage extends React.Component {
 
         // a bit of a snapshot testing hack. allows for an external date
         // (like a test mock) to be passed as _'today'_
-        const currentDate = _get(props, 'currentDate', new Date());
+        const currentDateOrDefault = _get(props, 'currentDate', new Date());
+        const currentDate = moment.utc(currentDateOrDefault);
 
         this._onClickPreviousMonthHandler = this._onClickPreviousMonth.bind(this);
         this._onClickNextMonthHandler = this._onClickNextMonth.bind(this);
@@ -25,8 +26,9 @@ export class MealSchedulePage extends React.Component {
         this._onClickAddScheduleToOrderHandler = this._onClickAddScheduleToOrder.bind(this);
 
         this.state = {
-            currentDate: moment.utc(currentDate),
-            eventsForCurrentMonth: this._buildEventListForCurrentMonth(moment.utc(currentDate), props.mealSchedules),
+            currentDate,
+
+            eventsForCurrentMonth: this._buildEventListForCurrentMonth(currentDate, props.mealSchedules),
             mealSchedules: props.mealSchedules,
         };
     }
@@ -61,7 +63,7 @@ export class MealSchedulePage extends React.Component {
     _onClickPreviousMonth() {
         this.setState((prevState) => {
             const currentDate = prevState.currentDate.subtract(1, 'month');
-            const eventsForCurrentMonth = this._buildEventListForCurrentMonth(currentDate);
+            const eventsForCurrentMonth = this._buildEventListForCurrentMonth(currentDate, prevState.mealSchedules);
 
             return {
                 currentDate,
@@ -74,7 +76,7 @@ export class MealSchedulePage extends React.Component {
     _onClickNextMonth() {
         this.setState((prevState) => {
             const currentDate = prevState.currentDate.add(1, 'month');
-            const eventsForCurrentMonth = this._buildEventListForCurrentMonth(currentDate);
+            const eventsForCurrentMonth = this._buildEventListForCurrentMonth(currentDate, prevState.mealSchedules);
 
             return {
                 currentDate,
