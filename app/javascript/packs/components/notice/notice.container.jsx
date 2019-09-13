@@ -77,15 +77,17 @@ export class NoticeContainer extends React.Component {
             : '';
 
         return (
-            <Sticky
-                enabled={true}
-                top={0}
-                onStateChange={this._onStickyStateChangeHandler}
-            >
-                <div className={this._buildClassnames()}>
-                    <Notice message={message} isVisible={this.state.message !== ''} />
-                </div>
-            </Sticky>
+            <div className={'notice-container'}>
+                <Sticky
+                    enabled={true}
+                    top={0}
+                    onStateChange={this._onStickyStateChangeHandler}
+                >
+                    <div className={this._buildClassnames()}>
+                        <Notice message={message} isVisible={this.state.message !== ''} />
+                    </div>
+                </Sticky>
+            </div>
         );
     }
 }

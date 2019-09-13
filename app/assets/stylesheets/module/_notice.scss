@@ -2,6 +2,11 @@
 @import "../base/mixins";
 @import "../base/vars";
 
+.notice-container {
+    position: relative;
+    z-index: 1;
+}
+
 .notice {
     @include monospaceFont;
     @include notificationPanel;
