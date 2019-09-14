@@ -39,6 +39,8 @@ export class OrderPage extends React.Component {
     constructor(props) {
         super(props);
 
+        // TODO: replace these maps with values from the BE
+        // see: [#40](https://github.com/n8rzz/shopper/issues/40)
         this._assemblyMap = _keyBy(props.assemblies, 'id');
         this._departmentMap = _keyBy(props.departments, 'id');
         this._itemMap = _keyBy(props.items, 'id');
@@ -166,22 +168,19 @@ export class OrderPage extends React.Component {
                         />
                     </div>
                 </Sticky>
-                {/* this div should probably be removed */}
-                <div className={'js-orderItem'}>
-                    <OrderItemListComponent
-                        assemblies={this.props.assemblies}
-                        assemblyMap={this._assemblyMap}
-                        concern={this.state.concern}
-                        csrf={this.props.csrf}
-                        departmentMap={this._departmentMap}
-                        departments={this.props.departments}
-                        itemMap={this._itemMap}
-                        locationDepartments={this.props.locationDepartments}
-                        orderItems={this.state.orderItems}
-                        onClickIsPickedHandler={this._onClickIsPickedHandler}
-                        onClickRemoveItemHandler={this._onClickRemoveItemHandler}
-                    />
-                </div>
+                <OrderItemListComponent
+                    assemblies={this.props.assemblies}
+                    assemblyMap={this._assemblyMap}
+                    concern={this.state.concern}
+                    csrf={this.props.csrf}
+                    departmentMap={this._departmentMap}
+                    departments={this.props.departments}
+                    itemMap={this._itemMap}
+                    locationDepartments={this.props.locationDepartments}
+                    orderItems={this.state.orderItems}
+                    onClickIsPickedHandler={this._onClickIsPickedHandler}
+                    onClickRemoveItemHandler={this._onClickRemoveItemHandler}
+                />
             </React.Fragment>
         );
     }

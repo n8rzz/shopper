@@ -101,11 +101,15 @@ export class OrderItem extends React.Component {
         );
     }
 
-    _onClickIsPicked() {
+    _onClickIsPicked(event) {
+        event.preventDefault();
+
         this.props.onClickIsPickedHandler(this.props.orderItemId, this.props.isPicked);
     }
 
-    _onClickRemoveItem() {
+    _onClickRemoveItem(event) {
+        event.preventDefault();
+
         this.props.onClickRemoveItemHandler(this.props.orderItemId);
     }
 

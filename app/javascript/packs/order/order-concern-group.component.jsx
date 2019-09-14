@@ -17,7 +17,8 @@ export class OrderConcernGroup extends React.Component {
         this._groupedByDepartmentOrderItemList = _groupBy(props.orderItems, 'department_id');
     }
 
-    componentDidUpdate(nextProps) {
+    // eslint-disable-next-line camelcase
+    UNSAFE_componentWillReceiveProps(nextProps) {
         this._groupedByAssemblyOrderItemList = _groupBy(nextProps.orderItems, 'assembly_id');
         this._groupedByDepartmentOrderItemList = _groupBy(nextProps.orderItems, 'department_id');
     }

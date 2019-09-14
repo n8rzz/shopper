@@ -6,7 +6,7 @@ RSpec.feature 'Create an Item', js: true do
 
   before :each do
     visit items_path
-    click_link 'New Item'
+    click_link('New Item')
   end
 
   context 'when user clicks `New Item`' do
@@ -19,7 +19,7 @@ RSpec.feature 'Create an Item', js: true do
       fill_in 'Name', with: '$texas'
       select department.name, from: 'Department'
 
-      click_button 'Create Item'
+      click_button('Create Item')
     end
 
     it { expect(page).to have_text('$texas') }
