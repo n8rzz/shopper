@@ -24,7 +24,8 @@ export class NoticeContainer extends React.Component {
         EventService.on(EVENT_NAME.NOTICE_SUCCESS, this._onTriggerNoticeHandler);
     }
 
-    componentDidMount() {
+    // eslint-disable-next-line camelcase
+    UNSAFE_componentWillReceiveProps() {
         if (this.props.message == null) {
             return;
         }
@@ -75,6 +76,10 @@ export class NoticeContainer extends React.Component {
         const message = this.state.message != null
             ? this.state.message
             : '';
+
+        if (message.length === 0) {
+            return null;
+        }
 
         return (
             <div className={'notice-container'}>

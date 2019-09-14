@@ -26,54 +26,6 @@ exports[`NoticeContainer renders correctly with valid props when called with a n
 </div>
 `;
 
-exports[`NoticeContainer renders correctly with valid props when called with a null #mesage prop 1`] = `
-<div
-  className="notice-container"
->
-  <Sticky
-    activeClass="active"
-    bottomBoundary={0}
-    enableTransforms={true}
-    enabled={true}
-    onStateChange={[Function]}
-    releasedClass="released"
-    shouldFreeze={[Function]}
-    top={0}
-  >
-    <div
-      className="js-notice"
-    >
-      <Notice
-        isVisible={true}
-        message=""
-      />
-    </div>
-  </Sticky>
-</div>
-`;
+exports[`NoticeContainer renders correctly with valid props when called with a null #mesage prop 1`] = `""`;
 
-exports[`NoticeContainer renders correctly with valid props when called with an empty #mesage prop 1`] = `
-<div
-  className="notice-container"
->
-  <Sticky
-    activeClass="active"
-    bottomBoundary={0}
-    enableTransforms={true}
-    enabled={true}
-    onStateChange={[Function]}
-    releasedClass="released"
-    shouldFreeze={[Function]}
-    top={0}
-  >
-    <div
-      className="js-notice"
-    >
-      <Notice
-        isVisible={false}
-        message=""
-      />
-    </div>
-  </Sticky>
-</div>
-`;
+exports[`NoticeContainer renders correctly with valid props when called with an empty #mesage prop 1`] = `""`;
