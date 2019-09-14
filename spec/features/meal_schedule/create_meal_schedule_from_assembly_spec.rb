@@ -7,7 +7,7 @@ RSpec.feature 'create MealSchedule', js: true do
     before :each do
       visit assemblies_path
 
-      within '.listItem' do
+      within first('.listItem') do
         click_link('Schedule')
       end
 

@@ -261,119 +261,115 @@ exports[`OrderPage when passed 0 \`orderItems\` renders correctly with valid pro
       </div>
     </div>
   </Sticky>
-  <div
-    className="js-orderItem"
-  >
-    <OrderConcernGroup
-      assemblies={
-        Array [
-          Object {
-            "created_at": "2019-07-29T22:49:47.431Z",
-            "id": 1,
-            "name": "Souvlaki",
-            "updated_at": "2019-07-29T22:49:47.431Z",
-          },
-          Object {
-            "created_at": "2019-07-29T22:49:47.519Z",
-            "id": 2,
-            "name": "Chilli con Carne",
-            "updated_at": "2019-07-29T22:49:47.519Z",
-          },
-        ]
-      }
-      assemblyMap={
+  <OrderConcernGroup
+    assemblies={
+      Array [
         Object {
-          "1": Object {
-            "created_at": "2019-07-29T22:49:47.431Z",
-            "id": 1,
-            "name": "Souvlaki",
-            "updated_at": "2019-07-29T22:49:47.431Z",
-          },
-          "2": Object {
-            "created_at": "2019-07-29T22:49:47.519Z",
-            "id": 2,
-            "name": "Chilli con Carne",
-            "updated_at": "2019-07-29T22:49:47.519Z",
-          },
-        }
-      }
-      concern="MEAL"
-      csrf="3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=="
-      departmentMap={
+          "created_at": "2019-07-29T22:49:47.431Z",
+          "id": 1,
+          "name": "Souvlaki",
+          "updated_at": "2019-07-29T22:49:47.431Z",
+        },
         Object {
-          "3": Object {
-            "created_at": "2019-07-21T16:03:32.883Z",
-            "id": 3,
-            "name": "Bakery",
-            "updated_at": "2019-07-21T16:03:32.883Z",
-          },
-          "5": Object {
-            "created_at": "2019-07-21T16:03:32.883Z",
-            "id": 5,
-            "name": "Meat",
-            "updated_at": "2019-07-21T16:03:32.883Z",
-          },
-        }
+          "created_at": "2019-07-29T22:49:47.519Z",
+          "id": 2,
+          "name": "Chilli con Carne",
+          "updated_at": "2019-07-29T22:49:47.519Z",
+        },
+      ]
+    }
+    assemblyMap={
+      Object {
+        "1": Object {
+          "created_at": "2019-07-29T22:49:47.431Z",
+          "id": 1,
+          "name": "Souvlaki",
+          "updated_at": "2019-07-29T22:49:47.431Z",
+        },
+        "2": Object {
+          "created_at": "2019-07-29T22:49:47.519Z",
+          "id": 2,
+          "name": "Chilli con Carne",
+          "updated_at": "2019-07-29T22:49:47.519Z",
+        },
       }
-      departments={
-        Array [
-          Object {
-            "created_at": "2019-07-21T16:03:32.883Z",
-            "id": 3,
-            "name": "Bakery",
-            "updated_at": "2019-07-21T16:03:32.883Z",
-          },
-          Object {
-            "created_at": "2019-07-21T16:03:32.883Z",
-            "id": 5,
-            "name": "Meat",
-            "updated_at": "2019-07-21T16:03:32.883Z",
-          },
-        ]
+    }
+    concern="MEAL"
+    csrf="3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=="
+    departmentMap={
+      Object {
+        "3": Object {
+          "created_at": "2019-07-21T16:03:32.883Z",
+          "id": 3,
+          "name": "Bakery",
+          "updated_at": "2019-07-21T16:03:32.883Z",
+        },
+        "5": Object {
+          "created_at": "2019-07-21T16:03:32.883Z",
+          "id": 5,
+          "name": "Meat",
+          "updated_at": "2019-07-21T16:03:32.883Z",
+        },
       }
-      itemMap={
+    }
+    departments={
+      Array [
         Object {
-          "13": Object {
-            "created_at": "2019-07-21T16:03:33.162Z",
-            "department_id": 3,
-            "id": 13,
-            "name": "Agave Syrup",
-            "updated_at": "2019-07-21T16:03:33.162Z",
-          },
-          "15": Object {
-            "created_at": "2019-07-21T16:03:33.162Z",
-            "department_id": 5,
-            "id": 15,
-            "name": "Agave Syrup",
-            "updated_at": "2019-07-21T16:03:33.162Z",
-          },
-        }
+          "created_at": "2019-07-21T16:03:32.883Z",
+          "id": 3,
+          "name": "Bakery",
+          "updated_at": "2019-07-21T16:03:32.883Z",
+        },
+        Object {
+          "created_at": "2019-07-21T16:03:32.883Z",
+          "id": 5,
+          "name": "Meat",
+          "updated_at": "2019-07-21T16:03:32.883Z",
+        },
+      ]
+    }
+    itemMap={
+      Object {
+        "13": Object {
+          "created_at": "2019-07-21T16:03:33.162Z",
+          "department_id": 3,
+          "id": 13,
+          "name": "Agave Syrup",
+          "updated_at": "2019-07-21T16:03:33.162Z",
+        },
+        "15": Object {
+          "created_at": "2019-07-21T16:03:33.162Z",
+          "department_id": 5,
+          "id": 15,
+          "name": "Agave Syrup",
+          "updated_at": "2019-07-21T16:03:33.162Z",
+        },
       }
-      locationDepartments={
-        Array [
-          Object {
-            "created_at": "2019-08-22T00:58:38.793Z",
-            "department_id": 3,
-            "id": 1,
-            "location_id": 1,
-            "sort_order": 0,
-            "updated_at": "2019-08-22T00:58:38.793Z",
-          },
-          Object {
-            "created_at": "2019-08-22T00:58:38.793Z",
-            "department_id": 5,
-            "id": 2,
-            "location_id": 1,
-            "sort_order": 0,
-            "updated_at": "2019-08-22T00:58:38.793Z",
-          },
-        ]
-      }
-      onClickIsPickedHandler={[Function]}
-      onClickRemoveItemHandler={[Function]}
-      orderItems={Array []}
-    />
-  </div>
+    }
+    locationDepartments={
+      Array [
+        Object {
+          "created_at": "2019-08-22T00:58:38.793Z",
+          "department_id": 3,
+          "id": 1,
+          "location_id": 1,
+          "sort_order": 0,
+          "updated_at": "2019-08-22T00:58:38.793Z",
+        },
+        Object {
+          "created_at": "2019-08-22T00:58:38.793Z",
+          "department_id": 5,
+          "id": 2,
+          "location_id": 1,
+          "sort_order": 0,
+          "updated_at": "2019-08-22T00:58:38.793Z",
+        },
+      ]
+    }
+    onClickIsPickedHandler={[Function]}
+    onClickRemoveItemHandler={[Function]}
+    orderItems={Array []}
+  />
 </OrderPage>
 `;
 
@@ -424,143 +420,139 @@ exports[`OrderPage when passed more than 0 \`orderItems\` renders correctly with
       />
     </div>
   </Sticky>
-  <div
-    className="js-orderItem"
-  >
-    <OrderItemList
-      assemblies={
-        Array [
-          Object {
-            "created_at": "2019-07-29T22:49:47.431Z",
-            "id": 1,
-            "name": "Souvlaki",
-            "updated_at": "2019-07-29T22:49:47.431Z",
-          },
-          Object {
-            "created_at": "2019-07-29T22:49:47.519Z",
-            "id": 2,
-            "name": "Chilli con Carne",
-            "updated_at": "2019-07-29T22:49:47.519Z",
-          },
-        ]
-      }
-      assemblyMap={
+  <OrderItemList
+    assemblies={
+      Array [
         Object {
-          "1": Object {
-            "created_at": "2019-07-29T22:49:47.431Z",
-            "id": 1,
-            "name": "Souvlaki",
-            "updated_at": "2019-07-29T22:49:47.431Z",
-          },
-          "2": Object {
-            "created_at": "2019-07-29T22:49:47.519Z",
-            "id": 2,
-            "name": "Chilli con Carne",
-            "updated_at": "2019-07-29T22:49:47.519Z",
-          },
-        }
-      }
-      concern="ITEM"
-      csrf="3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=="
-      departmentMap={
+          "created_at": "2019-07-29T22:49:47.431Z",
+          "id": 1,
+          "name": "Souvlaki",
+          "updated_at": "2019-07-29T22:49:47.431Z",
+        },
         Object {
-          "3": Object {
-            "created_at": "2019-07-21T16:03:32.883Z",
-            "id": 3,
-            "name": "Bakery",
-            "updated_at": "2019-07-21T16:03:32.883Z",
-          },
-          "5": Object {
-            "created_at": "2019-07-21T16:03:32.883Z",
-            "id": 5,
-            "name": "Meat",
-            "updated_at": "2019-07-21T16:03:32.883Z",
-          },
-        }
+          "created_at": "2019-07-29T22:49:47.519Z",
+          "id": 2,
+          "name": "Chilli con Carne",
+          "updated_at": "2019-07-29T22:49:47.519Z",
+        },
+      ]
+    }
+    assemblyMap={
+      Object {
+        "1": Object {
+          "created_at": "2019-07-29T22:49:47.431Z",
+          "id": 1,
+          "name": "Souvlaki",
+          "updated_at": "2019-07-29T22:49:47.431Z",
+        },
+        "2": Object {
+          "created_at": "2019-07-29T22:49:47.519Z",
+          "id": 2,
+          "name": "Chilli con Carne",
+          "updated_at": "2019-07-29T22:49:47.519Z",
+        },
       }
-      departments={
-        Array [
-          Object {
-            "created_at": "2019-07-21T16:03:32.883Z",
-            "id": 3,
-            "name": "Bakery",
-            "updated_at": "2019-07-21T16:03:32.883Z",
-          },
-          Object {
-            "created_at": "2019-07-21T16:03:32.883Z",
-            "id": 5,
-            "name": "Meat",
-            "updated_at": "2019-07-21T16:03:32.883Z",
-          },
-        ]
+    }
+    concern="ITEM"
+    csrf="3yIq75tyV791TFkzSZo/S4b+TVa/N5J3dI14PzMUPviGViEGeDSnGnvNix+MaB0RB0XuV7bpX8I3SmIEAr4/zQ=="
+    departmentMap={
+      Object {
+        "3": Object {
+          "created_at": "2019-07-21T16:03:32.883Z",
+          "id": 3,
+          "name": "Bakery",
+          "updated_at": "2019-07-21T16:03:32.883Z",
+        },
+        "5": Object {
+          "created_at": "2019-07-21T16:03:32.883Z",
+          "id": 5,
+          "name": "Meat",
+          "updated_at": "2019-07-21T16:03:32.883Z",
+        },
       }
-      itemMap={
+    }
+    departments={
+      Array [
         Object {
-          "13": Object {
-            "created_at": "2019-07-21T16:03:33.162Z",
-            "department_id": 3,
-            "id": 13,
-            "name": "Agave Syrup",
-            "updated_at": "2019-07-21T16:03:33.162Z",
-          },
-          "15": Object {
-            "created_at": "2019-07-21T16:03:33.162Z",
-            "department_id": 5,
-            "id": 15,
-            "name": "Agave Syrup",
-            "updated_at": "2019-07-21T16:03:33.162Z",
-          },
-        }
+          "created_at": "2019-07-21T16:03:32.883Z",
+          "id": 3,
+          "name": "Bakery",
+          "updated_at": "2019-07-21T16:03:32.883Z",
+        },
+        Object {
+          "created_at": "2019-07-21T16:03:32.883Z",
+          "id": 5,
+          "name": "Meat",
+          "updated_at": "2019-07-21T16:03:32.883Z",
+        },
+      ]
+    }
+    itemMap={
+      Object {
+        "13": Object {
+          "created_at": "2019-07-21T16:03:33.162Z",
+          "department_id": 3,
+          "id": 13,
+          "name": "Agave Syrup",
+          "updated_at": "2019-07-21T16:03:33.162Z",
+        },
+        "15": Object {
+          "created_at": "2019-07-21T16:03:33.162Z",
+          "department_id": 5,
+          "id": 15,
+          "name": "Agave Syrup",
+          "updated_at": "2019-07-21T16:03:33.162Z",
+        },
       }
-      locationDepartments={
-        Array [
-          Object {
-            "created_at": "2019-08-22T00:58:38.793Z",
-            "department_id": 3,
-            "id": 1,
-            "location_id": 1,
-            "sort_order": 0,
-            "updated_at": "2019-08-22T00:58:38.793Z",
-          },
-          Object {
-            "created_at": "2019-08-22T00:58:38.793Z",
-            "department_id": 5,
-            "id": 2,
-            "location_id": 1,
-            "sort_order": 0,
-            "updated_at": "2019-08-22T00:58:38.793Z",
-          },
-        ]
-      }
-      onClickIsPickedHandler={[Function]}
-      onClickRemoveItemHandler={[Function]}
-      orderItems={
-        Array [
-          Object {
-            "assembly_id": 1,
-            "created_at": "2019-07-29T22:50:37.840Z",
-            "department_id": 3,
-            "id": 22,
-            "item_id": 15,
-            "order_id": 11,
-            "picked": false,
-            "qty": 3,
-            "updated_at": "2019-07-29T22:50:37.840Z",
-          },
-          Object {
-            "assembly_id": null,
-            "created_at": "2019-07-29T22:50:37.887Z",
-            "department_id": 5,
-            "id": 23,
-            "item_id": 13,
-            "order_id": 11,
-            "picked": false,
-            "qty": 1,
-            "updated_at": "2019-07-29T22:50:37.887Z",
-          },
-        ]
-      }
-    />
-  </div>
+    }
+    locationDepartments={
+      Array [
+        Object {
+          "created_at": "2019-08-22T00:58:38.793Z",
+          "department_id": 3,
+          "id": 1,
+          "location_id": 1,
+          "sort_order": 0,
+          "updated_at": "2019-08-22T00:58:38.793Z",
+        },
+        Object {
+          "created_at": "2019-08-22T00:58:38.793Z",
+          "department_id": 5,
+          "id": 2,
+          "location_id": 1,
+          "sort_order": 0,
+          "updated_at": "2019-08-22T00:58:38.793Z",
+        },
+      ]
+    }
+    onClickIsPickedHandler={[Function]}
+    onClickRemoveItemHandler={[Function]}
+    orderItems={
+      Array [
+        Object {
+          "assembly_id": 1,
+          "created_at": "2019-07-29T22:50:37.840Z",
+          "department_id": 3,
+          "id": 22,
+          "item_id": 15,
+          "order_id": 11,
+          "picked": false,
+          "qty": 3,
+          "updated_at": "2019-07-29T22:50:37.840Z",
+        },
+        Object {
+          "assembly_id": null,
+          "created_at": "2019-07-29T22:50:37.887Z",
+          "department_id": 5,
+          "id": 23,
+          "item_id": 13,
+          "order_id": 11,
+          "picked": false,
+          "qty": 1,
+          "updated_at": "2019-07-29T22:50:37.887Z",
+        },
+      ]
+    }
+  />
 </Fragment>
 `;
