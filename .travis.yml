@@ -6,7 +6,7 @@ addons:
 - chrome: stable
 language: ruby
 rvm:
-- 2.6.3
+- 2.6.4
 cache:
   bundler: true
   directories:
@@ -33,16 +33,3 @@ before_script:
 script:
 - make lint
 - make test
-deploy:
-  provider: heroku
-  skip_cleanup: true
-  api_key:
-    secure: B/3X779GI74oE9nXSHubCOmgz1VXmXeJNxzwEEuimqXdGFAAJSzReFsj4m16rkZxmnB8WfCbcDytd3MWQyFFfGdGlaGCVZBhUSSO0hsU0DfTpnL6KnZePRj2s2/XCarBdI1Aav+w2hykEOVu8u1cmUdnmhLpsGS+a7T9RHBLHuaPkeXdxy7hzSlSeMgQpxTSwFQsCY5PDkVUifsCCkDh7REHA6X2XYw+LVnOrni5YkHINabtqhAcmZ0LQeVM9rKrkVDY2IIfpxRIpN4ADObmmut/sOl1S5GmMHzG9iQOjPOXbS2aDGGKdoNoMVvW7TmswEr+7o6jL4YwcTeskjTvi+TrQn0/Jj3mJJK0zg5X4zpcHj6ssHkM4aKEYD73NZGKBihqvRSy/iCnzh0LEYlU91pscbGPYLZy1tc9Ywy8NGnJujuthafocb/XXlPjkXXbzmZYQt3+idFmc7W4Z2MOwRq0v+myIzR8KCK6BcaN8pQdwjpRPgA7BfzbLeTD/omKRcKYQExt8cbYDaskH09qnoecuBQdpI+m/yLG3c3NKv9M6DSXuYtCjbY6MXq2A8xA/KkqbAhUi2inE5NEcRFtjrHPnFzGtc8k5SSTQHPVJkLe9fJfN2WO52hfBHtnPTL82KCzVRG6M3poCDk7qcIgiskMiEY8kudMO7OSHFjuhB8=
-  app:
-    - develop: xray-shopper-stage
-    - master: xray-shopper
-  on:
-    repo: n8rzz/shopper
-    branch:
-    - develop
-    - master

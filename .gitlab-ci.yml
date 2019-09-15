@@ -1,0 +1,157 @@
+image: "registry.gitlab.com/n8rzz/shopper:v4"
+
+variables:
+  POSTGRES_DB: postgres
+  POSTGRES_USER: runner
+  POSTGRES_PASSWORD: threeve
+  APP_NAME_DEVELOP: xray-shopper-develop
+  APP_NAME_STAGE: xray-shopper-stage
+  APP_NAME_MASTER: xray-shopper
+
+stages:
+  - build
+  - lint
+  - test
+  - container
+  - deploy
+
+before_script:
+  - ruby -v
+  - which ruby
+  - gem install bundler  --no-document
+  - bundle install  --jobs $(nproc) "${FLAGS[@]}" --path=vendor
+  - node -v
+  - yarn --version
+  - yarn install
+
+.default-cache: &default-cache
+  cache:
+    key: "$CI_COMMIT_REF_SLUG"
+    paths:
+      - node_modules/
+      - vendor
+      - public/
+
+.default-deploy: &default-deploy
+  allow_failure: true
+  retry: 2
+  when: manual
+
+build:
+  <<: *default-cache
+  stage: build
+  script:
+    - echo ""
+
+eslint:
+  <<: *default-cache
+  stage: lint
+  script:
+    - yarn lint
+
+rubocop:
+  <<: *default-cache
+  stage: lint
+  script:
+    - bundle exec rubocop --config .rubocop.yml
+
+jest:
+  <<: *default-cache
+  stage: test
+  allow_failure: true
+  script:
+    - yarn test
+
+rspec:unit:
+  <<: *default-cache
+  stage: test
+  allow_failure: true
+  services:
+    - postgres:11.3
+  script:
+    - cp config/database.gitlab.yml config/database.yml
+    - RAILS_ENV=test bundle exec rails db:create db:migrate
+    - RAILS_ENV=test bundle exec rails db:reset
+    - bundle exec rspec --exclude-pattern "spec/features/**/*_spec.rb"
+
+rspec:feature:
+  <<: *default-cache
+  <<: *default-deploy
+  stage: test
+  services:
+    - postgres:11.3
+  script:
+    - cp config/database.gitlab.yml config/database.yml
+    # - RAILS_ENV=test bundle exec rails db:schema:load
+    - RAILS_ENV=test bundle exec rails db:create db:migrate
+    - RAILS_ENV=test bundle exec rails db:reset
+    - RAILS_ENV=test bundle exec rspec spec/features/**/*_spec.rb --failure-exit-code 0
+    - RAILS_ENV=test bundle exec rspec spec/features/**/*_spec.rb --only-failures
+
+container:build:
+  stage: container
+  only:
+    - develop
+    - stage
+    - master
+    - tags
+  # artifact
+  script:
+    - echo "Build Docker Container"
+
+container:publish:
+  stage: container
+  only:
+    - develop
+    - stage
+    - master
+    - tags
+  # artifact dependency
+  script:
+    - echo "Publish Docker Container"
+
+deploy:develop:
+  <<: *default-cache
+  <<: *default-deploy
+  stage: deploy
+  environment:
+    name: develop
+  except:
+    - tags
+    - stage
+    - master
+  script:
+    - dpl --provider=heroku --app=$APP_NAME_DEVELOP --api_key=$HEROKU_API_KEY
+
+deploy:stage:
+  <<: *default-cache
+  <<: *default-deploy
+  stage: deploy
+  environment:
+    name: stage
+  only:
+    - stage
+  script:
+    - dpl --provider=heroku --app=$APP_NAME_STAGE --api_key=$HEROKU_API_KEY
+
+deploy:master:
+  <<: *default-cache
+  <<: *default-deploy
+  stage: deploy
+  environment:
+    name: production
+  only:
+    - master
+  script:
+    - dpl --provider=heroku --app=$APP_NAME_MASTER --api_key=$HEROKU_API_KEY
+
+deploy:release:
+  <<: *default-cache
+  <<: *default-deploy
+  stage: deploy
+  environment:
+    name: production
+  only:
+    - tags
+  script:
+    - dpl --provider=heroku --app=$APP_NAME_MASTER --api_key=$HEROKU_API_KEY
