@@ -1,0 +1,99 @@
+image: "registry.gitlab.com/n8rzz/shopper:v4"
+
+variables:
+  POSTGRES_DB: postgres
+  POSTGRES_USER: runner
+  POSTGRES_PASSWORD: threeve
+
+stages:
+  - build
+  - lint
+  - test
+  - deploy
+
+before_script:
+  - ruby -v
+  - which ruby
+  - gem install bundler  --no-document
+  - bundle install  --jobs $(nproc) "${FLAGS[@]}" --path=vendor
+  - node -v
+  - yarn --version
+  - yarn install
+
+.default-cache: &default-cache
+  cache:
+    untracked: true
+    key: tiger-pool-tire
+    paths:
+      - node_modules/
+      - vendor/
+      - public/
+
+build:
+  <<: *default-cache
+  stage: build
+  script:
+    - echo ""
+
+eslint:
+  <<: *default-cache
+  stage: lint
+  script:
+    - yarn lint
+
+rubocop:
+  <<: *default-cache
+  stage: lint
+  script:
+    - bundle exec rubocop --config .rubocop.yml
+
+jest:
+  <<: *default-cache
+  stage: test
+  allow_failure: true
+  script:
+    - yarn test
+
+rspec:unit:
+  <<: *default-cache
+  stage: test
+  allow_failure: true
+  services:
+    - postgres:11.3
+  script:
+    - cp config/database.gitlab.yml config/database.yml
+    - RAILS_ENV=test bundle exec rails db:create db:migrate
+    - bundle exec rspec --exclude-pattern "spec/features/**/*_spec.rb"
+
+rspec:feature:
+  <<: *default-cache
+  stage: test
+  allow_failure: true
+  services:
+    - postgres:11.3
+  script:
+    - cp config/database.gitlab.yml config/database.yml
+    - RAILS_ENV=test bundle exec rails db:schema:load
+    - RAILS_ENV=test bundle exec rspec spec/features/**/*_spec.rb --failure-exit-code 0
+    - RAILS_ENV=test bundle exec rspec spec/features/**/*_spec.rb --only-failures
+
+deploy:develop:
+  stage: deploy
+  allow_failure: true
+  script:
+    - echo "deploy:develop"
+    - dpl --provider=heroku
+
+deploy:stage:
+  stage: deploy
+  allow_failure: true
+  script:
+    - echo "deploy:stage"
+    - dpl --provider=heroku
+
+deploy:master:
+  stage: deploy
+  allow_failure: true
+  script:
+    - echo "deploy:master"
+    - dpl --provider=heroku
