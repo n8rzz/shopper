@@ -4,12 +4,15 @@ variables:
   POSTGRES_DB: postgres
   POSTGRES_USER: runner
   POSTGRES_PASSWORD: threeve
+  APP_NAME_DEVELOP: xray-shopper-develop
+  APP_NAME_STAGE: xray-shopper-stage
+  APP_NAME_MASTER: xray-shopper
 
 stages:
   - build
   - lint
   - test
-  - deploy
+  # - deploy
 
 before_script:
   - ruby -v
@@ -28,6 +31,7 @@ before_script:
       - node_modules/
       - vendor/
       - public/
+      - build/
 
 build:
   <<: *default-cache
@@ -68,6 +72,12 @@ rspec:unit:
 rspec:feature:
   <<: *default-cache
   stage: test
+  only:
+    - merge_requests
+    - develop
+    - stage
+    - master
+    - tags
   allow_failure: true
   services:
     - postgres:11.3
@@ -77,23 +87,56 @@ rspec:feature:
     - RAILS_ENV=test bundle exec rspec spec/features/**/*_spec.rb --failure-exit-code 0
     - RAILS_ENV=test bundle exec rspec spec/features/**/*_spec.rb --only-failures
 
-deploy:develop:
-  stage: deploy
-  allow_failure: true
-  script:
-    - echo "deploy:develop"
-    - dpl --provider=heroku
+# deploy:develop:
+#   <<: *default-cache
+#   stage: deploy
+#   allow_failure: true
+#   retry: 2
+#   environment:
+#     name: develop
+#   except:
+#     - stage
+#     - master
+#   script:
+#     - dpl --provider=heroku --app=$APP_NAME_DEVELOP --api_key=$HEROKU_API_KEY
 
-deploy:stage:
-  stage: deploy
-  allow_failure: true
-  script:
-    - echo "deploy:stage"
-    - dpl --provider=heroku
+# deploy:stage:
+#   <<: *default-cache
+#   stage: deploy
+#   allow_failure: true
+#   retry: 2
+#   environment:
+#     name: stage
+#   only:
+#     - stage
+#   script:
+#     - echo "deploy:stage"
+#     - dpl --provider=heroku --app=$APP_NAME_STAGE
 
-deploy:master:
-  stage: deploy
-  allow_failure: true
-  script:
-    - echo "deploy:master"
-    - dpl --provider=heroku
+# deploy:master:
+#   <<: *default-cache
+#   stage: deploy
+#   allow_failure: true
+#   retry: 2
+#   environment:
+#     name: production
+#   only:
+#     - master
+#   when: manual
+#   script:
+#     - echo "deploy:master"
+#     - dpl --provider=heroku --app=$APP_NAME_MASTER
+
+# deploy:release:
+#   <<: *default-cache
+#   stage: deploy
+#   allow_failure: true
+#   retry: 2
+#   environment:
+#     name: production
+#   only:
+#     - tags
+#   when: manual
+#   script:
+#     - echo "deploy:master"
+#     - dpl --provider=heroku --app=$APP_NAME_MASTER
