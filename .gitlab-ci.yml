@@ -12,7 +12,7 @@ stages:
   - build
   - lint
   - test
-  # - deploy
+  - deploy
 
 before_script:
   - ruby -v
@@ -32,6 +32,11 @@ before_script:
       - vendor/
       - public/
       - build/
+
+.default-deploy: &default-deploy
+  allow_failure: true
+  retry: 2
+  when: manual
 
 build:
   <<: *default-cache
@@ -71,14 +76,8 @@ rspec:unit:
 
 rspec:feature:
   <<: *default-cache
+  <<: *default-deploy
   stage: test
-  only:
-    - merge_requests
-    - develop
-    - stage
-    - master
-    - tags
-  allow_failure: true
   services:
     - postgres:11.3
   script:
@@ -87,56 +86,48 @@ rspec:feature:
     - RAILS_ENV=test bundle exec rspec spec/features/**/*_spec.rb --failure-exit-code 0
     - RAILS_ENV=test bundle exec rspec spec/features/**/*_spec.rb --only-failures
 
-# deploy:develop:
-#   <<: *default-cache
-#   stage: deploy
-#   allow_failure: true
-#   retry: 2
-#   environment:
-#     name: develop
-#   except:
-#     - stage
-#     - master
-#   script:
-#     - dpl --provider=heroku --app=$APP_NAME_DEVELOP --api_key=$HEROKU_API_KEY
+deploy:develop:
+  <<: *default-cache
+  <<: *default-deploy
+  stage: deploy
+  environment:
+    name: develop
+  except:
+    - tags
+    - stage
+    - master
+  script:
+    - dpl --provider=heroku --app=$APP_NAME_DEVELOP --api_key=$HEROKU_API_KEY
 
-# deploy:stage:
-#   <<: *default-cache
-#   stage: deploy
-#   allow_failure: true
-#   retry: 2
-#   environment:
-#     name: stage
-#   only:
-#     - stage
-#   script:
-#     - echo "deploy:stage"
-#     - dpl --provider=heroku --app=$APP_NAME_STAGE
+deploy:stage:
+  <<: *default-cache
+  <<: *default-deploy
+  stage: deploy
+  environment:
+    name: stage
+  only:
+    - stage
+  script:
+    - dpl --provider=heroku --app=$APP_NAME_STAGE --api_key=$HEROKU_API_KEY
 
-# deploy:master:
-#   <<: *default-cache
-#   stage: deploy
-#   allow_failure: true
-#   retry: 2
-#   environment:
-#     name: production
-#   only:
-#     - master
-#   when: manual
-#   script:
-#     - echo "deploy:master"
-#     - dpl --provider=heroku --app=$APP_NAME_MASTER
+deploy:master:
+  <<: *default-cache
+  <<: *default-deploy
+  stage: deploy
+  environment:
+    name: production
+  only:
+    - master
+  script:
+    - dpl --provider=heroku --app=$APP_NAME_MASTER --api_key=$HEROKU_API_KEY
 
-# deploy:release:
-#   <<: *default-cache
-#   stage: deploy
-#   allow_failure: true
-#   retry: 2
-#   environment:
-#     name: production
-#   only:
-#     - tags
-#   when: manual
-#   script:
-#     - echo "deploy:master"
-#     - dpl --provider=heroku --app=$APP_NAME_MASTER
+deploy:release:
+  <<: *default-cache
+  <<: *default-deploy
+  stage: deploy
+  environment:
+    name: production
+  only:
+    - tags
+  script:
+    - dpl --provider=heroku --app=$APP_NAME_MASTER --api_key=$HEROKU_API_KEY
