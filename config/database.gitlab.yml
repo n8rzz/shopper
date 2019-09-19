@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  host: postgres
+  database: postgres
+  encoding: unicode
+  password: threeve
+  pool: 5
+  username: runner
+
+test:
+  adapter: postgresql
+  host: postgres
+  database: postgres
+  encoding: unicode
+  password: threeve
+  pool: 5
+  username: runner
