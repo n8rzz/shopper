@@ -9,6 +9,7 @@ AllCops:
     - db/schema.rb
     - src/**/*
     - node_modules/**/*
+    - vendor/**/*
 Documentation:
   Enabled: false
 Metrics/LineLength:
