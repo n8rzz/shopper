@@ -39,17 +39,17 @@
   "version": "0.1.0",
   "jest": {
     "roots": [
-      "app/javascript"
+      "app/javascript/src"
     ],
     "setupFilesAfterEnv": [
-      "<rootDir>/app/javascript/packs/setupTests.js"
+      "<rootDir>/app/javascript/src/setupTests.js"
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ],
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "<rootDir>/app/javascript/packs/**/*.jsx",
+      "<rootDir>/app/javascript/src/**/*.jsx",
       "!**/node_modules/**",
       "!**/vendor/**"
     ],
