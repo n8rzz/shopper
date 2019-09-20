@@ -16,6 +16,7 @@ stages:
   - deploy
 
 before_script:
+  - date
   - ruby -v
   - which ruby
   - gem install bundler  --no-document
@@ -59,9 +60,12 @@ rubocop:
 jest:
   # <<: *default-cache
   stage: test
-  allow_failure: true
   script:
-    - yarn test
+    - yarn test:coverage
+  artifacts:
+    paths:
+    - coverage/
+    expire_in: 1 day
 
 # FIXME: Failing on
 # `ActionView::Template::Error: Webpacker can't find application in
