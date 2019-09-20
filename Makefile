@@ -25,7 +25,15 @@ release: ## updates `master` branch, generates a new tag, pushes tag, pushes mas
 	git push origin ${v}
 	git push origin master
 
+sync: ## syncs gitlab remote with github remote on {branch}. expects `branch={BRANCH}` arg
+	@echo ""
+	git checkout ${branch}
+	@echo ""
+	git pull origin ${branch}
+	@echo ""
+	git push github ${branch}
+
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
-.PHONY: update lint test release
+.PHONY: update lint test release sync
