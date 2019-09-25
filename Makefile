@@ -6,7 +6,8 @@ update: ## install gems and npm packages
 	yarn install --check-dependencies
 
 lint: ## runs linters to check for style inconsistencies
-	npm run lint
+	yarn lint
+	yarn lint:style
 	bundle exec rubocop
 
 test: ## runs entire test suite

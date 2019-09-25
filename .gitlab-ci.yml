@@ -1,38 +1,37 @@
-image: "registry.gitlab.com/n8rzz/shopper:v4"
+image: "registry.gitlab.com/n8rzz/ruby-rails-node-chrome-runner:latest"
 
-variables:
-  POSTGRES_DB: postgres
-  POSTGRES_USER: runner
-  POSTGRES_PASSWORD: threeve
-  APP_NAME_DEVELOP: xray-shopper-develop
-  APP_NAME_STAGE: xray-shopper-stage
-  APP_NAME_MASTER: xray-shopper
+services:
+  - postgres:11-alpine
 
 stages:
   - build
   - lint
   - test
-  - container
+  # - container
   - deploy
+
+variables:
+  APP_NAME_DEVELOP: xray-shopper-develop
+  APP_NAME_STAGE: xray-shopper-stage
+  APP_NAME_MASTER: xray-shopper
+  POSTGRES_DB: postgres
+  POSTGRES_USER: runner
+  POSTGRES_PASSWORD: threeve
+  CONTAINER_IMAGE: xray-shopper
 
 before_script:
   - date
+  - echo $PATH
+  - ps -ef | grep postgres
   - ruby -v
   - which ruby
-  - gem install bundler  --no-document
-  - bundle install  --jobs $(nproc) "${FLAGS[@]}" --path=vendor
+  - bundle install  --jobs $(nproc) "${FLAGS[@]}"
+  - bin/rails -v
+  - cp config/database.gitlab.yml config/database.yml
+  - RAILS_ENV=test bundle exec rails db:create db:schema:load || true
   - node -v
   - yarn --version
   - yarn install
-
-.default-cache: &default-cache
-  cache:
-    key: "$CI_COMMIT_REF_SLUG"
-    policy: pull
-    paths:
-      - node_modules/
-      - vendor/ruby
-      - public/
 
 .default-deploy: &default-deploy
   allow_failure: true
@@ -40,90 +39,87 @@ before_script:
   when: manual
 
 build:
-  # <<: *default-cache
   stage: build
   script:
-    - echo ""
+    - rails assets:precompile
 
 eslint:
-  # <<: *default-cache
   stage: lint
   script:
     - yarn lint
 
+styelint:
+  stage: lint
+  script:
+    - yarn lint:style
+
 rubocop:
-  # <<: *default-cache
   stage: lint
   script:
     - bundle exec rubocop --config .rubocop.yml
 
 jest:
-  # <<: *default-cache
   stage: test
   script:
     - yarn test:coverage
   artifacts:
-    paths:
-    - coverage/
     expire_in: 1 day
+    paths:
+      - coverage/
 
-# FIXME: Failing on
-# `ActionView::Template::Error: Webpacker can't find application in
-#  /builds/n8rzz/shopper/public/packs-test/manifest.json`
-#
-# see: https://github.com/rails/webpacker/issues/1189
-#
-# rspec:unit:
-#   # <<: *default-cache
-#   stage: test
-#   allow_failure: true
-#   services:
-#     - postgres:11.3
-#   script:
-#     - cp config/database.gitlab.yml config/database.yml
-#     - RAILS_ENV=test bundle exec rails db:create db:migrate
-#     # - RAILS_ENV=test bundle exec rails db:reset
-#     - RAILS_ENV=test bundle exec rails db:schema:load
-#     - bundle exec rspec --exclude-pattern "spec/features/**/*_spec.rb"
-
-# rspec:feature:
-#   # <<: *default-cache
-#   <<: *default-deploy
-#   stage: test
-#   services:
-#     - postgres:11.3
-#   script:
-#     - cp config/database.gitlab.yml config/database.yml
-#     # - RAILS_ENV=test bundle exec rails db:schema:load
-#     # - RAILS_ENV=test bundle exec rails db:create db:migrate
-#     - RAILS_ENV=test bundle exec rails db:reset
-#     - RAILS_ENV=test bundle exec rspec spec/features/**/*_spec.rb --failure-exit-code 0
-#     - RAILS_ENV=test bundle exec rspec spec/features/**/*_spec.rb --only-failures
-
-container:build:
-  stage: container
-  only:
-    - develop
-    - stage
-    - master
-    - tags
-  # artifact
+rspec:unit:
+  stage: test
+  allow_failure: true
   script:
-    - echo "Build Docker Container"
+    - RAILS_ENV=test bundle exec rspec --exclude-pattern "spec/features/**/*_spec.rb"
 
-container:publish:
-  stage: container
-  only:
-    - develop
-    - stage
-    - master
-    - tags
-  # artifact dependency
+rspec:feature:
+  <<: *default-deploy
+  stage: test
   script:
-    - echo "Publish Docker Container"
+    - RAILS_ENV=test bundle exec rspec spec/features/**/*_spec.rb --failure-exit-code 0
+    - RAILS_ENV=test bundle exec rspec spec/features/**/*_spec.rb --only-failures
+
+# TODO: not currently using Docker deployments
+# container:
+#   stage: container
+#   image: docker:19.03.0
+#   services:
+#     - docker:19.03.0-dind
+#   tags:
+#     - dind
+#   variables:
+#     DOCKER_DRIVER: overlay2
+#     # Create the certificates inside this directory for both the server
+#     # and client. The certificates used by the client will be created in
+#     # /certs/client so we only need to share this directory with the
+#     # volume mount in `config.toml`.
+#     DOCKER_TLS_CERTDIR: "/certs"
+#   # only:
+#   #   - develop
+#   #   - stage
+#   #   - master
+#   #   - tags
+#   before_script:
+#     - docker info
+#     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+#   script:
+#     - docker pull $CONTAINER_IMAGE:master || true
+#     - docker build --cache-from $CONTAINER_IMAGE:master --tag $CONTAINER_IMAGE:master .
+#     # - docker push $CONTAINER_IMAGE:$CI_COMMIT_REF_NAME
+
+# container:publish:
+#   stage: container
+#   only:
+#     - develop
+#     - stage
+#     - master
+#     - tags
+#   # artifact dependency
+#   script:
+#     - echo "Publish Docker Container"
 
 deploy:develop:
-  # <<: *default-cache
   <<: *default-deploy
   stage: deploy
   environment:
@@ -136,7 +132,6 @@ deploy:develop:
     - dpl --provider=heroku --app=$APP_NAME_DEVELOP --api_key=$HEROKU_API_KEY
 
 deploy:stage:
-  # <<: *default-cache
   <<: *default-deploy
   stage: deploy
   environment:
@@ -147,7 +142,6 @@ deploy:stage:
     - dpl --provider=heroku --app=$APP_NAME_STAGE --api_key=$HEROKU_API_KEY
 
 deploy:master:
-  # <<: *default-cache
   <<: *default-deploy
   stage: deploy
   environment:
@@ -158,7 +152,6 @@ deploy:master:
     - dpl --provider=heroku --app=$APP_NAME_MASTER --api_key=$HEROKU_API_KEY
 
 deploy:release:
-  # <<: *default-cache
   <<: *default-deploy
   stage: deploy
   environment:
