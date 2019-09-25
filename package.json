@@ -2,6 +2,7 @@
   "name": "shopper",
   "scripts": {
     "lint": "yarn run eslint -- --ext .jsx app/javascript",
+    "lint:style": "stylelint \"app/assets/stylesheets/**/*.scss\" \"!app/assets/stylesheets/base/_reset.scss\"",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --coverage --watchAll"
@@ -74,6 +75,9 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^22.17.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.14.3"
+    "eslint-plugin-react": "^7.14.3",
+    "stylelint": "^11.0.0",
+    "stylelint-config-recommended-scss": "^4.0.0",
+    "stylelint-scss": "^3.11.1"
   }
 }
