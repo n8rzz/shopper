@@ -32,7 +32,7 @@
     "react-dom": "^16.9.0",
     "react-stickynode": "^2.1.1",
     "react-test-renderer": "^16.9.0",
-    "sinon": "^7.4.2",
+    "sinon": "^7.5.0",
     "turbolinks": "^5.2.0",
     "webpack-dev-server": "^3.8.1",
     "webpacker-react": "^0.3.2"
