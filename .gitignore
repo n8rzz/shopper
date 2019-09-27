@@ -22,7 +22,7 @@
 examples.txt
 
 # Ignore master key for decrypting credentials and more.
-/config/master.key
+# /config/master.key
 /public/packs
 /public/packs-test
 /node_modules
@@ -31,3 +31,6 @@ yarn-debug.log*
 .yarn-integrity
 coverage
 spec/example.txt
+.env
+master.key
+/config/master.key

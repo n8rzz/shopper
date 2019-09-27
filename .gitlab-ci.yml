@@ -33,11 +33,6 @@ before_script:
   - yarn --version
   - yarn install
 
-.default-deploy: &default-deploy
-  allow_failure: true
-  retry: 2
-  when: manual
-
 build:
   stage: build
   script:
@@ -74,7 +69,7 @@ rspec:unit:
     - RAILS_ENV=test bundle exec rspec --exclude-pattern "spec/features/**/*_spec.rb"
 
 rspec:feature:
-  <<: *default-deploy
+  allow_failure: true
   stage: test
   script:
     - RAILS_ENV=test bundle exec rspec spec/features/**/*_spec.rb --failure-exit-code 0
@@ -120,10 +115,10 @@ rspec:feature:
 #     - echo "Publish Docker Container"
 
 deploy:develop:
-  <<: *default-deploy
   stage: deploy
   environment:
     name: develop
+  allow_failure: true
   except:
     - tags
     - stage
@@ -132,7 +127,7 @@ deploy:develop:
     - dpl --provider=heroku --app=$APP_NAME_DEVELOP --api_key=$HEROKU_API_KEY
 
 deploy:stage:
-  <<: *default-deploy
+  allow_failure: true
   stage: deploy
   environment:
     name: stage
@@ -142,7 +137,7 @@ deploy:stage:
     - dpl --provider=heroku --app=$APP_NAME_STAGE --api_key=$HEROKU_API_KEY
 
 deploy:master:
-  <<: *default-deploy
+  allow_failure: true
   stage: deploy
   environment:
     name: production
@@ -152,7 +147,7 @@ deploy:master:
     - dpl --provider=heroku --app=$APP_NAME_MASTER --api_key=$HEROKU_API_KEY
 
 deploy:release:
-  <<: *default-deploy
+  allow_failure: true
   stage: deploy
   environment:
     name: production
