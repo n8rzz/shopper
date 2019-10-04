@@ -34,7 +34,7 @@
     "react-test-renderer": "^16.10.1",
     "sinon": "^7.5.0",
     "turbolinks": "^5.2.0",
-    "webpack-dev-server": "^3.8.1",
+    "webpack-dev-server": "^3.8.2",
     "webpacker-react": "^0.3.2"
   },
   "version": "0.1.0",
