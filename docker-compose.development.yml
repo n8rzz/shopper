@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:11-alpine
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+  app:
+    build: .
+    environment:
+      - 'DATABASE_URL=postgres://postgres@db'
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+  web:
+    build:
+      context: .
+      dockerfile: ./nginx.Dockerfile
+    ports:
+      - 80:80
+    depends_on:
+      - app

@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  app:
+    restart: always
+    env_file: .env
+    image: registry.gitlab.com/n8rzz/shopper/app:latest
+    ports:
+      - 3000:3000
+  web:
+    restart: always
+    image: registry.gitlab.com/n8rzz/shopper/nginx:latest
+    ports:
+      - 80:80
+    depends_on:
+      - app
