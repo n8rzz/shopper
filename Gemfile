@@ -22,7 +22,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'launchy'
   gem 'minitest-reporters'
-  gem 'rspec-rails', '~>3.5'
+  gem 'rspec-rails', '~>3.9'
   gem 'rubocop', '>= 0.65.0'
 end
 
