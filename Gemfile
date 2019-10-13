@@ -22,7 +22,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'launchy'
   gem 'minitest-reporters'
-  gem 'rspec-rails', '~>3.5'
+  gem 'rspec-rails', '~>3.9'
   gem 'rubocop', '>= 0.65.0'
 end
 
@@ -32,7 +32,7 @@ group :development do
   gem 'guard-bundler', require: false
   gem 'guard-rspec', require: false
   gem 'guard-rubocop', require: false
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen', '>= 3.0.5', '< 3.3'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'

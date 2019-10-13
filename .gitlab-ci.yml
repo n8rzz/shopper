@@ -7,33 +7,44 @@ stages:
   - build
   - lint
   - test
-  # - container
+  - container:build
+  - container:deploy
   - deploy
 
 variables:
   APP_NAME_DEVELOP: xray-shopper-develop
   APP_NAME_STAGE: xray-shopper-stage
   APP_NAME_MASTER: xray-shopper
+  APP_CONTAINER_NAME: $CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/app
+  WEB_CONTAINER_NAME: $CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/nginx
   POSTGRES_DB: postgres
   POSTGRES_USER: runner
   POSTGRES_PASSWORD: threeve
-  CONTAINER_IMAGE: xray-shopper
 
 before_script:
   - date
   - echo $PATH
-  - ps -ef | grep postgres
-  - ruby -v
+
+.build-base: &build-base
+  before_script:
   - which ruby
-  - bundle install  --jobs $(nproc) "${FLAGS[@]}"
+  - bundle install --jobs $(nproc) "${FLAGS[@]}"
+  - ruby -v
   - bin/rails -v
-  - cp config/database.gitlab.yml config/database.yml
-  - RAILS_ENV=test bundle exec rails db:create db:schema:load || true
   - node -v
   - yarn --version
+  - cp config/database.gitlab.yml config/database.yml
+  - RAILS_ENV=test bundle exec rails db:create db:schema:load || true
   - yarn install
 
-build:
+.container-defaults: &container-defaults
+  before_script:
+    - '[[ -f ~/.docker/config.json ]] && rm -f ~/.docker/config.json && echo "Removed cached credentials"'
+    - docker info
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+
+build:assets:
+  <<: *build-base
   stage: build
   script:
     - rails assets:precompile
@@ -41,14 +52,17 @@ build:
 eslint:
   stage: lint
   script:
+    - yarn install
     - yarn lint
 
 styelint:
   stage: lint
   script:
+    - yarn install
     - yarn lint:style
 
 rubocop:
+  <<: *build-base
   stage: lint
   script:
     - bundle exec rubocop --config .rubocop.yml
@@ -56,6 +70,7 @@ rubocop:
 jest:
   stage: test
   script:
+    - yarn install
     - yarn test:coverage
   artifacts:
     expire_in: 1 day
@@ -63,56 +78,102 @@ jest:
       - coverage/
 
 rspec:unit:
+  <<: *build-base
   stage: test
   allow_failure: true
   script:
     - RAILS_ENV=test bundle exec rspec --exclude-pattern "spec/features/**/*_spec.rb"
 
 rspec:feature:
-  allow_failure: true
+  <<: *build-base
   stage: test
+  allow_failure: true
   script:
     - RAILS_ENV=test bundle exec rspec spec/features/**/*_spec.rb --failure-exit-code 0
     - RAILS_ENV=test bundle exec rspec spec/features/**/*_spec.rb --only-failures
 
-# TODO: not currently using Docker deployments
-# container:
-#   stage: container
-#   image: docker:19.03.0
-#   services:
-#     - docker:19.03.0-dind
-#   tags:
-#     - dind
-#   variables:
-#     DOCKER_DRIVER: overlay2
-#     # Create the certificates inside this directory for both the server
-#     # and client. The certificates used by the client will be created in
-#     # /certs/client so we only need to share this directory with the
-#     # volume mount in `config.toml`.
-#     DOCKER_TLS_CERTDIR: "/certs"
-#   # only:
-#   #   - develop
-#   #   - stage
-#   #   - master
-#   #   - tags
-#   before_script:
-#     - docker info
-#     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-#   script:
-#     - docker pull $CONTAINER_IMAGE:master || true
-#     - docker build --cache-from $CONTAINER_IMAGE:master --tag $CONTAINER_IMAGE:master .
-#     # - docker push $CONTAINER_IMAGE:$CI_COMMIT_REF_NAME
+container:build:app:
+  <<: *container-defaults
+  stage: container:build
+  image: docker:19.03.0
+  services:
+    - docker:19.03.0-dind
+  tags:
+    - dind
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: "/certs"
+  only:
+    - develop
+    - stage
+    - master
+    - tags
+  script:
+    - docker pull $APP_CONTAINER_NAME:latest || true
+    - docker build -f production.Dockerfile --cache-from $APP_CONTAINER_NAME:latest --build-arg rails_master_key=$RAILS_MASTER_KEY --build-arg secret_key_base=$SECRET_KEY_BASE -t $APP_CONTAINER_NAME .
+    - docker push $APP_CONTAINER_NAME
 
-# container:publish:
-#   stage: container
-#   only:
-#     - develop
-#     - stage
-#     - master
-#     - tags
-#   # artifact dependency
-#   script:
-#     - echo "Publish Docker Container"
+container:build:nginx:
+  <<: *container-defaults
+  stage: container:build
+  image: docker:19.03.0
+  services:
+    - docker:19.03.0-dind
+  tags:
+    - dind
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: "/certs"
+  only:
+    - develop
+    - stage
+    - master
+    - tags
+  script:
+    - docker pull $WEB_CONTAINER_NAME:latest || true
+    - docker build -t $WEB_CONTAINER_NAME:latest -f nginx.Dockerfile .
+    - docker push $WEB_CONTAINER_NAME:latest
+
+container:build:compose:
+  stage: container:build
+  only:
+    - develop
+    - stage
+    - master
+    - tags
+  script:
+    - which ssh-agent
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$DO_KEY")
+    - mkdir -p ~/.ssh
+    - scp -o StrictHostKeyChecking=no ./docker-compose.production.yml root@$DO_IP:docker-compose.yml
+
+container:deploy:compose:
+  stage: container:deploy
+  image: docker:19.03.0
+  services:
+    - docker:19.03.0-dind
+  tags:
+    - dind
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: "/certs"
+  only:
+    - develop
+    - stage
+    - master
+    - tags
+  before_script:
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+    - 'which ssh-agent || ( apk add openssh-client bash )'
+    - eval $(ssh-agent -s)
+    - echo "$DO_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+  script:
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - chmod +x ./script/deploy.sh
+    - bash ./script/deploy.sh
 
 deploy:develop:
   stage: deploy
@@ -126,25 +187,15 @@ deploy:develop:
   script:
     - dpl --provider=heroku --app=$APP_NAME_DEVELOP --api_key=$HEROKU_API_KEY
 
-deploy:stage:
+deploy:master:
   allow_failure: true
   stage: deploy
   environment:
     name: stage
   only:
-    - stage
-  script:
-    - dpl --provider=heroku --app=$APP_NAME_STAGE --api_key=$HEROKU_API_KEY
-
-deploy:master:
-  allow_failure: true
-  stage: deploy
-  environment:
-    name: production
-  only:
     - master
   script:
-    - dpl --provider=heroku --app=$APP_NAME_MASTER --api_key=$HEROKU_API_KEY
+    - dpl --provider=heroku --app=$APP_NAME_STAGE --api_key=$HEROKU_API_KEY
 
 deploy:release:
   allow_failure: true
