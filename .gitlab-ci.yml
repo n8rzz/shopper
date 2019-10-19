@@ -38,6 +38,14 @@ before_script:
   - yarn install
 
 .container-defaults: &container-defaults
+  image: docker:19.03.0
+  services:
+    - docker:19.03.0-dind
+  tags:
+    - dind
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: "/certs"
   before_script:
     - '[[ -f ~/.docker/config.json ]] && rm -f ~/.docker/config.json && echo "Removed cached credentials"'
     - docker info
@@ -95,35 +103,38 @@ rspec:feature:
 container:build:app:
   <<: *container-defaults
   stage: container:build
-  image: docker:19.03.0
-  services:
-    - docker:19.03.0-dind
-  tags:
-    - dind
   variables:
-    DOCKER_DRIVER: overlay2
-    DOCKER_TLS_CERTDIR: "/certs"
+    BUILD_IMG_NAME: $CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/app/$CI_COMMIT_REF_SLUG:$CI_COMMIT_SHORT_SHA
+    LATEST_IMG_NAME: $CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/app:latest
   only:
     - develop
     - stage
     - master
+  script:
+    - echo $BUILD_IMG_NAME
+    - echo $LATEST_IMG_NAME
+    - docker pull $APP_CONTAINER_NAME:latest || true
+    - docker build -f production.Dockerfile --cache-from $APP_CONTAINER_NAME:latest --build-arg rails_master_key=$RAILS_MASTER_KEY --build-arg secret_key_base=$SECRET_KEY_BASE -t $BUILD_IMG_NAME .
+    - docker tag $BUILD_IMG_NAME $LATEST_IMG_NAME
+    - docker push $BUILD_IMG_NAME
+    - docker push $LATEST_IMG_NAME
+
+container:tag:app:
+  <<: *container-defaults
+  stage: container:build
+  variables:
+    BUILD_IMG_NAME: $CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/app:$CI_COMMIT_REF_SLUG
+  only:
     - tags
   script:
+    - echo $BUILD_IMG_NAME
     - docker pull $APP_CONTAINER_NAME:latest || true
-    - docker build -f production.Dockerfile --cache-from $APP_CONTAINER_NAME:latest --build-arg rails_master_key=$RAILS_MASTER_KEY --build-arg secret_key_base=$SECRET_KEY_BASE -t $APP_CONTAINER_NAME .
-    - docker push $APP_CONTAINER_NAME
+    - docker build -f production.Dockerfile --cache-from $APP_CONTAINER_NAME:latest --build-arg rails_master_key=$RAILS_MASTER_KEY --build-arg secret_key_base=$SECRET_KEY_BASE -t $BUILD_IMG_NAME .
+    - docker push $BUILD_IMG_NAME
 
 container:build:nginx:
   <<: *container-defaults
   stage: container:build
-  image: docker:19.03.0
-  services:
-    - docker:19.03.0-dind
-  tags:
-    - dind
-  variables:
-    DOCKER_DRIVER: overlay2
-    DOCKER_TLS_CERTDIR: "/certs"
   only:
     - develop
     - stage
@@ -149,20 +160,15 @@ container:build:compose:
     - scp -o StrictHostKeyChecking=no ./docker-compose.production.yml root@$DO_IP:docker-compose.yml
 
 container:deploy:compose:
+  <<: *container-defaults
   stage: container:deploy
-  image: docker:19.03.0
-  services:
-    - docker:19.03.0-dind
-  tags:
-    - dind
-  variables:
-    DOCKER_DRIVER: overlay2
-    DOCKER_TLS_CERTDIR: "/certs"
   only:
     - develop
     - stage
     - master
     - tags
+  environment:
+    name: production
   before_script:
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
     - 'which ssh-agent || ( apk add openssh-client bash )'
