@@ -31,7 +31,7 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-stickynode": "^2.1.1",
-    "react-test-renderer": "^16.10.2",
+    "react-test-renderer": "^16.11.0",
     "sinon": "^7.5.0",
     "turbolinks": "^5.2.0",
     "webpack-dev-server": "^3.8.2",
