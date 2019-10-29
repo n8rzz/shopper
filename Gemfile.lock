@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/jbuilder
-  revision: fd65c7140d3142270d5723c6294c4c6cf035cadf
+  revision: e5f57cff32275afda17ac1674ff79f0451e5ce40
   branch: master
   specs:
     jbuilder (2.9.1)
@@ -313,7 +313,7 @@ GEM
     websocket-extensions (0.1.4)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.1.10)
+    zeitwerk (2.2.0)
 
 PLATFORMS
   ruby
