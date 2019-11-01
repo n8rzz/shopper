@@ -28,6 +28,7 @@
         "class-methods-use-this": "off",
         "indent": [2, 4, {"SwitchCase": 1}],
         "import/prefer-default-export": 0,
+        "jest/no-mocks-import": 0,
         "jsx-a11y/click-events-have-key-events": "off",
         "jsx-a11y/label-has-associated-control": "off",
         "jsx-a11y/label-has-for": "off",
