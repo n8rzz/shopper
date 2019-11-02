@@ -22,15 +22,10 @@ export class NoticeContainer extends React.Component {
         };
 
         EventService.on(EVENT_NAME.NOTICE_SUCCESS, this._onTriggerNoticeHandler);
-    }
 
-    // eslint-disable-next-line camelcase
-    UNSAFE_componentWillReceiveProps() {
-        if (this.props.message == null) {
-            return;
+        if (this.props.message != null) {
+            this._registerRemovalTimer();
         }
-
-        this._registerRemovalTimer();
     }
 
     componentWillUnmount() {
@@ -62,7 +57,6 @@ export class NoticeContainer extends React.Component {
     _onTriggerNotice(message) {
         this.setState({ message }, this._registerRemovalTimer);
     }
-
 
     _updateNoticeVisibility() {
         this._timer = -1;

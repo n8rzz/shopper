@@ -1,3 +1,4 @@
 --color
 --require spec_helper
 --seed 2371342
+--profile

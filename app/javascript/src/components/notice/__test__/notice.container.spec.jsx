@@ -6,29 +6,41 @@ import { NoticeContainer } from '../notice.container';
 const messageMock = 'this is a notice!';
 
 describe('NoticeContainer', () => {
-    describe('renders correctly with valid props', () => {
-        test('when called with a non-empty #mesage prop', () => {
-            const component = shallow(<NoticeContainer
-                message={messageMock}
-            />);
-
-            expect(component).toMatchSnapshot();
-        });
-
-        test('when called with an empty #mesage prop', () => {
-            const component = shallow(<NoticeContainer
+    describe('when called with an empty #mesage prop', () => {
+        test('renders correctly', () => {
+            let component = shallow(<NoticeContainer
                 message={''}
             />);
 
             expect(component).toMatchSnapshot();
-        });
 
-        test('when called with a null #mesage prop', () => {
-            const component = shallow(<NoticeContainer
+            component = shallow(<NoticeContainer
                 message={null}
             />);
 
             expect(component).toMatchSnapshot();
+        });
+    });
+
+    describe('when called with #message', () => {
+        let component = null;
+
+        beforeEach(() => {
+            component = shallow(<NoticeContainer
+                message={messageMock}
+            />);
+        });
+
+        afterEach(() => {
+            component = null;
+        });
+
+        test('renders correctly with valid props', () => {
+            expect(component).toMatchSnapshot();
+        });
+
+        test('#_timer should not equal -1', () => {
+            expect(component.instance()._time).not.toBe(-1);
         });
     });
 
