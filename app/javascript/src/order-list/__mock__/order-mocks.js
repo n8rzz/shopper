@@ -64,6 +64,38 @@ export const completeItemsMock = [
         status: 'complete',
         updated_at: '2019-07-27T12:41:50.595Z',
     },
+    {
+        created_at: '2019-07-27T12:41:50.595Z',
+        id: 6,
+        location_id: 2,
+        shopping_date: '2020-05-24T10:00:00.000Z',
+        status: 'complete',
+        updated_at: '2019-07-27T12:41:50.595Z',
+    },
+    {
+        created_at: '2019-07-27T12:41:50.595Z',
+        id: 7,
+        location_id: 2,
+        shopping_date: '2020-05-24T10:00:00.000Z',
+        status: 'complete',
+        updated_at: '2019-07-27T12:41:50.595Z',
+    },
+    {
+        created_at: '2019-07-27T12:41:50.595Z',
+        id: 8,
+        location_id: 2,
+        shopping_date: '2020-05-24T10:00:00.000Z',
+        status: 'complete',
+        updated_at: '2019-07-27T12:41:50.595Z',
+    },
+    {
+        created_at: '2019-07-27T12:41:50.595Z',
+        id: 9,
+        location_id: 2,
+        shopping_date: '2020-05-24T10:00:00.000Z',
+        status: 'complete',
+        updated_at: '2019-07-27T12:41:50.595Z',
+    },
 ];
 
 export const pendingItemsMock = [

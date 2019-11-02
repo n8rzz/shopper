@@ -1,25 +1,214 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OrderSimple when passed a valid \`orderList\` renders correctly with valid props 1`] = `
-<ul
-  className="vlist"
->
-  <li
-    key="orderSimple-item-0"
+exports[`OrderSimple when passed \`limit\` prop renders correctly 1`] = `
+<Fragment>
+  <div
+    className="vr_2"
   >
-    <div>
-      <a
-        className="link"
-        href="/orders/3"
+    <ul
+      className="vlist"
+    >
+      <li
+        className="qa-orderSimple-item"
+        key="orderSimple-item-0"
       >
-        Erdman-Abbott
-      </a>
-    </div>
-    <div>
-      pending - Dec 03, 2018
-    </div>
-  </li>
-</ul>
+        <div>
+          <a
+            className="link"
+            href="/orders/4"
+          >
+            Dickinson and Sons
+          </a>
+        </div>
+        <div>
+          complete - Dec 03, 2018
+        </div>
+      </li>
+      <li
+        className="qa-orderSimple-item"
+        key="orderSimple-item-1"
+      >
+        <div>
+          <a
+            className="link"
+            href="/orders/5"
+          >
+            Erdman-Abbott
+          </a>
+        </div>
+        <div>
+          complete - May 24, 2020
+        </div>
+      </li>
+      <li
+        className="qa-orderSimple-item"
+        key="orderSimple-item-2"
+      >
+        <div>
+          <a
+            className="link"
+            href="/orders/6"
+          >
+            Erdman-Abbott
+          </a>
+        </div>
+        <div>
+          complete - May 24, 2020
+        </div>
+      </li>
+      <li
+        className="qa-orderSimple-item"
+        key="orderSimple-item-3"
+      >
+        <div>
+          <a
+            className="link"
+            href="/orders/7"
+          >
+            Erdman-Abbott
+          </a>
+        </div>
+        <div>
+          complete - May 24, 2020
+        </div>
+      </li>
+      <li
+        className="qa-orderSimple-item"
+        key="orderSimple-item-4"
+      >
+        <div>
+          <a
+            className="link"
+            href="/orders/8"
+          >
+            Erdman-Abbott
+          </a>
+        </div>
+        <div>
+          complete - May 24, 2020
+        </div>
+      </li>
+      <li
+        className="qa-orderSimple-item"
+        key="orderSimple-item-5"
+      >
+        <div>
+          <a
+            className="link"
+            href="/orders/9"
+          >
+            Erdman-Abbott
+          </a>
+        </div>
+        <div>
+          complete - May 24, 2020
+        </div>
+      </li>
+    </ul>
+  </div>
+</Fragment>
+`;
+
+exports[`OrderSimple when passed a valid \`orderList\` renders correctly with valid props 1`] = `
+<Fragment>
+  <div
+    className="vr_2"
+  >
+    <ul
+      className="vlist"
+    >
+      <li
+        className="qa-orderSimple-item"
+        key="orderSimple-item-0"
+      >
+        <div>
+          <a
+            className="link"
+            href="/orders/4"
+          >
+            Dickinson and Sons
+          </a>
+        </div>
+        <div>
+          complete - Dec 03, 2018
+        </div>
+      </li>
+      <li
+        className="qa-orderSimple-item"
+        key="orderSimple-item-1"
+      >
+        <div>
+          <a
+            className="link"
+            href="/orders/5"
+          >
+            Erdman-Abbott
+          </a>
+        </div>
+        <div>
+          complete - May 24, 2020
+        </div>
+      </li>
+      <li
+        className="qa-orderSimple-item"
+        key="orderSimple-item-2"
+      >
+        <div>
+          <a
+            className="link"
+            href="/orders/6"
+          >
+            Erdman-Abbott
+          </a>
+        </div>
+        <div>
+          complete - May 24, 2020
+        </div>
+      </li>
+      <li
+        className="qa-orderSimple-item"
+        key="orderSimple-item-3"
+      >
+        <div>
+          <a
+            className="link"
+            href="/orders/7"
+          >
+            Erdman-Abbott
+          </a>
+        </div>
+        <div>
+          complete - May 24, 2020
+        </div>
+      </li>
+      <li
+        className="qa-orderSimple-item"
+        key="orderSimple-item-4"
+      >
+        <div>
+          <a
+            className="link"
+            href="/orders/8"
+          >
+            Erdman-Abbott
+          </a>
+        </div>
+        <div>
+          complete - May 24, 2020
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <button
+      className="btn btn-wide mix-btn_inverse"
+      onClick={[Function]}
+      type="button"
+    >
+      View More
+    </button>
+  </div>
+</Fragment>
 `;
 
 exports[`OrderSimple when passed an empty \`orderList\` renders correctly with valid props 1`] = `
