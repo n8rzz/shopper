@@ -10,10 +10,12 @@ const REDERER = {
 
 function _buildConcernGroupItemRenderer(concern, locationMap) {
     const Renderer = REDERER[concern.renderer];
+    const firstRenderLimit = 5;
 
     return (
         <Renderer
             orderList={concern.items}
+            limit={firstRenderLimit}
             locationMap={locationMap}
         />
     );
