@@ -1,4 +1,6 @@
+import EventService from '../service/event.service';
 import FlyoutView from './flyout.view';
+import { EVENT_NAME } from '../constants/event-names';
 
 const CLASSNAMES = {
     ROOT_ELEMENT: 'js-flyout',
@@ -72,6 +74,7 @@ export default class FlyoutController {
         event.preventDefault();
         event.stopPropagation();
 
+        EventService.emit(EVENT_NAME.NOTICE_IMMEDIATELY_REMOVE);
         this._view.toggleIsVisible();
     }
 }

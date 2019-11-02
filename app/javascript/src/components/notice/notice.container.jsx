@@ -15,12 +15,14 @@ export class NoticeContainer extends React.Component {
         this._timer = -1;
         this._updateNoticeVisibilityHandler = this._updateNoticeVisibility.bind(this);
         this._onTriggerNoticeHandler = this._onTriggerNotice.bind(this);
+        this._onTriggerImmediateRemovalHandler = this._onTriggerImmediateRemoval.bind(this);
         this._onStickyStateChangeHandler = this._onStickyStateChange.bind(this);
         this.state = {
             message: props.message,
             stickyStatus: 0,
         };
 
+        EventService.on(EVENT_NAME.NOTICE_IMMEDIATELY_REMOVE, this._onTriggerImmediateRemovalHandler);
         EventService.on(EVENT_NAME.NOTICE_SUCCESS, this._onTriggerNoticeHandler);
 
         if (this.props.message != null) {
@@ -30,6 +32,7 @@ export class NoticeContainer extends React.Component {
 
     componentWillUnmount() {
         clearTimeout(this._timer);
+        EventService.off(EVENT_NAME.NOTICE_IMMEDIATELY_REMOVE, this._onTriggerImmediateRemovalHandler);
         EventService.off(EVENT_NAME.NOTICE_SUCCESS, this._onTriggerNoticeHandler);
     }
 
@@ -40,8 +43,12 @@ export class NoticeContainer extends React.Component {
         });
     }
 
+    _hasTimer() {
+        return this._timer !== -1;
+    }
+
     _registerRemovalTimer() {
-        if (this._timer !== -1) {
+        if (this._hasTimer()) {
             clearTimeout(this._timer);
         }
 
@@ -56,6 +63,14 @@ export class NoticeContainer extends React.Component {
 
     _onTriggerNotice(message) {
         this.setState({ message }, this._registerRemovalTimer);
+    }
+
+    _onTriggerImmediateRemoval() {
+        if (this._hasTimer()) {
+            return;
+        }
+
+        this._updateNoticeVisibility();
     }
 
     _updateNoticeVisibility() {
