@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NoticeContainer renders correctly with valid props when called with a non-empty #mesage prop 1`] = `
+exports[`NoticeContainer when called with #message renders correctly with valid props 1`] = `
 <div
   className="notice-container"
 >
@@ -26,6 +26,6 @@ exports[`NoticeContainer renders correctly with valid props when called with a n
 </div>
 `;
 
-exports[`NoticeContainer renders correctly with valid props when called with a null #mesage prop 1`] = `""`;
+exports[`NoticeContainer when called with an empty #mesage prop renders correctly 1`] = `""`;
 
-exports[`NoticeContainer renders correctly with valid props when called with an empty #mesage prop 1`] = `""`;
+exports[`NoticeContainer when called with an empty #mesage prop renders correctly 2`] = `""`;
