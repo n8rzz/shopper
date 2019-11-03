@@ -1,4 +1,5 @@
 import React from 'react';
+import sinon from 'sinon';
 import { mount, shallow } from 'enzyme';
 
 import { NoticeContainer } from '../notice.container';
@@ -76,6 +77,53 @@ describe('NoticeContainer', () => {
                 component.update();
 
                 expect(component.find('.js-notice').hasClass('mix-stickyHeader_isSticky')).toBe(true);
+            });
+        });
+    });
+
+    describe('._onTriggerImmediateRemoval()', () => {
+        describe('when #_timer is null', () => {
+            test('._updateNoticeVisibility() is not called', () => {
+                const component = mount(<NoticeContainer
+                    message={null}
+                />);
+                const instance = component.instance();
+                const _updateNoticeVisibilitySpy = sinon.spy(instance, '_updateNoticeVisibility');
+
+                instance._onTriggerImmediateRemoval();
+
+                expect(_updateNoticeVisibilitySpy.callCount).toBe(0);
+
+                _updateNoticeVisibilitySpy.restore();
+            });
+        });
+
+        describe('when #_timer is not null', () => {
+            test('._updateNoticeVisibility() is called', () => {
+                const component = mount(<NoticeContainer
+                    message={messageMock}
+                />);
+                const instance = component.instance();
+                const _updateNoticeVisibilitySpy = sinon.spy(instance, '_updateNoticeVisibility');
+                instance._timer = 10;
+
+                instance._onTriggerImmediateRemoval();
+
+                expect(_updateNoticeVisibilitySpy.callCount).toBe(1);
+
+                _updateNoticeVisibilitySpy.restore();
+            });
+
+            test('resets #_timer to -1', () => {
+                const component = mount(<NoticeContainer
+                    message={messageMock}
+                />);
+                const instance = component.instance();
+                instance._timer = 10;
+
+                instance._onTriggerImmediateRemoval();
+
+                expect(instance._timer).toBe(-1);
             });
         });
     });
