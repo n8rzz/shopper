@@ -8,7 +8,7 @@ gem 'dotenv', require: false
 gem 'faker', '>= 2.1.2'
 gem 'jbuilder', git: 'https://github.com/rails/jbuilder', branch: 'master'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 4.2'
+gem 'puma', '~> 4.3'
 gem 'rails', '~> 6.0.0'
 gem 'sass-rails', '~> 6.0'
 gem 'simple_form', '>=4.1.0'
