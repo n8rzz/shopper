@@ -15,6 +15,7 @@ cache:
 before_install:
 - export TZ=America/Chicago
 - date
+- nvm install $(cat .nvmrc)
 - wget http://chromedriver.storage.googleapis.com/2.9/chromedriver_linux64.zip
 - unzip chromedriver_linux64.zip
 - rm chromedriver_linux64.zip
