@@ -2,6 +2,15 @@ require 'rails_helper'
 
 RSpec.feature 'Update a Location', js: true do
   let!(:location) { create(:location) }
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
+  after do
+    sign_out user
+  end
 
   scenario '#edit template has correct links' do
     visit locations_path

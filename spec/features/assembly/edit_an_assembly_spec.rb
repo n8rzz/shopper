@@ -2,6 +2,15 @@ require 'rails_helper'
 
 RSpec.feature 'Edit an Assembly', js: true do
   let!(:assembly) { create(:assembly, :with_item) }
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
+  after do
+    sign_out user
+  end
 
   scenario 'updates a record' do
     visit edit_assembly_path(assembly.id)

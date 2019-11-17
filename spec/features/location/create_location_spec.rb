@@ -1,6 +1,16 @@
 require 'rails_helper'
 
 RSpec.feature 'Create an Location', js: true do
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
+  after do
+    sign_out user
+  end
+
   before :each do
     visit locations_path
     click_link 'New Location'

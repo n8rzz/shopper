@@ -1,3 +1,4 @@
+@import "../base/font";
 @import "../base/mixins";
 @import "../base/vars";
 
@@ -7,4 +8,8 @@
 
 .txt-light {
     color: $COLOR_SECONDARY_ACCENT;
+}
+
+.txt-sansSerif {
+    @include sansSerifFont;
 }

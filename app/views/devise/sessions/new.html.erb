@@ -1,0 +1,57 @@
+<div class="island">
+    <div class="island-hd">
+        <h1 class="hdg hdg_1">
+            Log in
+        </h1>
+    </div>
+
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { autocomplete: 'off' }) do |f| %>
+        <div class="island-bd">
+            <%= f.error_notification %>
+
+            <div class="vr_2">
+                <div class="form-group mix-form-group_full">
+                    <%= f.label :email, class: "u-isVisuallyHidden" %>
+                    <%= f.input_field :email, required: false, placeholder: "email", autofocus: true, class: "input-text mix-input-text_full" %>
+                    <%= f.error :email, id: "email_error" %>
+                </div>
+
+                <div class="form-group mix-form-group_full">
+                    <%= f.label :password, class: "u-isVisuallyHidden" %>
+                    <%= f.input_field :password, required: false, placeholder: "password", class: "input-text mix-input-text_full" %>
+                    <%= f.error :password, id: "password_error" %>
+                </div>
+
+                <div class="form-group mix-form-group_full">
+                    <ul class="hlist mix-hlist_baseline">
+                        <li>
+                            <%= f.input_field :remember_me, as: :boolean %>
+                        </li>
+                        <li>
+                            <%= f.label :remember_me, class: "input-checkbox-label" %>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="form-group mix-form-group_full">
+                <ul class="vlist">
+                    <li>
+                        <%= f.button :submit, "Login", class: "btn-submit mix-btn_inverse mix-btn_full" %>
+                    </li>
+                    <li>
+                        <%= link_to "Forgot your password?", new_password_path(resource_name), class: "link" %>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    <% end %>
+
+    <div class="island-ft">
+        <span class="txt-light txt-sansSerif">
+            Don't have an account?
+        </span>
+        <%= link_to "Sign up", new_registration_path(resource_name), class: "link" %>
+    </div>
+</div>
+

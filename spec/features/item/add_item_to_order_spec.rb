@@ -3,6 +3,15 @@ require 'rails_helper'
 RSpec.feature 'Add item to order', js: true do
   let!(:pending_order) { create(:order, :pending) }
   let!(:item) { create(:item) }
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
+  after do
+    sign_out user
+  end
 
   before :each do
     visit items_path

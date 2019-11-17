@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.4'
 
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'devise', '4.7.1'
 gem 'dotenv', require: false
 gem 'faker', '>= 2.1.2'
 gem 'jbuilder', git: 'https://github.com/rails/jbuilder', branch: 'master'

@@ -2,6 +2,15 @@ require 'rails_helper'
 
 RSpec.feature 'Update Department', js: true do
   let!(:department) { create(:department) }
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
+  after do
+    sign_out user
+  end
 
   scenario 'has the correct links' do
     visit '/departments'
