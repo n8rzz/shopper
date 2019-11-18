@@ -34,7 +34,8 @@ before_script:
   - node -v
   - yarn --version
   - cp config/database.gitlab.yml config/database.yml
-  - RAILS_ENV=test bundle exec rails db:create db:schema:load || true
+  # - RAILS_ENV=test bundle exec rails db:create db:schema:load || true
+  - bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test || true
   - yarn install
 
 .container-defaults: &container-defaults
