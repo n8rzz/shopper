@@ -11,8 +11,16 @@
 
             <div class="vr_3">
                 <div class="form-group mix-form-group_full">
+                    <%= f.label :username, class: "u-isVisuallyHidden" %>
+                    <%= f.input_field :username, required: true, autofocus: true, placeholder: "Username", class: "input-text" %>
+                </div>
+                <div class="form-group mix-form-group_full">
+                    <%= f.error :username, id: "username_error" %>
+                </div>
+
+                <div class="form-group mix-form-group_full">
                     <%= f.label :email, class: "u-isVisuallyHidden" %>
-                    <%= f.input_field :email, required: true, autofocus: true, placeholder: "Email Address", class: "input-text" %>
+                    <%= f.input_field :email, required: true, placeholder: "Email Address", class: "input-text" %>
                 </div>
                 <div class="form-group mix-form-group_full">
                     <%= f.error :email, id: "email_error" %>
