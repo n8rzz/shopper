@@ -5,7 +5,8 @@ import classnames from 'classnames';
 export function Notice(props) {
     const noticeClassnames = classnames({
         notice: true,
-        'u-isVisuallyHidden': props.message === '' || props.isVisible === false,
+        'mix-notice_isAlert': props.isAlert,
+        'u-isVisuallyHidden': props.message === '' || !props.isVisible,
     });
 
     return (
@@ -17,5 +18,6 @@ export function Notice(props) {
 
 Notice.propTypes = {
     message: PropTypes.string.isRequired,
+    isAlert: PropTypes.bool.isRequired,
     isVisible: PropTypes.bool.isRequired,
 };

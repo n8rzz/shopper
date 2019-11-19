@@ -18,7 +18,7 @@ export class NoticeContainer extends React.Component {
         this._onTriggerNoticeHandler = this._onTriggerNotice.bind(this);
         this._onStickyStateChangeHandler = this._onStickyStateChange.bind(this);
         this.state = {
-            message: props.message,
+            message: props.alert || props.message,
             stickyStatus: 0,
         };
 
@@ -98,7 +98,11 @@ export class NoticeContainer extends React.Component {
                     onStateChange={this._onStickyStateChangeHandler}
                 >
                     <div className={this._buildClassnames()}>
-                        <Notice message={message} isVisible={this.state.message !== ''} />
+                        <Notice
+                            message={message}
+                            isAlert={this.props.alert !== ''}
+                            isVisible={this.state.message !== ''}
+                        />
                     </div>
                 </Sticky>
             </div>
@@ -107,9 +111,11 @@ export class NoticeContainer extends React.Component {
 }
 
 NoticeContainer.propTypes = {
+    alert: PropTypes.string,
     message: PropTypes.string,
 };
 
 NoticeContainer.defaultProps = {
+    alert: '',
     message: '',
 };

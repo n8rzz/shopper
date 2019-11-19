@@ -15,3 +15,8 @@
     color: $COLOR_SUCCESS_FG;
     font-size: $FONT_SIZE_S;
 }
+
+.mix-notice_isAlert {
+    background-color: $COLOR_ERROR_BG;
+    color: $COLOR_ERROR_FG;
+}

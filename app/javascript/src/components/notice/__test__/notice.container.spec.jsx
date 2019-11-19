@@ -23,6 +23,48 @@ describe('NoticeContainer', () => {
         });
     });
 
+    describe('when called with an empty #alert prop', () => {
+        test('renders correctly', () => {
+            let component = shallow(<NoticeContainer
+                alert={''}
+            />);
+
+            expect(component).toMatchSnapshot();
+
+            component = shallow(<NoticeContainer
+                alert={null}
+            />);
+
+            expect(component).toMatchSnapshot();
+        });
+    });
+
+    describe('when called with #alert', () => {
+        let component = null;
+
+        beforeEach(() => {
+            component = shallow(<NoticeContainer
+                alert={messageMock}
+            />);
+        });
+
+        afterEach(() => {
+            component = null;
+        });
+
+        test('renders correctly with valid props', () => {
+            expect(component).toMatchSnapshot();
+        });
+
+        test('#_timer should not equal -1', () => {
+            expect(component.instance()._time).not.toBe(-1);
+        });
+
+        test('should render iwth correct classnames', () => {
+            expect(component.hasClass('mix-notice_isAlert')).not.toBe(true);
+        });
+    });
+
     describe('when called with #message', () => {
         let component = null;
 

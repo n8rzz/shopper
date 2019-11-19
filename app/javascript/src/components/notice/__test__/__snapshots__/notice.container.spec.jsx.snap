@@ -1,5 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`NoticeContainer when called with #alert renders correctly with valid props 1`] = `
+<div
+  className="notice-container"
+>
+  <Sticky
+    activeClass="active"
+    bottomBoundary={0}
+    enableTransforms={true}
+    enabled={true}
+    onStateChange={[Function]}
+    releasedClass="released"
+    shouldFreeze={[Function]}
+    top={0}
+  >
+    <div
+      className="js-notice"
+    >
+      <Notice
+        isAlert={true}
+        isVisible={true}
+        message="this is a notice!"
+      />
+    </div>
+  </Sticky>
+</div>
+`;
+
 exports[`NoticeContainer when called with #message renders correctly with valid props 1`] = `
 <div
   className="notice-container"
@@ -18,6 +45,7 @@ exports[`NoticeContainer when called with #message renders correctly with valid 
       className="js-notice"
     >
       <Notice
+        isAlert={false}
         isVisible={true}
         message="this is a notice!"
       />
@@ -25,6 +53,10 @@ exports[`NoticeContainer when called with #message renders correctly with valid 
   </Sticky>
 </div>
 `;
+
+exports[`NoticeContainer when called with an empty #alert prop renders correctly 1`] = `""`;
+
+exports[`NoticeContainer when called with an empty #alert prop renders correctly 2`] = `""`;
 
 exports[`NoticeContainer when called with an empty #mesage prop renders correctly 1`] = `""`;
 

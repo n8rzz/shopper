@@ -1,8 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Notice renders correctly with valid props 1`] = `
+exports[`Notice renders correctly when passed a #message 1`] = `
 <div
   className="notice"
+>
+  this is a notice!
+</div>
+`;
+
+exports[`Notice renders correctly when passed an #alert 1`] = `
+<div
+  className="notice mix-notice_isAlert"
 >
   this is a notice!
 </div>
