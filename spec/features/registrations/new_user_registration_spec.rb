@@ -17,6 +17,7 @@ RSpec.feature 'registrations#new', js: true do
     before :each do
       visit new_user_registration_path
 
+      fill_in 'user_username', with: user.username
       fill_in 'user_email', with: user.email
       fill_in 'user_password', with: user.password
       fill_in 'user_password_confirmation', with: user.password
@@ -32,6 +33,21 @@ RSpec.feature 'registrations#new', js: true do
   context 'with invalid information' do
     before :each do
       visit new_user_registration_path
+    end
+
+    describe 'a username that already exists' do
+      before :each do
+        fill_in 'user_username', with: existing_user.username
+        fill_in 'user_email', with: user.email
+        fill_in 'user_password', with: user.password
+        fill_in 'user_password_confirmation', with: user.password
+
+        click_button('Sign up')
+      end
+
+      it { expect(page).to_not have_current_path('/') }
+      it { expect(page).to have_selector('.error_notification', text: 'Please review the problems below:') }
+      it { expect(page).to have_selector('.error', text: 'has already been taken') }
     end
 
     describe 'an email that already exists' do

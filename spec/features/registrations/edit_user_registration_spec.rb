@@ -25,16 +25,33 @@ RSpec.feature 'registrations#edit', js: true do
   end
 
   context 'with valid information' do
-    before :each do
-      visit edit_user_registration_path
+    describe 'and a new username' do
+      before :each do
+        visit edit_user_registration_path
 
-      fill_in 'user_email', with: 'me@example.com'
-      fill_in 'user_current_password', with: user.password
+        fill_in 'user_username', with: 'me'
+        fill_in 'user_current_password', with: user.password
 
-      click_button('Update')
+        click_button('Update')
+      end
+
+      it { expect(page).to_not have_selector('.error_notification') }
+      # it { expect(page).to have_selector('.js-notice', text: 'Your account has been updated successfully.') }
     end
 
-    it { expect(page).to_not have_selector('.error_notification', text: 'Please review the problems below:') }
+    describe 'and a new email address' do
+      before :each do
+        visit edit_user_registration_path
+
+        fill_in 'user_email', with: 'me@example.com'
+        fill_in 'user_current_password', with: user.password
+
+        click_button('Update')
+      end
+
+      it { expect(page).to_not have_selector('.error_notification') }
+      # it { expect(page).to have_selector('.js-notice', text: 'Your account has been updated successfully.') }
+    end
   end
 
   # context 'with invalid information' do
