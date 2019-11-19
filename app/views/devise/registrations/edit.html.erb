@@ -1,0 +1,89 @@
+<div class="island">
+    <div class="island-hd">
+        <h2 class="hdg hdg_1">
+            Edit <%= resource_name.to_s.humanize %>
+        </h2>
+    </div>
+
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, autocomplete: "off" }) do |f| %>
+        <div class="island-bd">
+            <%= f.error_notification %>
+
+            <div class="vr_3">
+                <div class="form-group mix-form-group_full">
+                    <ul class="vlist">
+                        <li>
+                            <%= f.label :email, class: "u-isVisuallyHidden" %>
+                            <%= f.input_field :email, required: true, placeholder: "email", autofocus: true, class: "input-text mix-input-text_full" %>
+                        </li>
+                        <li>
+                            <%= f.error :email, id: "email_error" %>
+                        </li>
+                    </ul>
+                </div>
+
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                    <div class="form-group mix-form-group_full">
+                        Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+                    </div>
+                <% end %>
+
+                <div class="form-group mix-form-group_full">
+                    <ul class="vlist">
+                        <li>
+                            <%= f.label :password, class: "u-isVisuallyHidden" %>
+                            <%= f.input_field :password, required: false, placeholder: "password", class: "input-text mix-input-text_full" %>
+                        </li>
+                        <li>
+                            <%= f.error :password, id: "password_error" %>
+                        </li>
+                        <li>
+                            <span class="txt-light txt-sansSerif">
+                                <%= f.hint ("leave this blank if you don't want to change it") %>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="form-group mix-form-group_full">
+                    <ul class="vlist">
+                        <li>
+                            <%= f.label :password_confirmation, class: "u-isVisuallyHidden" %>
+                            <%= f.input_field :password_confirmation, required: false, placeholder: "password_confirmation", class: "input-text mix-input-text_full" %>
+                        </li>
+                        <li>
+                            <%= f.error :password_confirmation, id: "password_confirmation_error" %>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="form-group mix-form-group_full">
+                    <ul class="vlist">
+                        <li>
+                            <%= f.label :current_password, class: "u-isVisuallyHidden" %>
+                            <%= f.input_field :current_password, required: true, placeholder: "current_password", class: "input-text mix-input-text_full" %>
+                        </li>
+                        <li>
+                            <%= f.error :current_password, id: "current_password_error" %>
+                        </li>
+                        <li>
+                            <span class="txt-light txt-sansSerif">
+                                <%= f.hint ("we need your current password to confirm your changes") %>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="form-group mix-form-group_full">
+                <%= f.button :submit, "Update", class: "btn-submit mix-btn_inverse mix-btn_full" %>
+            </div>
+        <% end %>
+    </div>
+    <div class="island-ft">
+        <h3>Cancel my account</h3>
+
+        <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+    </div>
+</div>
+

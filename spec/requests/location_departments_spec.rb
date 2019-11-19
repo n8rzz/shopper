@@ -4,6 +4,10 @@ RSpec.describe 'LocationDepartments', :type => :request do
   let!(:department) { create(:department) }
   let!(:location) { create(:location) }
 
+  before do
+    sign_in create(:user)
+  end
+
   describe 'create request' do
     context 'invalid' do
       before do

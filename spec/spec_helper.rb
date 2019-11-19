@@ -10,6 +10,7 @@ RSpec.configure do |config|
   end
 
   config.include FactoryBot::Syntax::Methods
+
   config.shared_context_metadata_behavior = :apply_to_host_groups
   config.filter_run_when_matching :focus
   config.example_status_persistence_file_path = "spec/examples.txt"
@@ -37,4 +38,15 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+end
+
+# TODO: this is the wrong place for this, should be moved
+def sign_in(user)
+  post user_session_path \
+    "user[email]"    => user.email,
+    "user[password]" => user.password
+end
+
+def sign_out(user)
+  delete destroy_user_session_path
 end

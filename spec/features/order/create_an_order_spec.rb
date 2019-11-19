@@ -2,6 +2,15 @@ require 'rails_helper'
 
 RSpec.feature 'Create an order', js: true do
   let!(:order) { create(:order, :pending) }
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
+  after do
+    sign_out user
+  end
 
   context 'when #shopping_date is not filled in' do
     before :each do

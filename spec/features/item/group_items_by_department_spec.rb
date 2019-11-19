@@ -5,6 +5,15 @@ RSpec.feature 'Group Items by Department', js: true do
   let(:meat) { create(:department, name: 'Meat') }
   let!(:produce_item) { create(:item, department: produce) }
   let!(:meat_item) { create(:item, department: meat) }
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
+  after do
+    sign_out user
+  end
 
   before do
     visit items_path

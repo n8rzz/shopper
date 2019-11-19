@@ -3,6 +3,10 @@ require 'rails_helper'
 RSpec.describe 'MealSchedules', :type => :request do
   let!(:item) { create(:item) }
 
+  before do
+    sign_in create(:user)
+  end
+
   describe 'create request' do
     context 'invalid' do
       describe 'when no reference_id is passed' do

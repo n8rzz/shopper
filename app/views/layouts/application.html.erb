@@ -25,7 +25,8 @@
         <%= render 'layouts/header' %>
 
         <div class="site">
-            <%= react_component('NoticeContainer', message: notice ) %>
+            <!-- TODO: extend to support alert styles for user/session forms -->
+            <%= react_component('NoticeContainer', message: notice || alert ) %>
             <%= yield %>
         </div>
 

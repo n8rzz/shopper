@@ -1,6 +1,10 @@
 require "rails_helper"
 
 RSpec.describe "Location", :type => :request do
+  before do
+    sign_in create(:user)
+  end
+
   context '/locations route' do
     context 'renders #index template' do
       before :each do

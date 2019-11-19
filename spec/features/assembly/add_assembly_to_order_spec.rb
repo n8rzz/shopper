@@ -3,6 +3,15 @@ require 'rails_helper'
 RSpec.feature 'Add assembly to Order', js: true do
   let!(:pending_order) { create(:order, :pending) }
   let!(:assembly) { create(:assembly, :with_items) }
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
+  after do
+    sign_out user
+  end
 
   before :each do
     visit assemblies_path

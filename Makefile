@@ -1,10 +1,13 @@
+log_color_green = (echo "\x1B[32m>> $1\x1B[39m")
+.PHONY: update lint test test-fe test-be-unit test-feature release sync
+
 update: ## install gems and npm packages
 	@echo ""
-	@echo "--- === ::: Updating ruby gems ::: === ---"
+	@$(call log_color_green, "-- === ::: Updating ruby gems ::: === ---")
 	@echo ""
 	bundle install
 	@echo ""
-	@echo "--- === ::: Updating npm packages ::: === ---"
+	@$(call log_color_green, "-- === ::: Updating npm packages ::: === ---")
 	@echo ""
 	yarn install --check-dependencies
 
@@ -13,45 +16,53 @@ lint: ## runs linters to check for style inconsistencies
 	yarn lint:style
 	bundle exec rubocop
 
-test: ## runs entire test suite
+test-fe: ## runs just frontend tests
 	@echo ""
-	@echo "--- === ::: Starting javascript test suite ::: === ---"
+	@$(call log_color_green, "--- === ::: Starting javascript test suite ::: === ---")
 	@echo ""
 	npm run test
+
+test-be-unit: ## runs just rspec unit tests
 	@echo ""
-	@echo "--- === ::: Starting rspec test suite ::: === ---"
+	@$(call log_color_green, "--- === ::: Starting RSPEC UNIT test suite ::: === ---")
 	@echo ""
-	bundle exec rspec
+	bundle exec rspec --exclude-pattern "spec/features/**/*_spec.rb"
+
+test-feature: ## runs rspec feature tests
+	@echo ""
+	@$(call log_color_green, "--- === ::: Starting RSPEC FEATURE test suite ::: === ---")
+	@echo ""
+	bundle exec rspec spec/features/**/*_spec.rb --failure-exit-code 0
+
+test: test-fe test-be-unit test-feature
 
 release: ## updates `master` branch, generates a new tag, pushes tag, pushes master. expects `v={VERSION}` arg
 	@echo ""
-	@echo "--- === ::: Updating local `master` ::: === ---"
+	@$(call log_color_green, "-- === ::: Updating local `master` ::: === ---")
 	@echo ""
 	git checkout master
 	git pull origin	master
 	@echo ""
-	@echo "--- === ::: Pulling `develop` ::: === ---"
+	@$(call log_color_green, "-- === ::: Pulling `develop` ::: === ---")
 	@echo ""
 	git pull origin develop
 	@echo ""
-	@echo "--- === ::: Creating next release tag: ${v} ::: === ---"
+	@$(call log_color_green, "-- === ::: Creating next release tag: ${v} ::: === ---")
 	@echo ""
 	git tag ${v}
 	@echo ""
-	@echo "--- === ::: Pushing tag to remote ::: === ---"
+	@$(call log_color_green, "-- === ::: Pushing tag to remote ::: === ---")
 	@echo ""
 	git push origin ${v}
 	git push origin master
 
 sync: ## syncs gitlab remote with github remote on {branch}. expects `b={BRANCH}` arg
 	@echo ""
-	git checkout ${branch}
+	git checkout ${b}
 	@echo ""
-	git pull origin ${branch}
+	git pull origin ${b}
 	@echo ""
-	git push github ${branch}
+	git push github ${b}
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
-
-.PHONY: update lint test release sync

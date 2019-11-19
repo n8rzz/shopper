@@ -55,7 +55,7 @@ build:assets:
   <<: *build-base
   stage: build
   script:
-    - rails assets:precompile
+    - RAILS_ENV=test bundle exec rake SECRET_KEY_BASE=foo assets:precompile
 
 eslint:
   stage: lint

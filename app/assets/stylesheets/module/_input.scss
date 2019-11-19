@@ -71,6 +71,16 @@
     min-width: 80px;
 }
 
+// TODO: replace with something that is correct
+// used for simple_from/devise checkbox
+.input-checkbox-label {
+    font-size: $FONT_SIZE_M;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
 .input-select {
     display: block;
     margin-top: $SPACING_1X;
@@ -92,6 +102,18 @@
         outline: none;
         padding: $SPACING_HALFX - 2px;
     }
+
+    &::placeholder {
+        @include sansSerifFont;
+
+        color: $COLOR_GREY;
+        font-style: italic;
+        padding-left: $SPACING_HALFX;
+    }
+}
+
+.mix-input-text_full {
+    width: 100%;
 }
 
 .mix-label_subdued {
@@ -103,8 +125,15 @@
     vertical-align: text-top;
 }
 
+.mix-input_block {
+    display: block;
+}
+
 .error {
+    @include monospaceFont;
+
     color: $COLOR_ERROR_FG;
     display: block;
+    font-size: $FONT_SIZE_XS;
 }
 

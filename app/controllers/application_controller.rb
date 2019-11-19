@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  # TODO: this may need to move
+  before_action :authenticate_user!
   after_action :set_csrf_cookie
 
   protected

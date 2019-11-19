@@ -2,6 +2,15 @@ require 'rails_helper'
 
 RSpec.feature 'Assembly#index', js: true do
   let!(:assembly) { create(:assembly, :with_item) }
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
+  after do
+    sign_out user
+  end
 
   scenario 'visit assembly#index' do
     visit assemblies_path

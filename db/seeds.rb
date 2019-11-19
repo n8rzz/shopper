@@ -1,3 +1,9 @@
+User.create(
+  email: 'me@example.com',
+  password: '123456',
+  password_confirmation: '123456'
+)
+
 department_names = ['Produce', 'Meat', 'Bakery', 'Deli', 'Dairy', 'Fozen', 'Pasta', 'Bread']
 department_names.each do |department_name|
   Department.create(name: department_name)

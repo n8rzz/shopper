@@ -7,6 +7,15 @@ RSpec.feature 'Add location_department to sorted departments', js: true do
   let!(:department_bakery) { create(:department, name: 'bakery') }
   let!(:location_department_meat) { create(:location_department, location_id: location.id, department_id: department_meat.id, sort_order: 0) }
   let!(:location_department_produce) { create(:location_department, location_id: location.id, department_id: department_produce.id, sort_order: 1) }
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
+  after do
+    sign_out user
+  end
 
   context 'displays departments without a #sort_order' do
     before :each do

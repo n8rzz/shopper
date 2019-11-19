@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Department', :type => :request do
+  before do
+    sign_in create(:user)
+  end
+
   context '/departments route' do
     context 'renders #index template' do
       before :each do
