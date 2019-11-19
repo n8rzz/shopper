@@ -1,19 +1,34 @@
 @import "../base/vars";
 
+// TODO: remove the `-` in `form-group`
 .form-group abbr[title="required"] {
     display: none;
 }
 
-.form-group .checkbox {
-    display: block;
-    margin-top: $SPACING_HALFX;
-}
+.form-group {
+    .checkbox {
+        display: block;
+        margin-top: $SPACING_HALFX;
+    }
 
-.form-group .check_boxes {
-    margin-right: 10px;
+    .check_boxes {
+        margin-right: 10px;
+    }
+
+    .vlist {
+        margin-bottom: 0;
+    }
 }
 
 .form-group + .form-group {
     margin-top: $SPACING_1X;
 }
 
+.mix-form-group_full {
+    display: flex;
+    justify-content: stretch;
+
+    > * {
+        flex-grow: 1;
+    }
+}

@@ -2,6 +2,15 @@ require 'rails_helper'
 
 RSpec.feature 'Delete order_item from order', js: true do
   let!(:pending_order) { create(:order, :pending, :with_order_items) }
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
+  after do
+    sign_out user
+  end
 
   before :each do
     visit order_path(pending_order.id)

@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'AssemblyItem', :type => :request do
+  before do
+    sign_in create(:user)
+  end
+
   context 'creating an assembly without item_ids' do
     before do
       post '/assemblies', :params => { :assembly => {:name => 'Threeve'} }

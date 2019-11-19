@@ -1,6 +1,10 @@
 @import "../base/font";
 @import "../base/vars";
 
+body {
+    background-color: $COLOR_BG_PRIMARY;
+}
+
 abbr[title="required"] {
     text-decoration: none;
     color: #e00e00;

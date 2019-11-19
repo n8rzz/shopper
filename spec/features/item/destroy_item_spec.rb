@@ -2,6 +2,15 @@ require 'rails_helper'
 
 RSpec.feature 'Destroy an item', js: true do
   let!(:item) { create(:item) }
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
+  after do
+    sign_out user
+  end
 
   scenario 'visit item#index' do
     visit items_path

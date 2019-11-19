@@ -2,6 +2,15 @@ require 'rails_helper'
 
 RSpec.feature 'create MealSchedule', js: true do
   let!(:assembly) { create(:assembly, :with_item) }
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
+  after do
+    sign_out user
+  end
 
   describe 'from assembly#index' do
     before :each do

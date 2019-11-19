@@ -2,6 +2,15 @@ require 'rails_helper'
 
 RSpec.feature 'edit a MealSchedule', js: true do
   let!(:meal_schedule) { create(:meal_schedule, :with_assembly, schedule_date: Time.now) }
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
+  after do
+    sign_out user
+  end
 
   describe 'assembly' do
     before :each do

@@ -2,6 +2,15 @@ require 'rails_helper'
 
 RSpec.feature 'Delete a Location', js: true do
   let!(:location) { create(:location) }
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
+  after do
+    sign_out user
+  end
 
   scenario 'from location#index' do
     visit locations_path

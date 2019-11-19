@@ -1,0 +1,29 @@
+@import "../base/mixins";
+@import "../base/vars";
+
+.island {
+    @include boxShadow-subtle;
+
+    background-color: $COLOR_BG_SECONDARY;
+    border: 3px solid $COLOR_LIGHT;
+    border-radius: $BORDER_RADIUS_XL;
+    padding-left: $SPACING_2X;
+    padding-right: $SPACING_2X;
+}
+
+.island-hd {
+    @include vr_2;
+
+    padding-top: $SPACING_1X;
+}
+
+.island-bd {
+    @include vr_4;
+}
+
+.island-ft {
+    background-color: $COLOR_LIGHT;
+    margin: $SPACING_1X $SPACING_2X * -1 0 $SPACING_2X * -1;
+    padding: $SPACING_2X;
+    text-align: center;
+}

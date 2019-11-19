@@ -1,13 +1,15 @@
-<nav>
-    <ul class="footer-nav">
-        <li class="footer-nav-item">
-            <%= link_to 'Departments', departments_path, class: "link" %>
-        </li>
-        <li class="footer-nav-item">
-            <%= link_to 'Schedules', meal_schedules_path, class: "link" %>
-        </li>
-        <li class="footer-nav-item">
-            <%= link_to 'Locations', locations_path, class: "link" %>
-        </li>
-    </ul>
-</nav>
+<% if user_signed_in? %>
+    <nav>
+        <ul class="footer-nav">
+            <li class="footer-nav-item">
+                <%= link_to 'Departments', departments_path, class: "link" %>
+            </li>
+            <li class="footer-nav-item">
+                <%= link_to 'Schedules', meal_schedules_path, class: "link" %>
+            </li>
+            <li class="footer-nav-item">
+                <%= link_to 'Locations', locations_path, class: "link" %>
+            </li>
+        </ul>
+    </nav>
+<% end %>

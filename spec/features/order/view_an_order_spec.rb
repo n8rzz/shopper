@@ -3,6 +3,15 @@ require 'rails_helper'
 RSpec.feature 'View an order', js: true do
   let!(:pending_order) { create(:order, :pending) }
   let!(:complete_order) { create(:order, :complete, :with_order_items) }
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
+  after do
+    sign_out user
+  end
 
   context 'when an order has pending status' do
     before :each do

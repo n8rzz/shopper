@@ -3,6 +3,15 @@ require 'rails_helper'
 RSpec.feature 'Create an Item', js: true do
   let(:department) { create(:department, name: 'Produce') }
   let!(:item) { create(:item, department: department) }
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
+  after do
+    sign_out user
+  end
 
   before :each do
     visit items_path

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+
   post 'order_items/create',          to: 'order_items#create'
   patch 'order_items/:id',            to: 'order_items#update'
   put 'order_items/:id',              to: 'order_items#update'

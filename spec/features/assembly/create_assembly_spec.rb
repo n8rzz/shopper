@@ -4,6 +4,15 @@ RSpec.feature 'Create an Assembly', js: true do
   let!(:item_apple) { create(:item, name: 'Apple') }
   let!(:item_banana) { create(:item, name: 'Banana') }
   let!(:item_cashew) { create(:item, name: 'Cashew') }
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
+  after do
+    sign_out user
+  end
 
   before :each do
     visit assemblies_path

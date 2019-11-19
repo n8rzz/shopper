@@ -1,6 +1,10 @@
 require "rails_helper"
 
 RSpec.describe "Order", :type => :request do
+  before do
+    sign_in create(:user)
+  end
+
   context 'Post #duplicate' do
     let(:complete_order) { create(:order, :complete) }
 
