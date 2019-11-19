@@ -7,6 +7,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'data and associations' do
+    it { should have_db_column(:username) }
     it { should have_db_column(:email) }
     it { should have_db_column(:encrypted_password) }
     it { should have_db_column(:reset_password_token) }
@@ -28,6 +29,7 @@ RSpec.describe User, type: :model do
   subject { @user }
 
   describe 'validations' do
+    it { should validate_presence_of(:username) }
     it { should validate_presence_of(:email) }
     # it { should validate_uniqueness_of(:email) }
     it { should validate_presence_of(:password) }
