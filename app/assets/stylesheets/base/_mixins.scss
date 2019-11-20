@@ -32,6 +32,10 @@
     border-radius: $BORDER_RADIUS_L;
 }
 
+@mixin isHidden {
+    display: none;
+}
+
 @mixin isVisuallyHidden {
     left: -9999px;
     opacity: 0;

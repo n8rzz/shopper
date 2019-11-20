@@ -23,7 +23,6 @@ before_install:
   - google-chrome-stable --headless --no-sandbox
 install:
   - ruby -v
-  - rails -v
   - node -v
   - npm i -g yarn
   - make update

@@ -1,24 +1,82 @@
-@import "../base//mixins";
+@import "../base/breakpoint";
+@import "../base/mixins";
 @import "../base/vars";
 
-.header-nav {
-    @include navContainer;
+$HEADER_HEIGHT: 30px;
+$Z_INDEX_STATIC: 5;
 
+.header {
+    @include boxShadow-subtle;
+
+    background-color: $COLOR_BG_SECONDARY;
     border-bottom: 1px solid #DEE8EA;
+    padding: 15px 0 $SPACING_1X 0;
+    z-index: $Z_INDEX_STATIC;
+
+    @include breakpoint('XS') {
+        @include flexBetween;
+
+        padding: $SPACING_1X $SPACING_2X 15px $SPACING_1X;
+    }
 }
 
-.header-nav-item {
-    @include navItem;
+.header-nav-container {
+    @include flexBetween;
+
+    padding: 0 $SPACING_2X;
+
+    @include breakpoint('XS') {
+        @include isVisuallyHidden;
+    }
+}
+
+.header-nav,
+.header-nav-user {
+    border-top: 1px solid #dedede;
+    margin-bottom: $SPACING_1X * -1;
+    margin-top: $SPACING_1X;
+    padding-bottom: $SPACING_1X;
+    padding-top: $SPACING_1X;
+
+    @include breakpoint('XS') {
+        border: none;
+        display: flex;
+        margin-top: 0;
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+}
+
+.mobileMenu-toggle_label {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.mobileMenu-toggle:not(:checked) ~ .header-nav,
+.mobileMenu-user-toggle:not(:checked) ~ .header-nav-user {
+    position: absolute;
+    transform: translateY(-1000px);
+
+    @include breakpoint('XS') {
+        position: relative;
+        transform: translateY(0);
+    }
 }
 
 .header-nav-item > * {
     display: block;
-    padding: $SPACING_3X $SPACING_2X;
+    padding: $SPACING_1X $SPACING_1X $SPACING_1X $SPACING_2X;
+    // padding: $SPACING_1X $SPACING_HALFX $SPACING_1X $SPACING_2X;
+
+    @include breakpoint('XS') {
+        padding-left: $SPACING_1X;
+    }
 }
 
-.header-nav-item:active,
-.header-nav-item:hover {
-    background-color: $COLOR_BG_PRIMARY;
-    text-decoration: none;
-    transition: all ease-in-out 200ms;
-}
+// .header-nav-item:active,
+// .header-nav-item:hover {
+//     background-color: $COLOR_BG_PRIMARY;
+//     text-decoration: none;
+//     transition: all ease-in-out 200ms;
+// }
