@@ -1,7 +1,38 @@
-<% if user_signed_in? %>
-    <nav>
+<header class="header">
+    <% if user_signed_in? %>
+        <input
+            type="checkbox"
+            name="mobileMenu-toggle"
+            id="mobileMenu-toggle"
+            class="mobileMenu-toggle u-isHidden"
+        />
+        <input
+            type="checkbox"
+            name="mobileMenu-user-toggle"
+            id="mobileMenu-user-toggle"
+            class="mobileMenu-user-toggle u-isHidden"
+        />
+
+        <div class="header-nav-container">
+            <label
+                class="mobileMenu-toggle_label"
+                for="mobileMenu-toggle"
+                aria-label="Open main menu"
+            >
+                <span class="u-isVisuallyHidden">Open main menu</span>
+                <%= octicon "three-bars", height: 24 %>
+            </label>
+            <label
+                class="mobileMenu-toggle_label"
+                for="mobileMenu-user-toggle"
+                aria-label="Open user menu"
+            >
+                <span class="u-isVisuallyHidden">Open user menu</span>
+                <%= octicon "person", height: 24 %>
+            </label>
+        </div>
+
         <ul class="header-nav">
-            <%# move to header partial %>
             <li class="header-nav-item">
                 <%= link_to 'Orders', orders_path, class: "link" %>
             </li>
@@ -11,9 +42,24 @@
             <li class="header-nav-item">
                 <%= link_to 'Items', items_path, class: "link" %>
             </li>
+            <li class="header-nav-item u-isHidden_xs">
+                <%= link_to 'Schedules', meal_schedules_path, class: "link" %>
+            </li>
+            <li class="header-nav-item u-isHidden_xs">
+                <%= link_to 'Departments', departments_path, class: "link" %>
+            </li>
+            <li class="header-nav-item u-isHidden_xs">
+                <%= link_to 'Locations', locations_path, class: "link" %>
+            </li>
+        </ul>
+
+        <ul class="header-nav-user">
+            <li class="header-nav-item">
+                <%= link_to 'Profile', edit_user_registration_path, class: "link" %>
+            </li>
             <li class="header-nav-item">
                 <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "link" %>
             </li>
         </ul>
-    </nav>
-<% end %>
+    <% end %>
+</header>

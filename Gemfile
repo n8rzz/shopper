@@ -8,6 +8,7 @@ gem 'devise', '4.7.1'
 gem 'dotenv', require: false
 gem 'faker', '>= 2.1.2'
 gem 'jbuilder', git: 'https://github.com/rails/jbuilder', branch: 'master'
+gem 'octicons_helper'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.3'
 gem 'rails', '6.0.0'

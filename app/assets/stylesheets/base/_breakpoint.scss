@@ -1,0 +1,24 @@
+@import "../base/vars";
+
+$MEDIA_QUERIES: true;
+$BREAKPOINT_SUBTRACTOR: calc(1rem / #{$BASE_FONT_SIZE}) !default;
+
+@mixin breakpoint($POINT) {
+    @if $MEDIA_QUERIES {
+        @if $POINT == XS {
+            @media (min-width: $XS) {
+                @content;
+            }
+        }
+        @else if $POINT == XS_INVERSE {
+            @media (max-width: ($XS - $BREAKPOINT_SUBTRACTOR)) {
+                @content;
+            }
+        }
+        @else if $POINT == SM {
+            @media (min-width: $SM) {
+                @content;
+            }
+        }
+    }
+}
