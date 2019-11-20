@@ -27,9 +27,21 @@ $FONT_SIZE_L: 22px;
 $FONT_SIZE_XL: 28px;
 $FONT_SIZE_XXL: 32px;
 
+$BASE_FONT_SIZE: $FONT_SIZE_M;
+
 $SPACING_HALFX: 5px;
 $SPACING_1X: 10px;
 $SPACING_2X: $SPACING_1X * 2;
 $SPACING_3X: $SPACING_1X * 3;
 $SPACING_4X: $SPACING_1X * 4;
 $SPACING_5X: $SPACING_1X * 5;
+
+$SITE_MAX_WIDTH: 80.625rem !default;
+$SIDE_PADDING: $SPACING_2X !default;
+
+$XXS: 25rem !default; // 400px
+$XS: 32.5rem !default; // 480px
+$SM: 48rem !default; // 768px
+$MD: 60rem !default; // 960px
+$LG: 73.13rem !default; // 1170px
+$XL: $SITE_MAX_WIDTH !default; // 1290px

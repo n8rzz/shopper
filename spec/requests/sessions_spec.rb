@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# TODO: devise is heavily tested already, but these needs some verification tests
 RSpec.describe "Sessions", :type => :request do
   it "signs user in and out" do
     user = create(:user)
