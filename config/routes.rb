@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  get 'static_pages/index'
+  get 'static_pages/after_signup'
+
+  devise_for :users, controllers: { registrations: 'registrations' }
 
   post 'order_items/create',          to: 'order_items#create'
   patch 'order_items/:id',            to: 'order_items#update'

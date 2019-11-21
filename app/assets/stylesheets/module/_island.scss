@@ -23,6 +23,8 @@
 
 .island-ft {
     background-color: $COLOR_LIGHT;
+    display: flex;
+    justify-content: center;
     margin: $SPACING_1X $SPACING_2X * -1 0 $SPACING_2X * -1;
     padding: $SPACING_2X;
     text-align: center;
