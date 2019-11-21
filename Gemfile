@@ -5,7 +5,6 @@ ruby '2.6.4'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise', '4.7.1'
-gem 'dotenv', require: false
 gem 'faker', '>= 2.1.2'
 gem 'jbuilder', git: 'https://github.com/rails/jbuilder', branch: 'master'
 gem 'octicons_helper'
@@ -21,6 +20,7 @@ gem 'webpacker-react', "~> 1.0.0.beta.1"
 group :development, :test do
   gem "binding_of_caller"
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'dotenv-rails', '2.7.5', require: false
   gem 'factory_bot_rails'
   gem 'launchy'
   gem 'minitest-reporters'

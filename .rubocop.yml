@@ -3,6 +3,7 @@ AllCops:
   Include:
     - Rakefile
     - config.ru
+    # - app/**/*.rb
   Exclude:
     - bin/**/*
     - db/migrate/**/*
@@ -10,7 +11,7 @@ AllCops:
     - src/**/*
     - node_modules/**/*
     - vendor/**/*
-Documentation:
+Style/Documentation:
   Enabled: false
 Metrics/LineLength:
   Max: 120

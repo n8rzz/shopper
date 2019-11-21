@@ -9,5 +9,10 @@ FactoryBot.define do
     end
 
     password {"123456"}
+    confirmed_at { DateTime.now }
+
+    trait :without_confirmed_at do
+      confirmed_at { nil }
+    end
   end
 end

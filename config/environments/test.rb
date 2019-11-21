@@ -1,4 +1,7 @@
+require 'dotenv-rails'
+
 Rails.application.configure do
+  Dotenv::Railtie.load
   # Settings specified here will take precedence over those in config/application.rb.
 
   # The test environment is used exclusively to run your application's

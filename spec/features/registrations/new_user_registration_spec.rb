@@ -25,9 +25,9 @@ RSpec.feature 'registrations#new', js: true do
       click_button('Sign up')
     end
 
-    it { expect(page).to have_current_path('/') }
-    it { expect(page).to have_selector('.js-notice', text: 'Welcome! You have signed up successfully.') }
-    it { expect(page).to_not have_selector('.error') }
+    it { expect(page).to have_current_path('/static_pages/after_signup') }
+    it { expect(page).to have_selector('.js-notice', text: 'A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.') }
+    it { expect(page).to have_text('Just one more step!') }
   end
 
   context 'with invalid information' do

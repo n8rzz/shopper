@@ -2,7 +2,8 @@ User.create(
   username: 'tom',
   email: 'me@example.com',
   password: '123456',
-  password_confirmation: '123456'
+  password_confirmation: '123456',
+  confirmed_at: DateTime.now
 )
 
 department_names = ['Produce', 'Meat', 'Bakery', 'Deli', 'Dairy', 'Fozen', 'Pasta', 'Bread']
