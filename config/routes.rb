@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'static_pages/after_signup'
 
   devise_for :users, controllers: { registrations: 'registrations' }
+  resources :groups, except: [:show]
 
   post 'order_items/create',          to: 'order_items#create'
   patch 'order_items/:id',            to: 'order_items#update'

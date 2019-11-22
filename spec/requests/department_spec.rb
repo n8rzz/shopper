@@ -23,7 +23,6 @@ RSpec.describe 'Department', :type => :request do
       end
 
       it { expect(response).to render_template(:new) }
-      it { expect(response).to_not render_template(:show) }
     end
 
     context 'create a Department' do

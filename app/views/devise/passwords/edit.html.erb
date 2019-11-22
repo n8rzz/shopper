@@ -5,7 +5,7 @@
         </h2>
     </div>
 
-    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, autocomplete: false }) do |f| %>
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, autocomplete: 'off' }) do |f| %>
         <div class="island-bd">
             <%= f.error_notification %>
 

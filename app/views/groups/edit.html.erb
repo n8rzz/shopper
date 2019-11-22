@@ -1,0 +1,18 @@
+<ul class="stereo">
+    <li>
+        <h2 class="hdg hdg_1">
+            Edit Group
+        </h2>
+    </li>
+    <li>
+        <%= link_to 'Back', groups_path, class: 'link' %>
+    </li>
+</ul>
+
+<div class="island">
+    <div class="island-bd">
+        <%= render 'form', group: @group %>
+    </div>
+</div>
+
+

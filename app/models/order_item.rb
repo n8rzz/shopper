@@ -45,9 +45,7 @@ class OrderItem < ApplicationRecord
   end
 
   def assembly_name_or_null
-    if self.assembly_id == nil
-      return ''
-    end
+    return '' if self.assembly_id == nil
 
     self.assembly.name
   end

@@ -9,7 +9,6 @@ RSpec.feature 'registrations#new', js: true do
       visit new_user_registration_path
     end
 
-    it { expect(page).to have_selector('.island-ft', text: 'Already have an account? Log in') }
     it { expect(page).to have_link('Log in') }
   end
 

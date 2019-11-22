@@ -1,0 +1,18 @@
+<h2 class="hdg hdg_1">Groups</h2>
+
+<ul class="stero">
+    <% @groups.each do |group| %>
+        <li class="listItem">
+            <div class="listItem-hd">
+                <ul class="stereo">
+                    <li>
+                        <%= link_to group.name, edit_group_path(group), class: 'link' %>
+                    </li>
+                    <li>
+                        <%= button_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn' %>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    <% end %>
+</ul>
