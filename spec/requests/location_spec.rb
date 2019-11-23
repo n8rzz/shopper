@@ -8,7 +8,7 @@ RSpec.describe "Location", :type => :request do
   context '/locations route' do
     context 'renders #index template' do
       before :each do
-        get "/locations"
+        get locations_path
       end
 
       it { expect(response).to render_template(:index) }
@@ -19,7 +19,7 @@ RSpec.describe "Location", :type => :request do
   context '/locations/new route' do
     context 'renders #new template' do
       before :each do
-        get "/locations/new"
+        get new_location_path
       end
 
       it { expect(response).to render_template(:new) }

@@ -21,6 +21,8 @@ RSpec.describe User, type: :model do
     it { should have_db_column(:last_sign_in_ip) }
     it { should have_db_index(:email) }
     it { should have_db_index(:reset_password_token) }
+    it { should have_many(:groups).through(:user_groups) }
+    it { should have_many(:user_groups).dependent(:destroy) }
   end
 
   before do
@@ -42,5 +44,15 @@ RSpec.describe User, type: :model do
 
       expect { confirmable_user.save }.to change(Devise.mailer.deliveries, :count).by(1)
     end
+  end
+
+  describe '.has_groups?' do
+    let!(:ungrouped_user) { create(:user) }
+    let(:user) { create(:user) }
+    let(:group) { create(:group) }
+    let!(:user_group) { create(:user_group, user_id: user.id, group_id: group.id) }
+
+    it { expect(ungrouped_user.has_groups?).to be(false) }
+    it { expect(user.has_groups?).to be(true) }
   end
 end

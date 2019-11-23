@@ -1,0 +1,36 @@
+<%= simple_form_for(@group, html: { autocomplete: 'off' }) do |f| %>
+    <div class="island-bd">
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+        <div class="vr_3">
+            <div class="vr_2">
+                <div class="form-group mix-form-group_full">
+                    <%= f.label :name %>
+                </div>
+                <div class="form-group mix-form-group_full">
+                    <%= f.input_field :name, placeholder: 'name', autofocus: true, class: 'input-text' %>
+                </div>
+                <div class="form-group mix-form-group_full">
+                    <%= f.error :name, id: 'name_error' %>
+                </div>
+            </div>
+
+            <div class="vr_2">
+                <div class="form-group mix-form-group_full">
+                    <%= f.label :description %>
+                </div>
+                <div class="form-group mix-form-group_full">
+                    <%= f.text_area :description, placeholder: 'description', class: 'input-text', rows: 5 %>
+                </div>
+                <div class="form-group mix-form-group_full">
+                    <%= f.error :description, id: 'description_error' %>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <%= f.button :submit, class: "btn btn-submit mix-btn_inverse" %>
+        </div>
+    </div>
+<% end %>
