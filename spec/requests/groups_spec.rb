@@ -11,7 +11,7 @@ RSpec.describe "Groups", type: :request do
     sign_out user
   end
 
-  context '/groups route' do
+  context 'GET /groups route' do
     context 'renders #index template' do
       before :each do
         get groups_path
@@ -21,7 +21,7 @@ RSpec.describe "Groups", type: :request do
     end
   end
 
-  context '/groups/new route' do
+  context 'GET /groups/new route' do
     context 'renders #new template' do
       before :each do
         get new_group_path
@@ -37,11 +37,23 @@ RSpec.describe "Groups", type: :request do
 
       it { expect(response).to redirect_to(groups_url) }
 
-      it "redirects to the Groups page" do
+      it "redirects to the Group#index page" do
         follow_redirect!
 
         expect(response).to render_template(:index)
       end
+    end
+  end
+
+  context 'GET /groups/:id route' do
+    let(:group) { create(:group, user_ids: user.id) }
+
+    context 'renders #show template' do
+      before :each do
+        get group_path(group.id)
+      end
+
+      it { expect(response).to render_template(:show) }
     end
   end
 

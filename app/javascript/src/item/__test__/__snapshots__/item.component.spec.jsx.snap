@@ -14,7 +14,7 @@ exports[`Item renders correctly with valid props 1`] = `
         className="listItem-hd"
       >
         <h2
-          className="hdg hdg_2"
+          className="hdg hdg_3"
         >
           <a
             className="link"

@@ -39,7 +39,7 @@ RSpec.feature 'Group#index', js: true do
 
     it { expect(page).to have_current_path(groups_path) }
     it { expect(page).to_not have_link('New Group') }
-    it { expect(page).to have_content(group.name) }
+    it { expect(page).to have_link(group.name, href: group_path(group.id)) }
     it { expect(page).to have_button('Destroy') }
   end
 end

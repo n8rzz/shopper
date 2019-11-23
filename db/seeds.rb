@@ -1,20 +1,7 @@
-User.create(
-  username: 'tom',
-  email: 'me@example.com',
-  password: '123456',
-  password_confirmation: '123456',
-  confirmed_at: DateTime.now
-)
+require_relative './seeds/01_groups.rb'
+require_relative './seeds/02_users.rb'
+require_relative './seeds/03_user_groups.rb'
 
-# Group.create(
-#   name: Faker::Company.industry,
-#   description: Faker::Company.bs,
-# )
-
-# UserGroup.create(
-#   user_id: User.first.id,
-#   group_id: Group.first.id
-# )
 
 department_names = ['Produce', 'Meat', 'Bakery', 'Deli', 'Dairy', 'Fozen', 'Pasta', 'Bread']
 department_names.each do |department_name|

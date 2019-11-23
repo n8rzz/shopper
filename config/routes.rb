@@ -2,8 +2,13 @@ Rails.application.routes.draw do
   get 'static_pages/index'
   get 'static_pages/after_signup'
 
-  devise_for :users, controllers: { registrations: 'registrations' }
-  resources :groups, except: [:show]
+  devise_for :users, controllers: {
+    invitations: 'users/invitations',
+    registrations: 'users/registrations'
+  }
+
+  resources :groups
+  delete 'groups/:id/members/:member_id', to: 'user_groups#delete_member'
 
   post 'order_items/create',          to: 'order_items#create'
   patch 'order_items/:id',            to: 'order_items#update'

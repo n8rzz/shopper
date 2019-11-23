@@ -1,0 +1,7 @@
+<%= simple_form_for(User.new, url: user_invitation_path, html: { autocomplete: "off" }) do |f| %>
+    <%= f.error :email, id: "email_error" %>
+
+    <%= f.input :invitation_group_id, :as => :hidden, :input_html => { value: group_id } %>
+    <%= f.input_field :email, placeholder: "Email address", class: "input-text", label: false %>
+    <%= f.button :submit, 'Invite', class: "btn btn-submit mix-btn_inverse" %>
+<% end %>

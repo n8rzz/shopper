@@ -10,7 +10,7 @@ export function Item(props) {
             <div className={'listItem mix-listItem_flex'}>
                 <div className={'listItem-content'}>
                     <div className={'listItem-hd'}>
-                        <h2 className={'hdg hdg_2'}>
+                        <h2 className={'hdg hdg_3'}>
                             <a
                                 className={'link'}
                                 href={editItemPath}

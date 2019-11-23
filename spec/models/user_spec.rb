@@ -19,6 +19,7 @@ RSpec.describe User, type: :model do
     it { should have_db_column(:last_sign_in_at) }
     it { should have_db_column(:current_sign_in_ip) }
     it { should have_db_column(:last_sign_in_ip) }
+    it { should have_db_column(:invitation_group_id) }
     it { should have_db_index(:email) }
     it { should have_db_index(:reset_password_token) }
     it { should have_many(:groups).through(:user_groups) }
@@ -32,7 +33,7 @@ RSpec.describe User, type: :model do
   subject { @user }
 
   describe 'validations' do
-    it { should validate_presence_of(:username) }
+    # it { should validate_presence_of(:username) }
     it { should validate_presence_of(:email) }
     # it { should validate_uniqueness_of(:email) }
     it { should validate_presence_of(:password) }
@@ -54,5 +55,17 @@ RSpec.describe User, type: :model do
 
     it { expect(ungrouped_user.has_groups?).to be(false) }
     it { expect(user.has_groups?).to be(true) }
+  end
+
+  describe '.remove_invitation_group_id_after_invitaion_acceptence' do
+    let(:user) { create(:user) }
+    let(:group) { create(:group, user_ids: user.id) }
+    let(:invited_unconfirmed_user) { create(:user, invitation_group_id: group.id) }
+
+    before :each do
+      User.remove_invitation_group_id_after_invitaion_acceptence(invited_unconfirmed_user)
+    end
+
+    it { expect(invited_unconfirmed_user.invitation_group_id).to be_nil }
   end
 end

@@ -16,7 +16,7 @@ exports[`OrderList when called with more than 0 \`ordersByConcern\` renders corr
       className="vr_1"
     >
       <h2
-        className="hdg mix-hdg_large"
+        className="hdg hdg_2"
       >
         Pending
       </h2>
@@ -65,7 +65,7 @@ exports[`OrderList when called with more than 0 \`ordersByConcern\` renders corr
       className="vr_1"
     >
       <h2
-        className="hdg mix-hdg_large"
+        className="hdg hdg_2"
       >
         Active
       </h2>
@@ -103,7 +103,7 @@ exports[`OrderList when called with more than 0 \`ordersByConcern\` renders corr
       className="vr_1"
     >
       <h2
-        className="hdg mix-hdg_large"
+        className="hdg hdg_2"
       >
         Complete
       </h2>
