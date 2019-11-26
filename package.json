@@ -54,6 +54,7 @@
       "!**/node_modules/**",
       "!**/vendor/**"
     ],
+    "coverageDirectory": "<rootDir>/coverage/fe/",
     "coverageThreshold": {
       "global": {
         "branches": 50,
