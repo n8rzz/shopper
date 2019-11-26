@@ -28,7 +28,7 @@ function _buildConcernGroupJsx(concern, locationMap) {
             key={`orderList-concern-${concern.name}`}
         >
             <div className={'vr_1'}>
-                <h2 className={'hdg mix-hdg_large'}>
+                <h2 className={'hdg hdg_2'}>
                     {concern.name}
                 </h2>
             </div>

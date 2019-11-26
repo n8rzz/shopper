@@ -9,6 +9,7 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'factory_bot_rails'
 require 'devise'
+require 'email_spec'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -41,6 +42,23 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
   config.include Devise::Test::IntegrationHelpers, type: :feature
+  config.include EmailSpec::Helpers
+  config.include EmailSpec::Matchers
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
+
+  config.after(:each) do
+    reset_mailer
+  end
 end
 
 Shoulda::Matchers.configure do |config|
@@ -65,20 +83,8 @@ end
 
 Capybara.configure do |config|
   # change this to :chrome to observe tests in a real browser
+  # config.javascript_driver = :chrome
   config.javascript_driver = :headless_chrome
-end
-
-RSpec.configure do |config|
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
-  end
-
-  config.around(:each) do |example|
-    DatabaseCleaner.cleaning do
-      example.run
-    end
-  end
 end
 
 # see: https://github.com/thoughtbot/shoulda-matchers/issues/1167

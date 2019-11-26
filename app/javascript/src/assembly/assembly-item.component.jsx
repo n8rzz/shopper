@@ -62,7 +62,7 @@ export class AssemblyItem extends React.Component {
             <div className={`listItem js-assembly-${this.props.assembly.id}`}>
                 <div className={'listItem-hd'}>
                     <h2
-                        className={'hdg hdg_2'}
+                        className={'hdg hdg_3'}
                         onClick={this.props.onClickAccordionTriggerHandler}
                     >
                         {this.props.assembly.name}

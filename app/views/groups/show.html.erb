@@ -1,0 +1,83 @@
+<div class="vr_4">
+    <ul class="stereo">
+        <li>
+            <h2 class="hdg hdg_1">
+                <%= @group.name %>
+            </h2>
+        </li>
+        <li>
+            <ul class="hlist hlist-divided">
+                <li>
+                    <%= link_to 'Back', groups_path, class: 'link' %>
+                </li>
+                <li>
+                    <%= link_to 'Edit', edit_group_path(@group.id), class: 'link' %>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="orderMeta">
+        <%= @group.description %>
+    </div>
+</div>
+
+<div class="vr_2">
+    <ul class="stereo">
+        <li>
+            <h2 class="hdg hdg_2">
+                Members
+            </h2>
+        </li>
+        <li>
+            <%= render partial: 'shared/invite_user_form', locals: { group_id: @group.id } %>
+        </li>
+    </ul>
+</div>
+
+<div class="vr_4">
+    <ul class="vlist">
+        <% @group.users.each do |user| %>
+            <li class="listItem">
+                <div class="listItem-hd">
+                    <ul class="stereo">
+                        <li>
+                            <%= user.username %>
+                        </li>
+                        <% if user.id != @current_user.id %>
+                            <li>
+                                <%= link_to 'Remove',
+                                    { controller: 'user_groups', action: 'delete_member', id: @group.id, member_id: user.id },
+                                    class: 'link',
+                                    method: :delete,
+                                    data: { confirm: 'Are you sure you want to remove this member?' }
+                                %>
+                            </li>
+                        <% end %>
+                    </ul>
+                </div>
+                <div class="listItem-ft">
+                    <%= user.email %>
+                </div>
+            </li>
+        <% end %>
+    </ul>
+</div>
+
+
+<% if @pending_invites.length > 0 %>
+    <div class="vr_2">
+        <h2 class="hdg hdg_2">
+            Pending Invites
+        </h2>
+    </div>
+    <ul class="vlist">
+        <% @pending_invites.each do |user| %>
+            <li class="listItem">
+                <div class="listItem-ft">
+                    <%= user.email %>
+                </div>
+            </li>
+        <% end %>
+    </ul>
+<% end %>

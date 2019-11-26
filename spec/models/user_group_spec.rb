@@ -22,7 +22,17 @@ RSpec.describe UserGroup, type: :model do
     it { should be_valid }
     it { should respond_to(:group_id) }
     it { should respond_to(:user_id) }
-    # it { should validate_presence_of(:group_id) }
-    # it { should validate_presence_of(:user_id) }
+  end
+
+  describe '.add_user_to_invited_group' do
+    let(:user) { create(:user) }
+    let(:group) { create(:group, user_ids: user.id) }
+    let(:invited_unconfirmed_user) { create(:user, invitation_group_id: group.id) }
+
+    before :each do
+      UserGroup.add_user_to_invited_group(invited_unconfirmed_user)
+    end
+
+    it { expect(UserGroup.where(group_id: group.id, user_id: invited_unconfirmed_user.id)).to_not be_nil }
   end
 end
