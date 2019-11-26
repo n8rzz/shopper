@@ -1,5 +1,5 @@
 log_color_green = (echo "\x1B[32m>> $1\x1B[39m")
-.PHONY: update lint test test-fe test-be-unit test-feature release sync
+.PHONY: update lint test test-fe test-be-unit test-feature release sync launch-reports
 
 update: ## install gems and npm packages
 	@echo ""
@@ -63,6 +63,9 @@ sync: ## syncs gitlab remote with github remote on {branch}. expects `b={BRANCH}
 	git pull origin ${b}
 	@echo ""
 	git push github ${b}
+
+launch-reports: ## spings up an http-server to serve coverage reports for BE tests
+	http-server ./coverage/ -d -p 9987 -c -1
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
