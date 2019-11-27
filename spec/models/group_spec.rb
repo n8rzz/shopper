@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Group, type: :model do
-  it 'has a valid factory' do
-    expect(build(:group)).to be_instance_of(Group)
-    # expect(build(:group, :without_user)).to be_instance_of(Group)
+  context 'has a valid factories' do
+    it { expect(build(:group)).to be_instance_of(Group) }
   end
 
   describe 'data and associations' do
@@ -12,6 +11,8 @@ RSpec.describe Group, type: :model do
     it { should_not have_db_column(:user_id) }
     it { should have_many(:users).through(:user_groups) }
     it { should have_many(:user_groups).dependent(:destroy) }
+    it { should have_many(:locations).dependent(:destroy) }
+    it { should have_many(:departments).dependent(:destroy) }
   end
 
   before do

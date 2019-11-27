@@ -4,8 +4,8 @@ class DepartmentsController < ApplicationController
   # GET /departments
   # GET /departments.json
   def index
-    @department = Department.new
-    @departments = Department.by_name
+    @department = current_owner.departments.new
+    @departments = current_owner.departments.by_name
   end
 
   # GET /departments/1
@@ -15,7 +15,7 @@ class DepartmentsController < ApplicationController
 
   # GET /departments/new
   def new
-    @department = Department.new
+    @department = current_owner.departments.new
   end
 
   # GET /departments/1/edit
@@ -25,7 +25,7 @@ class DepartmentsController < ApplicationController
   # POST /departments
   # POST /departments.json
   def create
-    @department = Department.new(department_params)
+    @department = current_owner.departments.new(department_params)
 
     respond_to do |format|
       if @department.save
@@ -65,7 +65,7 @@ class DepartmentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_department
-      @department = Department.find(params[:id])
+      @department = current_owner.departments.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

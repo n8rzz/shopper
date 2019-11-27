@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
 
   after_action :set_csrf_cookie
 
+  def current_owner
+    return current_user if current_user.groups.empty?
+
+    current_user.groups.first
+  end
+
   protected
     def after_invite_path_for(current_inviter, resource)
       group_path(resource.invitation_group_id)

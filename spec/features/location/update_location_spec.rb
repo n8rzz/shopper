@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'Update a Location', js: true do
-  let!(:location) { create(:location) }
   let(:user) { create(:user) }
+  let!(:location) { create(:location, ownable: user) }
 
   before do
     sign_in user
