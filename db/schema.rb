@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_27_172721) do
+ActiveRecord::Schema.define(version: 2019_11_28_055932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,7 +52,10 @@ ActiveRecord::Schema.define(version: 2019_11_27_172721) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "department_id"
+    t.string "ownable_type"
+    t.bigint "ownable_id"
     t.index ["department_id"], name: "index_items_on_department_id"
+    t.index ["ownable_type", "ownable_id"], name: "index_items_on_ownable_type_and_ownable_id"
   end
 
   create_table "location_departments", force: :cascade do |t|

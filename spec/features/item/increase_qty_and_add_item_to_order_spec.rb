@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.feature 'Increase qty and add Item to an order', js: true do
-  let!(:order) { create(:order, :pending) }
-  let!(:item) { create(:item) }
   let(:user) { create(:user) }
+  let(:department) { create(:department, ownable: user) }
+  let!(:order) { create(:order, :pending) }
+  let!(:item) { create(:item, department: department, ownable: user) }
 
   before do
     sign_in user
