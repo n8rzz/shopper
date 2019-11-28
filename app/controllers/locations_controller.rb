@@ -4,13 +4,13 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def index
-    @location = Location.new
-    @locations = Location.by_name
+    @location = current_owner.locations.new
+    @locations =current_owner.locations.by_name
   end
 
   # GET /locations/new
   def new
-    @location = Location.new
+    @location = current_owner.locations.new
   end
 
   # GET /locations/1/edit
@@ -22,7 +22,8 @@ class LocationsController < ApplicationController
   # POST /locations
   # POST /locations.json
   def create
-    @location = Location.new(location_params)
+    # byebug
+    @location = current_owner.locations.new(location_params)
 
     respond_to do |format|
       if @location.save
@@ -53,6 +54,7 @@ class LocationsController < ApplicationController
   # DELETE /locations/1.json
   def destroy
     @location.destroy
+
     respond_to do |format|
       format.html { redirect_to locations_url, notice: 'Location was successfully destroyed.' }
       format.json { head :no_content }
@@ -60,12 +62,10 @@ class LocationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_location
-      @location = Location.find(params[:id])
+      @location = current_owner.locations.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
       params.require(:location).permit(:name, :city, :state)
     end

@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.feature 'Add location_department to sorted departments', js: true do
-  let!(:location) { create(:location) }
+  let(:user) { create(:user) }
+  let!(:location) { create(:location, ownable: user) }
   let!(:department_meat) { create(:department, name: 'meat') }
   let!(:department_produce) { create(:department, name: 'produce') }
   let!(:department_bakery) { create(:department, name: 'bakery') }
   let!(:location_department_meat) { create(:location_department, location_id: location.id, department_id: department_meat.id, sort_order: 0) }
   let!(:location_department_produce) { create(:location_department, location_id: location.id, department_id: department_produce.id, sort_order: 1) }
-  let(:user) { create(:user) }
 
   before do
     sign_in user

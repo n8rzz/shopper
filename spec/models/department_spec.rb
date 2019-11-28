@@ -1,12 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Department, type: :model do
-  it 'has a valid factory' do
-    expect(build(:department)).to be_instance_of(Department)
+  context 'has a valid factories' do
+    it { expect(build(:department)).to be_instance_of(Department) }
+    it { expect(build(:department, :ownable_group)).to be_instance_of(Department) }
+    it { expect(build(:department, :ownable_user)).to be_instance_of(Department) }
   end
 
   describe 'data and associations' do
     it { should have_db_column(:name) }
+    it { should have_db_column(:ownable_id) }
+    it { should have_db_column(:ownable_type) }
+    it { should belong_to(:ownable) }
     it { should have_many(:items) }
     it { should have_many(:order_items) }
     it { should have_many(:location_departments) }

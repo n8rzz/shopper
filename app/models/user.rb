@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :user_groups, dependent: :destroy
   has_many :groups, through: :user_groups
+  has_many :locations, as: :ownable, dependent: :destroy
+  has_many :departments, as: :ownable, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :lockable, and :omniauthable

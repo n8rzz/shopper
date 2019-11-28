@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  it 'has a valid factory' do
-    expect(build(:user)).to be_instance_of(User)
-    expect(build(:user, :without_confirmed_at)).to be_valid
-    expect(build(:user, email: nil)).to_not be_valid
+  context 'has a valid factories' do
+    it { expect(build(:user)).to be_instance_of(User) }
+    it { expect(build(:user, :without_confirmed_at)).to be_valid }
+    it { expect(build(:user, email: nil)).to_not be_valid }
   end
 
   describe 'data and associations' do
@@ -24,6 +24,8 @@ RSpec.describe User, type: :model do
     it { should have_db_index(:reset_password_token) }
     it { should have_many(:groups).through(:user_groups) }
     it { should have_many(:user_groups).dependent(:destroy) }
+    it { should have_many(:locations).dependent(:destroy) }
+    it { should have_many(:departments).dependent(:destroy) }
   end
 
   before do

@@ -1,16 +1,19 @@
-puts '=== Seeding Users'
+puts '=== Users'
 
+password = 's@f3wo4d'
+
+# This use belongs to a group
 admin = User.create(
   username: 'me',
   email: 'me@example.com',
-  password: 's@f3wo4d',
-  password_confirmation: 's@f3wo4d',
+  password: password,
+  password_confirmation: password,
   confirmed_at: DateTime.now
 )
 
 print '.'
 
-password = Faker::Internet.password(min_length: 6)
+# This user does not belong to a group
 member = User.create(
   username: Faker::Internet.username,
   email: 'member@example.com',

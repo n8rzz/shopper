@@ -9,6 +9,8 @@ updated_a:    datetime
 
 =end
 class Location < ApplicationRecord
+  belongs_to :ownable, polymorphic: true
+
   has_many :orders, dependent: :destroy
   has_many :location_departments, dependent: :nullify
   has_many :departments, through: :location_departments, dependent: :nullify

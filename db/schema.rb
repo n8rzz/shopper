@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_25_062621) do
+ActiveRecord::Schema.define(version: 2019_11_27_172721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(version: 2019_11_25_062621) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "ownable_type"
+    t.bigint "ownable_id"
+    t.index ["ownable_type", "ownable_id"], name: "index_departments_on_ownable_type_and_ownable_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -68,6 +71,9 @@ ActiveRecord::Schema.define(version: 2019_11_25_062621) do
     t.string "state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "ownable_type"
+    t.bigint "ownable_id"
+    t.index ["ownable_type", "ownable_id"], name: "index_locations_on_ownable_type_and_ownable_id"
   end
 
   create_table "meal_schedules", force: :cascade do |t|
