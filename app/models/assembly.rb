@@ -7,6 +7,8 @@ updated_at:   datetime
 
 =end
 class Assembly < ApplicationRecord
+  belongs_to :ownable, polymorphic: true
+
   has_many :order_items, dependent: :destroy
   has_many :orders, through: :order_items
   has_many :assembly_items, dependent: :destroy

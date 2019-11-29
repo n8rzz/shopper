@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'Delete an Assembly', js: true do
-  let!(:assembly) { create(:assembly, :with_item) }
   let(:user) { create(:user) }
+  let!(:assembly) { create(:assembly, :with_item, ownable: user) }
 
   before do
     sign_in user
@@ -26,9 +26,9 @@ RSpec.feature 'Delete an Assembly', js: true do
     visit edit_assembly_path(assembly.id)
 
     accept_alert do
-      click_link 'Destroy'
+      click_link('Destroy')
     end
 
-    expect(page).to have_text 'Assembly was deleted successfully'
+    expect(page).to have_text('Assembly was deleted successfully')
   end
 end

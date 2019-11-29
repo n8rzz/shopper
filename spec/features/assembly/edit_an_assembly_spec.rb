@@ -1,8 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'Edit an Assembly', js: true do
-  let!(:assembly) { create(:assembly, :with_item) }
   let(:user) { create(:user) }
+  let(:department) { create(:department, ownable: user) }
+  let(:item1) { create(:item, department: department, ownable: user) }
+  let(:item2) { create(:item, department: department, ownable: user) }
+  let(:assembly) { create(:assembly, item_ids: [item1.id, item2.id], ownable: user) }
 
   before do
     sign_in user
@@ -12,13 +15,15 @@ RSpec.feature 'Edit an Assembly', js: true do
     sign_out user
   end
 
-  scenario 'updates a record' do
-    visit edit_assembly_path(assembly.id)
+  context 'updates a record' do
+    before :each do
+      visit edit_assembly_path(assembly.id)
 
-    fill_in('Name', with: '$Texas')
-    click_button('Update Assembly')
+      fill_in('Name', with: '$Texas')
+      click_button('Update Assembly')
+    end
 
-    expect(page).to have_text('Assembly was updated successfully')
-    expect(page).to have_text('$Texas')
+    it { expect(page).to have_selector('.js-notice', text: 'Assembly was updated successfully') }
+    it { expect(page).to have_text('$Texas') }
   end
 end

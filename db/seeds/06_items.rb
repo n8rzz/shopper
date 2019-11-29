@@ -13,7 +13,6 @@ rand(13..42).times do
   print '.'
 end
 
-
 user_owner = User.find_by(email: 'member@example.com')
 
 rand(13).times do
