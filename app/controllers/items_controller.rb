@@ -4,16 +4,16 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @item = Item.new
-    @items = Item.by_name
-    @departments = Department.by_name
+    @item = current_owner.items.new
+    @items = current_owner.items.by_name
+    @departments = current_owner.departments.by_name
     @order_item = OrderItem.new
     @items_by_concern = nil
   end
 
   # GET /items/new
   def new
-    @item = Item.new
+    @item = current_owner.items.new
   end
 
   # GET /items/1/edit
@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = Item.new(item_params)
+    @item = current_owner.items.new(item_params)
 
     respond_to do |format|
       if @item.save
@@ -64,7 +64,7 @@ class ItemsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
-      @item = Item.find(params[:id])
+      @item = current_owner.items.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,13 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-  it 'has a valid factory' do
-    expect(build(:item)).to be_instance_of(Item)
+  context 'has valid factories' do
+    it { expect(build(:item)).to be_instance_of(Item) }
+    it { expect(build(:item, :ownable_group)).to be_instance_of(Item) }
+    it { expect(build(:item, :ownable_user)).to be_instance_of(Item) }
   end
 
   describe 'data and associations' do
     it { should have_db_column(:name) }
+    it { should have_db_column(:ownable_id) }
+    it { should have_db_column(:ownable_type) }
     it { should belong_to(:department) }
+    it { should belong_to(:ownable) }
     it { should have_many(:order_items) }
     it { should have_many(:assembly_items) }
     it { should have_many(:assemblies) }
@@ -50,7 +55,6 @@ RSpec.describe Item, type: :model do
       it { expect(@item_hash[item_2['id']]).to eq(item_2) }
     end
   end
-
 
   # FIXME: fill this test in
   # describe '.group_by_department' do

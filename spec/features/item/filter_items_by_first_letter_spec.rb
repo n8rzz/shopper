@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'Filter Items by first letter', js: true do
-  let(:produce) { create(:department, name: 'Produce') }
-  let(:meat) { create(:department, name: 'Meat') }
-  let!(:produce_item) { create(:item, name: 'banana', department: produce) }
-  let!(:meat_item) { create(:item, name: 'hot dog', department: meat) }
   let(:user) { create(:user) }
+  let(:produce) { create(:department, name: 'Produce', ownable: user) }
+  let(:meat) { create(:department, name: 'Meat', ownable: user) }
+  let!(:produce_item) { create(:item, name: 'banana', department: produce, ownable: user) }
+  let!(:meat_item) { create(:item, name: 'hot dog', department: meat, ownable: user) }
 
   before do
     sign_in user
@@ -17,7 +17,7 @@ RSpec.feature 'Filter Items by first letter', js: true do
 
   before do
     visit items_path
-    click_link 'Filter'
+    click_link('Filter')
   end
 
   it { expect(page).to have_link('Filter') }

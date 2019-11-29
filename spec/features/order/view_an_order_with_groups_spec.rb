@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.feature 'View an order with groups', js: true do
-  let!(:item) { create(:item) }
-  let!(:pending_order) { create(:order, :pending) }
   let(:user) { create(:user) }
+  let(:department) { create(:department, ownable: user)}
+  let!(:item) { create(:item, department: department, ownable: user) }
+  let!(:pending_order) { create(:order, :pending) }
 
   before do
     sign_in user

@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature 'Item#index', js: true do
-  let!(:item) { create(:item) }
   let(:user) { create(:user) }
+  let(:department) { create(:department, ownable: user) }
+  let!(:item) { create(:item, department: department, ownable: user) }
 
   before do
     sign_in user

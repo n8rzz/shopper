@@ -9,6 +9,7 @@ department_id:  integer
 =end
 class Item < ApplicationRecord
   belongs_to :department
+  belongs_to :ownable, polymorphic: true
 
   has_many :order_items, dependent: :destroy
   has_many :orders, through: :order_items
@@ -28,7 +29,7 @@ class Item < ApplicationRecord
     group_by_department.sort_by { |k, v| k.name.to_s }
   end
 
-  # TODO: use this in places where we reate these maps in components
+  # TODO: use this in places where we create these maps in components
   def self.by_id
     Item.all.index_by(&:id)
   end

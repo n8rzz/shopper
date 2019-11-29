@@ -13,6 +13,7 @@ RSpec.describe Group, type: :model do
     it { should have_many(:user_groups).dependent(:destroy) }
     it { should have_many(:locations).dependent(:destroy) }
     it { should have_many(:departments).dependent(:destroy) }
+    it { should have_many(:items).dependent(:destroy) }
   end
 
   before do
