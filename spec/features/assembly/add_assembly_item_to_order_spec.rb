@@ -1,9 +1,12 @@
 require 'rails_helper'
 
 RSpec.feature 'Add assembly item to Order', js: true do
-  let!(:pending_order) { create(:order, :pending) }
-  let!(:assembly) { create(:assembly, :with_item) }
   let(:user) { create(:user) }
+  let(:department) { create(:department, ownable: user) }
+  let(:item1) { create(:item, department: department, ownable: user) }
+  let(:item2) { create(:item, department: department, ownable: user) }
+  let!(:assembly) { create(:assembly, item_ids: [item1.id, item2.id], ownable: user) }
+  let!(:pending_order) { create(:order, :pending) }
 
   before do
     sign_in user

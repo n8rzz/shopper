@@ -1,9 +1,12 @@
 require 'rails_helper'
 
 RSpec.feature 'Add assembly to Order', js: true do
-  let!(:pending_order) { create(:order, :pending) }
-  let!(:assembly) { create(:assembly, :with_items) }
   let(:user) { create(:user) }
+  let(:department) { create(:department, ownable: user) }
+  let(:item1) { create(:item, department: department, ownable: user) }
+  let(:item2) { create(:item, department: department, ownable: user) }
+  let!(:assembly) { create(:assembly, item_ids: [item1.id, item2.id], ownable: user) }
+  let!(:pending_order) { create(:order, :pending) }
 
   before do
     sign_in user
@@ -22,7 +25,7 @@ RSpec.feature 'Add assembly to Order', js: true do
   end
 
   context 'adds assembly to an order' do
-    it { expect(page).to have_text("#{assembly.name} added to order") }
+    it { expect(page).to have_selector('.js-notice', text: "#{assembly.name} added to order") }
   end
 
   context 'adds each item to pending_order' do

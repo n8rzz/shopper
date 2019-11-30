@@ -4,15 +4,15 @@ class AssembliesController < ApplicationController
   # GET /assemblies
   # GET /assemblies.json
   def index
-    @assemblies = Assembly.all.order('name ASC')
+    @assemblies = current_owner.assemblies.all.order('name ASC')
     @assembly_items = AssemblyItem.all
-    @departments = Department.all
-    @items = Item.all
+    @departments = current_owner.departments.all
+    @items = current_owner.items.all
   end
 
   # GET /assemblies/new
   def new
-    @assembly = Assembly.new
+    @assembly = current_owner.assemblies.new
   end
 
   # GET /assemblies/1/edit
@@ -22,7 +22,7 @@ class AssembliesController < ApplicationController
   # POST /assemblies
   # POST /assemblies.json
   def create
-    @assembly = Assembly.new(assembly_params)
+    @assembly = current_owner.assemblies.new(assembly_params)
 
     respond_to do |format|
       if @assembly.save
@@ -62,7 +62,7 @@ class AssembliesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_assembly
-      @assembly = Assembly.find(params[:id])
+      @assembly = current_owner.assemblies.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

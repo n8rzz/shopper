@@ -1,8 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'Assembly#index', js: true do
-  let!(:assembly) { create(:assembly, :with_item) }
   let(:user) { create(:user) }
+  let(:department) { create(:department, ownable: user) }
+  let(:item1) { create(:item, department: department, ownable: user) }
+  let(:item2) { create(:item, department: department, ownable: user) }
+  let!(:assembly) { create(:assembly, item_ids: [item1.id, item2.id], ownable: user) }
 
   before do
     sign_in user
@@ -12,13 +15,15 @@ RSpec.feature 'Assembly#index', js: true do
     sign_out user
   end
 
-  scenario 'visit assembly#index' do
-    visit assemblies_path
+  context 'visit assembly#index' do
+    before :each do
+      visit assemblies_path
+    end
 
-    expect(page).to have_text(assembly.name)
-    expect(page).to have_text("Items:#{assembly.items.count}")
-    expect(page).to have_button('Add to order')
-    expect(page).to have_link('Schedule')
-    expect(page).to have_link('Edit')
+    it { expect(page).to have_text(assembly.name) }
+    it { expect(page).to have_text("Items:#{assembly.items.count}") }
+    it { expect(page).to have_button('Add to order') }
+    it { expect(page).to have_link('Schedule') }
+    it { expect(page).to have_link('Edit') }
   end
 end

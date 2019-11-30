@@ -17,10 +17,12 @@ RSpec.feature 'View an order with groups', js: true do
   context 'when a non-grouped item exists within an order' do
     before do
       visit items_path
-      click_button 'Add to order'
+
+      click_button('Add to order')
 
       visit order_path(pending_order.id)
-      click_link 'Meal'
+
+      click_link('Meal')
     end
 
     it { expect(page).to have_text('Not Grouped') }

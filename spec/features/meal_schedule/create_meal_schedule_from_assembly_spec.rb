@@ -1,8 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'create MealSchedule', js: true do
-  let!(:assembly) { create(:assembly, :with_item) }
   let(:user) { create(:user) }
+  let(:department) { create(:department, ownable: user) }
+  let(:item1) { create(:item, department: department, ownable: user) }
+  let(:item2) { create(:item, department: department, ownable: user) }
+  let!(:assembly) { create(:assembly, item_ids: [item1.id, item2.id], ownable: user) }
 
   before do
     sign_in user
@@ -23,7 +26,7 @@ RSpec.feature 'create MealSchedule', js: true do
       select 'morning', from: 'Meal time'
       fill_in 'meal_schedule_schedule_date', with: Time.now
 
-      click_button 'Create Meal schedule'
+      click_button('Create Meal schedule')
     end
 
     it { expect(page).to have_current_path(meal_schedules_path) }

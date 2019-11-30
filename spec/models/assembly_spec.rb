@@ -1,14 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe Assembly, type: :model do
-  it 'has a valid factory' do
-    expect(create(:assembly)).to be_instance_of(Assembly)
-    expect(create(:assembly, :with_item)).to be_instance_of(Assembly)
-    expect(create(:assembly, :with_items, items_count: 3)).to be_instance_of(Assembly)
+  context 'has a valid factory' do
+    it { expect(create(:assembly)).to be_instance_of(Assembly) }
+    it { expect(create(:assembly, :ownable_group)).to be_instance_of(Assembly) }
+    it { expect(create(:assembly, :ownable_user)).to be_instance_of(Assembly) }
+    it { expect(create(:assembly, :with_item)).to be_instance_of(Assembly) }
+    it { expect(create(:assembly, :with_items, items_count: 3)).to be_instance_of(Assembly) }
   end
 
   describe 'data and associations' do
     it { should have_db_column(:name) }
+    it { should have_db_column(:ownable_id) }
+    it { should have_db_column(:ownable_type) }
+    it { should belong_to(:ownable) }
     it { should have_many(:order_items) }
     it { should have_many(:orders) }
     it { should have_many(:assembly_items) }

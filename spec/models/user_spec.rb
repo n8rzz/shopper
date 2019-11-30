@@ -27,6 +27,7 @@ RSpec.describe User, type: :model do
     it { should have_many(:locations).dependent(:destroy) }
     it { should have_many(:departments).dependent(:destroy) }
     it { should have_many(:items).dependent(:destroy) }
+    it { should have_many(:assemblies).dependent(:destroy) }
   end
 
   before do
