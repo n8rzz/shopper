@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'Delete order_item from order', js: true do
-  let!(:pending_order) { create(:order, :pending, :with_order_items) }
   let(:user) { create(:user) }
+  let!(:pending_order) { create(:order, :pending, :with_order_items, ownable: user) }
 
   before do
     sign_in user

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_29_052652) do
+ActiveRecord::Schema.define(version: 2019_11_30_045136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,7 +117,10 @@ ActiveRecord::Schema.define(version: 2019_11_29_052652) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "location_id"
     t.datetime "shopping_date"
+    t.string "ownable_type"
+    t.bigint "ownable_id"
     t.index ["location_id"], name: "index_orders_on_location_id"
+    t.index ["ownable_type", "ownable_id"], name: "index_orders_on_ownable_type_and_ownable_id"
   end
 
   create_table "user_groups", force: :cascade do |t|

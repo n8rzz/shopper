@@ -4,7 +4,7 @@ RSpec.feature 'View an order with groups', js: true do
   let(:user) { create(:user) }
   let(:department) { create(:department, ownable: user)}
   let!(:item) { create(:item, department: department, ownable: user) }
-  let!(:pending_order) { create(:order, :pending) }
+  let!(:pending_order) { create(:order, :pending, ownable: user) }
 
   before do
     sign_in user

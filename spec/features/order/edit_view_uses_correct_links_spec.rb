@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.feature 'Edit view uses correct links' do
-  let!(:order) { create(:order, :pending) }
+RSpec.feature 'order#edit view includes correct links' do
   let(:user) { create(:user) }
+  let!(:order) { create(:order, :pending, ownable: user) }
 
   before do
     sign_in user

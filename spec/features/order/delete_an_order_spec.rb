@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'delete an order', js: true do
-  let!(:order) { create(:order, :pending) }
   let(:user) { create(:user) }
+  let!(:order) { create(:order, :pending, ownable: user) }
 
   before do
     sign_in user
@@ -20,5 +20,5 @@ RSpec.feature 'delete an order', js: true do
     end
   end
 
-  it { expect(page).to have_text('Order was successfully destroyed.') }
+  it { expect(page).to have_selector('.js-notice', text: 'Order was successfully destroyed.') }
 end

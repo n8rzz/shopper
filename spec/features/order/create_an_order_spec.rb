@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'Create an order', js: true do
-  let!(:order) { create(:order, :pending) }
   let(:user) { create(:user) }
+  let!(:order) { create(:order, :pending, ownable: user) }
 
   before do
     sign_in user
@@ -18,7 +18,7 @@ RSpec.feature 'Create an order', js: true do
 
       select 'active', from: 'Status'
 
-      click_button 'Create Order'
+      click_button('Create Order')
     end
 
     it { expect(page).to have_text('Order was created successfully') }
@@ -32,7 +32,7 @@ RSpec.feature 'Create an order', js: true do
       select 'active', from: 'Status'
       fill_in 'order_shopping_date', with: Time.now
 
-      click_button 'Create Order'
+      click_button('Create Order')
     end
 
     it { expect(page).to have_text('Order was created successfully') }
