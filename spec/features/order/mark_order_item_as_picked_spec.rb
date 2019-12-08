@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'mark order item as picked', js: true do
-  let!(:order) { create(:order, :pending, :with_order_items) }
   let(:user) { create(:user) }
+  let!(:order) { create(:order, :pending, :with_order_items, ownable: user) }
 
   before do
     sign_in user

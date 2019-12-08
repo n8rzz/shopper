@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature 'Order#index', js: true do
-  let!(:order) { create(:order, :pending) }
-  let!(:completed_orders) { create_list(:order, 5, :complete) }
   let(:user) { create(:user) }
+  let!(:order) { create(:order, :pending, ownable: user) }
+  let!(:completed_orders) { create_list(:order, 10, :complete, ownable: user) }
 
   before do
     sign_in user
@@ -20,6 +20,6 @@ RSpec.feature 'Order#index', js: true do
 
     it { expect(page).to have_text('Orders') }
     it { expect(page).to have_link('New Order') }
-    # it { expect(page).to have_button('View More') }
+    it { expect(page).to have_button('View More') }
   end
 end

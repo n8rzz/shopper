@@ -8,11 +8,6 @@
                 <li>
                     <%= link_to 'Back', orders_path, class: "link" %>
                 </li>
-                    <% if @order.status != 'pending' %>
-                        <li>
-                            <%= link_to 'Duplicate', order_duplicate_path(@order), method: :post, class: "link" %>
-                        </li>
-                    <% end %>
                 <li>
                     <%= link_to 'Edit', edit_order_path(@order), class: "link" %>
                 </li>

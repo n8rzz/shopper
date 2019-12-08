@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'Edit an order', js: true do
-  let!(:order) { create(:order, :pending) }
   let(:user) { create(:user) }
+  let!(:order) { create(:order, :pending, ownable: user) }
 
   before do
     sign_in user

@@ -5,6 +5,16 @@ FactoryBot.define do
     location
     shopping_date { Faker::Date.between(from: 1.year.ago, to: 1.year.from_now) }
 
+    ownable_user
+
+    trait :ownable_group do
+      association(:ownable, factory: :group)
+    end
+
+    trait :ownable_user do
+      association(:ownable, factory: :user)
+    end
+
     trait :pending do
       status { 'pending' }
     end

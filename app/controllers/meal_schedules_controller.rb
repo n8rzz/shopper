@@ -4,8 +4,8 @@ class MealSchedulesController < ApplicationController
   # GET /meal_schedules
   def index
     @meal_schedules = MealSchedule.all
-    @assemblies = Assembly.by_id
-    @items = Item.by_id
+    @assemblies = current_owner.assemblies.by_id
+    @items = current_owner.items.by_id
   end
 
   def new

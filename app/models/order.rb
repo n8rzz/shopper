@@ -9,6 +9,7 @@ shopping_date:  datetime
 
 =end
 class Order < ApplicationRecord
+  belongs_to :ownable, polymorphic: true
   belongs_to :location, optional: true
 
   has_many :assemblies, through: :order_items
@@ -43,14 +44,15 @@ class Order < ApplicationRecord
     order_items_to_remove.destroy_all
   end
 
-  def duplicate
-    return nil if Order.pending.count > 0
+  # TODO: re-implement via: https://github.com/n8rzz/shopper/issues/314
+  # def duplicate
+  #   return nil if Order.pending.count > 0
 
-    duplicate_order = Order.new(status: 'pending', location_id: self.location_id, shopping_date: Time.now)
-    duplicate_order.order_items << self.order_items.map { |order_item| order_item.duplicate(duplicate_order.id) }
+  #   duplicate_order = current_owner.orders.new(status: 'pending', location_id: self.location_id, shopping_date: Time.now)
+  #   duplicate_order.order_items << self.order_items.map { |order_item| order_item.duplicate(duplicate_order.id) }
 
-    duplicate_order
-  end
+  #   duplicate_order
+  # end
 
   def live?
     self.status == 'pending' || self.status == 'active'

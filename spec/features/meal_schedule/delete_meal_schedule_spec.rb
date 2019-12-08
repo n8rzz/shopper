@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature 'Delete a MealSchedule', js: true do
-  let!(:meal_schedule) { create(:meal_schedule, :with_item, schedule_date: Time.now) }
   let(:user) { create(:user) }
+  let(:item) { create(:item, ownable: user) }
+  let!(:meal_schedule) { create(:meal_schedule, item_id: item.id, schedule_date: Time.now) }
 
   before do
     sign_in user

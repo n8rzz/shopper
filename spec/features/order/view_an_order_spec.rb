@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.feature 'View an order', js: true do
-  let!(:pending_order) { create(:order, :pending) }
-  let!(:complete_order) { create(:order, :complete, :with_order_items) }
+RSpec.feature 'order#show includes the correct links', js: true do
   let(:user) { create(:user) }
+  let!(:pending_order) { create(:order, :pending, ownable: user) }
+  let!(:complete_order) { create(:order, :complete, :with_order_items, ownable: user) }
 
   before do
     sign_in user
@@ -34,7 +34,7 @@ RSpec.feature 'View an order', js: true do
       visit order_path(complete_order.id)
     end
 
-    it { expect(page).to have_link('Duplicate') }
+    it { expect(page).to_not have_link('Duplicate') }
     it { expect(page).to have_no_link('Delete') }
   end
 end

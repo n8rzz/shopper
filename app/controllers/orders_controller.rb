@@ -20,13 +20,13 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @order = Order.new(shopping_date: Time.now)
+    @order = current_owner.orders.new(shopping_date: Time.now)
   end
 
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
+    @order = current_owner.orders.new(order_params)
 
     respond_to do |format|
       if @order.save
@@ -67,7 +67,7 @@ class OrdersController < ApplicationController
   # POST /orders/1/duplicate
   # POST /orders/1/duplicate.json
   def duplicate
-    order = Order.find(params[:order_id])
+    order = current_owner.orders.find(params[:order_id])
     duplicate_order = order.duplicate
 
     respond_to do |format|
