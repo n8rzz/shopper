@@ -10,7 +10,7 @@
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.7.4",
-    "@rails/actioncable": "^6.0.1",
+    "@rails/actioncable": "^6.0.2",
     "@rails/activestorage": "^6.0.1",
     "@rails/ujs": "^6.0.1",
     "@rails/webpacker": "^4.2.0",
