@@ -3,13 +3,13 @@ class MealSchedulesController < ApplicationController
 
   # GET /meal_schedules
   def index
-    @meal_schedules = MealSchedule.all
+    @meal_schedules = current_owner.meal_schedules.all
     @assemblies = current_owner.assemblies.by_id
     @items = current_owner.items.by_id
   end
 
   def new
-    @meal_schedule = MealSchedule.new(assembly_id: params[:assembly_id], schedule_date: Time.current)
+    @meal_schedule = current_owner.meal_schedules.new(assembly_id: params[:assembly_id], schedule_date: Time.current)
   end
 
   def edit
@@ -18,7 +18,7 @@ class MealSchedulesController < ApplicationController
   # POST /meal_schedules
   # POST /meal_schedules.json
   def create
-    @meal_schedule = MealSchedule.new(meal_schedule_params)
+    @meal_schedule = current_owner.meal_schedules.new(meal_schedule_params)
 
     respond_to do |format|
       if @meal_schedule.save
@@ -57,7 +57,7 @@ class MealSchedulesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_meal_schedule
-      @meal_schedule = MealSchedule.find(params[:id])
+      @meal_schedule = current_owner.meal_schedules.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

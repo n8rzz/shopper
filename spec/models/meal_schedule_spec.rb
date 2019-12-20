@@ -2,15 +2,19 @@ require 'rails_helper'
 
 RSpec.describe MealSchedule, type: :model do
   it 'has a valid factory' do
+    expect(build(:meal_schedule, :ownable_group)).to be_instance_of(MealSchedule)
+    expect(build(:meal_schedule, :ownable_user)).to be_instance_of(MealSchedule)
     expect(build(:meal_schedule, :with_item)).to be_instance_of(MealSchedule)
-    expect(build(:meal_schedule, :with_item)).to be_instance_of(MealSchedule)
-    expect(build(:meal_schedule, :with_order_item)).to be_instance_of(MealSchedule)
     expect(build(:meal_schedule, :with_assembly)).to be_instance_of(MealSchedule)
+    expect(build(:meal_schedule, :with_order_item)).to be_instance_of(MealSchedule)
   end
 
   describe 'data and associations' do
     it { should have_db_column(:schedule_date) }
     it { should have_db_column(:purchased) }
+    it { should have_db_column(:ownable_id) }
+    it { should have_db_column(:ownable_type) }
+    it { should belong_to(:ownable) }
     it { should belong_to(:item).optional }
     it { should belong_to(:assembly).optional }
     it { should belong_to(:order_item).optional }

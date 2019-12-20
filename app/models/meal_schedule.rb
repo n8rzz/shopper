@@ -12,6 +12,7 @@ class MealSchedule < ApplicationRecord
   belongs_to :item, optional: :true
   belongs_to :assembly, optional: true
   belongs_to :order_item, optional: true
+  belongs_to :ownable, polymorphic: true
 
   validates :schedule_date, presence: true
   validates :meal_time, inclusion: {
