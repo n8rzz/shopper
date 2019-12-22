@@ -8,6 +8,16 @@ FactoryBot.define do
     assembly { nil }
     item { nil}
 
+    ownable_user
+
+    trait :ownable_group do
+      association(:ownable, factory: :group)
+    end
+
+    trait :ownable_user do
+      association(:ownable, factory: :user)
+    end
+
     trait :with_item do
       association :item
     end

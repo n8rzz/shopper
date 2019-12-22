@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_30_045136) do
+ActiveRecord::Schema.define(version: 2019_12_08_191322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,9 +91,12 @@ ActiveRecord::Schema.define(version: 2019_11_30_045136) do
     t.bigint "order_item_id"
     t.bigint "assembly_id"
     t.string "meal_time"
+    t.string "ownable_type"
+    t.bigint "ownable_id"
     t.index ["assembly_id"], name: "index_meal_schedules_on_assembly_id"
     t.index ["item_id"], name: "index_meal_schedules_on_item_id"
     t.index ["order_item_id"], name: "index_meal_schedules_on_order_item_id"
+    t.index ["ownable_type", "ownable_id"], name: "index_meal_schedules_on_ownable_type_and_ownable_id"
   end
 
   create_table "order_items", force: :cascade do |t|

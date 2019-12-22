@@ -1,10 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe 'MealSchedules', :type => :request do
-  let!(:item) { create(:item) }
+  let(:user) { create(:user) }
+  let!(:item) { create(:item, ownable: user) }
 
   before do
-    sign_in create(:user)
+    sign_in user
+  end
+
+  after do
+    sign_out user
   end
 
   describe 'create request' do
@@ -28,7 +33,7 @@ RSpec.describe 'MealSchedules', :type => :request do
       end
 
       describe 'when two reference_ids are passed' do
-        let!(:assembly) { create(:assembly) }
+        let!(:assembly) { create(:assembly, ownable: user) }
 
         before do
           post '/meal_schedules.json', :params => { :meal_schedule => {
@@ -92,7 +97,7 @@ RSpec.describe 'MealSchedules', :type => :request do
   end
 
   describe 'delete request' do
-    let(:meal_schedule) { create(:meal_schedule, :with_item) }
+    let(:meal_schedule) { create(:meal_schedule, item_id: item.id, ownable: user) }
 
     context 'should remove @meal_time' do
       before do

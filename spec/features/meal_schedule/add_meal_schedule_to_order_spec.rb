@@ -15,7 +15,7 @@ RSpec.feature 'Create an OrderItem from MealSchedules', js: true do
   context 'with assembly' do
     let(:item) { create(:item, ownable: user) }
     let(:assembly) { create(:assembly, item_ids: [item.id], ownable: user)}
-    let!(:meal_schedule_with_assembly) { create(:meal_schedule, assembly_id: assembly.id, schedule_date: Time.now) }
+    let!(:meal_schedule_with_assembly) { create(:meal_schedule, assembly_id: assembly.id, schedule_date: Time.now, ownable: user) }
 
     before :each do
       visit meal_schedules_path
@@ -39,7 +39,7 @@ RSpec.feature 'Create an OrderItem from MealSchedules', js: true do
 
   context 'with item' do
     let(:item) { create(:item, ownable: user) }
-    let!(:meal_schedule_with_item) { create(:meal_schedule, item_id: item.id, schedule_date: Time.now) }
+    let!(:meal_schedule_with_item) { create(:meal_schedule, item_id: item.id, schedule_date: Time.now, ownable: user) }
 
     before :each do
       visit meal_schedules_path

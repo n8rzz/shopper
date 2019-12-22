@@ -28,7 +28,7 @@ RSpec.feature 'Create a MealSchedule', js: true do
 
     it { expect(page).to have_current_path(meal_schedules_path) }
     it { expect(page).to have_text('MealSchedule was added successfully') }
-    # it { expect(page).to have_text(assembly.name) }
+    it { expect(page).to have_text(assembly.name) }
     it { expect(find(".qa-calendarTable-td-cell-#{Date.parse(Time.now.to_s).day}")) }
   end
 

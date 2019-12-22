@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'edit a MealSchedule', js: true do
   let(:user) { create(:user) }
   let(:assembly) { create(:assembly, ownable: user) }
-  let!(:meal_schedule) { create(:meal_schedule, assembly_id: assembly.id, schedule_date: Time.now) }
+  let!(:meal_schedule) { create(:meal_schedule, assembly_id: assembly.id, schedule_date: Time.now, ownable: user) }
 
   before do
     sign_in user
