@@ -15,6 +15,7 @@ require 'capybara/rspec'
 require 'factory_bot_rails'
 require 'devise'
 require 'email_spec'
+require 'sidekiq/testing'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -50,6 +51,7 @@ RSpec.configure do |config|
   config.include EmailSpec::Matchers
 
   config.before(:suite) do
+    Sidekiq::Testing.fake!
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
   end

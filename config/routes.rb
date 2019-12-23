@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  # require 'sidekiq/web'
+
+  # authenticate :user, lambda { |u| Rails.env.development? } do
+  #   mount Sidekiq::Web => '/sidekiq'
+  # end
+
+  if Rails.env.development?
+    require 'sidekiq/web'
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   get 'static_pages/index'
   get 'static_pages/after_signup'
 

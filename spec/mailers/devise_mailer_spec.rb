@@ -1,8 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Devise::Mailer do
+  include ActiveJob::TestHelper
+
+  let!(:user) { create(:user, :without_confirmed_at) }
+
   it 'sends a confirmation email to the correct email with correct text' do
-    user = create(:user, :without_confirmed_at)
+    perform_enqueued_jobs
+
     confirmation_email = Devise.mailer.deliveries.last
 
     expect(user.email).to eq confirmation_email.to[0]
