@@ -16,6 +16,7 @@ RSpec.describe Group, type: :model do
     it { should have_many(:items).dependent(:destroy) }
     it { should have_many(:assemblies).dependent(:destroy) }
     it { should have_many(:orders).dependent(:destroy) }
+    it { should have_many(:meal_schedules).dependent(:destroy) }
   end
 
   before do

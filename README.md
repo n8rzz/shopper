@@ -18,3 +18,7 @@ $ rails db:migrate
 $ rails db:seed
 $ rails start
 ```
+
+### After seed
+
+There will be an admin user available after db has been seeded.  See `db/seeds/02_users.rb` for email and password informaiton for this default user.
