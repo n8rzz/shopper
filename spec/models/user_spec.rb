@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  include ActiveJob::TestHelper
+
   context 'has a valid factories' do
     it { expect(build(:user)).to be_instance_of(User) }
     it { expect(build(:user, :without_confirmed_at)).to be_valid }
@@ -46,10 +48,10 @@ RSpec.describe User, type: :model do
   end
 
   describe 'after creation' do
-    it 'sends a confirmation email' do
-      confirmable_user = build(:user, :without_confirmed_at)
+    let(:confirmable_user) { build(:user, :without_confirmed_at) }
 
-      expect { confirmable_user.save }.to change(Devise.mailer.deliveries, :count).by(1)
+    it 'sends a confirmation email' do
+      expect { confirmable_user.save }.to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :size).by(1)
     end
   end
 

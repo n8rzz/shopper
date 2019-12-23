@@ -34,7 +34,21 @@ test-feature: ## runs rspec feature tests
 	@echo ""
 	bundle exec rspec spec/features/**/*_spec.rb --failure-exit-code 0
 
+test-be-unit-profile: ## runs just rspec unit tests
+	@echo ""
+	@$(call log_color_green, "--- === ::: Starting RSPEC UNIT test suite ::: === ---")
+	@echo ""
+	bundle exec rspec --exclude-pattern "spec/features/**/*_spec.rb" --profile
+
+test-feature-profile: ## runs rspec feature tests
+	@echo ""
+	@$(call log_color_green, "--- === ::: Starting RSPEC FEATURE test suite ::: === ---")
+	@echo ""
+	bundle exec rspec spec/features/**/*_spec.rb --profile --failure-exit-code 0
+
 test: test-fe test-be-unit test-feature
+
+test-profile: test-fe test-be-unit-profile test-feature-profile
 
 release: ## updates `master` branch, generates a new tag, pushes tag, pushes master. expects `v={VERSION}` arg
 	@echo ""
@@ -55,6 +69,12 @@ release: ## updates `master` branch, generates a new tag, pushes tag, pushes mas
 	@echo ""
 	git push origin ${v}
 	git push origin master
+
+sidekiq: ## spins up sidekiq process
+	bundle exec sidekiq -q critical -q default -q mailers
+
+start: ## start app using foreman and Procfile.dev to run app and services locally
+	foreman start -f Procfile.dev
 
 sync: ## syncs gitlab remote with github remote on {branch}. expects `b={BRANCH}` arg
 	@echo ""

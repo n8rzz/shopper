@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'invite user to group', js: true do
+  include ActiveJob::TestHelper
+
   let!(:user) { create(:user, email: Faker::Internet.safe_email) }
   let(:group) { create(:group, user_ids: user.id) }
   invitation_email = 'dvader@empire.com'
@@ -10,7 +12,7 @@ RSpec.feature 'invite user to group', js: true do
     visit group_path(group.id)
   end
 
-  after do
+  after :each do
     sign_out user
   end
 
@@ -30,8 +32,9 @@ RSpec.feature 'invite user to group', js: true do
     before :each do
       fill_in 'user_email', with: invitation_email
       click_button('Invite')
-
       click_link('Logout')
+
+      perform_enqueued_jobs
 
       open_email(invitation_email)
       visit_in_email('Accept invitation')
@@ -53,8 +56,9 @@ RSpec.feature 'invite user to group', js: true do
     before :each do
       fill_in 'user_email', with: invitation_email
       click_button('Invite')
-
       click_link('Logout')
+
+      perform_enqueued_jobs
 
       open_email(invitation_email)
       visit_in_email('Accept invitation')
@@ -74,8 +78,9 @@ RSpec.feature 'invite user to group', js: true do
     before :each do
       fill_in 'user_email', with: invitation_email
       click_button('Invite')
-
       click_link('Logout')
+
+      perform_enqueued_jobs
 
       open_email(invitation_email)
       visit_in_email('Accept invitation')
