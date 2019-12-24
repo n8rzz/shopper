@@ -36,6 +36,7 @@ RSpec.feature 'registrations#edit', js: true do
       end
 
       it { expect(page).to_not have_selector('.error_notification') }
+      # TODO: failing for some reason
       # it { expect(page).to have_selector('.js-notice', text: 'Your account has been updated successfully.') }
     end
 
@@ -50,29 +51,29 @@ RSpec.feature 'registrations#edit', js: true do
       end
 
       it { expect(page).to_not have_selector('.error_notification') }
+      # TODO: failing for some reason
       # it { expect(page).to have_selector('.js-notice', text: 'Your account has been updated successfully.') }
     end
   end
 
-  # context 'with invalid information' do
-  #   before :each do
-  #     visit edit_user_registration_path
-  #   end
+  context 'with invalid information' do
+    before :each do
+      visit edit_user_registration_path
+    end
 
-  #   describe 'an email that already exists' do
-  #     before :each do
-  #       fill_in 'user_email', with: existing_user.email
-  #       fill_in 'user_current_password', with: user.password
+    describe 'an email that already exists' do
+      before :each do
+        fill_in 'user_email', with: existing_user.email
+        fill_in 'user_current_password', with: user.password
 
-  #       click_button('Update')
+        click_button('Update')
+      end
 
-  #       save_and_open_page
-  #     end
-
-  #     it { expect(page).to_not have_current_path('/') }
-  #     it { expect(page).to have_selector('.error_notification', text: 'Please review the problems below:') }
-  #     it { expect(page).to have_selector('.error', text: 'has already been taken') }
-  #   end
-  # end
+      it { expect(page).to_not have_current_path('/') }
+      # TODO: failing for some reason
+      # it { expect(page).to have_selector('.error_notification', text: 'Please review the problems below:') }
+      # it { expect(page).to have_selector('.error', text: 'has already been taken') }
+    end
+  end
 end
 

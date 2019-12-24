@@ -5,7 +5,7 @@ class LocationsController < ApplicationController
   # GET /locations.json
   def index
     @location = current_owner.locations.new
-    @locations =current_owner.locations.by_name
+    @locations = current_owner.locations.by_name
   end
 
   # GET /locations/new
@@ -22,7 +22,6 @@ class LocationsController < ApplicationController
   # POST /locations
   # POST /locations.json
   def create
-    # byebug
     @location = current_owner.locations.new(location_params)
 
     respond_to do |format|

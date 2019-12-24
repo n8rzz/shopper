@@ -5,7 +5,8 @@ class Users::InvitationsController < Devise::InvitationsController
     resource_invited = resource.errors.empty?
 
     if resource.username != nil
-      UserGroup.add_user_to_invited_group(resource)
+      # FIXME: send mail and ask for permission to add
+      User.invite_existing_user_to_group(resource, current_inviter)
 
       set_flash_message :notice, :invitee_exists, email: resource.email
       redirect_to group_path(resource.invitation_group_id)
@@ -38,10 +39,20 @@ class Users::InvitationsController < Devise::InvitationsController
       return
     end
 
-    UserGroup.add_user_to_invited_group(resource)
-    User.remove_invitation_group_id_after_invitaion_acceptence(resource)
+    UserGroupInvitationJob.perform_later(resource)
 
     set_flash_message :notice, :updated_not_active if is_flashing_format?
     respond_with resource, location: new_session_path(resource_name)
+  end
+
+  private
+
+  def invite_resource
+    user = User.find_by(email: invite_params[:email])
+
+    return super if user.nil?
+
+    User.set_invitation_group_id!(user, invite_params[:invitation_group_id])
+    user
   end
 end

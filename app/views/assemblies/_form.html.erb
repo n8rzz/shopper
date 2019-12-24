@@ -9,7 +9,7 @@
     </div>
     <div class="vr_2">
         <div class="form-group">
-            <%= f.association :items, as: :check_boxes, collection: Item.by_name %>
+            <%= f.association :items, as: :check_boxes, collection: @owner_items %>
         </div>
     </div>
     <div class="vr_2">

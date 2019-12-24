@@ -1,5 +1,5 @@
 log_color_green = (echo "\x1B[32m>> $1\x1B[39m")
-.PHONY: update lint test test-fe test-be-unit test-feature release sync launch-reports
+.PHONY: update lint test test-fe test-be-unit test-feature test-be-unit-profile test-feature-profile release sidekiq sync launch-reports
 
 update: ## install gems and npm packages
 	@echo ""
@@ -71,7 +71,7 @@ release: ## updates `master` branch, generates a new tag, pushes tag, pushes mas
 	git push origin master
 
 sidekiq: ## spins up sidekiq process
-	bundle exec sidekiq -q critical -q default -q mailers
+	bundle exec sidekiq
 
 start: ## start app using foreman and Procfile.dev to run app and services locally
 	foreman start -f Procfile.dev

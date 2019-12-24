@@ -68,6 +68,8 @@ RSpec.feature 'invite user to group', js: true do
       fill_in 'user_password_confirmation', with: '123456'
 
       click_button('Create Account')
+
+      perform_enqueued_jobs
     end
 
     it { expect(invited_user).to_not eq(nil) }
