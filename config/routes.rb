@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  # require 'sidekiq/web'
-
-  # authenticate :user, lambda { |u| Rails.env.development? } do
-  #   mount Sidekiq::Web => '/sidekiq'
-  # end
-
   if Rails.env.development?
     require 'sidekiq/web'
     mount Sidekiq::Web => '/sidekiq'
@@ -18,7 +12,14 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :groups
+  get 'groups/invitation', to: 'groups#invitation'
+
+  resources :groups do
+    get 'invitation',    to: 'groups#review_invitation'
+    post 'invitation',   to: 'groups#accept_invitation'
+    delete 'invitation', to: 'groups#decline_invitation'
+  end
+
   delete 'groups/:id/members/:member_id', to: 'user_groups#delete_member'
 
   post 'order_items/create',          to: 'order_items#create'

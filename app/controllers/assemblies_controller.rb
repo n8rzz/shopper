@@ -1,5 +1,6 @@
 class AssembliesController < ApplicationController
   before_action :set_assembly, only: [:show, :edit, :update, :destroy]
+  before_action :set_owner_items
 
   # GET /assemblies
   # GET /assemblies.json
@@ -68,5 +69,9 @@ class AssembliesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def assembly_params
       params.require(:assembly).permit(:name, item_ids:[], order_item_ids:[])
+    end
+
+    def set_owner_items
+      @owner_items = current_owner.items.by_name
     end
 end

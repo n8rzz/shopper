@@ -1,0 +1,31 @@
+<div class="vr_2">
+    <p>
+        Hooray, you've been invited to join a group!
+    </p>
+    <p>
+        Accepting this invitation is going to change a few things.  You will be joining a group, and what that means is that you will no longer have access to the things you own (items, assemblies, departments, locations).  Don't worry, they aren't going anywhere.  If you ever decide to leave the group, you'll be able to see them again.
+    </p>
+</div>
+<div class="vr_2">
+    <p>Now is your chance...</p>
+    <p>You can Decline this invitation, and everything will remain as it is.</p>
+    <p>Or, you can accept this invitation and join the Group, starting fresh with new friends.</p>
+</div>
+<div class="vr_2">
+    <p>
+    </p>
+</div>
+
+<%= form_tag(group_invitation_path(@invitee.invitation_group_id), method: "post") do %>
+    <%= hidden_field_tag("invitation_group_id", @invitee.invitation_group_id) %>
+    <%= hidden_field_tag("invitation_group_token", @invitee.invitation_group_token) %>
+
+    <div class="stereo">
+        <div>
+            <%= link_to "Decline", group_invitation_path(@invitee.invitation_group_id, invitation_group_token: @invitee.invitation_group_token), class: "link", data: { confirm: "Are you sure?" }, method: :delete %>
+        </div>
+        <div>
+            <%= submit_tag("Accept", class: "btn btn-submit mix-btn_inverse") %>
+        </div>
+    </div>
+<% end %>

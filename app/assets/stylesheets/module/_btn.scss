@@ -46,6 +46,16 @@
     background-color: $COLOR_SUCCESS_BG;
 }
 
+.mix-btn_isError {
+    background-color: $COLOR_ERROR_FG;
+    color: #ffffff;
+
+    &:hover {
+        background-color: $COLOR_ERROR_BG;
+        color: $COLOR_DARK;
+    }
+}
+
 .mix-btn_inverse {
     background-color: $COLOR_PRIMARY;
     color: #ffffff;

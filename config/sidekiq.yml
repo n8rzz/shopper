@@ -1,6 +1,6 @@
 ---
 :queues:
-  - [critical, 2]
+  - [urgent, 2]
   - [default, 1]
   - [mailers, 1]
 

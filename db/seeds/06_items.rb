@@ -1,7 +1,6 @@
 puts '=== Items'
 
-user = User.find_by(email: 'me@example.com')
-group_owner = user.groups.first
+group_owner = User.find_by(email: 'me@example.com').groups.first
 
 rand(13..42).times do
   Item.create(
