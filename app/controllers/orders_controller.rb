@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
@@ -15,7 +17,7 @@ class OrdersController < ApplicationController
     @departments = Department.all
     @assemblies = Assembly.all
     @items = Item.all
-    @locationDepartments = LocationDepartment.find_all_by_location_id(@order.location_id)
+    @location_departments = LocationDepartment.find_all_by_location_id(@order.location_id)
   end
 
   # GET /orders/new
@@ -71,12 +73,13 @@ class OrdersController < ApplicationController
     duplicate_order = order.duplicate
 
     respond_to do |format|
-      if duplicate_order != nil && duplicate_order.save
+      if !duplicate_order.nil? && duplicate_order.save
         format.html { redirect_to edit_order_url(duplicate_order.id), notice: 'Order duplicated successfully' }
         format.json { render :show, status: :created, location: orders_path }
       else
         format.html { redirect_to edit_order_url(order.id) }
-        format.json { render :show, status: :created, location: orders_path }
+        # TODO: using 400 here as a placeholder
+        format.json { render :show, status: 400 }
       end
     end
   end
@@ -92,19 +95,21 @@ class OrdersController < ApplicationController
         format.json { render :show, status: 204, location: orders_path }
       else
         format.html { redirect_to order_url(order.id) }
-        format.json { render :show, status: 204, location: orders_path }
+        # TODO: using 400 here as a placeholder
+        format.json { render :show, status: 400 }
       end
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def order_params
-      params.require(:order).permit(:status, :location_id, :shopping_date)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_order
+    @order = Order.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def order_params
+    params.require(:order).permit(:status, :location_id, :shopping_date)
+  end
 end

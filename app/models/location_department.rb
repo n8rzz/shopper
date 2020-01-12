@@ -1,13 +1,11 @@
-=begin
+# frozen_string_literal: true
 
-id:             integer
-sort_order:     integer
-department_id:  integer
-location_id:    integer
-created_at:     datetime
-updated_a:      datetime
-
-=end
+# id:             integer
+# sort_order:     integer
+# department_id:  integer
+# location_id:    integer
+# created_at:     datetime
+# updated_a:      datetime
 class LocationDepartment < ApplicationRecord
   belongs_to :location
   belongs_to :department
@@ -28,9 +26,7 @@ class LocationDepartment < ApplicationRecord
   def self.get_next_sort_order(location_id)
     department_with_highest_sort_order = LocationDepartment.find_all_by_location_id(location_id).max_by(&:sort_order)
 
-    unless department_with_highest_sort_order != nil
-      return 0
-    end
+    return 0 if department_with_highest_sort_order.nil?
 
     department_with_highest_sort_order['sort_order'] + 1
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AssembliesController < ApplicationController
   before_action :set_assembly, only: [:show, :edit, :update, :destroy]
   before_action :set_owner_items
@@ -17,8 +19,7 @@ class AssembliesController < ApplicationController
   end
 
   # GET /assemblies/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /assemblies
   # POST /assemblies.json
@@ -61,17 +62,18 @@ class AssembliesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_assembly
-      @assembly = current_owner.assemblies.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def assembly_params
-      params.require(:assembly).permit(:name, item_ids:[], order_item_ids:[])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_assembly
+    @assembly = current_owner.assemblies.find(params[:id])
+  end
 
-    def set_owner_items
-      @owner_items = current_owner.items.by_name
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def assembly_params
+    params.require(:assembly).permit(:name, item_ids: [], order_item_ids: [])
+  end
+
+  def set_owner_items
+    @owner_items = current_owner.items.by_name
+  end
 end

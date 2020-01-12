@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class Users::InvitationsController < Devise::InvitationsController
   # POST /resource/invitation
   def create
     self.resource = invite_resource
     resource_invited = resource.errors.empty?
 
-    if resource.username != nil
+    unless resource.username.nil?
       # FIXME: send mail and ask for permission to add
       User.invite_existing_user_to_group(resource, current_inviter)
 
@@ -16,10 +18,10 @@ class Users::InvitationsController < Devise::InvitationsController
 
     yield resource if block_given?
 
-    return respond_with_navigational(resource) { render :new } if !resource_invited
+    return respond_with_navigational(resource) { render :new } unless resource_invited
 
-    if is_flashing_format? && self.resource.invitation_sent_at
-      set_flash_message :notice, :send_instructions, email: self.resource.email
+    if is_flashing_format? && resource.invitation_sent_at
+      set_flash_message :notice, :send_instructions, email: resource.email
     end
 
     respond_with resource, location: after_invite_path_for(current_inviter, resource)
@@ -32,7 +34,7 @@ class Users::InvitationsController < Devise::InvitationsController
 
     yield resource if block_given?
 
-    if !resource.errors.empty?
+    unless resource.errors.empty?
       resource.invitation_token = raw_invitation_token
       respond_with_navigational(resource) { render :edit }
 

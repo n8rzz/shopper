@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
   before_action :set_group_invitee, only: [:invitation, :review_invitation, :decline_invitation, :accept_invitation]
@@ -21,8 +23,7 @@ class GroupsController < ApplicationController
   end
 
   # GET /groups/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /groups
   # POST /groups.json
@@ -67,28 +68,30 @@ class GroupsController < ApplicationController
 
   # GET /groups/invitation
   def invitation
-    return redirect_to root_path if !can_review_invitation?
+    return redirect_to root_path unless can_review_invitation?
 
     redirect_to group_invitation_path(@invitee.invitation_group_id, invitation_group_token: @invitee.invitation_group_token)
   end
 
   # GET /groups/:id/invitation
   def review_invitation
-    return redirect_to root_path if !can_review_invitation?
+    return redirect_to root_path unless can_review_invitation?
 
     render :confirm_invitation
   end
 
   # POST /groups/invitation
   def accept_invitation
-    return redirect_to root_path if !can_review_invitation?
+    return redirect_to root_path unless can_review_invitation?
 
     invitation_group_id = @invitee.invitation_group_id
     @invitee.clear_group_invitation
 
     respond_to do |format|
       if @invitee.save
+        # rubocop:disable Layout/LineLength
         format.html { redirect_to group_path(invitation_group_id), notice: 'Group invite confirmed! We are transferring ownership of your items, assemblies, locations and departments' }
+        # rubocop:enable Layout/LineLength
       else
         format.html { redirect_to root_path, notice: 'Something went wrong processing your Group invitation' }
       end
@@ -97,7 +100,7 @@ class GroupsController < ApplicationController
 
   # DELETE /groups/invitation
   def decline_invitation
-    return redirect_to root_path if !can_review_invitation?
+    return redirect_to root_path unless can_review_invitation?
 
     @invitee.clear_group_invitation
 

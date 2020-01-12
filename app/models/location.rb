@@ -1,13 +1,11 @@
-=begin
+# frozen_string_literal: true
 
-id:           integer
-name:         string
-city:         string
-state:        string
-created_at:   datetime
-updated_a:    datetime
-
-=end
+# id:           integer
+# name:         string
+# city:         string
+# state:        string
+# created_at:   datetime
+# updated_a:    datetime
 class Location < ApplicationRecord
   belongs_to :ownable, polymorphic: true
 
@@ -20,6 +18,6 @@ class Location < ApplicationRecord
   scope :by_name, -> { order('name ASC') }
 
   def city_and_state
-    "#{self.city}, #{self.state}"
+    "#{city}, #{state}"
   end
 end

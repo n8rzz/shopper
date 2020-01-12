@@ -1,4 +1,4 @@
-<% if !current_user.has_groups? %>
+<% if !current_user.groups? %>
     <%= render partial: 'empty_group_list'%>
 <% else %>
     <%= render partial: 'group_list' %>

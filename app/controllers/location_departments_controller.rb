@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LocationDepartmentsController < ActionController::Base
   skip_before_action :verify_authenticity_token
   before_action :set_location_department, only: [:update, :change_direction, :destroy]
@@ -24,9 +26,7 @@ class LocationDepartmentsController < ActionController::Base
       sort_order: location_department_params[:sort_order]
     )
 
-    if conflicting_record != nil
-      conflicting_record.update(sort_order: location_department_params[:sort_order])
-    end
+    conflicting_record&.update(sort_order: location_department_params[:sort_order])
 
     respond_to do |format|
       if @location_department.update(location_department_params)
@@ -49,7 +49,7 @@ class LocationDepartmentsController < ActionController::Base
     @location_departments = LocationDepartment.find_all_by_location_id(@record_to_move.location_id)
 
     respond_to do |format|
-      if @displaced_record.update(sort_order: @record_to_move.sort_order) && @record_to_move.update(sort_order: displaced_record_sort_order)
+      if update_records_to_move(@record_to_move, @displaced_record, displaced_record_sort_order)
         format.json { render json: @location_departments, status: :ok }
       else
         format.json { render json: @displaced_record.errors, status: :unprocessable_entity }
@@ -76,6 +76,7 @@ class LocationDepartmentsController < ActionController::Base
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_location_department
     @location_department = LocationDepartment.find(params[:id])
@@ -84,5 +85,13 @@ class LocationDepartmentsController < ActionController::Base
   # Never trust parameters from the scary internet, only allow the white list through.
   def location_department_params
     params.require(:location_department).permit(:department_id, :location_id, :sort_order)
+  end
+
+  def update_records_to_move(record_to_move, displaced_record, displaced_record_sort_order)
+    displaced_record.update(
+      sort_order: record_to_move.sort_order
+    ) && record_to_move.update(
+      sort_order: displaced_record_sort_order
+    )
   end
 end

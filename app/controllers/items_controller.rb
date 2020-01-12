@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :set_owner_departments
@@ -18,8 +20,7 @@ class ItemsController < ApplicationController
   end
 
   # GET /items/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /items
   # POST /items.json
@@ -63,17 +64,18 @@ class ItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_item
-      @item = current_owner.items.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def item_params
-      params.require(:item).permit(:name, :department_id, order_item_ids:[], assembly_item_ids:[])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_item
+    @item = current_owner.items.find(params[:id])
+  end
 
-    def set_owner_departments
-      @owner_departments = current_owner.departments.by_name
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def item_params
+    params.require(:item).permit(:name, :department_id, order_item_ids: [], assembly_item_ids: [])
+  end
+
+  def set_owner_departments
+    @owner_departments = current_owner.departments.by_name
+  end
 end
