@@ -1,5 +1,10 @@
+# frozen_string_literal: true
+
 require 'simplecov'
+
 SimpleCov.start do
+  add_filter %r{^/spec/}
+
   coverage_dir 'coverage/be/'
 end
 
@@ -7,7 +12,7 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 
 require 'selenium/webdriver'
 require 'rspec/rails'
@@ -95,4 +100,4 @@ end
 
 # see: https://github.com/thoughtbot/shoulda-matchers/issues/1167
 # spec/rails_helper.rb - add to bottom
-class ActiveModel::SecurePassword::InstanceMethodsOnActivation; end;
+class ActiveModel::SecurePassword::InstanceMethodsOnActivation; end
