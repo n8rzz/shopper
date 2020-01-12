@@ -206,7 +206,7 @@ GEM
     public_suffix (4.0.1)
     puma (4.3.1)
       nio4r (~> 2.0)
-    rack (2.0.8)
+    rack (2.1.1)
     rack-protection (2.0.8.1)
       rack
     rack-proxy (0.6.5)
@@ -299,11 +299,11 @@ GEM
     shellany (0.0.1)
     shoulda-matchers (4.2.0)
       activesupport (>= 4.2.0)
-    sidekiq (5.2.7)
-      connection_pool (~> 2.2, >= 2.2.2)
-      rack (>= 1.5.0)
-      rack-protection (>= 1.5.0)
-      redis (>= 3.3.5, < 5)
+    sidekiq (6.0.4)
+      connection_pool (>= 2.2.2)
+      rack (>= 2.0.0)
+      rack-protection (>= 2.0.0)
+      redis (>= 4.1.0)
     simple_form (5.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -393,7 +393,7 @@ DEPENDENCIES
   sass-rails (~> 6.0)
   selenium-webdriver
   shoulda-matchers
-  sidekiq (= 5.2.7)
+  sidekiq (= 6.0.4)
   simple_form (>= 4.1.0)
   simplecov (>= 0.16.1)
   spring
