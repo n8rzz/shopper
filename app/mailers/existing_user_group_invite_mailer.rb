@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ExistingUserGroupInviteMailer < ApplicationMailer
   default from: 'xrayshoppper@gmail.com'
 

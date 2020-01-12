@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_many :user_groups, dependent: :destroy
   has_many :groups, through: :user_groups
@@ -22,8 +24,8 @@ class User < ApplicationRecord
     self.invitation_group_id = nil
   end
 
-  def has_groups?
-    self.groups.length > 0
+  def groups?
+    !groups.empty?
   end
 
   def self.invite_existing_user_to_group(user, current_inviter)

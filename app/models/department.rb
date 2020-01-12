@@ -1,11 +1,9 @@
-=begin
+# frozen_string_literal: true
 
-id:           integer
-name:         string
-created_at:   datetime
-updated_at:   datetime
-
-=end
+# id:           integer
+# name:         string
+# created_at:   datetime
+# updated_at:   datetime
 class Department < ApplicationRecord
   belongs_to :ownable, polymorphic: true
 

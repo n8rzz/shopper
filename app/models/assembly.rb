@@ -1,11 +1,9 @@
-=begin
+# frozen_string_literal: true
 
-id:           integer
-name:         string
-created_at:   datetime
-updated_at:   datetime
-
-=end
+# id:           integer
+# name:         string
+# created_at:   datetime
+# updated_at:   datetime
 class Assembly < ApplicationRecord
   belongs_to :ownable, polymorphic: true
 
@@ -17,9 +15,9 @@ class Assembly < ApplicationRecord
   has_many :meal_schedules, dependent: :destroy
 
   # TODO: this may be unused after `feature/34`
-  scope :items, -> { AssemblyItem.where(assembly_id: self.ids).map { |assembly_item|
-    assembly_item.item
-  }}
+  scope :items, lambda {
+    AssemblyItem.where(assembly_id: ids).map(&:item)
+  }
 
   validates :name, presence: true, uniqueness: true
 

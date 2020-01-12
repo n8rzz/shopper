@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserGroupsController < ApplicationController
   # TODO: this may actually be better placed within the GroupsController
   # DELETE /groups/:id/members/:member_id

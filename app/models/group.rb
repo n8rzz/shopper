@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # id:           integer
 # name:         string

@@ -3,7 +3,9 @@ AllCops:
   Include:
     - Rakefile
     - config.ru
-    # - app/**/*.rb
+    - app/**/*.rb
+    - lib/**/*.rb
+    # - spec/**/*.rb
   Exclude:
     - bin/**/*
     - db/migrate/**/*
@@ -11,7 +13,24 @@ AllCops:
     - src/**/*
     - node_modules/**/*
     - vendor/**/*
+
+Layout/LineLength:
+  Max: 130
+
+Metrics/AbcSize:
+  Max: 34
+Metrics/CyclomaticComplexity:
+  Max: 9
+Metrics/MethodLength:
+  Max: 18
+Metrics/PerceivedComplexity:
+  Max: 9
+
 Style/Documentation:
   Enabled: false
-Metrics/LineLength:
-  Max: 120
+Style/FrozenStringLiteralComment:
+  Enabled: true
+Style/SymbolArray:
+  EnforcedStyle: brackets
+Style/StringLiterals:
+  Enabled: true

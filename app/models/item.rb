@@ -1,12 +1,10 @@
-=begin
+# frozen_string_literal: true
 
-id:             integer
-name:           string
-created_at:     datetime
-updated_at:     datetime
-department_id:  integer
-
-=end
+# id:             integer
+# name:           string
+# created_at:     datetime
+# updated_at:     datetime
+# department_id:  integer
 class Item < ApplicationRecord
   belongs_to :department
   belongs_to :ownable, polymorphic: true
@@ -26,7 +24,7 @@ class Item < ApplicationRecord
   end
 
   def self.group_by_department_and_sort
-    group_by_department.sort_by { |k, v| k.name.to_s }
+    group_by_department.sort_by { |k| k.name.to_s }
   end
 
   # TODO: use this in places where we create these maps in components

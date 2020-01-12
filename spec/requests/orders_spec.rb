@@ -1,6 +1,6 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe "Order", :type => :request do
+RSpec.describe 'Order', type: :request do
   before do
     sign_in create(:user)
   end

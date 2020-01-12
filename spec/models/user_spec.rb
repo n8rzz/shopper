@@ -59,14 +59,14 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe '.has_groups?' do
+  describe '.groups?' do
     let!(:ungrouped_user) { create(:user) }
     let(:user) { create(:user) }
     let(:group) { create(:group) }
     let!(:user_group) { create(:user_group, user_id: user.id, group_id: group.id) }
 
-    it { expect(ungrouped_user.has_groups?).to be(false) }
-    it { expect(user.has_groups?).to be(true) }
+    it { expect(ungrouped_user.groups?).to be(false) }
+    it { expect(user.groups?).to be(true) }
   end
 
   describe '.remove_invitation_group_id_after_invitaion_acceptence' do
@@ -103,7 +103,7 @@ RSpec.describe User, type: :model do
     context 'when a user does not have a group invitation to clear' do
       let(:user) { create(:user) }
 
-      it { expect(user.errors).to_not eq(nil)}
+      it { expect(user.errors).to_not eq(nil) }
     end
 
     context 'when a user has a group invitation to clear' do
@@ -113,9 +113,9 @@ RSpec.describe User, type: :model do
         user.clear_group_invitation
       end
 
-      it { expect(user.invitation_sent_at).to eq(nil)}
-      it { expect(user.invitation_group_token).to eq(nil)}
-      it { expect(user.invitation_group_id).to eq(nil)}
+      it { expect(user.invitation_sent_at).to eq(nil) }
+      it { expect(user.invitation_group_token).to eq(nil) }
+      it { expect(user.invitation_group_id).to eq(nil) }
     end
   end
 end

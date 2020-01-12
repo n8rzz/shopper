@@ -1,17 +1,17 @@
 guard :bundler do
-    require 'guard/bundler'
-    require 'guard/bundler/verify'
-    helper = Guard::Bundler::Verify.new
+  require 'guard/bundler'
+  require 'guard/bundler/verify'
+  helper = Guard::Bundler::Verify.new
 
-    files = ['Gemfile']
-    files += Dir['*.gemspec'] if files.any? { |f| helper.uses_gemspec?(f) }
+  files = ['Gemfile']
+  files += Dir['*.gemspec'] if files.any? { |f| helper.uses_gemspec?(f) }
 
-    # Assume files are symlinked from somewhere
-    files.each { |file| watch(helper.real_path(file)) }
+  # Assume files are symlinked from somewhere
+  files.each { |file| watch(helper.real_path(file)) }
 end
 
 guard :rubocop do
-#   watch(%r{.+\.rb$})
+  # watch(%r{.+\.rb$})
   watch(%r{^app/(.+)\.rb$})
   watch(%r{(?:.+/)?\.rubocop(?:_todo)?\.yml$}) { |m| File.dirname(m[0]) }
 end
@@ -34,7 +34,7 @@ guard :rspec, cmd: "bundle exec rspec" do
   dsl.watch_spec_files_for(ruby.lib_files)
 
   # Rails files
-  rails = dsl.rails(view_extensions: %w(erb haml slim))
+  rails = dsl.rails(view_extensions: %w[erb haml slim])
   dsl.watch_spec_files_for(rails.app_files)
   dsl.watch_spec_files_for(rails.views)
 
