@@ -26,25 +26,25 @@ test-be-unit: ## runs just rspec unit tests
 	@echo ""
 	@$(call log_color_green, "--- === ::: Starting RSPEC UNIT test suite ::: === ---")
 	@echo ""
-	bundle exec rspec --exclude-pattern "spec/features/**/*_spec.rb"
+	export RUBYOPT='-W:no-deprecated -W:no-experimental'; bundle exec rspec --exclude-pattern "spec/features/**/*_spec.rb"
 
 test-feature: ## runs rspec feature tests
 	@echo ""
 	@$(call log_color_green, "--- === ::: Starting RSPEC FEATURE test suite ::: === ---")
 	@echo ""
-	bundle exec rspec spec/features/**/*_spec.rb --failure-exit-code 0
+	export RUBYOPT='-W:no-deprecated -W:no-experimental'; bundle exec rspec spec/features/**/*_spec.rb --failure-exit-code 0
 
 test-be-unit-profile: ## runs just rspec unit tests
 	@echo ""
 	@$(call log_color_green, "--- === ::: Starting RSPEC UNIT test suite ::: === ---")
 	@echo ""
-	bundle exec rspec --exclude-pattern "spec/features/**/*_spec.rb" --profile
+	export RUBYOPT='-W:no-deprecated -W:no-experimental'; bundle exec rspec --exclude-pattern "spec/features/**/*_spec.rb" --profile
 
 test-feature-profile: ## runs rspec feature tests
 	@echo ""
 	@$(call log_color_green, "--- === ::: Starting RSPEC FEATURE test suite ::: === ---")
 	@echo ""
-	bundle exec rspec spec/features/**/*_spec.rb --profile --failure-exit-code 0
+	export RUBYOPT='-W:no-deprecated -W:no-experimental'; bundle exec rspec spec/features/**/*_spec.rb --profile --failure-exit-code 0
 
 test: test-fe test-be-unit test-feature
 
