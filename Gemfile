@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.0'
 
@@ -47,11 +47,11 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'webdrivers'
   gem 'database_cleaner'
   gem 'minitest-around'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'simplecov', '>= 0.16.1', require: false
+  gem 'webdrivers'
 end
