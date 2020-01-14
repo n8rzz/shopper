@@ -15,11 +15,13 @@ Rails.application.routes.draw do
   get 'groups/invitation', to: 'groups#invitation'
 
   resources :groups do
-    get 'invitation',    to: 'groups#review_invitation'
-    post 'invitation',   to: 'groups#accept_invitation'
-    delete 'invitation', to: 'groups#decline_invitation'
+    get 'invitation',         to: 'groups#review_invitation'
+    post 'invitation',        to: 'groups#accept_invitation'
+    delete 'invitation',      to: 'groups#decline_invitation'
+    delete 'users/:user_id',  to: 'groups#delete_pending_invite'
   end
 
+  # TODO: this might be the wrong place for this
   delete 'groups/:id/members/:member_id', to: 'user_groups#delete_member'
 
   post 'order_items/create',          to: 'order_items#create'

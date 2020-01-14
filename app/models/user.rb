@@ -28,6 +28,20 @@ class User < ApplicationRecord
     !groups.empty?
   end
 
+  def self.delete_pending_invite(user_id)
+    user = User.find_by(id: user_id)
+
+    return nil if user.nil?
+
+    if user.username.nil?
+      user.destroy
+
+      return
+    end
+
+    user.clear_group_invitation
+  end
+
   def self.invite_existing_user_to_group(user, current_inviter)
     # TODO: this should be moved to an instance method, if possible
     User.generate_invitation_token!(user)

@@ -65,7 +65,7 @@
 </div>
 
 
-<% if @pending_invites.length > 0 %>
+<% if @pending_invites.size.positive? %>
     <div class="vr_2">
         <h2 class="hdg hdg_2">
             Pending Invites
@@ -75,7 +75,19 @@
         <% @pending_invites.each do |user| %>
             <li class="listItem">
                 <div class="listItem-ft">
-                    <%= user.email %>
+                    <ul class="stereo">
+                        <li>
+                            <%= user.email %>
+                        </li>
+                        <li>
+                            <%= link_to 'Remove',
+                                { controller: 'groups', action: 'delete_pending_invite', group_id: @group.id, user_id: user.id },
+                                class: 'link',
+                                method: :delete,
+                                data: { confirm: 'Are you sure you want to remove this member?' }
+                            %>
+                        </li>
+                    </ul>
                 </div>
             </li>
         <% end %>

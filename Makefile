@@ -2,8 +2,8 @@ log_color_green = (echo "\x1B[32m>> $1\x1B[39m")
 .PHONY: update lint test test-fe test-be-unit test-feature test-be-unit-profile test-feature-profile release sidekiq sync launch-reports
 
 init: ## install gems needed to run the project
-	gem install bundler:2.1.4
-	gem install rails:6.0.0
+	gem install bundler --version=2.1.4
+	gem install rails --version=6.0.0
 	gem install foreman
 
 update: ## install gems and npm packages

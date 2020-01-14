@@ -89,9 +89,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @invitee.save
-        # rubocop:disable Layout/LineLength
         format.html { redirect_to group_path(invitation_group_id), notice: 'Group invite confirmed! We are transferring ownership of your items, assemblies, locations and departments' }
-        # rubocop:enable Layout/LineLength
       else
         format.html { redirect_to root_path, notice: 'Something went wrong processing your Group invitation' }
       end
@@ -109,6 +107,20 @@ class GroupsController < ApplicationController
         format.html { redirect_to orders_path, notice: 'Group invite declined sucessfully' }
       else
         format.html { redirect_to root_path, notice: 'Something went wrong processing your Group invitation' }
+      end
+    end
+  end
+
+  # DELETE /groups/:group_id/user/:user_id
+  def delete_pending_invite
+    @group = Group.find_by(id: params[:group_id])
+    @pending_invitee = User.delete_pending_invite(params[:user_id])
+
+    respond_to do |format|
+      if !@pending_invitee.nil? && @pending_invitee.save
+        format.html { redirect_to group_path(@group.id), notice: 'Pending User invite removed' }
+      else
+        format.html { redirect_to group_path(@group.id), notice: 'Pending User not found' }
       end
     end
   end
