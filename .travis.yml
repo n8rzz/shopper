@@ -1,17 +1,13 @@
+dist:
+  - bionic
 services:
   - xvfb
   - postgresql
 addons:
-  - postgresql: '11.3'
-  - chrome: stable
+  chrome: stable
 language: ruby
 rvm:
   - 2.7.0
-cache:
-  bundler: true
-  directories:
-    - node_modules
-  yarn: true
 before_install:
   - export TZ=America/Chicago
   - nvm install $(cat .nvmrc)
@@ -22,13 +18,14 @@ before_install:
   - sudo chmod +x /usr/local/bin/chromedriver
   - google-chrome-stable --headless --no-sandbox
 install:
+  - psql --version
   - ruby -v
   - node -v
   - npm i -g yarn
   - make update
 before_script:
   - cp config/database.yml.travis config/database.yml
-  - bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
+  - export RUBYOPT='-W:no-deprecated -W:no-experimental'; bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
   - bin/webpack
 script:
   - make lint
