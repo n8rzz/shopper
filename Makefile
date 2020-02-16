@@ -55,6 +55,9 @@ test: test-fe test-be-unit test-feature
 
 test-profile: test-fe test-be-unit-profile test-feature-profile
 
+reset: ## reset and re-seed databse
+	export RUBYOPT='-W:no-deprecated -W:no-experimental'; bundle exec rails db:reset
+
 release: ## updates `master` branch, generates a new tag, pushes tag, pushes master. expects `v={VERSION}` arg
 	@echo ""
 	@$(call log_color_green, "-- === ::: Updating local `master` ::: === ---")
