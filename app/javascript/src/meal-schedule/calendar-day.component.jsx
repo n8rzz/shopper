@@ -30,6 +30,14 @@ export class CalendarDay extends React.Component {
         this._mealTimeMap = Object.create(DEFAULT_MEAL_TIME_MAP);
     }
 
+    _buildClassnamesForCalendarDayCell() {
+        return classnames({
+            'calendarTable-td-cell': true,
+            [`qa-calendarTable-td-cell-${this.props.dayNumber}`]: true,
+            'mix-calendarTable-td-cell_isToday': this.props.isToday,
+        });
+    }
+
     _buildClassnamesForTimeIndicator(mealSchedule) {
         return classnames({
             'timeIndicator-item': mealSchedule != null && mealSchedule.meal_time === MEAL_TIME_NAME.NONE,
@@ -74,7 +82,7 @@ export class CalendarDay extends React.Component {
                 key={`calendar-day-${this.props.dayNumber}`}
             >
                 <div
-                    className={`calendarTable-td-cell qa-calendarTable-td-cell-${this.props.dayNumber}`}
+                    className={this._buildClassnamesForCalendarDayCell()}
                     onClick={(event) => this.props.onClickDayHandler(event, this.props.dayNumber)}
                 >
                     <div>
@@ -92,6 +100,7 @@ export class CalendarDay extends React.Component {
 CalendarDay.propTypes = {
     dayNumber: PropTypes.number.isRequired,
     mealScheduleForDay: PropTypes.array,
+    isToday: PropTypes.bool.isRequired,
     onClickDayHandler: PropTypes.func.isRequired,
 };
 
