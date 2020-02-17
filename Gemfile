@@ -35,6 +35,7 @@ end
 
 group :development do
   gem 'better_errors'
+  gem 'bullet'
   gem 'guard', '>= 2.15.0', require: false
   gem 'guard-bundler', require: false
   gem 'guard-rspec', require: false
