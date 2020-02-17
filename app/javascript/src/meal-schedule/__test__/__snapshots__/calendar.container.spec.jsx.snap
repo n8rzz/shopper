@@ -99,42 +99,49 @@ exports[`CalendarContainer renders correctly with valid props 1`] = `
         >
           <CalendarDay
             dayNumber={1}
+            isToday={false}
             key="calendarDay-1"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={2}
+            isToday={false}
             key="calendarDay-2"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={3}
+            isToday={false}
             key="calendarDay-3"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={4}
+            isToday={false}
             key="calendarDay-4"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={5}
+            isToday={false}
             key="calendarDay-5"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={6}
+            isToday={false}
             key="calendarDay-6"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={7}
+            isToday={false}
             key="calendarDay-7"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
@@ -145,42 +152,49 @@ exports[`CalendarContainer renders correctly with valid props 1`] = `
         >
           <CalendarDay
             dayNumber={8}
+            isToday={false}
             key="calendarDay-8"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={9}
+            isToday={false}
             key="calendarDay-9"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={10}
+            isToday={false}
             key="calendarDay-10"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={11}
+            isToday={false}
             key="calendarDay-11"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={12}
+            isToday={false}
             key="calendarDay-12"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={13}
+            isToday={false}
             key="calendarDay-13"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={14}
+            isToday={false}
             key="calendarDay-14"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
@@ -191,42 +205,49 @@ exports[`CalendarContainer renders correctly with valid props 1`] = `
         >
           <CalendarDay
             dayNumber={15}
+            isToday={false}
             key="calendarDay-15"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={16}
+            isToday={false}
             key="calendarDay-16"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={17}
+            isToday={false}
             key="calendarDay-17"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={18}
+            isToday={false}
             key="calendarDay-18"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={19}
+            isToday={false}
             key="calendarDay-19"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={20}
+            isToday={false}
             key="calendarDay-20"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={21}
+            isToday={false}
             key="calendarDay-21"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
@@ -237,18 +258,21 @@ exports[`CalendarContainer renders correctly with valid props 1`] = `
         >
           <CalendarDay
             dayNumber={22}
+            isToday={false}
             key="calendarDay-22"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={23}
+            isToday={false}
             key="calendarDay-23"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={24}
+            isToday={false}
             key="calendarDay-24"
             mealScheduleForDay={
               Array [
@@ -280,24 +304,28 @@ exports[`CalendarContainer renders correctly with valid props 1`] = `
           />
           <CalendarDay
             dayNumber={25}
+            isToday={false}
             key="calendarDay-25"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={26}
+            isToday={false}
             key="calendarDay-26"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={27}
+            isToday={false}
             key="calendarDay-27"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
           />
           <CalendarDay
             dayNumber={28}
+            isToday={false}
             key="calendarDay-28"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}
@@ -308,6 +336,7 @@ exports[`CalendarContainer renders correctly with valid props 1`] = `
         >
           <CalendarDay
             dayNumber={29}
+            isToday={false}
             key="calendarDay-29"
             mealScheduleForDay={
               Array [
@@ -328,6 +357,7 @@ exports[`CalendarContainer renders correctly with valid props 1`] = `
           />
           <CalendarDay
             dayNumber={30}
+            isToday={false}
             key="calendarDay-30"
             mealScheduleForDay={Array []}
             onClickDayHandler={[Function]}

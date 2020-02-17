@@ -41,3 +41,8 @@
 .mix-calendarTable-td-cell_isEmpty {
     background-color: $COLOR_LIGHT;
 }
+
+.mix-calendarTable-td-cell_isToday {
+    background-color: $COLOR_BG_PRIMARY;
+    border: 1px solid $COLOR_PRIMARY_ACCENT;
+}

@@ -8,6 +8,7 @@ export class CalendarContainer extends React.Component {
     constructor(props) {
         super(props);
 
+        this._today = moment(new Date()).startOf('day');
         this._weekdayShortNames = moment.weekdaysShort();
         this._onClickCalendarHeaderHandler = this._onClickCalendarHeader.bind(this);
         this.state = {
@@ -41,6 +42,10 @@ export class CalendarContainer extends React.Component {
         return this.props.mealSchedules.filter(
             (schedule) => day.format('DD/MM') === moment.utc(schedule.schedule_date).format('DD/MM'),
         );
+    }
+
+    _isEventDayToday(eventDate) {
+        return eventDate.clone().startOf('day').isSame(this._today, 'd');
     }
 
     _hasEventOnDay(day) {
@@ -105,6 +110,7 @@ export class CalendarContainer extends React.Component {
             const calendarDayJsx = (
                 <CalendarDay
                     key={`calendarDay-${dayNumber}`}
+                    isToday={this._isEventDayToday(eventDate)}
                     dayNumber={dayNumber}
                     mealScheduleForDay={mealScheduleForDay}
                     onClickDayHandler={this.props.onClickDayHandler}
