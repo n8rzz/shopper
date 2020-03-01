@@ -47,12 +47,13 @@
 }
 
 .mix-btn_isError {
-    background-color: $COLOR_ERROR_FG;
-    color: #ffffff;
+    background-color: $COLOR_ERROR_BG;
+    color: $COLOR_DARK;
 
     &:hover {
-        background-color: $COLOR_ERROR_BG;
-        color: $COLOR_DARK;
+        background-color: $COLOR_ERROR_FG;
+        color: #ffffff;
+        cursor: pointer;
     }
 }
 

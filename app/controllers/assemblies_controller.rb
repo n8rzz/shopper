@@ -11,6 +11,7 @@ class AssembliesController < ApplicationController
     @assembly_items = AssemblyItem.all
     @departments = current_owner.departments.all
     @items = current_owner.items.all
+    @recipes = current_owner.recipes.all
   end
 
   # GET /assemblies/new

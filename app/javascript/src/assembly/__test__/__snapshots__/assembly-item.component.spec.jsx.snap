@@ -40,6 +40,14 @@ exports[`AssemblyItem renders correctly with valid props 1`] = `
           >
             <li>
               <a
+                className="link qa-assemblyRecipe-1"
+                href="/recipes/1"
+              >
+                Recipe
+              </a>
+            </li>
+            <li>
+              <a
                 className="link"
                 href="/meal_schedules/new?assembly_id=1"
               >

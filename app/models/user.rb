@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :assemblies, as: :ownable, dependent: :destroy
   has_many :orders, as: :ownable, dependent: :destroy
   has_many :meal_schedules, as: :ownable, dependent: :destroy
+  has_many :recipes, as: :ownable, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :lockable, and :omniauthable

@@ -62,7 +62,23 @@ exports[`AssemblyItemList renders correctly with valid props 1`] = `
         },
       }
     }
-    key="assemblyItemContainer-0"
+    key="assemblyItemContainer-Souvlaki"
+    recipe={
+      Object {
+        "assembly_id": 1,
+        "cook_time": 18,
+        "created_at": "2020-03-01T04:13:06.254Z",
+        "description": "Two buttermilk waffles, topped with whipped cream and maple syrup, a side of two eggs served any style, and your choice of smoked bacon or smoked ham.",
+        "id": 2,
+        "name": "Mushroom Risotto",
+        "ownable_id": 1,
+        "ownable_type": "Group",
+        "prep_time": 14,
+        "updated_at": "2020-03-01T04:13:06.254Z",
+        "yield_unit": "servings",
+        "yield_value": 28,
+      }
+    }
   />
   <AssemblyItemContainer
     assembly={
@@ -122,7 +138,8 @@ exports[`AssemblyItemList renders correctly with valid props 1`] = `
         },
       }
     }
-    key="assemblyItemContainer-1"
+    key="assemblyItemContainer-Chilli con Carne"
+    recipe={null}
   />
 </ul>
 `;

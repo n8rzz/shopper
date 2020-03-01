@@ -13,11 +13,11 @@ RSpec.describe Item, type: :model do
     it { should have_db_column(:ownable_type) }
     it { should belong_to(:department) }
     it { should belong_to(:ownable) }
-    it { should have_many(:order_items) }
-    it { should have_many(:assembly_items) }
+    it { should have_many(:order_items).dependent(:destroy) }
+    it { should have_many(:assembly_items).dependent(:destroy) }
     it { should have_many(:assemblies) }
-    it { should have_many(:assemblies) }
-    it { should have_many(:meal_schedules) }
+    it { should have_many(:meal_schedules).dependent(:destroy) }
+    it { should have_many(:recipe_ingredient).dependent(:destroy) }
   end
 
   before do

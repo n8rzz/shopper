@@ -14,6 +14,7 @@ class Item < ApplicationRecord
   has_many :assembly_items, dependent: :destroy
   has_many :assemblies, through: :assembly_items
   has_many :meal_schedules, dependent: :destroy
+  has_many :recipe_ingredient, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
 

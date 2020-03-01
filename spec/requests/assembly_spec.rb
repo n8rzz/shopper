@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe 'Assembly', :type => :request do
+RSpec.describe 'Assembly', type: :request do
   let(:user) { create(:user) }
 
   before do
@@ -33,7 +35,7 @@ RSpec.describe 'Assembly', :type => :request do
 
   context 'POST create a Assembly' do
     before :each do
-      post assemblies_path, :params => { :assembly => attributes_for(:assembly) }
+      post assemblies_path, params: { assembly: attributes_for(:assembly) }
     end
 
     it { expect(response).to redirect_to(assemblies_path) }

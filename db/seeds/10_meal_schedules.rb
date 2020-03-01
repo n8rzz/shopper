@@ -1,7 +1,7 @@
 puts '=== MealSchedules'
 
 group_user = User.find_by(email: 'me@example.com').groups.first
-meal_time_option_list = ['morning', 'afternoon', 'evening', 'none']
+meal_time_option_list = %w[morning afternoon evening none]
 date_for_all_meal_times = Faker::Date.between(from: 1.week.ago, to: 1.month.from_now)
 
 meal_time_option_list.each do |meal_time|

@@ -16,6 +16,7 @@ export function AssemblyPage(props) {
             csrf={props.csrf}
             departmentIdMap={departmentIdMap}
             itemIdMap={itemIdMap}
+            recipes={props.recipes}
         />
     );
 }
@@ -26,4 +27,5 @@ AssemblyPage.propTypes = {
     csrf: PropTypes.string.isRequired,
     departments: PropTypes.array.isRequired,
     items: PropTypes.array.isRequired,
+    recipes: PropTypes.array.isRequired,
 };

@@ -7,6 +7,7 @@ import {
     csrfMock,
     departmentListMock,
     itemListMock,
+    recipeListMock,
 } from '../../__mocks__/mocks';
 
 describe('AssemblyPage', () => {
@@ -17,6 +18,7 @@ describe('AssemblyPage', () => {
             csrf={csrfMock}
             departments={departmentListMock}
             items={itemListMock}
+            recipes={recipeListMock}
         />);
 
         expect(component).toMatchSnapshot();

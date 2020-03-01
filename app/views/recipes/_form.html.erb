@@ -1,0 +1,159 @@
+<div class="island js-recipeForm">
+    <%= simple_form_for(@recipe) do |f| %>
+        <div class="island-bd">
+            <%= f.error_notification %>
+
+            <div class="vr_3">
+                <div class="vr_2">
+                    <div class="form-group mix-form-group_full">
+                        <%= f.association :assembly %>
+                    </div>
+                </div>
+                <div class="form-group mix-form-group_full">
+                    <ul class="vlist">
+                        <li>
+                            <%= f.label :name %>
+                        </li>
+                        <li>
+                            <%= f.input_field :name,
+                                required: true,
+                                autofocus: true,
+                                placeholder: "Name",
+                                class: "input-text mix-input-text_full js-recipeName"
+                            %>
+                        </li>
+                    </ul>
+                </div>
+                <div class="form-group mix-form-group_full">
+                    <%= f.error :name, id: "name_error" %>
+                </div>
+
+                <div class="form-group mix-form-group_full">
+                    <ul>
+                        <li>
+                            <%= f.label :description %>
+                        </li>
+                        <li>
+                            <%= f.input_field :description,
+                                required: true,
+                                placeholder: "Description",
+                                class: "input-textarea mix-input-text_full",
+                                as: :text,
+                                input_html: { 'rows' => 10 }
+                            %>
+                        </li>
+                    </ul>
+                </div>
+                <div class="form-group mix-form-group_full">
+                    <%= f.error :description, id: "description_error" %>
+                </div>
+            </div>
+
+            <div class="vr_3">
+                <div class="form-group mix-form-group_full">
+                    <%= f.label :prep_time %>
+                    <%= f.input_field :prep_time,
+                        required: true,
+                        placeholder: "Prep Time",
+                        class: "input-text"
+                    %>
+                </div>
+                <div class="form-group mix-form-group_full">
+                    <%= f.error :prep_time, id: "prep_time_error" %>
+                </div>
+
+                <div class="form-group mix-form-group_full">
+                    <%= f.label :cook_time %>
+                    <%= f.input_field :cook_time,
+                        required: true,
+                        placeholder: "Cook Time",
+                        class: "input-text"
+                    %>
+                </div>
+                <div class="form-group mix-form-group_full">
+                    <%= f.error :cook_time, id: "cook_time_error" %>
+                </div>
+
+                <div class="form-group mix-form-group_full">
+                    <%= f.label :yield_value %>
+                    <%= f.input_field :yield_value,
+                        required: true,
+                        placeholder: "Yield Value",
+                        class: "input-text"
+                    %>
+                </div>
+                <div class="form-group mix-form-group_full">
+                    <%= f.error :yield_value, id: "yield_value_error" %>
+                </div>
+
+                <div class="form-group mix-form-group_full">
+                    <%= f.label :yield_unit %>
+                    <%= f.input_field :yield_unit,
+                        required: true,
+                        placeholder: "Name",
+                        class: "input-text"
+                    %>
+                </div>
+                <div class="form-group mix-form-group_full">
+                    <%= f.error :yield_unit, id: "yield_unit_error" %>
+                </div>
+            </div>
+
+            <div class="vr_3">
+                <div class="form-group mix-form-group_full">
+                    ingredients
+                </div>
+            </div>
+
+            <div class="vr_3">
+                <%= f.simple_fields_for(:recipe_instructions) do |instruction| %>
+                    <div class="form-group mix-form-group_full">
+                        <%= instruction.label :sort_order %>
+                        <%= instruction.input_field :sort_order,
+                            required: true,
+                            placeholder: "Sort Order",
+                            class: "input-text",
+                            as: :numeric
+                        %>
+                    </div>
+                    <div class="form-group mix-form-group_full">
+                        <%= instruction.error :sort_order, id: "sort_order_error" %>
+                    </div>
+
+                    <div class="form-group mix-form-group_full">
+                        <%= instruction.label :text, class: "u-isVisuallyHidden" %>
+                        <%= instruction.input_field :text,
+                            required: true,
+                            placeholder: "Instruction",
+                            class: "input-textarea mix-input-text_full",
+                            as: :text,
+                            input_html: { 'rows' => 5 }
+                        %>
+                    </div>
+                    <div class="form-group mix-form-group_full">
+                        <%= instruction.error :test, id: "recipe_instruction_text_error" %>
+                    </div>
+                <% end %>
+
+                <button class="btn">Add Step</button>
+            </div>
+
+            <div class="form-group mix-form-group_full">
+                <%= f.button :submit, "Save", class: "btn-submit mix-btn_inverse mix-btn_full" %>
+            </div>
+        <% end %>
+
+        <% if @recipe.id != nil %>
+            <div class="form-group mix-form-group_full">
+                <%= button_to 'Destroy',
+                    recipe, method: :delete,
+                    class: 'btn-submit mix-btn_isError mix-btn_full qa-destroy-recipe',
+                    data: { confirm: 'Are you sure?' }
+                %>
+            </div>
+        <% end %>
+    </div>
+</div>
+
+
+

@@ -169,3 +169,6 @@ Style/StderrPuts:
   Exclude:
     - 'bin/yarn'
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/'

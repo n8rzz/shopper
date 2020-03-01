@@ -1,0 +1,24 @@
+<ul class="stereo">
+    <li>
+        <h1 class="hdg hdg_1">Recipes</h1>
+    </li>
+    <li>
+        <%= link_to 'New Recipe', new_recipe_path, class: 'link' %>
+    </li>
+</ul>
+<ul class="vlist">
+    <% @recipes.each do |recipe| %>
+        <li class="listItem">
+            <div class="listItem-hd">
+                <ul class="stereo">
+                    <li>
+                        <%= link_to recipe.display_name, recipe_path(recipe), class: 'link' %>
+                    </li>
+                    <li>
+                        <%= link_to 'Edit', edit_recipe_path(recipe.id), class: 'link' %>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    <% end %>
+</ul>

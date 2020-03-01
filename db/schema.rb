@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_29_003909) do
+ActiveRecord::Schema.define(version: 2020_03_13_120506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,6 +126,43 @@ ActiveRecord::Schema.define(version: 2019_12_29_003909) do
     t.index ["ownable_type", "ownable_id"], name: "index_orders_on_ownable_type_and_ownable_id"
   end
 
+  create_table "recipe_ingredients", force: :cascade do |t|
+    t.string "qty_value", null: false
+    t.string "qty_unit", null: false
+    t.string "name"
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "item_id"
+    t.index ["item_id"], name: "index_recipe_ingredients_on_item_id"
+    t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
+  end
+
+  create_table "recipe_instructions", force: :cascade do |t|
+    t.integer "sort_order", default: 0
+    t.string "text", null: false
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_recipe_instructions_on_recipe_id"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "prep_time"
+    t.integer "cook_time"
+    t.integer "yield_value"
+    t.string "yield_unit"
+    t.string "ownable_type", null: false
+    t.bigint "ownable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "assembly_id"
+    t.index ["assembly_id"], name: "index_recipes_on_assembly_id"
+    t.index ["ownable_type", "ownable_id"], name: "index_recipes_on_ownable_type_and_ownable_id"
+  end
+
   create_table "user_groups", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "group_id", null: false
@@ -185,6 +222,9 @@ ActiveRecord::Schema.define(version: 2019_12_29_003909) do
   add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "locations"
+  add_foreign_key "recipe_ingredients", "items"
+  add_foreign_key "recipe_ingredients", "recipes"
+  add_foreign_key "recipes", "assemblies"
   add_foreign_key "user_groups", "groups"
   add_foreign_key "user_groups", "users"
 end

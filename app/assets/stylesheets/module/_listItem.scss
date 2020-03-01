@@ -29,13 +29,12 @@
 .listItem-child {
     margin-left: $SPACING_2X;
     margin-top: $SPACING_HALFX;
-    padding: $SPACING_HALFX $SPACING_1X;
+    padding: $SPACING_1X;
     position: relative;
 
     & .listItem-hd,
     & .listItem-bd {
         font-size: $FONT_SIZE_S;
-        padding-bottom: $SPACING_HALFX;
     }
 }
 

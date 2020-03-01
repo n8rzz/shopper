@@ -6,7 +6,8 @@ require_relative './seeds/04_departments.rb'
 require_relative './seeds/05_locations.rb'
 require_relative './seeds/06_items.rb'
 require_relative './seeds/07_assemblies.rb'
-require_relative './seeds/08_orders.rb'
-require_relative './seeds/09_meal_schedules.rb'
+require_relative './seeds/08_recipes.rb'
+require_relative './seeds/09_orders.rb'
+require_relative './seeds/10_meal_schedules.rb'
 
-print "Seeding complete!"
+puts 'Seeding complete!'

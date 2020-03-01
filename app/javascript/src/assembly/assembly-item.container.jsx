@@ -135,10 +135,15 @@ export class AssemblyItemContainer extends React.Component {
                 onClickAccordionTriggerHandler={this._onClickAccordionTriggerHandler}
                 onClickAddAssemblyHandler={this._onClickAddAssemblyHandler}
                 onClickAddAssemblyItemHandler={this._onClickAddAssemblyItemHandler}
+                recipe={this.props.recipe}
             />
         );
     }
 }
+
+AssemblyItemContainer.defaultProps = {
+    recipe: null,
+};
 
 AssemblyItemContainer.propTypes = {
     assembly: PropTypes.object.isRequired,
@@ -146,4 +151,5 @@ AssemblyItemContainer.propTypes = {
     csrf: PropTypes.string.isRequired,
     departmentIdMap: PropTypes.object.isRequired,
     itemIdMap: PropTypes.object.isRequired,
+    recipe: PropTypes.object,
 };

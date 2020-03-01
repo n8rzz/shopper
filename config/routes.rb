@@ -44,5 +44,14 @@ Rails.application.routes.draw do
   post 'location_departments/:id/:direction', to: 'location_departments#change_direction'
   resources :meal_schedules
 
+  resources :recipes do
+    post '/recipe_ingredient',                           to: 'recipe_ingredients#create'
+    put '/recipe_ingredient/:recipe_ingredient_id',      to: 'recipe_ingredients#update'
+    delete '/recipe_ingredient/:recipe_ingredient_id',   to: 'recipe_ingredients#destroy'
+    post '/recipe_instruction',                          to: 'recipe_instructions#create'
+    put '/recipe_instruction/:recipe_instruction_id',    to: 'recipe_instructions#update'
+    delete '/recipe_instruction/:recipe_instruction_id', to: 'recipe_instructions#destroy'
+  end
+
   root to: 'orders#index'
 end

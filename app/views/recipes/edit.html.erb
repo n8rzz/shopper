@@ -1,0 +1,17 @@
+<ul class="stereo">
+    <li>
+        <h1 class="hdg hdg_1">Edit Recipe</h1>
+    </li>
+    <li>
+        <ul class="hlist hlist-divided">
+            <li>
+                <%= link_to 'Back', recipes_path, class: "link" %>
+            </li>
+            <li>
+                <%= link_to 'New', new_recipe_path, class: "link" %>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<%= render 'form', recipe: @recipe %>

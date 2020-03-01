@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.feature 'Assembly#index', js: true do
+RSpec.feature 'Create an Recipe', js: true do
   let(:user) { create(:user) }
   let(:department) { create(:department, ownable: user) }
   let(:item1) { create(:item, department: department, ownable: user) }
@@ -15,15 +17,14 @@ RSpec.feature 'Assembly#index', js: true do
     sign_out user
   end
 
-  context 'visit assembly#index' do
+  context 'when user clicks `Add Recipe`' do
     before :each do
       visit assemblies_path
+
+      click_link('Add Recipe')
     end
 
-    it { expect(page).to have_text(assembly.name) }
-    it { expect(page).to have_text("Items:#{assembly.items.count}") }
-    it { expect(page).to have_button('Add to order') }
-    it { expect(page).to have_link('Schedule') }
-    it { expect(page).to have_link('Edit') }
+    it { expect(page).to have_current_path(new_recipe_path(assembly_id: assembly.id)) }
+    it { expect(page).to have_select('Assembly', selected: assembly.name) }
   end
 end
