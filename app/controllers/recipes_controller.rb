@@ -11,7 +11,9 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1
   # GET /recipes/1.json
-  def show; end
+  def show
+    @items_by_id = current_owner.items.by_id
+  end
 
   # GET /recipes/new
   def new

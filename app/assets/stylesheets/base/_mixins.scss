@@ -32,6 +32,16 @@
     border-radius: $BORDER_RADIUS_L;
 }
 
+@mixin island {
+    background-color: $COLOR_BG_SECONDARY;
+    border: 3px solid $COLOR_LIGHT;
+    border-radius: $BORDER_RADIUS_XL;
+    /* @mixin boxShadow-subtle */
+    box-shadow: 1px 2px 10px 0 rgba(34, 34, 34, 0.04);
+    padding-left: $SPACING_2X;
+    padding-right: $SPACING_2X;
+}
+
 @mixin isHidden {
     display: none;
 }

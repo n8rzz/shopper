@@ -14,7 +14,13 @@ import {
 } from './meal-schedule.mock';
 import { orderItemListMock } from './order-item.mock';
 import { orderMock, orderLocationNameMock } from './order.mock';
-import { recipeMock, recipeWithAssemblyMock, recipeListMock } from './recipe.mock';
+import {
+    recipeIngredientMock,
+    recipeInstructionMock,
+    recipeMock,
+    recipeWithAssemblyMock,
+    recipeListMock,
+} from './recipe.mock';
 
 export {
     assemblyItemsGroupedByAssemblyIdMock,
@@ -37,6 +43,8 @@ export {
     orderItemListMock,
     orderMock,
     orderLocationNameMock,
+    recipeIngredientMock,
+    recipeInstructionMock,
     recipeMock,
     recipeWithAssemblyMock,
     recipeListMock,

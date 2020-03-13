@@ -2,13 +2,7 @@
 @import "../base/vars";
 
 .island {
-    @include boxShadow-subtle;
-
-    background-color: $COLOR_BG_SECONDARY;
-    border: 3px solid $COLOR_LIGHT;
-    border-radius: $BORDER_RADIUS_XL;
-    padding-left: $SPACING_2X;
-    padding-right: $SPACING_2X;
+    @include island;
 }
 
 .island-hd {

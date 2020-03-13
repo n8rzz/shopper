@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecipeMetaComponent renders correctly with valid props 1`] = `
+<div
+  className="recipeMeta"
+>
+  <div
+    className="vr_4"
+  >
+    Two buttermilk waffles, topped with whipped cream and maple syrup, a side of two eggs served any style, and your choice of smoked bacon or smoked ham.
+  </div>
+  <ul
+    className="recipeMeta-list"
+  >
+    <li
+      className="recipeMeta-list-item"
+    >
+      <div>
+        Prep
+      </div>
+      <div>
+        14
+         minutes
+      </div>
+    </li>
+    <li
+      className="recipeMeta-list-item"
+    >
+      <div>
+        Cook
+      </div>
+      <div>
+        18
+         minutes
+      </div>
+    </li>
+    <li
+      className="recipeMeta-list-item"
+    >
+      <div>
+        Serves
+      </div>
+      <div>
+        28 servings
+      </div>
+    </li>
+  </ul>
+</div>
+`;

@@ -49,7 +49,7 @@ rand(1..3).times.each do |i|
   RecipeIngredient.create(
     recipe_id: Recipe.last.id,
     name: Faker::Food.ingredient,
-    qty_unit: %w[monkeys lions tigers liters quarts Tbs tbsp cups],
+    qty_unit: %w[monkeys lions tigers liters quarts Tbs tbsp cups].sample,
     qty_value: rand(1..42),
   )
 end
@@ -58,7 +58,7 @@ rand(1..3).times.each do |i|
   RecipeIngredient.create(
     recipe_id: Recipe.last.id,
     name: '',
-    qty_unit: %w[monkeys lions tigers liters quarts Tbs tbsp cups],
+    qty_unit: %w[monkeys lions tigers liters quarts Tbs tbsp cups].sample,
     qty_value: rand(1..42),
     item_id: group_user.items.sample.id
   )

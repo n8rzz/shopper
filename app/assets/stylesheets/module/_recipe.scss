@@ -1,0 +1,75 @@
+@import "../base/font";
+@import "../base/mixins";
+@import "../base/vars";
+
+@mixin _recipeContainer {
+    @include island;
+    @include sansSerifFont;
+
+    padding-bottom: $SPACING_3X;
+    padding-top: $SPACING_3X;
+}
+
+.recipeMeta {
+    @include _recipeContainer;
+
+    font-size: $FONT_SIZE_L;
+}
+
+.recipeMeta-list {
+    @include hlist;
+
+    justify-content: center;
+}
+
+.recipeMeta-list-item {
+    color: $COLOR_SECONDARY_ACCENT;
+    font-size: $FONT_SIZE_S;
+    text-align: center;
+
+    > *:first-child {
+        @include serifFont;
+
+        color: $COLOR_DARK;
+        font-weight: 700;
+        margin-bottom: $SPACING_HALFX;
+    }
+}
+
+.recipeMeta-list-item + .recipeMeta-list-item {
+    border-left: 1px solid;
+    margin-left: $SPACING_2X;
+    padding-left: $SPACING_2X;
+}
+
+.recipeIngredients {
+    @include _recipeContainer;
+}
+
+.recipeIngredients-list {
+    @include vlist;
+
+    font-size: $FONT_SIZE_M + 4px;
+    list-style: square;
+    margin-left: $SPACING_2X;
+}
+
+.recipeIngredients-list-item {
+    padding-left: $SPACING_HALFX;
+}
+
+.recipeInstructions {
+    @include _recipeContainer;
+}
+
+.recipeInstructions-list {
+    list-style: decimal;
+    margin-left: $SPACING_2X;
+}
+
+.recipeInstructions-list-item {
+    @include vr_3;
+
+    font-size: $FONT_SIZE_M + 4px;
+    padding-left: $SPACING_HALFX;
+}

@@ -20,7 +20,7 @@ import { NoticeContainer } from '../src/components/notice/notice.container';
 import { OrderListContainer } from '../src/order-list/order-list.container';
 import { OrderPage } from '../src/order/order.page';
 import { RecipeContainer } from '../src/recipe/recipe.container';
-import { RecipeFormContrianer } from '../src/recipe/recipe-form.container';
+import { RecipeFormContainer } from '../src/recipe/recipe-form.container';
 import { StepperContainer } from '../src/components/stepper/stepper.container';
 
 import WebpackerReact from 'webpacker-react';
@@ -35,6 +35,6 @@ WebpackerReact.setup({
     OrderListContainer,
     OrderPage,
     RecipeContainer,
-    RecipeFormContrianer,
+    RecipeFormContainer,
     StepperContainer,
 });

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecipeInstructionsComponent when called with \`#instructions\` renders correctly with valid props 1`] = `
+<div
+  className="recipeInstructions"
+>
+  <ol
+    className="recipeInstructions-list"
+  >
+    <li
+      className="recipeInstructions-list-item"
+      key="instruction-0"
+    >
+      Migas normcore heirloom pug jean shorts gentrify irony. Typewriter flexitarian synth dreamcatcher tilde swag salvia. Flannel paleo taxidermy viral muggle magic. Banjo roof cleanse semiotics.
+    </li>
+  </ol>
+</div>
+`;
