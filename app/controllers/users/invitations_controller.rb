@@ -2,6 +2,7 @@
 
 class Users::InvitationsController < Devise::InvitationsController
   # POST /resource/invitation
+  # rubocop:disable Metrics/AbcSize
   def create
     self.resource = invite_resource
     resource_invited = resource.errors.empty?
@@ -26,6 +27,7 @@ class Users::InvitationsController < Devise::InvitationsController
 
     respond_with resource, location: after_invite_path_for(current_inviter, resource)
   end
+  # rubocop:enable Metrics/AbcSize
 
   # PUT /resource/invitation
   def update
