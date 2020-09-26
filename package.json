@@ -9,11 +9,11 @@
   },
   "private": true,
   "dependencies": {
-    "@babel/preset-react": "^7.8.3",
+    "@babel/preset-react": "^7.10.4",
     "@rails/actioncable": "^6.0.2",
     "@rails/activestorage": "^6.0.2",
     "@rails/ujs": "^6.0.2",
-    "@rails/webpacker": "^4.2.2",
+    "@rails/webpacker": "^5.2.1",
     "axios": "^0.19.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "classnames": "^2.2.6",
@@ -24,15 +24,15 @@
     "enzyme-to-json": "^3.4.4",
     "eventemitter3": "^4.0.0",
     "ignore-loader": "^0.1.2",
-    "jest": "^25.1.0",
+    "jest": "^26.4.2",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
-    "react": "^16.13.0",
+    "react": "^16.13.1",
     "react-dom": "^16.13.0",
     "react-stickynode": "^2.1.1",
     "react-test-renderer": "^16.13.0",
-    "sinon": "^9.0.0",
+    "sinon": "^9.0.3",
     "turbolinks": "^5.2.0",
     "webpack-dev-server": "^3.10.3",
     "webpacker-react": "^0.3.2"
@@ -74,11 +74,11 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-jest": "^23.8.0",
+    "eslint-plugin-jest": "^24.0.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.18.3",
-    "stylelint": "^13.2.0",
+    "eslint-plugin-react": "^7.21.2",
+    "stylelint": "^13.7.2",
     "stylelint-config-recommended-scss": "^4.2.0",
-    "stylelint-scss": "^3.14.2"
+    "stylelint-scss": "^3.18.0"
   }
 }

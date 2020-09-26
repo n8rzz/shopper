@@ -10,7 +10,7 @@ update: ## install gems and npm packages
 	@echo ""
 	@$(call log_color_green, "-- === ::: Updating ruby gems ::: === ---")
 	@echo ""
-	bundle install
+	bin/bundle install
 	@echo ""
 	@$(call log_color_green, "-- === ::: Updating npm packages ::: === ---")
 	@echo ""
@@ -19,7 +19,7 @@ update: ## install gems and npm packages
 lint: ## runs linters to check for style inconsistencies
 	yarn lint
 	yarn lint:style
-	bundle exec rubocop
+	bin/bundle exec rubocop
 
 test-fe: ## runs just frontend tests
 	@echo ""
@@ -31,32 +31,32 @@ test-be-unit: ## runs just rspec unit tests
 	@echo ""
 	@$(call log_color_green, "--- === ::: Starting RSPEC UNIT test suite ::: === ---")
 	@echo ""
-	export RUBYOPT='-W:no-deprecated -W:no-experimental'; bundle exec rspec --exclude-pattern "spec/features/**/*_spec.rb"
+	export RUBYOPT='-W:no-deprecated -W:no-experimental'; bin/bundle exec rspec --exclude-pattern "spec/features/**/*_spec.rb"
 
 test-feature: ## runs rspec feature tests
 	@echo ""
 	@$(call log_color_green, "--- === ::: Starting RSPEC FEATURE test suite ::: === ---")
 	@echo ""
-	export RUBYOPT='-W:no-deprecated -W:no-experimental'; bundle exec rspec spec/features/**/*_spec.rb --failure-exit-code 0
+	export RUBYOPT='-W:no-deprecated -W:no-experimental'; bin/bundle exec rspec spec/features/**/*_spec.rb --failure-exit-code 0
 
 test-be-unit-profile: ## runs just rspec unit tests
 	@echo ""
 	@$(call log_color_green, "--- === ::: Starting RSPEC UNIT test suite ::: === ---")
 	@echo ""
-	export RUBYOPT='-W:no-deprecated -W:no-experimental'; bundle exec rspec --exclude-pattern "spec/features/**/*_spec.rb" --profile
+	export RUBYOPT='-W:no-deprecated -W:no-experimental'; bin/bundle exec rspec --exclude-pattern "spec/features/**/*_spec.rb" --profile
 
 test-feature-profile: ## runs rspec feature tests
 	@echo ""
 	@$(call log_color_green, "--- === ::: Starting RSPEC FEATURE test suite ::: === ---")
 	@echo ""
-	export RUBYOPT='-W:no-deprecated -W:no-experimental'; bundle exec rspec spec/features/**/*_spec.rb --profile --failure-exit-code 0
+	export RUBYOPT='-W:no-deprecated -W:no-experimental'; bin/bundle exec rspec spec/features/**/*_spec.rb --profile --failure-exit-code 0
 
 test: test-fe test-be-unit test-feature
 
 test-profile: test-fe test-be-unit-profile test-feature-profile
 
 reset: ## reset and re-seed databse
-	export RUBYOPT='-W:no-deprecated -W:no-experimental'; bundle exec rails db:reset
+	export RUBYOPT='-W:no-deprecated -W:no-experimental'; bin/bundle exec rails db:reset
 
 release: ## updates `master` branch, generates a new tag, pushes tag, pushes master. expects `v={VERSION}` arg
 	@echo ""
@@ -79,7 +79,7 @@ release: ## updates `master` branch, generates a new tag, pushes tag, pushes mas
 	git push origin master
 
 sidekiq: ## spins up sidekiq process
-	bundle exec sidekiq
+	bin/bundle exec sidekiq
 
 start: ## start app using foreman and Procfile.dev to run app and services locally
 	foreman start -f Procfile.dev
