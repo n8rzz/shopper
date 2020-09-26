@@ -17,6 +17,7 @@ before_install:
   - sudo mv -f chromedriver /usr/local/bin/
   - sudo chmod +x /usr/local/bin/chromedriver
   - google-chrome-stable --headless --no-sandbox
+  - gem install bundler
 install:
   - psql --version
   - ruby -v
