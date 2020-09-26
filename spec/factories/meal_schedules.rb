@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :meal_schedule do
     schedule_date { Faker::Date.between(from: 1.year.ago, to: 1.year.from_now) }
     purchased { false }
-    meal_time { ['morning', 'afternoon', 'evening', 'none'].sample }
+    meal_time { %w[morning afternoon evening none].sample }
 
     order_item { nil}
     assembly { nil }

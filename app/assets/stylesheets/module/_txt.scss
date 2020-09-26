@@ -13,3 +13,11 @@
 .txt-sansSerif {
     @include sansSerifFont;
 }
+
+.txt-bold {
+    font-weight: 600;
+}
+
+.txt-center {
+    text-align: center;
+}

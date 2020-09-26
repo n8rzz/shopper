@@ -8,6 +8,7 @@ import {
     csrfMock,
     departmentMapMock,
     itemMapMock,
+    recipeMock,
 } from '../../__mocks__/mocks';
 
 describe('AssemblyItemContainer', () => {
@@ -18,6 +19,7 @@ describe('AssemblyItemContainer', () => {
             csrf={csrfMock}
             departmentIdMap={departmentMapMock}
             itemIdMap={itemMapMock}
+            recipes={recipeMock}
         />);
 
         expect(component).toMatchSnapshot();

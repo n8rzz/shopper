@@ -2,6 +2,15 @@
 @import "../base/mixins";
 @import "../base/vars";
 
+@mixin _baseTextInput {
+    @include boxShadow-subtle;
+
+    border-radius: $BORDER_RADIUS_M;
+    border: 1px solid #dedede;
+    font-size: $FONT_SIZE_M;
+    padding: $SPACING_HALFX;
+}
+
 .input-checkbox + .input-label_checkbox {
     cursor: pointer;
     display: block;
@@ -88,12 +97,8 @@
 }
 
 .input-text {
-    @include boxShadow-subtle;
+    @include _baseTextInput;
 
-    border-radius: $BORDER_RADIUS_M;
-    border: 1px solid #dedede;
-    font-size: $FONT_SIZE_M;
-    padding: $SPACING_HALFX;
     width: 150px;
 
     &:active,
@@ -110,10 +115,27 @@
         // font-style: italic;
         padding-left: $SPACING_HALFX;
     }
+
+    &:disabled {
+        background-color: $COLOR_LIGHT;
+    }
+}
+
+.input-textarea {
+    @include _baseTextInput;
+
+    margin-top: $SPACING_1X;
+    min-height: 150px;
 }
 
 .mix-input-text_full {
+    box-sizing: border-box;
     width: 100%;
+}
+
+.mix-input-text_half {
+    box-sizing: border-box;
+    width: 50%;
 }
 
 .mix-label_subdued {

@@ -11,7 +11,7 @@ RSpec.describe 'LocationDepartments', :type => :request do
   describe 'create request' do
     context 'invalid' do
       before do
-        post '/location_departments.json', :params => { :location_department => { sort_order: 1 } }
+        post '/location_departments.json', params: { location_department: { sort_order: 1 } }
       end
 
       it { expect(response.status).to eq(422) }
@@ -28,7 +28,7 @@ RSpec.describe 'LocationDepartments', :type => :request do
 
     context 'valid' do
       before do
-        post '/location_departments.json', :params => { :location_department => {
+        post '/location_departments.json', params: { location_department: {
           department_id: department.id,
           location_id: location.id
         } }

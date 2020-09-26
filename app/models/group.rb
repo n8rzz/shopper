@@ -16,6 +16,7 @@ class Group < ApplicationRecord
   has_many :assemblies, as: :ownable, dependent: :destroy
   has_many :orders, as: :ownable, dependent: :destroy
   has_many :meal_schedules, as: :ownable, dependent: :destroy
+  has_many :recipes, as: :ownable, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
 end

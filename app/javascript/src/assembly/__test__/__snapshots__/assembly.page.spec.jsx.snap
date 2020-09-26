@@ -54,5 +54,53 @@ exports[`AssemblyPage renders correctly with valid props 1`] = `
       },
     }
   }
+  recipes={
+    Array [
+      Object {
+        "assembly_id": null,
+        "cook_time": 18,
+        "created_at": "2020-03-01T04:13:06.254Z",
+        "description": "Two buttermilk waffles, topped with whipped cream and maple syrup, a side of two eggs served any style, and your choice of smoked bacon or smoked ham.",
+        "id": 1,
+        "name": "Mushroom Risotto",
+        "ownable_id": 1,
+        "ownable_type": "Group",
+        "prep_time": 14,
+        "recipe_ingredients": Array [
+          Object {
+            "item_id": null,
+            "name": "Basil",
+            "qty_unit": "Monkeys",
+            "qty_value": "10",
+            "recipe_id": 1,
+          },
+        ],
+        "recipe_instructions": Array [
+          Object {
+            "recipe_id": 1,
+            "sort_order": 0,
+            "text": "Migas normcore heirloom pug jean shorts gentrify irony. Typewriter flexitarian synth dreamcatcher tilde swag salvia. Flannel paleo taxidermy viral muggle magic. Banjo roof cleanse semiotics.",
+          },
+        ],
+        "updated_at": "2020-03-01T04:13:06.254Z",
+        "yield_unit": "servings",
+        "yield_value": 28,
+      },
+      Object {
+        "assembly_id": 1,
+        "cook_time": 18,
+        "created_at": "2020-03-01T04:13:06.254Z",
+        "description": "Two buttermilk waffles, topped with whipped cream and maple syrup, a side of two eggs served any style, and your choice of smoked bacon or smoked ham.",
+        "id": 2,
+        "name": "Mushroom Risotto",
+        "ownable_id": 1,
+        "ownable_type": "Group",
+        "prep_time": 14,
+        "updated_at": "2020-03-01T04:13:06.254Z",
+        "yield_unit": "servings",
+        "yield_value": 28,
+      },
+    ]
+  }
 />
 `;

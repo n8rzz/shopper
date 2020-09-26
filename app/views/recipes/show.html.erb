@@ -1,0 +1,28 @@
+<div class="vr_2">
+    <ul class="stereo">
+        <li>
+            <h1 class="hdg hdg_1"><%= @recipe.display_name.capitalize %></h1>
+        </li>
+        <li>
+            <ul class="hlist hlist-divided">
+                <li>
+                    <%= link_to 'Back', recipes_path, class: "link" %>
+                </li>
+                <li>
+                    <%= link_to 'Edit', edit_recipe_path(@recipe.id), class: "link" %>
+                </li>
+                <li>
+                    <%= link_to 'New', new_recipe_path, class: "link" %>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<%= react_component(
+    'RecipeContainer',
+    recipe: @recipe,
+    ingredients: @recipe.recipe_ingredients,
+    instructions: @recipe.recipe_instructions,
+    itemsById: @items_by_id
+) %>

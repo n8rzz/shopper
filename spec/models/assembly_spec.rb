@@ -20,6 +20,7 @@ RSpec.describe Assembly, type: :model do
     it { should have_many(:assemblies) }
     it { should have_many(:items) }
     it { should have_many(:meal_schedules) }
+    it { should have_one(:recipe) }
   end
 
   before do

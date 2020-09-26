@@ -53,6 +53,30 @@ export class AssemblyItem extends React.Component {
         });
     }
 
+    _buildRecipeLinkJsx() {
+        const recipeLinkClassnames = `link qa-assemblyRecipe-${this.props.assembly.id}`;
+
+        if (this.props.recipe == null) {
+            return (
+                <a
+                    href={`/recipes/new?assembly_id=${this.props.assembly.id}`}
+                    className={recipeLinkClassnames}
+                >
+                    Add Recipe
+                </a>
+            );
+        }
+
+        return (
+            <a
+                href={`/recipes/${this.props.recipe.id}`}
+                className={recipeLinkClassnames}
+            >
+                Recipe
+            </a>
+        );
+    }
+
     _buildAssemblyGroupHeaderJsx() {
         const assemblyItemList = this.props.assemblyItemsGroupedByAssemblyId[this.props.assembly.id];
         const buttonText = this._buildAssemblyButtonText();
@@ -83,6 +107,9 @@ export class AssemblyItem extends React.Component {
                         </li>
                         <li>
                             <ul className={'hlist hlist-divided'}>
+                                <li>
+                                    {this._buildRecipeLinkJsx()}
+                                </li>
                                 <li>
                                     <a
                                         href={`/meal_schedules/new?assembly_id=${this.props.assembly.id}`}
@@ -173,6 +200,10 @@ export class AssemblyItem extends React.Component {
     }
 }
 
+AssemblyItem.defaultProps = {
+    recipe: null,
+};
+
 AssemblyItem.propTypes = {
     assembly: PropTypes.object.isRequired,
     assemblyItemsGroupedByAssemblyId: PropTypes.object.isRequired,
@@ -185,5 +216,6 @@ AssemblyItem.propTypes = {
     onClickAccordionTriggerHandler: PropTypes.func.isRequired,
     onClickAddAssemblyHandler: PropTypes.func.isRequired,
     onClickAddAssemblyItemHandler: PropTypes.func.isRequired,
+    recipe: PropTypes.object,
     submittedAssemblyItemId: PropTypes.number.isRequired,
 };

@@ -1,0 +1,18 @@
+<ul class="stereo">
+    <li>
+        <h1 class="hdg hdg_1">New Recipe</h1>
+    </li>
+    <li>
+        <ul class="hlist hlist-divided">
+            <li>
+                <%= link_to 'Back', recipes_path, class: "link" %>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<%= react_component(
+    'RecipeFormContainer',
+) %>
+
+<%= render 'form', recipe: @recipe %>

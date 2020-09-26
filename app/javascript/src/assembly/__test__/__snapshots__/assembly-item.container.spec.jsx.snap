@@ -65,6 +65,7 @@ exports[`AssemblyItemContainer renders correctly with valid props 1`] = `
   onClickAccordionTriggerHandler={[Function]}
   onClickAddAssemblyHandler={[Function]}
   onClickAddAssemblyItemHandler={[Function]}
+  recipe={null}
   submittedAssemblyItemId={-1}
 />
 `;

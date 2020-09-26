@@ -8,6 +8,7 @@ import {
     assemblyItemsGroupedByAssemblyIdMock,
     departmentMapMock,
     itemMapMock,
+    recipeMock,
 } from '../../__mocks__/mocks';
 
 describe('AssemblyItem', () => {
@@ -24,6 +25,7 @@ describe('AssemblyItem', () => {
             onClickAccordionTriggerHandler={sinon.spy()}
             onClickAddAssemblyHandler={sinon.spy()}
             onClickAddAssemblyItemHandler={sinon.spy()}
+            recipe={recipeMock}
             submittedAssemblyItemId={-1}
         />);
 
@@ -47,6 +49,7 @@ describe('AssemblyItem', () => {
                 onClickAccordionTriggerHandler={sinon.spy()}
                 onClickAddAssemblyHandler={sinon.spy()}
                 onClickAddAssemblyItemHandler={sinon.spy()}
+                recipes={recipeMock}
                 submittedAssemblyItemId={-1}
             />);
             assemblyBtn = component.find(`.js-assembly-${assemblyMock.id} button`);
@@ -83,6 +86,7 @@ describe('AssemblyItem', () => {
                 onClickAccordionTriggerHandler={sinon.spy()}
                 onClickAddAssemblyHandler={sinon.spy()}
                 onClickAddAssemblyItemHandler={sinon.spy()}
+                recipes={recipeMock}
                 submittedAssemblyItemId={-1}
             />);
             assemblyBtn = component.find(`.js-assembly-${assemblyMock.id} button`);
@@ -119,6 +123,7 @@ describe('AssemblyItem', () => {
                 onClickAccordionTriggerHandler={sinon.spy()}
                 onClickAddAssemblyHandler={sinon.spy()}
                 onClickAddAssemblyItemHandler={sinon.spy()}
+                recipes={recipeMock}
                 submittedAssemblyItemId={1}
             />);
             assemblyItemBtn = component.find(`.js-assemblyItem-${assemblyMock.id} button`);
@@ -155,6 +160,7 @@ describe('AssemblyItem', () => {
                 onClickAccordionTriggerHandler={sinon.spy()}
                 onClickAddAssemblyHandler={sinon.spy()}
                 onClickAddAssemblyItemHandler={sinon.spy()}
+                recipes={recipeMock}
                 submittedAssemblyItemId={1}
             />);
             assemblyItemBtn = component.find(`.js-assemblyItem-${assemblyMock.id} button`);
@@ -171,6 +177,72 @@ describe('AssemblyItem', () => {
 
         test('should render with the correct classnames', () => {
             expect(assemblyItemBtn.hasClass('mix-btn_isSuccess')).toBe(true);
+        });
+    });
+
+    describe('when `recipe` is passed as `null`', () => {
+        let component = null;
+        let assemblyRecipeLink = null;
+
+        beforeEach(() => {
+            component = shallow(<AssemblyItem
+                assembly={assemblyMock}
+                assemblyItemsGroupedByAssemblyId={assemblyItemsGroupedByAssemblyIdMock}
+                departmentIdMap={departmentMapMock}
+                isAssemblyItemSubmitSuccess={true}
+                isOpen={false}
+                isSubmitAssemblySuccess={false}
+                isSubmittingAssembly={false}
+                itemIdMap={itemMapMock}
+                onClickAccordionTriggerHandler={sinon.spy()}
+                onClickAddAssemblyHandler={sinon.spy()}
+                onClickAddAssemblyItemHandler={sinon.spy()}
+                recipe={null}
+                submittedAssemblyItemId={1}
+            />);
+            assemblyRecipeLink = component.find(`.qa-assemblyRecipe-${assemblyMock.id}`);
+        });
+
+        afterEach(() => {
+            component = null;
+            assemblyRecipeLink = null;
+        });
+
+        test('should render the correct text', () => {
+            expect(assemblyRecipeLink.text()).toBe('Add Recipe');
+        });
+    });
+
+    describe('when `recipe` is not passed as `null`', () => {
+        let component = null;
+        let assemblyRecipeLink = null;
+
+        beforeEach(() => {
+            component = shallow(<AssemblyItem
+                assembly={assemblyMock}
+                assemblyItemsGroupedByAssemblyId={assemblyItemsGroupedByAssemblyIdMock}
+                departmentIdMap={departmentMapMock}
+                isAssemblyItemSubmitSuccess={true}
+                isOpen={false}
+                isSubmitAssemblySuccess={false}
+                isSubmittingAssembly={false}
+                itemIdMap={itemMapMock}
+                onClickAccordionTriggerHandler={sinon.spy()}
+                onClickAddAssemblyHandler={sinon.spy()}
+                onClickAddAssemblyItemHandler={sinon.spy()}
+                recipe={recipeMock}
+                submittedAssemblyItemId={1}
+            />);
+            assemblyRecipeLink = component.find(`.qa-assemblyRecipe-${assemblyMock.id}`);
+        });
+
+        afterEach(() => {
+            component = null;
+            assemblyRecipeLink = null;
+        });
+
+        test('should render the correct text', () => {
+            expect(assemblyRecipeLink.text()).toBe('Recipe');
         });
     });
 });

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecipeIngredientsComponent when called with \`#ingredients\` renders correctly with valid props 1`] = `
+<div
+  className="recipeIngredients"
+>
+  <ul
+    className="recipeIngredients-list"
+  >
+    <li
+      className="recipeIngredients-list-item"
+      key="ingredient-0"
+    >
+      <ul
+        className="hlist"
+      >
+        <li>
+          10
+           
+          <span>
+            Monkeys
+          </span>
+        </li>
+        <li>
+          Basil
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+`;

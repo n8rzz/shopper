@@ -79,5 +79,4 @@ export default class FlyoutController {
     }
 }
 
-
 document.addEventListener('turbolinks:load', () => new FlyoutController());

@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecipeContainer renders correctly with valid props 1`] = `
+<ul
+  className="vlist"
+>
+  <li>
+    <RecipeMetaComponent
+      cookTime={18}
+      description="Two buttermilk waffles, topped with whipped cream and maple syrup, a side of two eggs served any style, and your choice of smoked bacon or smoked ham."
+      prepTime={14}
+      yieldUnit="servings"
+      yieldValue={28}
+    />
+  </li>
+  <li>
+    <RecipeIngredientsComponent
+      ingredients={
+        Array [
+          Object {
+            "item_id": null,
+            "name": "Basil",
+            "qty_unit": "Monkeys",
+            "qty_value": "10",
+            "recipe_id": 1,
+          },
+        ]
+      }
+      itemsById={Object {}}
+    />
+  </li>
+  <li>
+    <RecipeInstructionsComponent
+      instructions={
+        Array [
+          Object {
+            "recipe_id": 1,
+            "sort_order": 0,
+            "text": "Migas normcore heirloom pug jean shorts gentrify irony. Typewriter flexitarian synth dreamcatcher tilde swag salvia. Flannel paleo taxidermy viral muggle magic. Banjo roof cleanse semiotics.",
+          },
+        ]
+      }
+    />
+  </li>
+</ul>
+`;

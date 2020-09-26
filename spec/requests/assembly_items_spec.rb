@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe 'AssemblyItem', :type => :request do
+RSpec.describe 'AssemblyItem', type: :request do
   before do
     sign_in create(:user)
   end
 
   context 'creating an assembly without item_ids' do
     before do
-      post '/assemblies', :params => { :assembly => {:name => 'Threeve'} }
+      post '/assemblies', params: { assembly: { name: 'Threeve'} }
     end
 
     it { expect(response).to redirect_to(assemblies_path) }
