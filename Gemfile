@@ -23,7 +23,7 @@ gem 'webpacker-react', '~> 1.0.0.beta.1'
 group :development, :test do
   gem 'binding_of_caller'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'dotenv-rails', '2.7.5', require: false
+  gem 'dotenv-rails', '2.7.6', require: false
   gem 'email_spec'
   gem 'factory_bot_rails'
   gem 'launchy'
