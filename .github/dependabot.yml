@@ -1,0 +1,49 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "11:00"
+  open-pull-requests-limit: 10
+  labels:
+  - "[zube]: In Review"
+  - dependencies
+  - javascript
+  ignore:
+  - dependency-name: date-fns
+    versions:
+    - "> 2.0.1"
+  - dependency-name: sinon
+    versions:
+    - "> 8.0.1, < 8.1"
+  - dependency-name: "@rails/ujs"
+    versions:
+    - 6.1.1
+    - 6.1.2
+  - dependency-name: node-notifier
+    versions:
+    - 8.0.1
+  - dependency-name: react-stickynode
+    versions:
+    - 3.0.4
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "11:00"
+  open-pull-requests-limit: 10
+  labels:
+  - "[zube]: In Review"
+  - dependencies
+  - ruby
+  ignore:
+  - dependency-name: rails
+    versions:
+    - "> 6.0.0, < 6.1"
+  - dependency-name: rubocop
+    versions:
+    - ">= 0.77.a, < 0.78"
+  - dependency-name: sidekiq
+    versions:
+    - ">= 6.0.a, < 6.1"
